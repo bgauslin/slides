@@ -1,5 +1,5 @@
 <?php
-$site_name = 'Slideshows...';
+$site_name = 'Slideshows';
 $meta_description = 'Meta description goes here...';
 
 // Sets default paths.

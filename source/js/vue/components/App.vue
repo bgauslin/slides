@@ -42,6 +42,7 @@ export default {
       metaDescription: null,
       showPrevNext: false,
       siteName: document.title,
+      titleDivider: ' · ',
       transitionEnter: null,
       transitionLeave: null,
     }
@@ -130,7 +131,8 @@ export default {
             const response = await fetch(`${this.apiUrl}/slideshow/${this.$route.params.slug}`);
             const data = await response.json();
             this.content = data;
-            this.updateTitle(this.content.title);
+            // TODO: updateTitle() is throwing an error here
+            // this.updateTitle();
             this.dataLoaded = true;
           }
           fetchData();
@@ -171,7 +173,7 @@ export default {
     showSlide(data) {
       this.content = data;
       this.$store.dispatch('storeSlide', data);
-      this.updateTitle(`Slide ${this.$route.params.count}: ${this.content.title}`);
+      this.updateTitle();
       this.dataLoaded = true;
     },
 
@@ -186,9 +188,24 @@ export default {
       metaDescriptionEl.setAttribute('content', metaContent);
     },
 
-    // TODO: Change title based on route - e.g. 'Slide 1 · Slide title  · Slideshow name'
-    updateTitle(pageTitle) {
-      document.title = (pageTitle !== null) ? `${pageTitle} · ${this.siteName}` : this.siteName;
+    updateTitle() {
+      // Shorthand references
+      const _ = this.titleDivider;
+      const site = this.siteName;
+      const slide = `Slide ${this.$route.params.count}`;
+      const slideshow = this.content.slideshow.title;
+      const title = this.content.title;
+
+      switch(this.$route.name) {
+        case 'start':
+          document.title = `${title}${_}${site}`;
+          break;
+        case 'slide':
+          document.title = `${slide}${_}${title}${_}${slideshow}`;
+          break;
+        default:
+          document.title = site;
+      }
     },
   },
 }
