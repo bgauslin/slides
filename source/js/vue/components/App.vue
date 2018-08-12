@@ -42,7 +42,6 @@ export default {
       metaDescription: null,
       showPrevNext: false,
       siteName: document.title,
-      titleDivider: ' · ',
       transitionEnter: null,
       transitionLeave: null,
     }
@@ -190,7 +189,6 @@ export default {
 
     updateTitle() {
       // Shorthand references
-      const _ = this.titleDivider;
       const site = this.siteName;
       const slide = `Slide ${this.$route.params.count}`;
       const slideshow = this.content.slideshow.title;
@@ -198,10 +196,10 @@ export default {
 
       switch(this.$route.name) {
         case 'start':
-          document.title = `${title}${_}${site}`;
+          document.title = `${title} · ${site}`;
           break;
         case 'slide':
-          document.title = `${slide}${_}${title}${_}${slideshow}`;
+          document.title = `${slide} · ${title} · ${slideshow}`;
           break;
         default:
           document.title = site;
