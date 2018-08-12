@@ -1,0 +1,85 @@
+// --------------------------------------------------
+// functions
+
+px_to_em(px)
+  em_units = px / 16
+  return em_units * 1em
+
+px_to_rem(px)
+  rem_units = px / 16
+  return rem_units * 1rem
+
+// --------------------------------------------------
+// mixins
+
+aspect_ratio(width, height)
+  padding-bottom (height / width) * 100%
+  position relative
+
+  img
+    bottom 0
+    left 0
+    position absolute
+    right 0
+    top 0
+
+heading_font(weight = 500)
+  font-family 'Avenir Medium' sans-serif // fallback
+  font-weight weight
+
+  @supports (font-variation-settings: normal) // variable
+    font-family 'Avenir Variable', sans-serif
+    font-variation-settings 'wght' weight
+
+font_face()
+  @font-face
+    font-family 'Avenir Variable'
+    src url('/ui/webfonts/AvenirNext-Variable.woff2') format('woff2')
+    font-weight 1 999
+
+  @font-face
+    font-family 'Avenir Medium'
+    src url('/ui/webfonts/AvenirLTStd-Medium.woff2') format('woff2'),
+        url('/ui/webfonts/AvenirLTStd-Medium.woff') format('woff')
+    font-weight 500
+
+font_weight(weight)
+  font-weight weight
+
+  @supports (font-variation-settings: normal)
+    font-variation-settings 'wght' weight
+
+link(link, visited, hover, active)
+  &
+    &:link
+      color link
+
+    &:visited
+      color visited
+
+    &:active
+    &:focus
+      color active
+
+  [no-touch]&
+    &:hover
+      color hover
+
+shadow_0()
+  box-shadow 0 0 10px 0 rgba(BLACK, .12)
+
+shadow_1()
+  box-shadow 0 1px 3px rgba(BLACK, .12), 0 1px 2px rgba(BLACK, .24)
+
+shadow_2()
+  box-shadow 0 3px 6px rgba(BLACK, .16), 0 3px 6px rgba(BLACK, .23)
+
+// TODO: update to use variable fonts
+webfont(name, file)
+  @font-face
+    font-family name
+    src url(file + '.eot')
+    src url(file + '.eot?#iefix') format('embedded-opentype'),
+        url(file + '.woff') format('woff'),
+        url(file + '.woff2') format('woff2'),
+        url(file + '.ttf') format('truetype')

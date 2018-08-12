@@ -1,0 +1,32 @@
+// margins and breakpoints
+MARGINS_BASE = px_to_rem(12)
+MARGINS_SMALL = px_to_rem(24)
+MARGINS_MEDIUM = px_to_rem(64)
+MARGINS_LARGE = px_to_rem(64)
+
+BREAKPOINT_SMALL_UNITS = px_to_rem(448)
+BREAKPOINT_MEDIUM_UNITS = px_to_rem(736)
+BREAKPOINT_LARGE_UNITS = px_to_rem(992)
+BREAKPOINT_XLARGE_UNITS = px_to_rem(1248)
+
+MAX_WIDTH = BREAKPOINT_XLARGE_UNITS - (MARGINS_LARGE * 2)
+
+// header heights
+HEADER_HEIGHT_BASE = px_to_rem(44)
+HEADER_HEIGHT_SMALL = px_to_rem(52)
+HEADER_HEIGHT_MEDIUM = px_to_rem(72)
+
+// prev_next
+PREV_NEXT_WIDTH = px_to_rem(32)
+PREV_NEXT_HEIGHT = PREV_NEXT_WIDTH
+PREV_NEXT_PADDING_BASE = px_to_rem(6)
+PREV_NEXT_PADDING_MEDIUM = px_to_rem(10)
+
+// transitions
+TRANSITION_SPEED = .3s
+
+// media query breakpoints as strings
+BREAKPOINT_SMALL = 'screen and (min-width: %s)' % BREAKPOINT_SMALL_UNITS
+BREAKPOINT_MEDIUM = 'screen and (min-width: %s)' % BREAKPOINT_MEDIUM_UNITS
+BREAKPOINT_LARGE = 'screen and (min-width: %s)' % BREAKPOINT_LARGE_UNITS
+BREAKPOINT_XLARGE = 'screen and (min-width: %s)' % BREAKPOINT_XLARGE_UNITS

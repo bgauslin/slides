@@ -1,0 +1,55 @@
+@import '_config/'
+
+body
+  background DARK_GREY
+  body_font()
+  color OFF_WHITE
+  margin 0
+  padding 0
+  -webkit-tap-highlight-color transparent
+  text-size-adjust none
+
+// TODO: refactor/rename site-wide elements
+.site
+  display flex
+  flex-direction column
+  min-height 100vh
+
+.content
+  flex 1 0
+
+figure
+  margin 0
+  padding 0
+
+img
+  height auto
+  max-width 100%
+  vertical-align middle
+
+[v-cloak]
+  visibility hidden
+
+a
+  text-decoration none
+  transition color TRANSITION_SPEED
+
+.no-js
+  align-items center
+  display flex
+  min-height 100vh
+  padding 1rem
+
+.no-js__message
+  background WHITE
+  border 1px solid LIGHTER_GREY
+  border-radius 4px
+  margin 0 auto
+  padding 1rem
+  text-align center
+
+  @media BREAKPOINT_MEDIUM
+    max-width 30rem
+    padding 2rem
+
+@import '_animations'
