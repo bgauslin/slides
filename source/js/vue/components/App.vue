@@ -73,6 +73,7 @@ export default {
       el.classList.remove(this.transitionLeave);
     },
 
+    // TODO: refactor 'beforeEnter' to be more concise
     beforeEnter (el) {
       switch (this.direction) {
         case 'forward':
@@ -88,6 +89,7 @@ export default {
       el.classList.add(this.transitionEnter);
     },
 
+    // TODO: refactor 'beforeLeave' to be more concise
     beforeLeave (el) {
       switch (this.direction) {
         case 'forward':
@@ -107,42 +109,58 @@ export default {
       this.dataLoaded = false;
 
       switch (this.$route.name) {
+
         // Index of all slideshows.
         case 'home': {
           this.showPrevNext = false;
-          fetch(`${this.apiUrl}/slideshows`)
-            .then(response => response.json())
-            .then(data => {
-              this.content = data.data;
-              this.dataLoaded = true;
-            });
+          const fetchData = async () => {
+            const response = await fetch(`${this.apiUrl}/slideshows`);
+            const data = await response.json();
+            this.content = data.data;
+            this.dataLoaded = true;
+          }
+          fetchData();
           break;
         }
 
         // Cover image for a slideshow.
         case 'start': {
           this.showPrevNext = false;
-          fetch(`${this.apiUrl}/slideshow/${this.$route.params.slug}`)
-            .then(response => response.json())
-            .then(data => {
-              this.content = data;
-              this.updateTitle(this.content.title); // TODO: update param
-              this.dataLoaded = true;
-            });
+          const fetchData = async () => {
+            const response = await fetch(`${this.apiUrl}/slideshow/${this.$route.params.slug}`);
+            const data = await response.json();
+            this.content = data;
+            this.updateTitle(this.content.title);
+            this.dataLoaded = true;
+          }
+          fetchData();
           break;
         }
 
-        // TODO: Refactor with async/await and functions.
         // Individual slide from a slideshow.
         case 'slide': {
           this.showPrevNext = true;
 
           // Store the current slide count for slide id lookup in the index.
-          this.$store.dispatch('storeCurrentSlideCount', this.$route.params.count);
+          this.$store.dispatch('storeCurrentSlideCount', this.$route.params.count); // TODO: commit or dispatch here (?)
           this.$store.commit('storeSlug', this.$route.params.slug);
 
           // Get the slides index first, then get the slide.
-          // TODO: refactor with async/await...
+          // TODO: Refactor with async/await and functions.
+          // async () => {
+          //   fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
+          //   - After first fetch returns, dispatch 'storeSlidesIndex':
+          //   this.$store.dispatch('storeSlidesIndex', data.slides);
+          //   - Then set slideId and do the second fetch
+          //   const slideId = this.$store.getters.slideId;
+          //   fetch(`${this.apiUrl}/slide/${slideId}`)
+          //   - After second fetch returns, pass its data to the app
+          //   this.content = data;
+          //   this.$store.dispatch('storeSlide', data);
+          //   this.updateTitle(this.content.title); // TODO: update param
+          //   this.dataLoaded = true;
+          // }
+
           fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`)
             .then(response => response.json())
             .then(data => {
