@@ -3,7 +3,6 @@ const slides = {
     direction: null,
     count: 0,
     slides: [],
-    // slideshow: {},
     slug: null,
     thumbs: [],
   },
@@ -38,13 +37,23 @@ const slides = {
     storeSlidesIndex (context, value) {
       context.commit('storeSlidesIndex', value);
     },
-
-    storeCurrentSlideCount (context, value) {
-      context.commit('storeCurrentSlideCount', value);
-    },
   },
 
   getters: {
+    currentSlide: (state, getters) => state.slides[getters.currentSlideCount],
+
+    currentSlideCount: (state) => state.count,
+
+    direction: (state) => state.direction,
+
+    // TODO: currentSlide.media throws an error if the field doesn't exist yet
+    // hasSlide: (state, getters) => {
+    //   const currentSlide = getters.currentSlide;
+    //   return (currentSlide.media !== undefined);
+    // },
+
+    hasSlidesIndex: (state) => (state.slides.length > 0),
+
     slides: (state) => state.slides,
 
     slideId: (state, getters) => {
@@ -52,20 +61,7 @@ const slides = {
       return (slide !== undefined) ? slide.id : null;
     },
 
-    currentSlideCount: (state) => state.count,
-
     // slidesTotal: (state) => state.slides.length,
-
-    hasSlidesIndex: (state) => (state.slides.length > 0),
-
-    // slide: (state) => state.slides.find(slide => slide.id == state.id),
-
-    // hasSlide: (state, getters) => {
-    //   const slide = getters.slide;
-    //   return (slide !== undefined) ? slide : null;
-    // },
-
-    direction: (state) => state.direction,
   },
 }
 

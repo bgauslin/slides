@@ -142,37 +142,37 @@ export default {
           this.showPrevNext = true;
 
           // Store the current slide count for slide id lookup in the index.
-          this.$store.dispatch('storeCurrentSlideCount', this.$route.params.count); // TODO: commit or dispatch here (?)
+          this.$store.commit('storeCurrentSlideCount', this.$route.params.count);
           this.$store.commit('storeSlug', this.$route.params.slug);
 
-          // TODO: break fetchData() into separate smaller functions with conditionals for stored data
-          // and piece together the functions we need for each case.
           const fetchData = async () => {
-            // Get the index of all slide ids' and store it for subsequent lookups.
-            const indexResponse = await fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
-            const indexData = await indexResponse.json();
-            this.$store.dispatch('storeSlidesIndex', indexData.slides);
+            // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
+            if (!this.$store.getters.hasSlidesIndex) {
+              const indexResponse = await fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
+              const indexData = await indexResponse.json();
+              this.$store.dispatch('storeSlidesIndex', indexData.slides);
+            }
 
-            // Now that we have the index, get/set slideId for next data fetch.
+            // TODO: See if we already have the slide in the store.
             const slideId = this.$store.getters.slideId;
-
-            // Get the slide based on its id within the index.
             const slideResponse = await fetch(`${this.apiUrl}/slide/${slideId}`)
             const slideData = await slideResponse.json();
-          
-            // Populate the app.
-            this.content = slideData;
-            this.$store.dispatch('storeSlide', slideData);
-            this.updateTitle(this.content.title); // TODO: update param
-            this.dataLoaded = true;
+
+            // Set up app view when data is available.
+            this.showSlide(slideData);
           }
 
-          // If we don't have the index of slides id's, go get it.
           fetchData();
-
           break;
         }
       }
+    },
+
+    showSlide(data) {
+      this.content = data;
+      this.$store.dispatch('storeSlide', data);
+      this.updateTitle(`Slide ${this.$route.params.count}: ${this.content.title}`);
+      this.dataLoaded = true;
     },
 
     getMetaDescription() {
@@ -186,6 +186,7 @@ export default {
       metaDescriptionEl.setAttribute('content', metaContent);
     },
 
+    // TODO: Change title based on route - e.g. 'Slide 1 · Slide title  · Slideshow name'
     updateTitle(pageTitle) {
       document.title = (pageTitle !== null) ? `${pageTitle} · ${this.siteName}` : this.siteName;
     },
