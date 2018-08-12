@@ -14,6 +14,8 @@ elixir(mix => {
   mix.browserify('slides.js')
   .stylus('slides.styl')
   .copy('source/html/index.php', 'public/index.php')
+  .copy('source/icons', 'public/ui/icons')
+  .copy('source/webfonts', 'public/ui/webfonts')
   .livereload()
   .browserSync({
     proxy: 'slides.gauslin.test'

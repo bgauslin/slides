@@ -35,7 +35,7 @@ if ($tld == 'com') {
     <meta name="description" content="<?php echo $meta_description?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400|Material+Icons">
     <style><?php include('.' . $css_path) ?>"></style>
   </head>
 

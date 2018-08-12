@@ -33,7 +33,7 @@ export default {
 .cover__heading
   color inherit
   font-size H1_BASE
-  heading_font(600)
+  heading_font()
   margin 0 0 .25em
   padding 0
 
