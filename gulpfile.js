@@ -1,109 +1,99 @@
-const pkg = require('./package.json');
+const gulp         = require('gulp');
 
-const gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const browserify   = require('gulp-browserify');
+const browserSync  = require('browser-sync');
+const cssnano      = require('gulp-cssnano');
+const hash         = require('gulp-hash');
+const plumber      = require('gulp-plumber');
+const pump         = require('pump');
+const stylus       = require('gulp-stylus');
+const uglify       = require('gulp-uglify');
 
-const $ = require('gulp-load-plugins')({
-  pattern: ['*'],
-  scope: ['devDependencies']
+const onError = (err) => console.log(err);
+
+
+// TODO: getting vue components up and running may take a little work:
+// vueify, ES6, babel, pug, stylus, uglify, browserify...
+// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
+
+gulp.task('js', (cb) => {
+  pump([
+    gulp.src('./source/js/slides.js')
+      .pipe(plumber({
+        errorHandler: onError
+      }))
+      .pipe(browserify({
+        transform: ['vueify', 'babelify', 'aliasify']
+      })),
+      uglify(),
+      gulp.dest('./public/ui')
+    ],
+    cb
+  );
 });
 
-const onError = (err) => {
-  console.log(err);
-};
-
-gulp.task('scss', () => {
-  $.fancyLog('-> Compiling scss');
-  return gulp.src(pkg.paths.src.scss + pkg.vars.scssName)
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.sass({
-        includePaths: pkg.paths.scss
-      })
-      .on('error', $.sass.logError))
-    .pipe($.cached('sass_compile'))
-    .pipe($.autoprefixer())
-    .pipe($.size({gzip: true, showFiles: true}))
-    .pipe(gulp.dest(pkg.paths.build.css));
-});
-
-// css task - combine & minimize any distribution CSS into the public css folder
-gulp.task('css', ['scss'], () => {
-  $.fancyLog('-> Building css');
-  return gulp.src(pkg.globs.distCss)
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
-    .pipe($.print())
-    .pipe($.concat(pkg.vars.siteCssName))
-    .pipe($.cssnano({
-      discardComments: {
-        removeAll: true
-      },
-      discardDuplicates: true,
-      discardEmpty: true,
-      minifyFontValues: true,
-      minifySelectors: true
+gulp.task('stylus', () => {
+  gulp.src('./source/stylus/slides.styl')
+    .pipe(plumber({
+      errorHandler: onError
     }))
-    .pipe($.size({gzip: true, showFiles: true}))
-    .pipe(gulp.dest(pkg.paths.dist.css))
-    .pipe($.filter('**/*.css'))
-    .pipe($.livereload());
+    .pipe(stylus())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(cssnano())
+    .pipe(gulp.dest('./public/ui'))
 });
 
-// babel js task - transpile JavaScript into build directory
-gulp.task('js-babel', () => {
-  $.fancyLog('-> Transpiling JavaScript via Babel');
-  return gulp.src(pkg.globs.babelJs)
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.newer({dest: pkg.paths.build.js}))
-    .pipe($.babel())
-    .pipe($.size({gzip: true, showFiles: true}))
-    .pipe(gulp.dest(pkg.paths.build.js));
+gulp.task('html', function() {
+  gulp.src(['./source/html/**/*.*'])
+    .pipe(gulp.dest('./public'));
 });
 
-// components - build .vue VueJS components
-gulp.task('components', () => {
-  $.fancyLog('-> Compiling Vue components');
-  return gulp.src(pkg.globs.components)
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.newer({dest: pkg.paths.build.js, ext: '.js'}))
-    .pipe($.vueify({}))
-    .pipe($.size({gzip: true, showFiles: true}))
-    .pipe(gulp.dest(pkg.paths.build.js));
+gulp.task('icons', function() {
+  gulp.src(['./source/icons/**/*.*'])
+    .pipe(gulp.dest('./public/ui/icons'));
 });
 
-// js task - minimize any distribution Javascript into the public js folder
-gulp.task('js', ['js-babel', 'prism-js'], () => {
-  $.fancyLog('-> Building js');
-  return gulp.src(pkg.globs.distJs)
-    .pipe($.plumber({errorHandler: onError}))
-    .pipe($.if(['*.js', '!*.min.js'],
-      $.newer({dest: pkg.paths.dist.js, ext: '.min.js'}),
-      $.newer({dest: pkg.paths.dist.js})
-    ))
-    .pipe($.if(['*.js', '!*.min.js'],
-      $.uglify()
-    ))
-    .pipe($.if(['*.js', '!*.min.js'],
-      $.rename({suffix: '.min'})
-    ))
-    .pipe($.size({gzip: true, showFiles: true}))
-    .pipe(gulp.dest(pkg.paths.dist.js))
-    .pipe($.filter('**/*.js'))
-    .pipe($.livereload());
+gulp.task('webfonts', function() {
+  gulp.src(['./source/webfonts/**/*.*'])
+    .pipe(gulp.dest('./public/ui/webfonts'));
 });
 
-// Default task
-gulp.task('default', ['css', 'js'], () => {
-  $.livereload.listen();
-  // gulp.watch([pkg.paths.src.scss + '**/*.scss'], ['css']);
-  gulp.watch([pkg.paths.src.styl + '**/*.styl'], ['css']);
-  gulp.watch([pkg.paths.src.css + '**/*.css'], ['css']);
-  gulp.watch([pkg.paths.src.js + '**/*.js'], ['js']);
-  gulp.watch([pkg.paths.templates + '**/*.{html,twig}'], () => {
-    gulp.src(pkg.paths.templates)
-      .pipe($.plumber({errorHandler: onError}))
-      .pipe($.livereload());
+// ------------------------------------------------------------
+// Composite tasks
+
+gulp.task('watch', ['stylus', 'html', 'webfonts', 'icons'], () => {
+  const watcher = gulp.watch('./source/**/*', ['refresh']);
+  watcher.on('change', (event) => {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
   });
 });
 
-// Production build
-gulp.task('build', ['default']);
+gulp.task('browser-sync', ['watch'], () => {
+  return browserSync({
+    proxy: 'slides.gauslin.test'
+  });
+});
+
+// ------------------------------------------------------------
+// Dev/Prod tasks
+
+// Run 'gulp' for developement
+gulp.task('default', ['browser-sync']);
+
+// Run 'gulp version' to generate hashed assets for production
+gulp.task('version', () => {
+  gulp.src('./public/ui/slides.css')
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(hash())
+    .pipe(gulp.dest('./public/ui'))
+    .pipe(hash.manifest('./public/ui/manifest.json', {
+      deleteOld: true,
+    }))
+    .pipe(gulp.dest('.'))
+});
