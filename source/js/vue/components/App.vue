@@ -36,7 +36,7 @@ export default {
 
   data () {
     return {
-      apiUrl: apiDomain + '/api/v2',
+      apiBaseUrl: apiDomain + '/api/v2',
       content: null,
       dataLoaded: false,
       metaDescription: null,
@@ -114,7 +114,7 @@ export default {
         case 'home': {
           this.showPrevNext = false;
           const fetchData = async () => {
-            const response = await fetch(`${this.apiUrl}/slideshows`);
+            const response = await fetch(`${this.apiBaseUrl}/slideshows`);
             const data = await response.json();
             this.content = data.data;
             this.dataLoaded = true;
@@ -127,7 +127,7 @@ export default {
         case 'start': {
           this.showPrevNext = false;
           const fetchData = async () => {
-            const response = await fetch(`${this.apiUrl}/slideshow/${this.$route.params.slug}`);
+            const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slug}`);
             const data = await response.json();
             this.content = data;
             // TODO: updateTitle() is throwing an error here
@@ -149,14 +149,14 @@ export default {
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
             if (!this.$store.getters.hasSlidesIndex) {
-              const indexResponse = await fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
+              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slug}`);
               const indexData = await indexResponse.json();
               this.$store.dispatch('storeSlidesIndex', indexData.slides);
             }
 
             // TODO: See if we already have the slide in the store.
             const slideId = this.$store.getters.slideId;
-            const slideResponse = await fetch(`${this.apiUrl}/slide/${slideId}`)
+            const slideResponse = await fetch(`${this.apiBaseUrl}/slide/${slideId}`)
             const slideData = await slideResponse.json();
 
             // Set up app view when data is available.
