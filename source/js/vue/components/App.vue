@@ -145,39 +145,30 @@ export default {
           this.$store.dispatch('storeCurrentSlideCount', this.$route.params.count); // TODO: commit or dispatch here (?)
           this.$store.commit('storeSlug', this.$route.params.slug);
 
-          // Get the slides index first, then get the slide.
-          // TODO: Refactor with async/await and functions.
-          // async () => {
-          //   fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
-          //   - After first fetch returns, dispatch 'storeSlidesIndex':
-          //   this.$store.dispatch('storeSlidesIndex', data.slides);
-          //   - Then set slideId and do the second fetch
-          //   const slideId = this.$store.getters.slideId;
-          //   fetch(`${this.apiUrl}/slide/${slideId}`)
-          //   - After second fetch returns, pass its data to the app
-          //   this.content = data;
-          //   this.$store.dispatch('storeSlide', data);
-          //   this.updateTitle(this.content.title); // TODO: update param
-          //   this.dataLoaded = true;
-          // }
+          // TODO: break fetchData() into separate smaller functions with conditionals for stored data
+          // and piece together the functions we need for each case.
+          const fetchData = async () => {
+            // Get the index of all slide ids' and store it for subsequent lookups.
+            const indexResponse = await fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`);
+            const indexData = await indexResponse.json();
+            this.$store.dispatch('storeSlidesIndex', indexData.slides);
 
-          fetch(`${this.apiUrl}/slideshow/ids/${this.$route.params.slug}`)
-            .then(response => response.json())
-            .then(data => {
-              this.$store.dispatch('storeSlidesIndex', data.slides);
-            })
-            .then(() => {
-              const slideId = this.$store.getters.slideId;
-              // TODO: If slide data already store, get that instead of hitting the endpoint.
-              fetch(`${this.apiUrl}/slide/${slideId}`)
-                .then(response => response.json())
-                .then(data => {
-                  this.content = data;
-                  this.$store.dispatch('storeSlide', data);
-                  this.updateTitle(this.content.title); // TODO: update param
-                  this.dataLoaded = true;
-                })
-            });
+            // Now that we have the index, get/set slideId for next data fetch.
+            const slideId = this.$store.getters.slideId;
+
+            // Get the slide based on its id within the index.
+            const slideResponse = await fetch(`${this.apiUrl}/slide/${slideId}`)
+            const slideData = await slideResponse.json();
+          
+            // Populate the app.
+            this.content = slideData;
+            this.$store.dispatch('storeSlide', slideData);
+            this.updateTitle(this.content.title); // TODO: update param
+            this.dataLoaded = true;
+          }
+
+          // If we don't have the index of slides id's, go get it.
+          fetchData();
 
           break;
         }
