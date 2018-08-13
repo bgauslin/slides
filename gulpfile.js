@@ -1,37 +1,44 @@
 const gulp         = require('gulp');
 
 const autoprefixer = require('gulp-autoprefixer');
-const browserify   = require('gulp-browserify');
+const babelify     = require('babelify');
+const browserify   = require('browserify');
 const browserSync  = require('browser-sync');
 const cssnano      = require('gulp-cssnano');
+const fs           = require('fs');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
-const pump         = require('pump');
 const stylus       = require('gulp-stylus');
-const uglify       = require('gulp-uglify');
+const vueify       = require('vueify');
 
 const onError = (err) => console.log(err);
 
 
-// TODO: getting vue components up and running may take a little work:
-// vueify, ES6, babel, pug, stylus, uglify, browserify...
-// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
+// ======================================================================
+// TODO: get vue components up and running with:
+// vueify, ES6, babel, pug, stylus, uglify, browserify, etc...
 
-gulp.task('js', (cb) => {
-  pump([
-    gulp.src('./source/js/slides.js')
-      .pipe(plumber({
-        errorHandler: onError
-      }))
-      .pipe(browserify({
-        transform: ['vueify', 'babelify', 'aliasify']
-      })),
-      uglify(),
-      gulp.dest('./public/ui')
-    ],
-    cb
-  );
+// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
+// https://forum.vuejs.org/t/i-got-stuck-with-single-file-components-and-gulp-compiling-vue-to-js/15866/10
+// https://fettblog.eu/gulp-browserify-multiple-bundles/
+// https://github.com/javisperez/Vue-gulp-boilerplate/blob/master/gulpfile.js
+
+// https://github.com/vuejs/vueify
+// https://github.com/babel/babelify/issues/103
+
+gulp.task('js', () => {
+  browserify('./source/js/test.js')
+    .transform(babelify)
+    .transform(vueify)
+    .bundle()
+    .pipe(fs.createWriteStream('test-bundle.js'))
 });
+
+
+
+
+// ======================================================================
+// EVERYTHING BELOW WORKS JUST FINE...
 
 gulp.task('stylus', () => {
   gulp.src('./source/stylus/slides.styl')
