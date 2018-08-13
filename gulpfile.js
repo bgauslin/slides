@@ -13,19 +13,20 @@ const vueify       = require('vueify');
 
 const onError = (err) => console.log(err);
 
-// Apparently, this is working now...
+
+// TODO: uglify, remove Vue development warning
 gulp.task('js', () => {
-  browserify('./source/js/slides.js')
+  browserify('source/js/slides.js')
     .transform(babelify.configure({
       presets: ['@babel/preset-env']
     }))
     .transform(vueify)
     .bundle()
-    .pipe(fs.createWriteStream('./public/ui/slides.js'))
+    .pipe(fs.createWriteStream('public/ui/slides.js'))
 });
 
 gulp.task('stylus', () => {
-  gulp.src('./source/stylus/slides.styl')
+  gulp.src('source/stylus/slides.styl')
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -35,28 +36,28 @@ gulp.task('stylus', () => {
       cascade: false
     }))
     .pipe(cssnano())
-    .pipe(gulp.dest('./public/ui'))
+    .pipe(gulp.dest('public/ui'))
 });
 
 gulp.task('html', function() {
-  gulp.src(['./source/html/**/*.*'])
-    .pipe(gulp.dest('./public'));
+  gulp.src(['source/html/**/*.*'])
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('icons', function() {
-  gulp.src(['./source/icons/**/*.*'])
-    .pipe(gulp.dest('./public/ui/icons'));
+  gulp.src(['source/icons/**/*.*'])
+    .pipe(gulp.dest('public/ui/icons'));
 });
 
 gulp.task('webfonts', function() {
-  gulp.src(['./source/webfonts/**/*.*'])
-    .pipe(gulp.dest('./public/ui/webfonts'));
+  gulp.src(['source/webfonts/**/*.*'])
+    .pipe(gulp.dest('public/ui/webfonts'));
 });
 
 // ------------------------------------------------------------
 // Composite tasks
 
-gulp.task('watch', ['stylus', 'html', 'webfonts', 'icons'], () => {
+gulp.task('watch', ['js', 'stylus', 'html', 'webfonts', 'icons'], () => {
   const watcher = gulp.watch('./source/**/*', ['refresh']);
   watcher.on('change', (event) => {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -77,13 +78,16 @@ gulp.task('default', ['browser-sync']);
 
 // Run 'gulp version' to generate hashed assets for production
 gulp.task('version', () => {
-  gulp.src('./public/ui/slides.css')
+  gulp.src([
+      'public/ui/slides.css',
+      'public/ui/slides.js'
+    ])
     .pipe(plumber({
       errorHandler: onError
     }))
     .pipe(hash())
-    .pipe(gulp.dest('./public/ui'))
-    .pipe(hash.manifest('./public/ui/manifest.json', {
+    .pipe(gulp.dest('public/ui'))
+    .pipe(hash.manifest('public/ui/manifest.json', {
       deleteOld: true,
     }))
     .pipe(gulp.dest('.'))
