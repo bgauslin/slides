@@ -13,32 +13,16 @@ const vueify       = require('vueify');
 
 const onError = (err) => console.log(err);
 
-
-// ======================================================================
-// TODO: get vue components up and running with:
-// vueify, ES6, babel, pug, stylus, uglify, browserify, etc...
-
-// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
-// https://forum.vuejs.org/t/i-got-stuck-with-single-file-components-and-gulp-compiling-vue-to-js/15866/10
-// https://fettblog.eu/gulp-browserify-multiple-bundles/
-// https://github.com/javisperez/Vue-gulp-boilerplate/blob/master/gulpfile.js
-
-// https://github.com/vuejs/vueify
-// https://github.com/babel/babelify/issues/103
-
+// Apparently, this is working now...
 gulp.task('js', () => {
-  browserify('./source/js/test.js')
-    .transform(babelify)
+  browserify('./source/js/slides.js')
+    .transform(babelify.configure({
+      presets: ['@babel/preset-env']
+    }))
     .transform(vueify)
     .bundle()
-    .pipe(fs.createWriteStream('test-bundle.js'))
+    .pipe(fs.createWriteStream('./public/ui/slides.js'))
 });
-
-
-
-
-// ======================================================================
-// EVERYTHING BELOW WORKS JUST FINE...
 
 gulp.task('stylus', () => {
   gulp.src('./source/stylus/slides.styl')
