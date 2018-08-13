@@ -15,7 +15,7 @@
         v-if="content.media.publication",
         :publication="content.media.publication",
       )
-    div.slide__caption {{ content.caption }}
+    p.slide__caption {{ content.caption }}
 </template>
 
 <script>
@@ -42,11 +42,20 @@ export default {
   display flex
   justify-content center
   overflow hidden // TODO: Use this only while testing
-  height 80vh
+  height 100vh
 
 .slide__caption
+  background rgba(BLACK, .75)
+  border-radius 4px
+  bottom 1rem
+  font-size FINEPRINT_BASE
+  left 0
+  line-height 1.5
   margin auto
-  padding MARGINS_BASE
+  padding 1rem
+  position absolute
+  right 0
+  z-index 1
 
   @media BREAKPOINT_LARGE
     max-width 50vw
