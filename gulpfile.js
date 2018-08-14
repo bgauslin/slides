@@ -15,11 +15,11 @@ const vueify       = require('vueify');
 const onError = (err) => console.log(err);
 
 // ------------------------------------------------------------
-// Path config for tasks.
+// Config.
 const project = 'slides';
+const devServer = project + '.gauslin.test';
 
 const paths = {
-  'devServer': project + '.gauslin.test',
   'html': {
     'src': ['source/html/**/*.*'],
     'dest': 'public',
@@ -48,6 +48,16 @@ const paths = {
     'src': ['source/webfonts/**/*.*'],
     'dest': 'public/ui/webfonts',
   },
+};
+
+const tasks = {
+  'default': [
+    'html',
+    'icons',
+    'stylus',
+    'vue',
+    'webfonts'
+  ]
 };
 
 // ------------------------------------------------------------
@@ -97,8 +107,10 @@ gulp.task('version', () => {
     .pipe(gulp.dest('.'))
 });
 
-// TODO: remove Vue development warning
 // Compile js from vue files.
+// TODO: remove Vue development warning. More info:
+// https://vuejs.org/v2/guide/deployment.html
+// https://github.com/hughsk/envify
 gulp.task('vue', () => {
   browserify(paths.js.src)
     .transform(babelify.configure({
@@ -118,12 +130,14 @@ gulp.task('webfonts', () => {
 // ------------------------------------------------------------
 // Composite tasks.
 
-// TODO: Run tasks in series: vue, uglify
+// TODO: 'js' task that runs 'vue' and 'uglify' in sequence.
+// https://www.npmjs.com/package/gulp-sequence
+// http://blog.mdnbar.com/gulp-for-simple-build-proccess
+// https://blog.wearewizards.io/migrating-to-gulp-4-by-example
 // gulp.task('js', () => {
-  // stuff goes here
-// });
+// }));
 
-gulp.task('watch', ['html', 'icons', 'stylus', 'webfonts'], () => {
+gulp.task('watch', tasks.default, () => {
   const watcher = gulp.watch('./source/**/*', ['refresh']);
   watcher.on('change', (event) => {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -133,6 +147,8 @@ gulp.task('watch', ['html', 'icons', 'stylus', 'webfonts'], () => {
 gulp.task('browser-sync', ['watch'], () => {
   return browserSync({ proxy: devServer });
 });
+
+gulp.task('refresh', tasks.default, browserSync.reload);
 
 // ------------------------------------------------------------
 // Default task.
