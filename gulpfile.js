@@ -9,12 +9,12 @@ const fs           = require('fs');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
 const stylus       = require('gulp-stylus');
+const uglify       = require('gulp-uglify-es').default;
 const vueify       = require('vueify');
 
 const onError = (err) => console.log(err);
 
-
-// TODO: uglify, remove Vue development warning
+// TODO: remove Vue development warning
 gulp.task('js', () => {
   browserify('source/js/slides.js')
     .transform(babelify.configure({
@@ -23,6 +23,12 @@ gulp.task('js', () => {
     .transform(vueify)
     .bundle()
     .pipe(fs.createWriteStream('public/ui/slides.js'))
+});
+
+gulp.task('uglify', () => {
+  gulp.src('public/ui/slides.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('public/ui'))
 });
 
 gulp.task('stylus', () => {
@@ -86,8 +92,8 @@ gulp.task('version', () => {
       errorHandler: onError
     }))
     .pipe(hash())
-    .pipe(gulp.dest('public/ui'))
-    .pipe(hash.manifest('public/ui/manifest.json', {
+    .pipe(gulp.dest('public/build/ui'))
+    .pipe(hash.manifest('public/build/manifest.json', {
       deleteOld: true,
     }))
     .pipe(gulp.dest('.'))
