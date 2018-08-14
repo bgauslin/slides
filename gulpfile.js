@@ -22,32 +22,32 @@ const paths = {
   'devServer': project + '.gauslin.test',
   'html': {
     'src': ['source/html/**/*.*'],
-    'dest': 'public'
+    'dest': 'public',
   }, 
   'icons': {
     'src': ['source/icons/**/*.*'],
-    'dest': 'public/ui/icons'
+    'dest': 'public/ui/icons',
   },
   'js': {
     'src': 'source/js/' + project + '.js',
-    'dest': 'public/ui/' + project + '.js'
+    'dest': 'public/ui/' + project + '.js',
   },
   'stylus': {
     'src': 'source/stylus/' + project + '.styl',
-    'dest': 'public/ui'
+    'dest': 'public/ui',
   },
   'version': {
     'src': [
       'public/ui/' + project + '.css',
-      'public/ui/' + project + '.js'
+      'public/ui/' + project + '.js',
     ],
     'dest': 'public/build/ui',
-    'manifestFile': 'public/build/manifest.json'
+    'manifestFile': 'public/build/manifest.json',
   },
   'webfonts': {
     'src': ['source/webfonts/**/*.*'],
-    'dest': 'public/ui/webfonts'
-  }
+    'dest': 'public/ui/webfonts',
+  },
 };
 
 // ------------------------------------------------------------
@@ -85,7 +85,7 @@ gulp.task('uglify', () => {
     .pipe(gulp.dest('public/ui'))
 });
 
-// Generate hashed files for production.
+// Create hashed files for production.
 gulp.task('version', () => {
   gulp.src(paths.version.src)
     .pipe(plumber({ errorHandler: onError }))
@@ -98,7 +98,7 @@ gulp.task('version', () => {
 });
 
 // TODO: remove Vue development warning
-// Generate js files.
+// Compile js from vue files.
 gulp.task('vue', () => {
   browserify(paths.js.src)
     .transform(babelify.configure({
@@ -118,8 +118,9 @@ gulp.task('webfonts', () => {
 // ------------------------------------------------------------
 // Composite tasks.
 
+// TODO: Run tasks in series: vue, uglify
 // gulp.task('js', () => {
-  // Run tasks in series: vue, uglify
+  // stuff goes here
 // });
 
 gulp.task('watch', ['html', 'icons', 'stylus', 'webfonts'], () => {
