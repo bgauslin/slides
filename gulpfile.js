@@ -14,56 +14,115 @@ const vueify       = require('vueify');
 
 const onError = (err) => console.log(err);
 
-// TODO: remove Vue development warning
-gulp.task('js', () => {
-  browserify('source/js/slides.js')
-    .transform(babelify.configure({
-      presets: ['@babel/preset-env']
-    }))
-    .transform(vueify)
-    .bundle()
-    .pipe(fs.createWriteStream('public/ui/slides.js'))
+// ------------------------------------------------------------
+// Path config for tasks.
+const project = 'slides';
+
+const paths = {
+  'devServer': project + '.gauslin.test',
+  'html': {
+    'src': ['source/html/**/*.*'],
+    'dest': 'public'
+  }, 
+  'icons': {
+    'src': ['source/icons/**/*.*'],
+    'dest': 'public/ui/icons'
+  },
+  'js': {
+    'src': 'source/js/' + project + '.js',
+    'dest': 'public/ui/' + project + '.js'
+  },
+  'stylus': {
+    'src': 'source/stylus/' + project + '.styl',
+    'dest': 'public/ui'
+  },
+  'version': {
+    'src': [
+      'public/ui/' + project + '.css',
+      'public/ui/' + project + '.js'
+    ],
+    'dest': 'public/build/ui',
+    'manifestFile': 'public/build/manifest.json'
+  },
+  'webfonts': {
+    'src': ['source/webfonts/**/*.*'],
+    'dest': 'public/ui/webfonts'
+  }
+};
+
+// ------------------------------------------------------------
+// Individual tasks.
+
+// Copy html.
+gulp.task('html', () => {
+  gulp.src(paths.html.src)
+    .pipe(gulp.dest(paths.html.dest));
 });
 
-gulp.task('uglify', () => {
-  gulp.src('public/ui/slides.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('public/ui'))
+// Copy icons.
+gulp.task('icons', () => {
+  gulp.src(paths.icons.src)
+    .pipe(gulp.dest(paths.icons.dest));
 });
 
+// Compile and minify stylus.
 gulp.task('stylus', () => {
-  gulp.src('source/stylus/slides.styl')
-    .pipe(plumber({
-      errorHandler: onError
-    }))
+  gulp.src(paths.stylus.src)
+    .pipe(plumber({ errorHandler: onError }))
     .pipe(stylus())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(cssnano())
+    .pipe(gulp.dest(paths.stylus.dest))
+});
+
+// Uglify generated js.
+gulp.task('uglify', () => {
+  gulp.src(paths.js.dest)
+    .pipe(uglify())
     .pipe(gulp.dest('public/ui'))
 });
 
-gulp.task('html', function() {
-  gulp.src(['source/html/**/*.*'])
-    .pipe(gulp.dest('public'));
+// Generate hashed files for production.
+gulp.task('version', () => {
+  gulp.src(paths.version.src)
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(hash())
+    .pipe(gulp.dest(paths.version.dest))
+    .pipe(hash.manifest(paths.version.manifestFile, {
+      deleteOld: true,
+    }))
+    .pipe(gulp.dest('.'))
 });
 
-gulp.task('icons', function() {
-  gulp.src(['source/icons/**/*.*'])
-    .pipe(gulp.dest('public/ui/icons'));
+// TODO: remove Vue development warning
+// Generate js files.
+gulp.task('vue', () => {
+  browserify(paths.js.src)
+    .transform(babelify.configure({
+      presets: ['@babel/preset-env']
+    }))
+    .transform(vueify)
+    .bundle()
+    .pipe(fs.createWriteStream(paths.js.dest))
 });
 
-gulp.task('webfonts', function() {
-  gulp.src(['source/webfonts/**/*.*'])
-    .pipe(gulp.dest('public/ui/webfonts'));
+// Copy webfonts.
+gulp.task('webfonts', () => {
+  gulp.src(paths.webfonts.src)
+    .pipe(gulp.dest(paths.webfonts.dest));
 });
 
 // ------------------------------------------------------------
-// Composite tasks
+// Composite tasks.
 
-gulp.task('watch', ['js', 'stylus', 'html', 'webfonts', 'icons'], () => {
+// gulp.task('js', () => {
+  // Run tasks in series: vue, uglify
+// });
+
+gulp.task('watch', ['html', 'icons', 'stylus', 'webfonts'], () => {
   const watcher = gulp.watch('./source/**/*', ['refresh']);
   watcher.on('change', (event) => {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -71,30 +130,10 @@ gulp.task('watch', ['js', 'stylus', 'html', 'webfonts', 'icons'], () => {
 });
 
 gulp.task('browser-sync', ['watch'], () => {
-  return browserSync({
-    proxy: 'slides.gauslin.test'
-  });
+  return browserSync({ proxy: devServer });
 });
 
 // ------------------------------------------------------------
-// Dev/Prod tasks
+// Default task.
 
-// Run 'gulp' for developement
 gulp.task('default', ['browser-sync']);
-
-// Run 'gulp version' to generate hashed assets for production
-gulp.task('version', () => {
-  gulp.src([
-      'public/ui/slides.css',
-      'public/ui/slides.js'
-    ])
-    .pipe(plumber({
-      errorHandler: onError
-    }))
-    .pipe(hash())
-    .pipe(gulp.dest('public/build/ui'))
-    .pipe(hash.manifest('public/build/manifest.json', {
-      deleteOld: true,
-    }))
-    .pipe(gulp.dest('.'))
-});
