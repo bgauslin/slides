@@ -60,7 +60,7 @@ const tasks = {
     'html',
     'icons',
     'stylus',
-    'vue',
+    'vueify',
     'webfonts'
   ]
 };
@@ -119,7 +119,7 @@ gulp.task('version', () => {
 // TODO: remove Vue development warning. More info:
 // https://vuejs.org/v2/guide/deployment.html
 // https://github.com/hughsk/envify
-gulp.task('vue', () => {
+gulp.task('vueify', () => {
   browserify(paths.js.src)
     .transform(babelify.configure({
       presets: ['@babel/preset-env']
