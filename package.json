@@ -36,6 +36,7 @@
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.1",
     "gulp-uglify-es": "^1.0.4",
+    "run-sequence": "^2.2.1",
     "vueify": "^9.4.1",
     "vueify-insert-css": "^1.0.0"
   }

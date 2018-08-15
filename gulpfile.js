@@ -8,6 +8,7 @@ const cssnano      = require('gulp-cssnano');
 const fs           = require('fs');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
+const runSequence  = require('run-sequence');
 const stylus       = require('gulp-stylus');
 const uglify       = require('gulp-uglify-es').default;
 const vueify       = require('vueify');
@@ -15,17 +16,18 @@ const vueify       = require('vueify');
 const onError = (err) => console.log(err);
 
 // ------------------------------------------------------------
-// Config.
+// Configuration.
+
 const project = 'slides';
 const devServer = project + '.gauslin.test';
 
 const paths = {
   'html': {
-    'src': ['source/html/**/*.*'],
+    'src': 'source/html/**/*.*',
     'dest': 'public',
   }, 
   'icons': {
-    'src': ['source/icons/**/*.*'],
+    'src': 'source/icons/**/*.*',
     'dest': 'public/ui/icons',
   },
   'js': {
@@ -44,8 +46,11 @@ const paths = {
     'dest': 'public/build/ui',
     'manifestFile': 'public/build/manifest.json',
   },
+  'uglify': {
+    'dest': 'public/ui',
+  },
   'webfonts': {
-    'src': ['source/webfonts/**/*.*'],
+    'src': 'source/webfonts/**/*.*',
     'dest': 'public/ui/webfonts',
   },
 };
@@ -75,6 +80,9 @@ gulp.task('icons', () => {
     .pipe(gulp.dest(paths.icons.dest));
 });
 
+// TODO: full 'js' task: browserify -> babelify -> vueify -> uglify.
+// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
+
 // Compile and minify stylus.
 gulp.task('stylus', () => {
   gulp.src(paths.stylus.src)
@@ -85,14 +93,14 @@ gulp.task('stylus', () => {
       cascade: false
     }))
     .pipe(cssnano())
-    .pipe(gulp.dest(paths.stylus.dest))
+    .pipe(gulp.dest(paths.stylus.dest));
 });
 
 // Uglify generated js.
 gulp.task('uglify', () => {
   gulp.src(paths.js.dest)
     .pipe(uglify())
-    .pipe(gulp.dest('public/ui'))
+    .pipe(gulp.dest(paths.uglify.dest));
 });
 
 // Create hashed files for production.
@@ -104,7 +112,7 @@ gulp.task('version', () => {
     .pipe(hash.manifest(paths.version.manifestFile, {
       deleteOld: true,
     }))
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest('.'));
 });
 
 // Compile js from vue files.
@@ -118,7 +126,7 @@ gulp.task('vue', () => {
     }))
     .transform(vueify)
     .bundle()
-    .pipe(fs.createWriteStream(paths.js.dest))
+    .pipe(fs.createWriteStream(paths.js.dest));
 });
 
 // Copy webfonts.
@@ -129,13 +137,6 @@ gulp.task('webfonts', () => {
 
 // ------------------------------------------------------------
 // Composite tasks.
-
-// TODO: 'js' task that runs 'vue' and 'uglify' in sequence.
-// https://www.npmjs.com/package/gulp-sequence
-// http://blog.mdnbar.com/gulp-for-simple-build-proccess
-// https://blog.wearewizards.io/migrating-to-gulp-4-by-example
-// gulp.task('js', () => {
-// }));
 
 gulp.task('watch', tasks.default, () => {
   const watcher = gulp.watch('./source/**/*', ['refresh']);
