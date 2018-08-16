@@ -14,7 +14,7 @@
         router-view(
           v-if="dataLoaded",
           :content="content",
-          key="foo",
+          :key="content.id",
         )
       prev-next(
         v-if="showPrevNext",
@@ -211,6 +211,7 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
+@import '../../../stylus/_animations'
 
 TRANSITION = .2s ease-out
 TRANSITION_MEDIUM = .35s
