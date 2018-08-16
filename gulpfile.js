@@ -114,11 +114,11 @@ gulp.task('stylus', () => {
     .pipe(stylus())
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
-      cascade: false
+      cascade: false,
     }))
     .pipe(cssnano({
+      discardUnused: false,
       minifyFontValues: false,
-      discardUnused: false
     }))
     .pipe(gulp.dest(paths.stylus.dest));
 });

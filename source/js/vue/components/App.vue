@@ -211,7 +211,6 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
-@import '../../../stylus/_animations'
 
 TRANSITION = .2s ease-out
 TRANSITION_MEDIUM = .35s
