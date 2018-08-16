@@ -1,17 +1,19 @@
 const gulp         = require('gulp');
 
+const assign       = require('lodash.assign');
 const autoprefixer = require('gulp-autoprefixer');
 const babelify     = require('babelify');
 const browserify   = require('browserify');
 const browserSync  = require('browser-sync');
+const buffer       = require('vinyl-buffer');
 const cssnano      = require('gulp-cssnano');
-const fs           = require('fs');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
-const runSequence  = require('run-sequence');
+const source       = require('vinyl-source-stream');
 const stylus       = require('gulp-stylus');
 const uglify       = require('gulp-uglify-es').default;
 const vueify       = require('vueify');
+const watchify     = require('watchify');
 
 const onError = (err) => console.log(err);
 
@@ -19,6 +21,7 @@ const onError = (err) => console.log(err);
 // Configuration.
 
 const project = 'slides';
+
 const devServer = project + '.gauslin.test';
 
 const paths = {
@@ -33,6 +36,8 @@ const paths = {
   'js': {
     'src': 'source/js/' + project + '.js',
     'dest': 'public/ui/' + project + '.js',
+    'b_src': project + '.js',
+    'b_dest': 'public/ui',
   },
   'stylus': {
     'src': 'source/stylus/' + project + '.styl',
@@ -46,9 +51,6 @@ const paths = {
     'dest': 'public/build/ui',
     'manifestFile': 'public/build/manifest.json',
   },
-  'uglify': {
-    'dest': 'public/ui',
-  },
   'webfonts': {
     'src': 'source/webfonts/**/*.*',
     'dest': 'public/ui/webfonts',
@@ -58,9 +60,9 @@ const paths = {
 const tasks = {
   'default': [
     'html',
+    'js',
     'icons',
     'stylus',
-    'vueify',
     'webfonts'
   ]
 };
@@ -80,8 +82,30 @@ gulp.task('icons', () => {
     .pipe(gulp.dest(paths.icons.dest));
 });
 
-// TODO: full 'js' task: browserify -> babelify -> vueify -> uglify.
-// https://medium.com/@danielabro/vue-js-bundled-by-gulp-js-browserify-7a125e818a96
+// Compile and uglify JavaScript.
+const customOpts = {
+  entries: paths.js.src,
+  debug: true
+};
+const opts = assign({}, watchify.args, customOpts);
+const b = watchify(browserify(opts));
+
+b.transform(babelify, {
+  presets: ['@babel/preset-env']
+});
+
+b.transform(vueify);
+
+const bundle = () => {
+  return b.bundle()
+    .pipe(source(paths.js.b_src))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.js.b_dest));
+}
+
+// b.on('update', bundle);
+gulp.task('js', bundle);
 
 // Compile and minify stylus.
 gulp.task('stylus', () => {
@@ -103,6 +127,40 @@ gulp.task('uglify', () => {
     .pipe(gulp.dest(paths.uglify.dest));
 });
 
+// Copy webfonts.
+gulp.task('webfonts', () => {
+  gulp.src(paths.webfonts.src)
+    .pipe(gulp.dest(paths.webfonts.dest));
+});
+
+// ------------------------------------------------------------
+// Composite tasks.
+
+gulp.task('browser-sync', ['watch'], () => {
+  return browserSync({ proxy: devServer });
+});
+
+gulp.task('refresh', tasks.default, browserSync.reload);
+
+gulp.task('watch', tasks.default, () => {
+  const watcher = gulp.watch('./source/**/*', ['refresh']);
+  watcher.on('change', (event) => {
+    console.log(`File ${event.path} was ${event.type}, running tasks...`);
+  });
+});
+
+// ------------------------------------------------------------
+// Main tasks.
+
+// One-time build.
+gulp.task('build', tasks.default, () => {
+  b.close();
+  console.log('Build completed.')
+});
+
+// Build, listen, reload.
+gulp.task('default', ['browser-sync']);
+
 // Create hashed files for production.
 gulp.task('version', () => {
   gulp.src(paths.version.src)
@@ -115,43 +173,3 @@ gulp.task('version', () => {
     .pipe(gulp.dest('.'));
 });
 
-// Compile js from vue files.
-// TODO: remove Vue development warning. More info:
-// https://vuejs.org/v2/guide/deployment.html
-// https://github.com/hughsk/envify
-gulp.task('vueify', () => {
-  browserify(paths.js.src)
-    .transform(babelify.configure({
-      presets: ['@babel/preset-env']
-    }))
-    .transform(vueify)
-    .bundle()
-    .pipe(fs.createWriteStream(paths.js.dest));
-});
-
-// Copy webfonts.
-gulp.task('webfonts', () => {
-  gulp.src(paths.webfonts.src)
-    .pipe(gulp.dest(paths.webfonts.dest));
-});
-
-// ------------------------------------------------------------
-// Composite tasks.
-
-gulp.task('watch', tasks.default, () => {
-  const watcher = gulp.watch('./source/**/*', ['refresh']);
-  watcher.on('change', (event) => {
-    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-  });
-});
-
-gulp.task('browser-sync', ['watch'], () => {
-  return browserSync({ proxy: devServer });
-});
-
-gulp.task('refresh', tasks.default, browserSync.reload);
-
-// ------------------------------------------------------------
-// Default task.
-
-gulp.task('default', ['browser-sync']);
