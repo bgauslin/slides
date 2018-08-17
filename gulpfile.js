@@ -7,6 +7,7 @@ const browserify   = require('browserify');
 const browserSync  = require('browser-sync');
 const buffer       = require('vinyl-buffer');
 const cssnano      = require('gulp-cssnano');
+// const envify       = require('envify');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
 const rename       = require("gulp-rename");
