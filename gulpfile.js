@@ -104,7 +104,7 @@ gulp.task('icons', () => {
 // Compile and uglify JavaScript.
 const customOpts = {
   entries: paths.js.src,
-  debug: true
+  debug: true,
 };
 const opts = assign({}, watchify.args, customOpts);
 const b = watchify(browserify(opts));
@@ -123,8 +123,8 @@ const bundle = () => {
     .pipe(gulp.dest(paths.js.b_dest));
 }
 
-// b.on('update', bundle);
 gulp.task('js', bundle);
+
 
 // Compile and minify stylus.
 gulp.task('stylus', () => {
