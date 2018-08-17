@@ -142,13 +142,6 @@ gulp.task('stylus', () => {
     .pipe(gulp.dest(paths.stylus.dest));
 });
 
-// Uglify generated js.
-gulp.task('uglify', () => {
-  gulp.src(paths.js.dest)
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.uglify.dest));
-});
-
 // Copy webfonts.
 gulp.task('webfonts', () => {
   gulp.src(paths.webfonts.src)
