@@ -8,6 +8,59 @@
     "url": "https://bitbucket.org/bgauslin/slides"
   },
   "private": true,
+  "devServer": "slides.gauslin.test",
+  "paths": {
+    "apache": {
+      "src": "source/apache/_htaccess",
+      "name": ".htaccess",
+      "dest": "public"
+    }, 
+    "html": {
+      "src": "source/html/**/*.*",
+      "dest": "public"
+    }, 
+    "icons": {
+      "src": "source/icons/**/*.*",
+      "dest": "public/ui/icons"
+    },
+    "js": {
+      "src": "source/js/slides.js",
+      "dest": "public/ui/slides.js",
+      "b_src": "slides.js",
+      "b_dest": "public/ui"
+    },
+    "stylus": {
+      "src": "source/stylus/slides.styl",
+      "dest": "public/ui"
+    },
+    "version": {
+      "src": [
+        "public/ui/slides.css",
+        "public/ui/slides.js"
+      ],
+      "dest": "public/build/ui",
+      "manifestFile": "public/build/manifest.json"
+    },
+    "webfonts": {
+      "src": "source/webfonts/**/*.*",
+      "dest": "public/ui/webfonts"
+    }
+  },
+  "tasks": {
+    "build": [
+      "apache",
+      "html",
+      "js",
+      "icons",
+      "stylus",
+      "webfonts"
+    ],
+    "default": [
+      "html",
+      "js",
+      "stylus"
+    ]
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "imagesloaded": "^4.1.1",
