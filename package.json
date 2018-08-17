@@ -38,11 +38,9 @@
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.1",
     "gulp-uglify-es": "^1.0.4",
-    "lodash.assign": "^4.2.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "vueify": "^9.4.1",
-    "vueify-insert-css": "^1.0.0",
-    "watchify": "^3.11.0"
+    "vueify-insert-css": "^1.0.0"
   }
 }
