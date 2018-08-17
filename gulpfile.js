@@ -81,13 +81,11 @@ gulp.task('webfonts', () => {
 });
 
 // ------------------------------------------------------------
-// Composite tasks.
+// Composite tasks (in order of operation).
 
 gulp.task('browser-sync', ['watch'], () => {
   return browserSync({ proxy: pkg.devServer });
 });
-
-gulp.task('refresh', pkg.tasks.default, browserSync.reload);
 
 gulp.task('watch', pkg.tasks.default, () => {
   const watcher = gulp.watch('./source/**/*', ['refresh']);
@@ -96,8 +94,10 @@ gulp.task('watch', pkg.tasks.default, () => {
   });
 });
 
+gulp.task('refresh', pkg.tasks.default, browserSync.reload);
+
 // ------------------------------------------------------------
-// Main tasks.
+// Primary tasks.
 
 // One-time build.
 gulp.task('build', pkg.tasks.build, () => console.log('Build completed.'));
