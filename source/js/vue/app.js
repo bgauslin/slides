@@ -14,7 +14,7 @@ const store = new Vuex.Store({
   modules: {
     slides: slides,
   }
-})
+});
 
 // TODO: remember scroll position instead of resetting it
 const scrollBehavior = (to, from, savedPosition) => {
@@ -22,7 +22,7 @@ const scrollBehavior = (to, from, savedPosition) => {
     x: 0,
     y: 0,
   }
-}
+};
 
 const router = new VueRouter({
   routes: routeConfig(),
