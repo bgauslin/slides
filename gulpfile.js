@@ -64,14 +64,19 @@ const paths = {
 };
 
 const tasks = {
-  'default': [
+  'build': [
     'apache',
     'html',
     'js',
     'icons',
     'stylus',
     'webfonts'
-  ]
+  ],
+  'default': [
+    'html',
+    'js',
+    'stylus',
+  ],
 };
 
 // ------------------------------------------------------------
@@ -170,7 +175,7 @@ gulp.task('watch', tasks.default, () => {
 // Main tasks.
 
 // One-time build.
-gulp.task('build', tasks.default, () => {
+gulp.task('build', tasks.build, () => {
   b.close();
   console.log('Build completed.')
 });
