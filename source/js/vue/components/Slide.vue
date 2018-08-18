@@ -15,10 +15,14 @@
         v-if="content.media.publication",
         :publication="content.media.publication",
       )
-    p.slide__caption {{ content.caption }}
+    p.slide__caption(
+      v-html="content.caption",
+    )
 </template>
 
 <script>
+// TODO: API: 'caption' should be HTML/Markdown
+
 import MediaImages from './MediaImages.vue';
 import MediaText from './MediaText.vue';
 import MediaPublication from './MediaPublication.vue';
@@ -44,8 +48,10 @@ export default {
   height 100%
 
 .slide__media
+  align-self center
   grid-column 1
   grid-row 1
+  justify-content center
 
 .slide__caption
   background rgba(DARK_GREY, .75)

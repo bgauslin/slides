@@ -1,9 +1,7 @@
 <template lang="pug">
-  figure.image
-    img.image__placeholder(
-      v-if="loading",
-      :src="image.placeholder",
-    )
+  figure.image(
+    :style="placeholder(image)",
+  )
     img.image__hi-res(
       v-if="!loading",
       :alt="image.alt",
@@ -40,6 +38,10 @@ export default {
       });
     },
 
+    placeholder (image) {
+      return `background: url(${image.placeholder}) center center / cover no-repeat`;
+    },
+
     srcset (image) {
       return `${image.medium.src} ${image.medium.width}w, ${image.large.src} ${image.large.width}w`;
     },
@@ -50,16 +52,8 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.image
-  flex 1 0
-  position relative
-
-.image__placeholder
+// .image
 .image__hi-res
-  animation fadeIn .5s ease
-  position absolute
-
-.image__placeholder
-  filter blur(10px)
+  animation fadeIn .5s ease // TODO: make speed a constant
 
 </style>
