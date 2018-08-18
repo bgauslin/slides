@@ -16,18 +16,18 @@
       "dest": "public"
     }, 
     "html": {
-      "src": "source/html/**/*.*",
+      "src": "source/html/**/*",
       "dest": "public"
     }, 
     "icons": {
-      "src": "source/icons/**/*.*",
+      "src": "source/icons/**/*",
       "dest": "public/ui/icons"
     },
     "js": {
       "src": "source/js/slides.js",
       "dest": "public/ui/slides.js",
-      "b_src": "slides.js",
-      "b_dest": "public/ui"
+      "bundleSrc": "slides.js",
+      "bundleDest": "public/ui"
     },
     "stylus": {
       "src": "source/stylus/slides.styl",
@@ -42,7 +42,7 @@
       "manifestFile": "public/build/manifest.json"
     },
     "webfonts": {
-      "src": "source/webfonts/**/*.*",
+      "src": "source/webfonts/**/*",
       "dest": "public/ui/webfonts"
     }
   },

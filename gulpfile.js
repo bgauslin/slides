@@ -52,10 +52,10 @@ gulp.task('js', () => {
       { NODE_ENV: 'production' }
     )
     .bundle()
-    .pipe(source(pkg.paths.js.b_src))
+    .pipe(source(pkg.paths.js.bundleSrc))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(gulp.dest(pkg.paths.js.b_dest));
+    .pipe(gulp.dest(pkg.paths.js.bundleDest));
 });
 
 // Compile and minify stylus.
