@@ -36,15 +36,9 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// Slide container fills the viewport.
-.slide
-  height 100vh
-  width 100vw
-
 .slide__caption
-  background rgba(BLACK, .75)
-  border-radius 4px
-  bottom 1rem
+  background rgba(DARK_GREY, .75)
+  bottom 0
   font-size FINEPRINT_BASE
   left 0
   line-height 1.5
@@ -53,8 +47,5 @@ export default {
   position absolute
   right 0
   z-index 1
-
-  @media BREAKPOINT_LARGE
-    max-width 50vw
 
 </style>

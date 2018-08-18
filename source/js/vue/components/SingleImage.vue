@@ -1,6 +1,7 @@
 <template lang="pug">
   figure.image
     img.image__placeholder(
+      v-if="loading",
       :src="image.placeholder",
     )
     img.image__hi-res(
@@ -50,7 +51,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .image
-  height 100%
+  flex 1 0
   position relative
 
 .image__placeholder
