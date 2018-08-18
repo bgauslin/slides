@@ -2,19 +2,18 @@
   div.slide(
     v-if="content"
   )
-    div.slide__media
-      media-images(
-        v-if="content.media.images",
-        :images="content.media.images",
-      )
-      media-text(
-        v-if="content.media.text",
-        :text="content.media.text",
-      )
-      media-publication(
-        v-if="content.media.publication",
-        :publication="content.media.publication",
-      )
+    media-images(
+      v-if="content.media.images",
+      :images="content.media.images",
+    )
+    media-text(
+      v-if="content.media.text",
+      :text="content.media.text",
+    )
+    media-publication(
+      v-if="content.media.publication",
+      :publication="content.media.publication",
+    )
     p.slide__caption {{ content.caption }}
 </template>
 
@@ -36,13 +35,6 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
-
-.slide__media
-  align-items center
-  display flex
-  justify-content center
-  overflow hidden // TODO: Use this only while testing
-  height 100vh
 
 .slide__caption
   background rgba(BLACK, .75)

@@ -54,7 +54,8 @@ export default {
 
 // TODO: refactor image dimensions once grid layout is started...
 .image
-  height 100%
+  padding-bottom 50% // force an aspect ratio while we test...
+  // height 100%
 
 // .placeholder
 //   animation fadeIn .5s ease

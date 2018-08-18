@@ -1,24 +1,23 @@
 <template lang="pug">
-  div.site
-    div.content
-      preloader(
-        v-if="!dataLoaded",
+  div.content
+    preloader(
+      v-if="!dataLoaded",
+    )
+    transition(
+      @before-enter="beforeEnter",
+      @after-enter="afterEnter",
+      @before-leave="beforeLeave",
+      @after-leave="afterLeave",
+      mode="out-in",
+    )
+      router-view(
+        v-if="dataLoaded",
+        :content="content",
+        :key="content.id",
       )
-      transition(
-        @before-enter="beforeEnter",
-        @after-enter="afterEnter",
-        @before-leave="beforeLeave",
-        @after-leave="afterLeave",
-        mode="out-in",
-      )
-        router-view(
-          v-if="dataLoaded",
-          :content="content",
-          :key="content.id",
-        )
-      prev-next(
-        v-if="showPrevNext",
-      )
+    prev-next(
+      v-if="showPrevNext",
+    )
 </template>
 
 <script>
