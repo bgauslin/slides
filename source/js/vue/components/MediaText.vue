@@ -5,8 +5,6 @@
 </template>
 
 <script>
-// TODO: API: 'text' should not be HTML/Markdown
-
 export default {
   props: ['text'],
 }
@@ -16,11 +14,12 @@ export default {
 @import '../../../stylus/_config/'
 
 .text
-  text-align center
-
-.text p
   font-size H1_BASE
   heading_font()
   margin 0
+  text-align center
+
+  @media BREAKPOINT_MEDIUM
+    font-size H1_MEDIUM
 
 </style>

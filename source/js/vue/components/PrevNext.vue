@@ -60,13 +60,12 @@ export default {
     top 'calc(50vh - %s)' % ((PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_MEDIUM)) / 2)
 
 .prev-next__link
-  background rgba(BLACK, .7)
+  background rgba(DARK_GREY, .7)
   border-radius 100%
   display block
   height (PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_BASE))
   link(WHITE, WHITE, WHITE, WHITE)
   overflow hidden
-  shadow_2()
   transition transform TRANSITION_SPEED
   width (PREV_NEXT_WIDTH + (2 * PREV_NEXT_PADDING_BASE))
 

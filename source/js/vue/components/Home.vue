@@ -27,15 +27,18 @@ export default {
 
 .slideshow__heading
   color inherit
-  font-size H3_BASE
+  font-size H3_BASE // TODO: update
   heading_font()
   margin 0 0 .25em
   padding 0
 
 .slideshow__summary
   color inherit
-  font-size FINEPRINT_BASE
+  font-size CAPTION_BASE
   margin 0
   padding 0
+
+  @media BREAKPOINT_MEDIUM
+    font-size CAPTION_MEDIUM
 
 </style>
