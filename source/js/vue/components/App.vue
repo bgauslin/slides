@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.content
+  div.view
     preloader(
       v-if="!dataLoaded",
     )
@@ -210,6 +210,11 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
+
+#app
+.view
+  height 100vh
+  width 100vw
 
 TRANSITION = .2s ease-out
 TRANSITION_MEDIUM = .35s

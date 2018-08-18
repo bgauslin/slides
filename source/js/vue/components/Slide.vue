@@ -2,18 +2,19 @@
   div.slide(
     v-if="content"
   )
-    media-images(
-      v-if="content.media.images",
-      :images="content.media.images",
-    )
-    media-text(
-      v-if="content.media.text",
-      :text="content.media.text",
-    )
-    media-publication(
-      v-if="content.media.publication",
-      :publication="content.media.publication",
-    )
+    div.slide__media
+      media-images(
+        v-if="content.media.images",
+        :images="content.media.images",
+      )
+      media-text(
+        v-if="content.media.text",
+        :text="content.media.text",
+      )
+      media-publication(
+        v-if="content.media.publication",
+        :publication="content.media.publication",
+      )
     p.slide__caption {{ content.caption }}
 </template>
 
@@ -36,16 +37,23 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+.slide
+  display grid
+  grid-template-columns 1fr
+  grid-template-rows 1fr auto
+  height 100%
+
+.slide__media
+  grid-column 1
+  grid-row 1
+
 .slide__caption
   background rgba(DARK_GREY, .75)
-  bottom 0
   font-size FINEPRINT_BASE
-  left 0
+  grid-column 1
+  grid-row 2
   line-height 1.5
   margin auto
   padding 1rem
-  position absolute
-  right 0
-  z-index 1
 
 </style>
