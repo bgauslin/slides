@@ -1,7 +1,5 @@
 <template lang="pug">
-  figure.image(
-    :style="aspectRatio(image)",
-  )
+  figure.image
     img.image__placeholder(
       :src="image.placeholder",
     )
@@ -33,11 +31,6 @@ export default {
   },
 
   methods: {
-    aspectRatio (image) {
-      const ratio = (image.large.height / image.large.width) * 100;
-      return `padding: 0 0 ${ratio}%;`;
-    },
-
     loadImages () {
       this.loading = true;
       const self = this;
@@ -46,19 +39,8 @@ export default {
       });
     },
 
-    placeholder (image) {
-      return `background: url(${image.placeholder}) center center / cover no-repeat;`;
-    },
-
     srcset (image) {
       return `${image.medium.src} ${image.medium.width}w, ${image.large.src} ${image.large.width}w`;
-    },
-
-    style (image) {
-      let styles = '';
-      styles += this.aspectRatio(image);
-      styles += this.placeholder(image);
-      return styles;
     },
   },
 }
@@ -67,9 +49,8 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// TODO: refactor image dimensions once grid layout is started...
 .image
-  overflow hidden
+  height 100%
   position relative
 
 .image__placeholder
@@ -79,13 +60,5 @@ export default {
 
 .image__placeholder
   filter blur(10px)
-  max-width none
-  width 100%
-
-// .image__hi-res
-  // height 100%
-  // max-width none
-  // opacity 0 // hide the real image while we test...
-  // width auto
 
 </style>

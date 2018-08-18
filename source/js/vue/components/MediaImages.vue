@@ -22,4 +22,8 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// Make images container the same height as its parent .slides container.
+.images
+  height 100%
+
 </style>

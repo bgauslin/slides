@@ -36,6 +36,11 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// Slide container fills the viewport.
+.slide
+  height 100vh
+  width 100vw
+
 .slide__caption
   background rgba(BLACK, .75)
   border-radius 4px
