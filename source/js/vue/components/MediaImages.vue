@@ -1,6 +1,7 @@
 <template lang="pug">
   div.images
     template(
+      v-if="images",
       v-for="image in images",
     )
       single-image(
