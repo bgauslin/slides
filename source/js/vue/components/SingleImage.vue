@@ -54,6 +54,9 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+.image
+  height 100%
+
 // NOTE: responsive image sizing is inverted for the occasional portrait image
 .image:only-child .image__hi-res
   max-height 100%

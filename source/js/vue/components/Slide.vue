@@ -41,23 +41,34 @@ export default {
 
 .slide
   display grid
+  grid-row 2
   grid-template-columns 1fr
-  grid-template-rows 1fr
-  height 100% // TODO: do we need this value here?
+  grid-template-rows 1fr 1fr
   width 100vw
 
+  @media BREAKPOINT_LARGE
+    height 100% // TODO: do we need this value?
+
+.slide__media
+  align-self end
+  grid-row 1
+
 .slide__caption
-  background rgba(DARK_GREY, .7)
-  bottom 0
+  align-self center
   font-size CAPTION_BASE
-  position absolute
-  left 0
+  grid-row 2
   margin 0 auto
   padding 0 1rem
-  right 0
-  z-index 1
 
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_MEDIUM
+
+  @media BREAKPOINT_LARGE
+    background rgba(DARK_GREY, .7)
+    bottom 0
+    position absolute
+    left 0
+    right 0
+    z-index 1
 
 </style>

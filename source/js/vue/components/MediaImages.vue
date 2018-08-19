@@ -22,10 +22,12 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// NOTE: 'height' (with inverted responsive image sizing) keeps portrait images in the viewport
 .images
   display flex
-  height 100vh
   justify-content center
+
+  // NOTE: 'height' (with inverted responsive image sizing) keeps portrait images in the viewport
+  @media BREAKPOINT_LARGE
+    height 100vh
 
 </style>

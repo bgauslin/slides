@@ -45,11 +45,14 @@ export default {
 .prev-next
   align-items center
   display flex
+  grid-row 3
   justify-content space-between
-  position fixed
-  top 'calc(50vh - %s)' % ((PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_MEDIUM)) / 2)
   width 100vw
-  z-index 2
+
+  @media BREAKPOINT_LARGE
+    position fixed
+    top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_LARGE / 2)
+    z-index 2
 
 .prev
 .next
@@ -57,33 +60,30 @@ export default {
   padding 0
 
 .prev-next__link
+  align-items center
   background rgba(DARK_GREY, .7)
   border-radius 100%
-  display block
-  height (PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_BASE))
+  display flex
+  height PREV_NEXT_SIZE
+  justify-content center
   link(WHITE, WHITE, WHITE, WHITE)
   overflow hidden
   transition transform TRANSITION_SPEED
-  width (PREV_NEXT_WIDTH + (2 * PREV_NEXT_PADDING_BASE))
+  width PREV_NEXT_SIZE
 
   @media BREAKPOINT_LARGE
-    height (PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_MEDIUM))
-    width (PREV_NEXT_WIDTH + (2 * PREV_NEXT_PADDING_MEDIUM))
+    height PREV_NEXT_SIZE_LARGE
+    width PREV_NEXT_SIZE_LARGE
 
   &:active
     transform scale(1.1)
 
 .prev-next__link::before
 .prev-next__link::after
-  display block
-  font-size PREV_NEXT_HEIGHT
-  height PREV_NEXT_HEIGHT
+  display inline-block
+  font-size PREV_NEXT_ICON_SIZE
   icon()
-  line-height PREV_NEXT_HEIGHT
-  padding PREV_NEXT_PADDING_BASE
   position relative
-  text-align center
-  width PREV_NEXT_WIDTH
 
   @media BREAKPOINT_LARGE
     padding PREV_NEXT_PADDING_MEDIUM
@@ -91,15 +91,15 @@ export default {
 .prev-next__label
   display none
 
-.prev
-  margin-left .75rem
+// .prev
+//   margin 0 0 .75rem .75rem
 
 .prev .prev-next__link::before
   content ICON_ANGLE_LEFT
   right .1rem
 
-.next
-  margin-right .75rem
+// .next
+//   margin 0 .75rem .75rem 0
 
 .next .prev-next__link::after
   content ICON_ANGLE_RIGHT

@@ -213,26 +213,29 @@ export default {
 
 #app
 .view
-  height 100vh
+  height 100%
+  // height 100vh
   width 100vw
 
-TRANSITION = .2s ease-out
-TRANSITION_MEDIUM = .35s
+.view
+  display grid
+  grid-template-columns 1fr
+  grid-template-rows PREV_NEXT_SIZE 1fr PREV_NEXT_SIZE
 
 .slide-in-left
-  animation slideInLeft TRANSITION
+  animation slideInLeft SLIDE_TRANSITION
 
 .slide-in-right
-  animation slideInRight TRANSITION
+  animation slideInRight SLIDE_TRANSITION
 
 .slide-out-left
-  animation slideOutLeft TRANSITION
+  animation slideOutLeft SLIDE_TRANSITION
 
 .slide-out-right
-  animation slideOutRight TRANSITION
+  animation slideOutRight SLIDE_TRANSITION
 
 .first-run
-  animation fadeIn TRANSITION
+  animation fadeIn SLIDE_TRANSITION
 
 @media BREAKPOINT_MEDIUM
   .slide-in-left
@@ -240,6 +243,6 @@ TRANSITION_MEDIUM = .35s
   .slide-out-left
   .slide-out-right
   .first-run
-    animation-duration TRANSITION_MEDIUM
+    animation-duration SLIDE_TRANSITION_MEDIUM
 
 </style>
