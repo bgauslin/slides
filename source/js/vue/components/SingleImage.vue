@@ -1,7 +1,11 @@
 <template lang="pug">
   figure.image(
-    :style="placeholder(image)",
+    :style="aspectRatio(image)",
   )
+    img.image__placeholder(
+      v-if="loading",
+      :src="image.placeholder",
+    )
     img.image__hi-res(
       v-if="!loading",
       :alt="image.alt",
@@ -21,7 +25,7 @@ export default {
 
   data () {
     return {
-      loading: null, // override null while we test...
+      loading: null,
     }
   },
 
@@ -30,6 +34,11 @@ export default {
   },
 
   methods: {
+    aspectRatio(image) {
+      const ratio = image.large.height / image.large.width * 100;
+      return `padding-bottom: ${ratio}%;`;
+    },
+
     loadImages () {
       this.loading = true;
       const self = this;
@@ -38,15 +47,16 @@ export default {
       });
     },
 
-    // TODO: refactor placeholder background sizing...
-    // TODO: bring back padding method with positioning to avoid content jump when images load
     placeholder (image) {
-      return;
-      // return `background: url(${image.placeholder}) center center / cover no-repeat`;
+      return `background: url(${image.placeholder}) center center / contain no-repeat;`;
     },
 
     srcset (image) {
       return `${image.medium.src} ${image.medium.width}w, ${image.large.src} ${image.large.width}w`;
+    },
+
+    style (image) {
+      return `${this.aspectRatio(image)}${this.placeholder(image)}`;
     },
   },
 }
@@ -55,22 +65,32 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+img
+  height auto
+  width 100%
+
 // TODO: set different image dimensions:
 // - single landscape
 // - single portrait
 // - multiple in a row
 .image
-  height 100%
+  // height 100%
+  position relative
+  width 100% // NOTE: child 'img' doesn't display unless container has a width
 
 // NOTE: responsive image sizing is inverted for the occasional portrait image
-.image:only-child .image__hi-res
-  max-height 100%
-  max-width 100%
-  width auto
+// .image:only-child .image__hi-res
+//   max-height 100%
+//   max-width 100%
+//   width auto
+
+.image__placeholder
+  animation fadeIn .5s ease // TODO: make speed a constant
+  position absolute
 
 .image__hi-res
   animation fadeIn .5s ease // TODO: make speed a constant
-  height auto
-  width 100%
+  position absolute
+  z-index 1
 
 </style>
