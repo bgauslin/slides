@@ -46,18 +46,15 @@ export default {
   align-items center
   display flex
   justify-content space-between
+  position fixed
+  top 'calc(50vh - %s)' % ((PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_MEDIUM)) / 2)
+  width 100vw
+  z-index 2
 
 .prev
 .next
-  bottom .75rem
   margin 0
   padding 0
-  position fixed
-  z-index 99999
-
-  @media BREAKPOINT_MEDIUM
-    bottom auto
-    top 'calc(50vh - %s)' % ((PREV_NEXT_HEIGHT + (2 * PREV_NEXT_PADDING_MEDIUM)) / 2)
 
 .prev-next__link
   background rgba(DARK_GREY, .7)
@@ -76,33 +73,33 @@ export default {
   &:active
     transform scale(1.1)
 
-  &::before
-  &::after
-    display block
-    font-size PREV_NEXT_HEIGHT
-    height PREV_NEXT_HEIGHT
-    icon()
-    line-height PREV_NEXT_HEIGHT
-    padding PREV_NEXT_PADDING_BASE
-    position relative
-    text-align center
-    width PREV_NEXT_WIDTH
+.prev-next__link::before
+.prev-next__link::after
+  display block
+  font-size PREV_NEXT_HEIGHT
+  height PREV_NEXT_HEIGHT
+  icon()
+  line-height PREV_NEXT_HEIGHT
+  padding PREV_NEXT_PADDING_BASE
+  position relative
+  text-align center
+  width PREV_NEXT_WIDTH
 
-    @media BREAKPOINT_LARGE
-      padding PREV_NEXT_PADDING_MEDIUM
+  @media BREAKPOINT_LARGE
+    padding PREV_NEXT_PADDING_MEDIUM
 
 .prev-next__label
   display none
 
 .prev
-  left .75rem
+  margin-left .75rem
 
 .prev .prev-next__link::before
   content ICON_ANGLE_LEFT
   right .1rem
 
 .next
-  right .75rem
+  margin-right .75rem
 
 .next .prev-next__link::after
   content ICON_ANGLE_RIGHT

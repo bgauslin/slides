@@ -42,23 +42,19 @@ export default {
 .slide
   display grid
   grid-template-columns 1fr
-  grid-template-rows 1fr auto
-  height 100%
-
-.slide__media
-  align-self center
-  grid-column 1
-  grid-row 1
-  justify-content center
+  grid-template-rows 1fr
+  height 100% // TODO: do we need this value here?
 
 .slide__caption
   background rgba(DARK_GREY, .7)
+  bottom 0
   font-size CAPTION_BASE
-  grid-column 1
-  grid-row 2
-  line-height 1.5
-  margin auto
-  padding 1rem
+  position absolute
+  left 0
+  margin 0 auto
+  padding 0 1rem
+  right 0
+  z-index 1
 
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_MEDIUM
