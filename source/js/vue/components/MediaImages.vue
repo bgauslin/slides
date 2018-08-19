@@ -26,5 +26,6 @@ export default {
 .images
   display flex
   height 100vh
+  justify-content center
 
 </style>

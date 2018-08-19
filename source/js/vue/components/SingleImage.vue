@@ -38,8 +38,10 @@ export default {
       });
     },
 
+    // TODO: refactor placeholder background sizing...
     placeholder (image) {
-      return `background: url(${image.placeholder}) center center / cover no-repeat`;
+      return;
+      // return `background: url(${image.placeholder}) center center / cover no-repeat`;
     },
 
     srcset (image) {
@@ -52,13 +54,15 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// .image
-
-// NOTE: inverted responsive image sizing
-.image__hi-res
-  animation fadeIn .5s ease // TODO: make speed a constant
+// NOTE: responsive image sizing is inverted for the occasional portrait image
+.image:only-child .image__hi-res
   max-height 100%
   max-width 100%
   width auto
+
+.image__hi-res
+  animation fadeIn .5s ease // TODO: make speed a constant
+  height auto
+  width 100%
 
 </style>
