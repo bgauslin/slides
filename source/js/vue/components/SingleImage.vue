@@ -3,7 +3,6 @@
     :style="aspectRatio(image)",
   )
     img.image__placeholder(
-      v-if="loading",
       :src="image.placeholder",
     )
     img.image__hi-res(
@@ -65,31 +64,36 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+IMAGE_TRANSITION = fadeIn .5s ease 
+
 img
   height auto
+  // height 100%
+  // max-height 100%
+  // max-width 100%
   width 100%
+  // width auto
 
 // TODO: set different image dimensions:
 // - single landscape
 // - single portrait
 // - multiple in a row
 .image
-  // height 100%
   position relative
-  width 100% // NOTE: child 'img' doesn't display unless container has a width
 
-// NOTE: responsive image sizing is inverted for the occasional portrait image
-// .image:only-child .image__hi-res
-//   max-height 100%
-//   max-width 100%
-//   width auto
+.image:only-child
+  flex 0 0 100%
+
+.image:nth-last-child(2)
+.image:nth-last-child(2) ~ .image
+  flex 0 0 50%
 
 .image__placeholder
-  animation fadeIn .5s ease // TODO: make speed a constant
+  animation IMAGE_TRANSITION
   position absolute
 
 .image__hi-res
-  animation fadeIn .5s ease // TODO: make speed a constant
+  animation IMAGE_TRANSITION
   position absolute
   z-index 1
 

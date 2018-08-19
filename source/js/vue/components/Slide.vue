@@ -40,27 +40,27 @@ export default {
 @import '../../../stylus/_config/'
 
 .slide
-  flex 1 0
-
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns 1fr
-    grid-template-rows minmax(auto, 1fr) minmax(auto, 1fr)
-    height 100vh
+    grid-template-rows 1fr auto 1fr
+    min-height 100vh
 
 .slide__media
-  align-self end
-  grid-row 1
+  @media BREAKPOINT_MEDIUM
+    // align-self end
+    grid-row 2
 
 .slide__caption
-  align-self center
   font-size CAPTION_BASE
-  grid-row 2
   margin 0 auto
   padding 0 1rem
 
   @media BREAKPOINT_MEDIUM
+    align-self center
+    grid-row 3
     font-size CAPTION_MEDIUM
+    max-width 36rem // TODO: constant
 
   @media BREAKPOINT_LARGE
     background rgba(DARK_GREY, .7)

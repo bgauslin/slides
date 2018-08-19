@@ -42,6 +42,12 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+PREV_NEXT_ICON_SIZE = px_to_rem(36)
+// PREV_NEXT_ICON_SIZE_MEDIUM = px_to_rem(48)
+
+PREV_NEXT_SIZE = px_to_rem(48)
+PREV_NEXT_SIZE_MEDIUM = px_to_rem(60)
+
 .prev-next
   align-items center
   bottom 0
@@ -53,12 +59,18 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     bottom auto
-    top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_LARGE / 2)
+    top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
 
 .prev
 .next
   margin 0
   padding 0
+
+@media BREAKPOINT_MEDIUM
+  .prev
+    margin-left 1rem
+  .next
+    margin-right 1rem
 
 .prev-next__link
   background rgba(DARK_GREY, .7)
@@ -72,9 +84,9 @@ export default {
   transition transform TRANSITION_SPEED
   width PREV_NEXT_SIZE
 
-  @media BREAKPOINT_LARGE
-    height PREV_NEXT_SIZE_LARGE
-    width PREV_NEXT_SIZE_LARGE
+  @media BREAKPOINT_MEDIUM
+    height PREV_NEXT_SIZE_MEDIUM
+    width PREV_NEXT_SIZE_MEDIUM
 
   &:active
     transform scale(1.1)
