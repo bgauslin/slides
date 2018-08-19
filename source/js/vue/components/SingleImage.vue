@@ -1,16 +1,17 @@
 <template lang="pug">
-  figure.image(
-    :style="aspectRatio(image)",
-  )
-    img.image__placeholder(
-      :src="image.placeholder",
+  div.image
+    figure.image__frame(
+      :style="aspectRatio(image)",
     )
-    img.image__hi-res(
-      v-if="!loading",
-      :alt="image.alt",
-      :src="image.small.src",
-      :srcset="srcset(image)",
-    )
+      img.image__placeholder(
+        :src="image.placeholder",
+      )
+      img.image__hi-res(
+        v-if="!loading",
+        :alt="image.alt",
+        :src="image.small.src",
+        :srcset="srcset(image)",
+      )
 </template>
 
 <script>
@@ -53,10 +54,6 @@ export default {
     srcset (image) {
       return `${image.medium.src} ${image.medium.width}w, ${image.large.src} ${image.large.width}w`;
     },
-
-    style (image) {
-      return `${this.aspectRatio(image)}${this.placeholder(image)}`;
-    },
   },
 }
 </script>
@@ -74,19 +71,19 @@ img
   width 100%
   // width auto
 
-// TODO: set different image dimensions:
-// - single landscape
-// - single portrait
-// - multiple in a row
-.image
-  position relative
-
 .image:only-child
   flex 0 0 100%
 
 .image:nth-last-child(2)
 .image:nth-last-child(2) ~ .image
   flex 0 0 50%
+
+// TODO: set different image dimensions:
+// - single landscape
+// - single portrait
+// - multiple in a row
+.image__frame
+  position relative
 
 .image__placeholder
   animation IMAGE_TRANSITION

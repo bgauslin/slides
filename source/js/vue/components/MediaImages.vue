@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
 import SingleImage from './SingleImage.vue';
 
 export default {
