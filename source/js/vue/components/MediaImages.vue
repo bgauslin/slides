@@ -22,7 +22,9 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// NOTE: 'height' (with inverted responsive image sizing) keeps portrait images in the viewport
 .images
   display flex
+  height 100vh
 
 </style>

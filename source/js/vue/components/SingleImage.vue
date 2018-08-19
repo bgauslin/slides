@@ -53,7 +53,12 @@ export default {
 @import '../../../stylus/_config/'
 
 // .image
+
+// NOTE: inverted responsive image sizing
 .image__hi-res
   animation fadeIn .5s ease // TODO: make speed a constant
+  max-height 100%
+  max-width 100%
+  width auto
 
 </style>
