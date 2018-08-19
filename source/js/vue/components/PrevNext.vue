@@ -44,15 +44,16 @@ export default {
 
 .prev-next
   align-items center
+  bottom 0
   display flex
-  grid-row 3
   justify-content space-between
+  position fixed
   width 100vw
+  z-index 2
 
-  @media BREAKPOINT_LARGE
-    position fixed
+  @media BREAKPOINT_MEDIUM
+    bottom auto
     top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_LARGE / 2)
-    z-index 2
 
 .prev
 .next
@@ -60,6 +61,8 @@ export default {
   padding 0
 
 .prev-next__link
+  background rgba(DARK_GREY, .7)
+  border-radius 100%
   align-items center
   display flex
   height PREV_NEXT_SIZE
@@ -70,8 +73,6 @@ export default {
   width PREV_NEXT_SIZE
 
   @media BREAKPOINT_LARGE
-    background rgba(DARK_GREY, .7)
-    border-radius 100%
     height PREV_NEXT_SIZE_LARGE
     width PREV_NEXT_SIZE_LARGE
 

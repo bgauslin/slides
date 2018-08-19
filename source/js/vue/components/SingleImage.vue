@@ -39,6 +39,7 @@ export default {
     },
 
     // TODO: refactor placeholder background sizing...
+    // TODO: bring back padding method with positioning to avoid content jump when images load
     placeholder (image) {
       return;
       // return `background: url(${image.placeholder}) center center / cover no-repeat`;

@@ -40,18 +40,13 @@ export default {
 @import '../../../stylus/_config/'
 
 .slide
-  display grid
-  grid-row 2
-  grid-template-columns 1fr
-  grid-template-rows 1fr minmax(auto, 1fr)
-  width 100vw
+  flex 1 0
 
   @media BREAKPOINT_MEDIUM
-    grid-row 1 / span 2
-
-  @media BREAKPOINT_LARGE
-    grid-template-rows auto auto
-    height 100% // TODO: do we need this value?
+    display grid
+    grid-template-columns 1fr
+    grid-template-rows minmax(auto, 1fr) minmax(auto, 1fr)
+    height 100vh
 
 .slide__media
   align-self end

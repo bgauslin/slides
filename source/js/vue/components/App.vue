@@ -211,20 +211,6 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-#app
-.view
-  height 100%
-  // height 100vh
-  width 100vw
-
-.view
-  display grid
-  grid-template-columns 1fr
-  grid-template-rows PREV_NEXT_SIZE 1fr PREV_NEXT_SIZE
-
-  @media BREAKPOINT_LARGE
-    grid-template-rows 1fr
-
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
 
