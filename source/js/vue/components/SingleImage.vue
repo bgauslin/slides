@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.image
+  div(
+    :class="['image', orientation(image)]",
+  )
     figure.image__frame(
       :style="aspectRatio(image)",
     )
@@ -47,6 +49,10 @@ export default {
       });
     },
 
+    orientation (image) {
+      return (image.large.height > image.large.width) ? 'portrait' : 'landscape';
+    },
+
     placeholder (image) {
       return `background: url(${image.placeholder}) center center / contain no-repeat;`;
     },
@@ -84,6 +90,11 @@ IMAGE_TRANSITION = fadeIn .3s ease-out
     flex 1 1 50%
     margin 0 1rem 0 .5rem
     width auto
+
+.image.portrait
+  margin 0 auto 
+  flex 0 0 50%
+  width 50%
 
 .image__frame
   overflow hidden
