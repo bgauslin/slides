@@ -61,8 +61,6 @@ export default {
 
 .prev-next__link
   align-items center
-  background rgba(DARK_GREY, .7)
-  border-radius 100%
   display flex
   height PREV_NEXT_SIZE
   justify-content center
@@ -72,6 +70,8 @@ export default {
   width PREV_NEXT_SIZE
 
   @media BREAKPOINT_LARGE
+    background rgba(DARK_GREY, .7)
+    border-radius 100%
     height PREV_NEXT_SIZE_LARGE
     width PREV_NEXT_SIZE_LARGE
 
@@ -80,26 +80,16 @@ export default {
 
 .prev-next__link::before
 .prev-next__link::after
-  display inline-block
   font-size PREV_NEXT_ICON_SIZE
   icon()
   position relative
 
-  @media BREAKPOINT_LARGE
-    padding PREV_NEXT_PADDING_MEDIUM
-
 .prev-next__label
   display none
-
-// .prev
-//   margin 0 0 .75rem .75rem
 
 .prev .prev-next__link::before
   content ICON_ANGLE_LEFT
   right .1rem
-
-// .next
-//   margin 0 .75rem .75rem 0
 
 .next .prev-next__link::after
   content ICON_ANGLE_RIGHT

@@ -54,6 +54,10 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// TODO: set different image dimensions:
+// - single landscape
+// - single portrait
+// - multiple in a row
 .image
   height 100%
 

@@ -222,6 +222,9 @@ export default {
   grid-template-columns 1fr
   grid-template-rows PREV_NEXT_SIZE 1fr PREV_NEXT_SIZE
 
+  @media BREAKPOINT_LARGE
+    grid-template-rows 1fr
+
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
 

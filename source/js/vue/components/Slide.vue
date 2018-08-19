@@ -43,10 +43,14 @@ export default {
   display grid
   grid-row 2
   grid-template-columns 1fr
-  grid-template-rows 1fr 1fr
+  grid-template-rows 1fr minmax(auto, 1fr)
   width 100vw
 
+  @media BREAKPOINT_MEDIUM
+    grid-row 1 / span 2
+
   @media BREAKPOINT_LARGE
+    grid-template-rows auto auto
     height 100% // TODO: do we need this value?
 
 .slide__media
