@@ -61,7 +61,7 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-IMAGE_TRANSITION = fadeIn .5s ease 
+IMAGE_TRANSITION = fadeIn .3s ease-out
 
 .image:only-child
   @media BREAKPOINT_MEDIUM
@@ -86,15 +86,18 @@ IMAGE_TRANSITION = fadeIn .5s ease
     width auto
 
 .image__frame
+  overflow hidden
   position relative
 
 .image__placeholder
-  animation IMAGE_TRANSITION
+.image__hi-res
   position absolute
+
+.image__placeholder
+  filter blur(5px)
+  z-index -1
 
 .image__hi-res
   animation IMAGE_TRANSITION
-  position absolute
-  z-index 1
 
 </style>
