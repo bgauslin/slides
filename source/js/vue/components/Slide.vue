@@ -44,6 +44,7 @@ export default {
   grid-template-columns 1fr
   grid-template-rows 1fr
   height 100% // TODO: do we need this value here?
+  width 100vw
 
 .slide__caption
   background rgba(DARK_GREY, .7)
