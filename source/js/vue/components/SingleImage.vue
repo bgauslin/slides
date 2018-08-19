@@ -1,6 +1,6 @@
 <template lang="pug">
   div(
-    :class="['image', orientation(image)]",
+    :class="['image', 'image--' + orientation(image)]",
   )
     figure.image__frame(
       :style="aspectRatio(image)",
@@ -69,6 +69,8 @@ export default {
 
 IMAGE_TRANSITION = fadeIn .3s ease-out
 
+// TODO: refactor quantity query selectors and
+// use classes with equal specificity instead
 .image:only-child
   @media BREAKPOINT_MEDIUM
     flex 0 0 100%
@@ -91,7 +93,7 @@ IMAGE_TRANSITION = fadeIn .3s ease-out
     margin 0 1rem 0 .5rem
     width auto
 
-.image.portrait
+.image--portrait:only-child
   margin 0 auto 
   flex 0 0 50%
   width 50%
