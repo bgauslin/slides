@@ -63,25 +63,28 @@ export default {
 
 IMAGE_TRANSITION = fadeIn .5s ease 
 
-img
-  height auto
-  // height 100%
-  // max-height 100%
-  // max-width 100%
-  width 100%
-  // width auto
-
 .image:only-child
-  flex 0 0 100%
+  @media BREAKPOINT_MEDIUM
+    flex 0 0 100%
 
 .image:nth-last-child(2)
-.image:nth-last-child(2) ~ .image
-  flex 0 0 50%
+  margin 1rem auto
+  width 50%
 
-// TODO: set different image dimensions:
-// - single landscape
-// - single portrait
-// - multiple in a row
+  @media BREAKPOINT_MEDIUM
+    flex 1 1 50%
+    margin 0 .5rem 0 1rem
+    width auto
+
+.image:nth-last-child(2) ~ .image
+  margin 0 auto
+  width 50%
+
+  @media BREAKPOINT_MEDIUM
+    flex 1 1 50%
+    margin 0 1rem 0 .5rem
+    width auto
+
 .image__frame
   position relative
 
