@@ -67,6 +67,7 @@ export default {
 
 .publication__publisher
   font-size H3_BASE
+  font-weight normal
   margin 0 0 .5em
 
   @media BREAKPOINT_MEDIUM
