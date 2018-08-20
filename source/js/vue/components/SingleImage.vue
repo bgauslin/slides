@@ -101,6 +101,7 @@ export default {
   animation fadeIn IMAGE_TRANSITION
 
 .image--portrait
+  flex 0 0 50%
   margin 0 auto 
   width 50%
 
