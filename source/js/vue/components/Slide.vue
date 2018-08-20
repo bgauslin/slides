@@ -48,19 +48,19 @@ export default {
 
 .slide__media
   @media BREAKPOINT_MEDIUM
-    // align-self end
     grid-row 2
 
 .slide__caption
   font-size CAPTION_BASE
   margin 0 auto
-  padding 0 1rem
+  padding 0 1rem PREV_NEXT_SIZE
 
   @media BREAKPOINT_MEDIUM
     align-self center
     grid-row 3
     font-size CAPTION_MEDIUM
-    max-width 36rem // TODO: constant
+    max-width CAPTION_MAX_WIDTH
+    padding-bottom 0
 
   @media BREAKPOINT_LARGE
     background rgba(DARK_GREY, .7)

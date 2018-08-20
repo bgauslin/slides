@@ -42,12 +42,6 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-PREV_NEXT_ICON_SIZE = px_to_rem(36)
-// PREV_NEXT_ICON_SIZE_MEDIUM = px_to_rem(48)
-
-PREV_NEXT_SIZE = px_to_rem(48)
-PREV_NEXT_SIZE_MEDIUM = px_to_rem(60)
-
 .prev-next
   align-items center
   bottom 0

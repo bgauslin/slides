@@ -1,4 +1,17 @@
-// margins and breakpoints
+// Element sizes.
+CAPTION_MAX_WIDTH = px_to_rem(480)
+
+PREV_NEXT_ICON_SIZE = px_to_rem(36)
+// PREV_NEXT_ICON_SIZE_MEDIUM = px_to_rem(48)
+PREV_NEXT_SIZE = px_to_rem(48)
+PREV_NEXT_SIZE_MEDIUM = px_to_rem(60)
+
+// Transitions.
+TRANSITION_SPEED = .3s
+SLIDE_TRANSITION = .2s ease-out
+SLIDE_TRANSITION_MEDIUM = .35s
+
+// Overall margins and breakpoints.
 MARGINS_BASE = px_to_rem(12)
 MARGINS_SMALL = px_to_rem(24)
 MARGINS_MEDIUM = px_to_rem(64)
@@ -11,12 +24,7 @@ BREAKPOINT_XLARGE_UNITS = px_to_rem(1248)
 
 MAX_WIDTH = BREAKPOINT_XLARGE_UNITS - (MARGINS_LARGE * 2)
 
-// transitions
-TRANSITION_SPEED = .3s
-SLIDE_TRANSITION = .2s ease-out
-SLIDE_TRANSITION_MEDIUM = .35s
-
-// media query breakpoints as strings
+// Media queries with breakpoints.
 BREAKPOINT_SMALL = 'screen and (min-width: %s)' % BREAKPOINT_SMALL_UNITS
 BREAKPOINT_MEDIUM = 'screen and (min-width: %s)' % BREAKPOINT_MEDIUM_UNITS
 BREAKPOINT_LARGE = 'screen and (min-width: %s)' % BREAKPOINT_LARGE_UNITS
