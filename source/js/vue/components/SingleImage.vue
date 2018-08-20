@@ -18,11 +18,8 @@
 
 <script>
 import imagesLoaded from 'imagesloaded';
-// import ImageFetcher from './ImageFetcher.vue';
 
 export default {
-//   components: { ImageFetcher },
-
   props: ['image'],
 
   data () {
