@@ -52,7 +52,8 @@ export default {
   z-index 2
 
   @media BREAKPOINT_MEDIUM
-    bottom 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
+    bottom auto
+    top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
 
 .prev
 .next
