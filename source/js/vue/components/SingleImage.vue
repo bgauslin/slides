@@ -65,25 +65,11 @@ export default {
 @import '../../../stylus/_config/'
 
 .image
-  @media BREAKPOINT_MEDIUM
-    flex 0 0 100%
+  flex 0 0 100%
 
-// TODO: refactor with lower specificity
-.images--multiple .image
-  margin 1rem auto
-  width 50%
-
-  @media BREAKPOINT_MEDIUM
-    flex 1 1 50%
-    margin 0 .5rem 0 1rem
-    width auto
-
-// TODO: refactor with lower specificity
-.images--multiple .image:last-child
+.image--portrait
+  flex 0 0 50%
   margin 0 auto
-
-  @media BREAKPOINT_MEDIUM
-    margin 0 1rem 0 .5rem
 
 .image__frame
   overflow hidden
@@ -99,10 +85,5 @@ export default {
 
 .image__hi-res
   animation fadeIn IMAGE_TRANSITION
-
-.image--portrait
-  flex 0 0 50%
-  margin 0 auto 
-  width 50%
 
 </style>

@@ -22,7 +22,9 @@ export default {
   
   computed: {
     className () {
-      return (this.images.length > 1) ? 'images--multiple' : 'images--single';
+      if (this.images.length > 1) {
+       return 'images--multiple';
+      }
     },
   }
 }
@@ -32,9 +34,24 @@ export default {
 @import '../../../stylus/_config/'
 
 .images
-  @media BREAKPOINT_MEDIUM
-    display flex
-    justify-content center
+  display flex
 
+.images--multiple
+  flex-wrap wrap
+  margin 0 auto
+  width 50%
+
+  @media BREAKPOINT_MEDIUM
+    flex-wrap nowrap
+    margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
+    width auto
+
+// TODO: refactor selector for lower specificity
+.images--multiple .image
+  padding IMAGE_GAP 0 0 0
+
+  @media BREAKPOINT_MEDIUM
+    flex 0 0 50%
+    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
 
 </style>
