@@ -53,14 +53,14 @@ export default {
 .slide__caption
   font-size CAPTION_BASE
   margin 0 auto
-  padding 0 1rem PREV_NEXT_SIZE
+  padding 1rem 1rem PREV_NEXT_SIZE
 
   @media BREAKPOINT_MEDIUM
     align-self center
     grid-row 3
     font-size CAPTION_MEDIUM
     max-width CAPTION_MAX_WIDTH
-    padding-bottom 0
+    padding 1rem
 
   @media BREAKPOINT_LARGE
     background rgba(DARK_GREY, .7)

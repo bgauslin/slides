@@ -38,7 +38,7 @@ if ($tld == 'com') {
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="/ui/icons/touch-icon.png?t=<?php echo date('U') ?>">
     <link rel="icon" type="image/png" href="/ui/icons/favicon.ico">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400|Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400|Material+Icons">
     <style><?php include('.' . $css_path) ?>"></style>
   </head>
 
