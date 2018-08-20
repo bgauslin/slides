@@ -1,6 +1,6 @@
 import Home from './components/Home.vue';
 import Slide from './components/Slide.vue';
-import Start from './components/Start.vue';
+import Cover from './components/Cover.vue';
 import Thumbs from './components/Thumbs.vue';
 import NotFound from './components/NotFound.vue';
 
@@ -14,7 +14,7 @@ export default function() {
     {
       path: '/:slug',
       name: 'start',
-      component: Start,
+      component: Cover,
     },
     {
       path: '/:slug/:count',
