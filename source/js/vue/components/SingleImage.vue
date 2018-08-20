@@ -64,15 +64,12 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-IMAGE_TRANSITION = fadeIn .3s ease-out
-
-// TODO: refactor quantity query selectors and
-// use classes with equal specificity instead
-.image:only-child
+.image
   @media BREAKPOINT_MEDIUM
     flex 0 0 100%
 
-.image:nth-last-child(2)
+// TODO: refactor with lower specificity
+.images--multiple .image
   margin 1rem auto
   width 50%
 
@@ -81,19 +78,12 @@ IMAGE_TRANSITION = fadeIn .3s ease-out
     margin 0 .5rem 0 1rem
     width auto
 
-.image:nth-last-child(2) ~ .image
+// TODO: refactor with lower specificity
+.images--multiple .image:last-child
   margin 0 auto
-  width 50%
 
   @media BREAKPOINT_MEDIUM
-    flex 1 1 50%
     margin 0 1rem 0 .5rem
-    width auto
-
-.image--portrait:only-child
-  margin 0 auto 
-  flex 0 0 50%
-  width 50%
 
 .image__frame
   overflow hidden
@@ -108,6 +98,10 @@ IMAGE_TRANSITION = fadeIn .3s ease-out
   z-index -1
 
 .image__hi-res
-  animation IMAGE_TRANSITION
+  animation fadeIn IMAGE_TRANSITION
+
+.image--portrait
+  margin 0 auto 
+  width 50%
 
 </style>

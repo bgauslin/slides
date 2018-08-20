@@ -1,11 +1,14 @@
 <template lang="pug">
-  div.images
+  div(
+    v-if="images",
+    :class="['images', className]",
+  )
     template(
-      v-if="images",
       v-for="image in images",
     )
       single-image(
         :image="image",
+        
       )
 </template>
 
@@ -14,7 +17,14 @@ import SingleImage from './SingleImage.vue';
 
 export default {
   components: { SingleImage },
+
   props: ['images'],
+  
+  computed: {
+    className () {
+      return (this.images.length > 1) ? 'images--multiple' : 'images--single';
+    },
+  }
 }
 </script>
 
@@ -26,7 +36,5 @@ export default {
     display flex
     justify-content center
 
-  // @media BREAKPOINT_LARGE
-    // height 100vh
 
 </style>

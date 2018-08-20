@@ -39,7 +39,7 @@ export default {
     padding 0 4rem
     max-width 60rem // TODO: use constant here
 
-.image.publication__image
+.publication__image
   margin-left 0
   width 50%
 
@@ -50,6 +50,7 @@ export default {
 
 .publication__link
   display block
+  padding 1rem 0 0
 
   @media BREAKPOINT_MEDIUM
     padding 2rem
