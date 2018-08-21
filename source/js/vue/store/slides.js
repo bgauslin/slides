@@ -4,7 +4,7 @@ const slides = {
     count: 0,
     slides: [],
     slideshow: null,
-    thumbs: [],
+    // thumbs: [],
   },
 
   mutations: {
