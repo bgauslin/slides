@@ -34,14 +34,17 @@ export default {
 @import '../../../stylus/_config/'
 
 .thumb
-  padding 1rem 0 0 1rem
-  flex 0 0 50%
+  padding THUMB_GAP 0 0 THUMB_GAP
+  flex '0 0 %s%' % (1 / 3 * 100)
+
+  @media BREAKPOINT_SMALL
+    flex '0 0 %s%' % (1 / 4 * 100)
 
   @media BREAKPOINT_MEDIUM
-    flex 0 0 33.3333%
+    flex '0 0 %s%' % (1 / 5 * 100)
 
   @media BREAKPOINT_LARGE
-    flex 0 0 25%
+    flex '0 0 %s%' % (1 / 6 * 100)
 
 .thumb__link
   display block

@@ -22,21 +22,33 @@ export default {
 @import '../../../stylus/_config/'
 
 .thumbs
-  margin 0 1rem
+  margin THUMB_GAP
+
+  @media BREAKPOINT_SMALL
+    margin THUMB_GAP_SMALL
 
   @media BREAKPOINT_MEDIUM
-    margin 0 MARGINS_MEDIUM 1.5rem
+    margin THUMB_GAP_MEDIUM
 
   @media BREAKPOINT_LARGE
-    margin 0 MARGINS_LARGE 1.5rem;
+    margin THUMB_GAP_LARGE
 
   @media BREAKPOINT_XLARGE
-    margin 0 auto 3rem
+    margin THUMB_GAP_LARGE auto
     max-width MAX_WIDTH
 
 .thumbs__group
   display flex
   flex-wrap wrap
-  margin -1rem 0 0 -1rem
+  margin (- THUMB_GAP) 0 0 (- THUMB_GAP)
+
+  @media BREAKPOINT_SMALL
+    margin (- THUMB_GAP_SMALL) 0 0 (- THUMB_GAP_SMALL)
+
+  @media BREAKPOINT_MEDIUM
+    margin (- THUMB_GAP_MEDIUM) 0 0 (- THUMB_GAP_MEDIUM)
+
+  @media BREAKPOINT_LARGE
+    margin (- THUMB_GAP_LARGE) 0 0 (- THUMB_GAP_LARGE)
 
 </style>
