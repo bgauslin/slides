@@ -168,7 +168,7 @@ export default {
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          this.showPrevNext = false;
+          this.showPrevNext = true;
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slug}`);
             const data = await response.json();

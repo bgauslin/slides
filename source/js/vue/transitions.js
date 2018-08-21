@@ -9,7 +9,13 @@ export default router => {
     } else if ((from.name === 'home' || from.name === 'start') && (to.name === 'start' || to.name === 'slide')) {
       direction = 'forward';
 
+    } else if (from.name === 'slide' && to.name === 'thumbs') {
+      direction = 'forward';
+
     } else if (from.name === 'slide' && (to.name === 'home' || to.name === 'start')) {
+      direction = 'back';
+
+    } else if (from.name === 'thumbs' && to.name === 'slide') {
       direction = 'back';
 
     } else if (from.name === 'slide' && to.name === 'slide') {

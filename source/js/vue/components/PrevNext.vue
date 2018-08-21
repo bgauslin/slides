@@ -6,6 +6,11 @@
         class="prev-next__link",
         :to="{ name: 'slide', params: { slug: slug, count: prev } }",
       )
+      router-link(
+        v-if="isThumbs",
+        class="prev-next__link",
+        :to="{ name: 'slide', params: { slug: slug, count: totalCount } }",
+      )
         span.prev-next__label Prev
     p.next
       router-link(
@@ -13,28 +18,48 @@
         class="prev-next__link",
         :to="{ name: 'slide', params: { slug: slug, count: next } }",
       )
+      router-link(
+        v-if="lastSlide",
+        class="prev-next__link",
+        :to="{ name: 'thumbs', params: { slug: slug } }",
+      )
         span.prev-next__label Next
 </template>
 
 <script>
 export default {
+
+  // TODO: get totalCount from store
+  data () {
+    return {
+      totalCount: 32,
+    }
+  },
+
   computed: {
     count () {
       return Number(this.$route.params.count);
+    },
+
+    lastSlide () {
+      return (this.count == this.totalCount);
+    },
+
+    next() {
+      return (this.count < this.totalCount) ? this.count + 1 : null;
     },
 
     prev () {
       return (this.count > 1) ? this.count - 1 : null;
     },
 
-    next() {
-      // TODO: get max limit from store
-      return (this.count < 32) ? this.count + 1 : null;
-    },
-
     slug () {
       return this.$route.params.slug;
     },
+
+    isThumbs () {
+      return (this.$route.name == 'thumbs');
+    }
   }
 }
 </script>
