@@ -56,6 +56,8 @@ const slides = {
 
     slides: (state) => state.slides,
 
+    slidesTotal: (state) => state.slides.length,
+
     slideId: (state, getters) => {
       const slide = getters.slides[getters.currentSlideCount - 1];
       return (slide !== undefined) ? slide.id : null;

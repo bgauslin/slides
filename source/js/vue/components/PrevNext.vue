@@ -28,17 +28,13 @@
 
 <script>
 export default {
-
-  // TODO: get totalCount from store
-  data () {
-    return {
-      totalCount: 32,
-    }
-  },
-
   computed: {
     count () {
       return Number(this.$route.params.count);
+    },
+
+    isThumbs () {
+      return (this.$route.name == 'thumbs');
     },
 
     lastSlide () {
@@ -57,9 +53,9 @@ export default {
       return this.$route.params.slug;
     },
 
-    isThumbs () {
-      return (this.$route.name == 'thumbs');
-    }
+    totalCount () {
+      return this.$store.getters.slidesTotal;
+    },
   }
 }
 </script>
