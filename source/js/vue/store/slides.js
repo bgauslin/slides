@@ -54,16 +54,14 @@ const slides = {
 
     hasSlidesIndex: (state) => (state.slides.length > 0),
 
-    slides: (state) => state.slides,
-
-    slidesTotal: (state) => state.slides.length,
-
     slideId: (state, getters) => {
       const slide = getters.slides[getters.currentSlideCount - 1];
       return (slide !== undefined) ? slide.id : null;
     },
 
-    // slidesTotal: (state) => state.slides.length,
+    slides: (state) => state.slides,
+
+    slidesTotal: (state) => state.slides.length,
   },
 }
 
