@@ -4,24 +4,24 @@
       router-link(
         v-if="prev",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slug: slug, count: prev } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, count: prev } }",
       )
       router-link(
         v-if="isThumbs",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slug: slug, count: totalCount } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, count: totalCount } }",
       )
         span.prev-next__label Prev
     p.next
       router-link(
         v-if="next",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slug: slug, count: next } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, count: next } }",
       )
       router-link(
         v-if="lastSlide",
         class="prev-next__link",
-        :to="{ name: 'thumbs', params: { slug: slug } }",
+        :to="{ name: 'thumbs', params: { slideshow: slideshow } }",
       )
         span.prev-next__label Next
 </template>
@@ -49,8 +49,8 @@ export default {
       return (this.count > 1) ? this.count - 1 : null;
     },
 
-    slug () {
-      return this.$route.params.slug;
+    slideshow () {
+      return this.$route.params.slideshow;
     },
 
     totalCount () {

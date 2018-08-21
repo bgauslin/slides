@@ -5,7 +5,7 @@
     )
       router-link(
         class="slideshow__link",
-        :to="{ name: 'start', params: { slug: slideshow.slug } }",
+        :to="{ name: 'start', params: { slideshow: slideshow.slug } }",
       )
         h2.slideshow__heading {{ slideshow.title }}
         p.slideshow__summary {{ slideshow.summary }}

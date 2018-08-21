@@ -4,7 +4,7 @@
   )
     router-link(
       class="cover__link",
-      :to="{ name: 'slide', params: { slug: content.slug, count: 1 } }",
+      :to="{ name: 'slide', params: { slideshow: content.slug, count: 1 } }",
     )
       header.cover__header
         h2.cover__heading {{ content.title }}

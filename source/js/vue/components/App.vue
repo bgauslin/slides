@@ -129,7 +129,7 @@ export default {
           this.showPrevNext = false;
 
           const fetchData = async () => {
-            const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slug}`);
+            const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
             const data = await response.json();
             this.content = data;
             // TODO: updateTitle() is throwing an error here
@@ -147,12 +147,12 @@ export default {
 
           // Store the current slide count for slide id lookup in the index.
           this.$store.commit('storeCurrentSlideCount', this.$route.params.count);
-          this.$store.commit('storeSlug', this.$route.params.slug);
+          this.$store.commit('storeSlideshow', this.$route.params.slideshow);
 
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
             if (!this.$store.getters.hasSlidesIndex) {
-              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slug}`);
+              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slideshow}`);
               const indexData = await indexResponse.json();
               this.$store.dispatch('storeSlidesIndex', indexData.slides);
             }
@@ -177,12 +177,12 @@ export default {
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
             if (!this.$store.getters.hasSlidesIndex) {
-              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slug}`);
+              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slideshow}`);
               const indexData = await indexResponse.json();
               this.$store.dispatch('storeSlidesIndex', indexData.slides);
             }
 
-            const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slug}`);
+            const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`);
             const data = await response.json();
             this.content = data;
             // this.updateTitle();

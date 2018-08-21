@@ -12,17 +12,17 @@ export default function() {
       component: Home,
     },
     {
-      path: '/:slug',
+      path: '/:slideshow',
       name: 'start',
       component: Cover,
     },
     {
-      path: '/:slug/thumbs',
+      path: '/:slideshow/thumbs',
       name: 'thumbs',
       component: Thumbs,
     },
     {
-      path: '/:slug/:count',
+      path: '/:slideshow/:count',
       name: 'slide',
       component: Slide,
     },

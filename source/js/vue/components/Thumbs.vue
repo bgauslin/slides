@@ -4,7 +4,7 @@
       thumb(
         v-for="(thumb, index) in content.thumbs",
         :index="index",
-        :slug="content.slug",
+        :slideshow="content.slug",
         :thumb="thumb.thumb",
       )
 </template>

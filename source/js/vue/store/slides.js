@@ -3,7 +3,7 @@ const slides = {
     direction: null,
     count: 0,
     slides: [],
-    slug: null,
+    slideshow: null,
     thumbs: [],
   },
 
@@ -24,8 +24,8 @@ const slides = {
       state.slides = payload;
     },
 
-    storeSlug (state, payload) {
-      state.slug = payload;
+    storeSlideshow (state, payload) {
+      state.slideshow = payload;
     },
   },
 
