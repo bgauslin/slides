@@ -17,14 +17,14 @@ export default function() {
       component: Cover,
     },
     {
-      path: '/:slug/:count',
-      name: 'slide',
-      component: Slide,
-    },
-    {
       path: '/:slug/thumbs',
       name: 'thumbs',
       component: Thumbs,
+    },
+    {
+      path: '/:slug/:count',
+      name: 'slide',
+      component: Slide,
     },
     {
       path: '/slide',

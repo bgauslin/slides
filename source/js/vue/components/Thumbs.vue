@@ -1,10 +1,11 @@
 <template lang="pug">
   div.thumbs
-    div.thumbs__frame
+    div.thumbs__group
       thumb(
-        v-for="(item, index) in items",
-        :preview="item",
+        v-for="(thumb, index) in content.thumbs",
         :index="index",
+        :slug="content.slug",
+        :thumb="thumb.thumb",
       )
 </template>
 
@@ -13,14 +14,14 @@ import Thumb from './Thumb.vue';
 
 export default {
   components: { Thumb },
-  props: ['items'],
+  props: ['content'],
 }
 </script>
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.previews
+.thumbs
   margin 0 1rem
 
   @media BREAKPOINT_MEDIUM
@@ -33,7 +34,7 @@ export default {
     margin 0 auto 3rem
     max-width MAX_WIDTH
 
-.previews__frame
+.thumbs__group
   display flex
   flex-wrap wrap
   margin -1rem 0 0 -1rem

@@ -165,6 +165,21 @@ export default {
           fetchData();
           break;
         }
+
+        // Thumbnail images for a slideshow.
+        case 'thumbs': {
+          this.showPrevNext = false;
+          const fetchData = async () => {
+            const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slug}`);
+            const data = await response.json();
+            this.content = data;
+            // TODO: updateTitle() is throwing an error here
+            // this.updateTitle();
+            this.dataLoaded = true;
+          }
+          fetchData();
+          break;
+        }
       }
     },
 
@@ -199,6 +214,9 @@ export default {
           break;
         case 'slide':
           document.title = `${slide} · ${title} · ${slideshow}`;
+          break;
+        case 'thumbs':
+          document.title = `${title} · ${slideshow}`;
           break;
         default:
           document.title = site;
