@@ -112,12 +112,14 @@ export default {
         // Index of all slideshows.
         case 'home': {
           this.showPrevNext = false;
+
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshows`);
             const data = await response.json();
             this.content = data.data;
             this.dataLoaded = true;
           }
+
           fetchData();
           break;
         }
@@ -125,6 +127,7 @@ export default {
         // Cover image for a slideshow.
         case 'start': {
           this.showPrevNext = false;
+
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slug}`);
             const data = await response.json();
@@ -133,6 +136,7 @@ export default {
             // this.updateTitle();
             this.dataLoaded = true;
           }
+
           fetchData();
           break;
         }
@@ -169,14 +173,22 @@ export default {
         // Thumbnail images for a slideshow.
         case 'thumbs': {
           this.showPrevNext = true;
+
           const fetchData = async () => {
+            // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
+            if (!this.$store.getters.hasSlidesIndex) {
+              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slug}`);
+              const indexData = await indexResponse.json();
+              this.$store.dispatch('storeSlidesIndex', indexData.slides);
+            }
+
             const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slug}`);
             const data = await response.json();
             this.content = data;
-            // TODO: updateTitle() is throwing an error here
             // this.updateTitle();
             this.dataLoaded = true;
           }
+
           fetchData();
           break;
         }
@@ -202,12 +214,13 @@ export default {
     },
 
     updateTitle() {
-      // Shorthand references
+      // Define shorthand references.
       const site = this.siteName;
       const slide = `Slide ${this.$route.params.count}`;
       const slideshow = this.content.slideshow.title;
       const title = this.content.title;
 
+      // Set the title based on the route.
       switch(this.$route.name) {
         case 'start':
           document.title = `${title} · ${site}`;
@@ -216,7 +229,7 @@ export default {
           document.title = `${slide} · ${title} · ${slideshow}`;
           break;
         case 'thumbs':
-          document.title = `${title} · ${slideshow}`;
+          document.title = `Thumbnails · ${title} · ${slideshow}`;
           break;
         default:
           document.title = site;
