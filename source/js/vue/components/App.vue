@@ -125,7 +125,7 @@ export default {
         }
 
         // Cover image for a slideshow.
-        case 'start': {
+        case 'cover': {
           this.showPrevNext = false;
 
           const fetchData = async () => {
@@ -222,7 +222,7 @@ export default {
 
       // Set the title based on the route.
       switch(this.$route.name) {
-        case 'start':
+        case 'cover':
           document.title = `${title} · ${site}`;
           break;
         case 'slide':

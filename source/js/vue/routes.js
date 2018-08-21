@@ -13,7 +13,7 @@ export default function() {
     },
     {
       path: '/:slideshow',
-      name: 'start',
+      name: 'cover',
       component: Cover,
     },
     {
