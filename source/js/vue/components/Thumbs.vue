@@ -48,7 +48,4 @@ export default {
   @media BREAKPOINT_MEDIUM
     margin (- THUMB_GAP_MEDIUM) 0 0 (- THUMB_GAP_MEDIUM)
 
-  @media BREAKPOINT_LARGE
-    margin (- THUMB_GAP_LARGE) 0 0 (- THUMB_GAP_LARGE)
-
 </style>
