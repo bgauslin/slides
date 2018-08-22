@@ -73,8 +73,9 @@ export default {
   z-index 2
 
   @media BREAKPOINT_MEDIUM
-    bottom auto
-    top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
+    bottom px_to_rem(24)
+    // bottom auto
+    // top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
 
 .prev
 .next
@@ -83,9 +84,15 @@ export default {
 
 @media BREAKPOINT_MEDIUM
   .prev
-    margin-left 1rem
+    margin-left px_to_rem(16)
   .next
-    margin-right 1rem
+    margin-right px_to_rem(16)
+
+@media BREAKPOINT_LARGE
+  .prev
+    margin-left px_to_rem(24)
+  .next
+    margin-right px_to_rem(24)
 
 .prev-next__link
   background rgba(DARK_GREY, .7)

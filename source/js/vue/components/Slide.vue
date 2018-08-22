@@ -46,9 +46,18 @@ export default {
     grid-template-rows 1fr auto 1fr
     min-height 100vh
 
+  @media BREAKPOINT_LARGE
+    grid-template-columns px_to_rem(256) 1fr
+    grid-template-rows 1fr
+
 .slide__media
   @media BREAKPOINT_MEDIUM
     grid-row 2
+
+  @media BREAKPOINT_LARGE
+    align-self center
+    grid-column 2
+    grid-row 1
 
 .slide__caption
   font-size CAPTION_BASE
@@ -57,17 +66,14 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     align-self center
-    grid-row 3
     font-size CAPTION_MEDIUM
+    grid-row 3
     max-width CAPTION_MAX_WIDTH
-    padding 1rem
+    padding px_to_rem(16)
 
   @media BREAKPOINT_LARGE
-    background rgba(DARK_GREY, .7)
-    bottom 0
-    position absolute
-    left 0
-    right 0
-    z-index 1
+    grid-column 1
+    grid-row 1
+    padding px_to_rem(24)
 
 </style>
