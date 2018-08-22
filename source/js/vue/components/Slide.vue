@@ -47,7 +47,7 @@ export default {
     min-height 100vh
 
   @media BREAKPOINT_LARGE
-    grid-template-columns px_to_rem(256) 1fr
+    grid-template-columns px_to_rem(256) 1fr px_to_rem(24)
     grid-template-rows 1fr
 
 .slide__media
