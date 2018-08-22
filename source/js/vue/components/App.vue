@@ -242,6 +242,18 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+.view
+  display grid
+  grid-template-columns 1fr
+  grid-template-rows 1fr PREV_NEXT_SIZE // min-content (?)
+  min-height 100vh
+
+  @media BREAKPOINT_MEDIUM
+    grid-template-rows 1fr PREV_NEXT_SIZE_MEDIUM
+
+  @media BREAKPOINT_LARGE
+    grid-template-rows PREV_NEXT_SIZE_MEDIUM 1fr PREV_NEXT_SIZE_MEDIUM
+
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
 

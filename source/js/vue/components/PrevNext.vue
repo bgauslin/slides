@@ -65,40 +65,30 @@ export default {
 
 .prev-next
   align-items center
+  background rgba(DARK_GREY, .7)
   bottom 0
   display flex
+  height PREV_NEXT_SIZE
+  grid-row 2
   justify-content space-between
   position fixed
   width 100vw
   z-index 2
 
   @media BREAKPOINT_MEDIUM
-    bottom px_to_rem(24)
-    // bottom auto
-    // top 'calc(50vh - %s)' % (PREV_NEXT_SIZE_MEDIUM / 2)
+    height PREV_NEXT_SIZE_MEDIUM
+
+  @media BREAKPOINT_LARGE
+    grid-row 3
 
 .prev
 .next
   margin 0
   padding 0
 
-@media BREAKPOINT_MEDIUM
-  .prev
-    margin-left px_to_rem(16)
-  .next
-    margin-right px_to_rem(16)
-
-@media BREAKPOINT_LARGE
-  .prev
-    margin-left px_to_rem(24)
-  .next
-    margin-right px_to_rem(24)
-
 .prev-next__link
-  background rgba(DARK_GREY, .7)
-  border-radius 100%
   align-items center
-  display flex
+  display inline-flex
   height PREV_NEXT_SIZE
   justify-content center
   link(WHITE, WHITE, WHITE, WHITE)
