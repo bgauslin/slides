@@ -38,6 +38,9 @@ export default {
     margin 0 auto
     padding 0 4rem
     max-width 60rem // TODO: use constant here
+  
+  @media BREAKPOINT_LARGE
+    padding 0
 
 .publication__image
   margin-left 0
@@ -47,6 +50,9 @@ export default {
     flex 0 0 33.3333%
     margin-left 2rem
     width auto
+  
+  @media BREAKPOINT_MEDIUM
+    margin 0
 
 .publication__link
   display block
