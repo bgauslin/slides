@@ -30,39 +30,41 @@ export default {
 @import '../../../stylus/_config/'
 
 .publication
-  margin 1rem
+  background WHITE
+  padding px_to_rem(16)
 
   @media BREAKPOINT_MEDIUM
     align-items center
+    border-radius 2px
     display flex
-    margin 0 auto
-    padding 0 4rem
-    max-width 60rem // TODO: use constant here
+    margin 0 px_to_rem(48)
+    padding px_to_rem(24)
   
   @media BREAKPOINT_LARGE
-    padding 0
+    margin 0
 
 .publication__image
-  margin-left 0
+  margin 0
   width 50%
 
   @media BREAKPOINT_MEDIUM
     flex 0 0 33.3333%
-    margin-left 2rem
     width auto
   
   @media BREAKPOINT_MEDIUM
     margin 0
 
+.publication__image .image__frame
+  overflow visible
+  shadow(2)
+
 .publication__link
+  color DARK_GREY
   display block
   padding 1rem 0 0
 
   @media BREAKPOINT_MEDIUM
     padding 2rem
-
-.publication__link > *
-  color WHITE
 
 .publication__title
   font-size H2_BASE

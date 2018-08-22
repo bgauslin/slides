@@ -65,14 +65,15 @@ link(link, visited, hover, active)
     &:hover
       color hover
 
-shadow_0()
-  box-shadow 0 0 10px 0 rgba(BLACK, .12)
+shadow(value)
+  if value == 1
+    box-shadow 0 0 10px 0 rgba(BLACK, .12)
 
-shadow_1()
-  box-shadow 0 1px 3px rgba(BLACK, .12), 0 1px 2px rgba(BLACK, .24)
+  if value == 2
+    box-shadow 0 1px 3px rgba(BLACK, .12), 0 1px 2px rgba(BLACK, .24)
 
-shadow_2()
-  box-shadow 0 3px 6px rgba(BLACK, .16), 0 3px 6px rgba(BLACK, .23)
+  if value == 3
+    box-shadow 0 3px 6px rgba(BLACK, .16), 0 3px 6px rgba(BLACK, .23)
 
 // TODO: update to use variable fonts
 webfont(name, file)
