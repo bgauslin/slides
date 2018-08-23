@@ -109,7 +109,7 @@ export default {
 
       switch (this.$route.name) {
 
-        // Index of all slideshows.
+        // List of all slideshows.
         case 'home': {
           this.showPrevNext = false;
 
@@ -124,13 +124,14 @@ export default {
           break;
         }
 
-        // Cover image for a slideshow.
+        // Slideshow cover image and base list of all slides.
         case 'cover': {
           this.showPrevNext = false;
 
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
             const data = await response.json();
+            this.$store.dispatch('updateSlideshow', data);
             this.content = data;
             // TODO: updateTitle() is throwing an error here
             // this.updateTitle();
@@ -143,27 +144,27 @@ export default {
 
         // Individual slide from a slideshow.
         case 'slide': {
+          // Update slug for id lookup.
+          this.$store.commit('updateSlug', this.$route.params.slug);
+
+          // Show prev-next controls.
           this.showPrevNext = true;
 
-          // Store the current slide count for slide id lookup in the index.
-          this.$store.commit('storeCurrentSlideCount', this.$route.params.count);
-          this.$store.commit('storeSlideshow', this.$route.params.slideshow);
-
           const fetchData = async () => {
-            // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
-            if (!this.$store.getters.hasSlidesIndex) {
-              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slideshow}`);
-              const indexData = await indexResponse.json();
-              this.$store.dispatch('storeSlidesIndex', indexData.slides);
+            // If we don't already have the slideshow, fetch it for slide id lookup.
+            if (!this.$store.getters.hasSlideshow) {
+              let response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
+              let data = await response.json();
+              this.$store.dispatch('updateSlideshow', data);
             }
 
             // TODO: See if we already have the slide in the store.
-            const slideId = this.$store.getters.slideId;
-            const slideResponse = await fetch(`${this.apiBaseUrl}/slide/${slideId}`)
-            const slideData = await slideResponse.json();
+            const slide = this.$store.getters.slide;
+            let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
+            let data = await response.json();
 
             // Set up app view when data is available.
-            this.showSlide(slideData);
+            this.showSlide(data);
           }
 
           fetchData();
@@ -176,10 +177,10 @@ export default {
 
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
-            if (!this.$store.getters.hasSlidesIndex) {
-              const indexResponse = await fetch(`${this.apiBaseUrl}/slideshow/ids/${this.$route.params.slideshow}`);
-              const indexData = await indexResponse.json();
-              this.$store.dispatch('storeSlidesIndex', indexData.slides);
+            if (!this.$store.getters.hasSlideshow) {
+              const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
+              const data = await response.json();
+              this.$store.dispatch('updateSlideshow', data);
             }
 
             const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`);
@@ -197,7 +198,7 @@ export default {
 
     showSlide(data) {
       this.content = data;
-      this.$store.dispatch('storeSlide', data);
+      // this.$store.dispatch('storeSlide', data);
       this.updateTitle();
       this.dataLoaded = true;
     },
@@ -216,7 +217,6 @@ export default {
     updateTitle() {
       // Define shorthand references.
       const site = this.siteName;
-      const slide = `Slide ${this.$route.params.count}`;
       const slideshow = this.content.slideshow.title;
       const title = this.content.title;
 
@@ -226,7 +226,7 @@ export default {
           document.title = `${title} · ${site}`;
           break;
         case 'slide':
-          document.title = `${slide} · ${title} · ${slideshow}`;
+          document.title = `${title} · ${slideshow}`;
           break;
         case 'thumbs':
           document.title = `Thumbnails · ${title} · ${slideshow}`;

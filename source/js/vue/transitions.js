@@ -19,10 +19,17 @@ export default router => {
       direction = 'back';
 
     } else if (from.name === 'slide' && to.name === 'slide') {
-      direction = (to.params.count - from.params.count === 1) ? 'forward' : 'back';
+      // Get all slides, find the 'to' slide and get its index.
+      const slides = router.app.$store.getters.slideshow.slides;
+      const toSlide = slides.find(slide => slide.slug == to.params.slug);
+      const toIndex = slides.indexOf(toSlide);
+      // Get index of the current slide.
+      const fromIndex = router.app.$store.getters.slideIndex;
+      // Compare 'current' and 'to' indexes to set direction.
+      direction = (toIndex - fromIndex == 1) ? 'forward' : 'back';
     }
 
-    router.app.$store.commit('setDirection', direction);
+    router.app.$store.commit('updateDirection', direction);
 
     next();
   });

@@ -3,7 +3,7 @@
     router-link(
       class="thumb__link",
       :title="thumb.title",
-      :to="{ name: 'slide', params: { slideshow: slideshow, count: count } }",
+      :to="{ name: 'slide', params: { slideshow: slideshow, slug: slug } }",
     )
       figure.thumb__frame
         img.thumb__image(
