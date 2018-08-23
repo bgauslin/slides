@@ -2,6 +2,11 @@
   div.prev-next
     p.prev
       router-link(
+        v-if="isFirstSlide",
+        class="prev-next__link",
+        :to="{ name: 'cover', params: { slideshow: slideshow } }",
+      )
+      router-link(
         v-if="slidePrev",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshow, slug: slidePrev.slug } }",
@@ -21,7 +26,7 @@
       router-link(
         v-if="isLastSlide",
         class="prev-next__link",
-        :to="{ name: 'thumbs', params: { slideshow: slideshow } }",
+        :to="{ name: 'thumbs', params: { slideshow: slideshow, slug: 'thumbs' } }",
       )
         span.prev-next__label Next
 </template>
@@ -29,13 +34,16 @@
 <script>
 export default {
   computed: {
+    isFirstSlide () {
+      return this.$store.getters.slideIndex === 0;
+    },
+
     isLastSlide () {
-      return;
-      // return (this.$route.params.slug === this.slideLast.slug);
+      return this.$store.getters.slideIndex === this.$store.getters.slideshowTotal;
     },
 
     isThumbsView () {
-      return (this.$route.name == 'thumbs');
+      return (this.$route.name === 'thumbs');
     },
 
     slideLast () {
