@@ -4,7 +4,7 @@
   )
     router-link(
       class="cover__link",
-      :to="{ name: 'slide', params: { slideshow: content.slug, count: 1 } }",
+      :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
     )
       header.cover__header
         h2.cover__heading {{ content.title }}
@@ -16,10 +16,16 @@
 export default {
   props: ['content'],
 
+  computed: {
+    slideFirst () {
+      return this.$store.getters.slideFirst;
+    }
+  },
+
   methods: {
     coverImage (image) {
       return `background: url(${image.large.src}) center center / cover no-repeat;`;
-    }
+    },
   }
 }
 </script>

@@ -22,7 +22,7 @@ export default function() {
       component: Thumbs,
     },
     {
-      path: '/:slideshow/:count',
+      path: '/:slideshow/:slug',
       name: 'slide',
       component: Slide,
     },
