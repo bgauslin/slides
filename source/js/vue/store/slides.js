@@ -48,17 +48,17 @@ const slides = {
       }
     },
 
+    slideFirst: (state, getters) => {
+      if (getters.hasSlideshow) {
+        return state.slideshow.slides[0];
+      }
+    },
+
     slideIndex: (state, getters) => {
       if (getters.hasSlideshow) {
         const slide = getters.slide;
         const slideIndex = state.slideshow.slides.indexOf(slide);
         return (slideIndex !== -1) ? slideIndex : null;
-      }
-    },
-
-    slideFirst: (state, getters) => {
-      if (getters.hasSlideshow) {
-        return state.slideshow.slides[0];
       }
     },
 
@@ -81,6 +81,12 @@ const slides = {
         const prev = state.slideshow.slides[getters.slideIndex - 1];
         const prevIndex = state.slideshow.slides.indexOf(prev);
         return (prevIndex !== -1) ? prev : null;
+      }
+    },
+
+    slideshow: (state, getters) => {
+      if (getters.hasSlideshow) {
+        return state.slideshow;
       }
     },
 

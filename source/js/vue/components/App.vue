@@ -144,11 +144,12 @@ export default {
 
         // Individual slide from a slideshow.
         case 'slide': {
-          this.showPrevNext = false; // TODO: temporarily 'false' until prevNext is rewired
-
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
-          
+
+          // Show prev-next controls.
+          this.showPrevNext = true;
+
           const fetchData = async () => {
             // If we don't already have the slideshow, fetch it for slide id lookup.
             if (!this.$store.getters.hasSlideshow) {

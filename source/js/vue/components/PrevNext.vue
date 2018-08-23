@@ -2,24 +2,24 @@
   div.prev-next
     p.prev
       router-link(
-        v-if="prev",
+        v-if="slidePrev",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, count: prev } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slidePrev.slug } }",
       )
       router-link(
-        v-if="isThumbs",
+        v-if="isThumbsView",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, count: totalCount } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slideLast.slug } }",
       )
         span.prev-next__label Prev
     p.next
       router-link(
-        v-if="next",
+        v-if="slideNext",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, count: next } }",
+        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slideNext.slug } }",
       )
       router-link(
-        v-if="lastSlide",
+        v-if="isLastSlide",
         class="prev-next__link",
         :to="{ name: 'thumbs', params: { slideshow: slideshow } }",
       )
@@ -29,32 +29,29 @@
 <script>
 export default {
   computed: {
-    count () {
-      return Number(this.$route.params.count);
+    isLastSlide () {
+      return;
+      // return (this.$route.params.slug === this.slideLast.slug);
     },
 
-    isThumbs () {
+    isThumbsView () {
       return (this.$route.name == 'thumbs');
     },
 
-    lastSlide () {
-      return (this.count == this.totalCount);
+    slideLast () {
+      return this.$store.getters.slideLast;
     },
 
-    next() {
-      return (this.count < this.totalCount) ? this.count + 1 : null;
+    slideNext () {
+      return this.$store.getters.slideNext;
     },
 
-    prev () {
-      return (this.count > 1) ? this.count - 1 : null;
+    slidePrev () {
+      return this.$store.getters.slidePrev;
     },
 
     slideshow () {
       return this.$route.params.slideshow;
-    },
-
-    totalCount () {
-      return this.$store.getters.slidesTotal;
     },
   }
 }
