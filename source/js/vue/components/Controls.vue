@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.prev-next
+  div.controls
     div.prev
       router-link(
         v-if="isFirstSlide",
@@ -86,7 +86,7 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.prev-next
+.controls
   align-items center
   background rgba(DARK_GREY, .7)
   bottom 0
@@ -104,10 +104,13 @@ export default {
   @media BREAKPOINT_LARGE
     grid-row 3
 
-.prev
-.next
-  margin 0
-  padding 0
+// .prev
+// .next
+//   margin 0
+//   padding 0
+
+.count
+  font-size CAPTION_BASE
 
 .prev-next__link
   align-items center
@@ -148,8 +151,5 @@ export default {
 
   &:hover
     transform scale(1.1)
-
-.count
-  font-size CAPTION_BASE
 
 </style>

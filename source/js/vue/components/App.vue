@@ -15,22 +15,22 @@
         :content="content",
         :key="content.id",
       )
-    prev-next(
-      v-if="showPrevNext",
+    controls(
+      v-if="showControls",
     )
 </template>
 
 <script>
 import Preloader from './Preloader.vue';
-import PrevNext from './PrevNext.vue';
+import Controls from './Controls.vue';
 
 import getApiDomain from '../../helpers/getApiDomain';
 const apiDomain = getApiDomain();
 
 export default {
   components: {
+    Controls,
     Preloader,
-    PrevNext,
   },
 
   data () {
@@ -39,7 +39,7 @@ export default {
       content: null,
       dataLoaded: false,
       metaDescription: null,
-      showPrevNext: false,
+      showControls: false,
       siteName: document.title,
       transitionEnter: null,
       transitionLeave: null,
@@ -111,7 +111,7 @@ export default {
 
         // List of all slideshows.
         case 'home': {
-          this.showPrevNext = false;
+          this.showControls = false;
 
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshows`);
@@ -126,7 +126,7 @@ export default {
 
         // Slideshow cover image and base list of all slides.
         case 'cover': {
-          this.showPrevNext = false;
+          this.showControls = false;
 
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
@@ -147,8 +147,8 @@ export default {
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
-          // Show prev-next controls.
-          this.showPrevNext = true;
+          // Show controls.
+          this.showControls = true;
 
           const fetchData = async () => {
             // If we don't already have the slideshow, fetch it for slide id lookup.
@@ -173,7 +173,7 @@ export default {
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          this.showPrevNext = true;
+          this.showControls = true;
 
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
