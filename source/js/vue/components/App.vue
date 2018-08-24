@@ -246,7 +246,7 @@ export default {
   display grid
   grid-template-columns 1fr
   grid-template-rows 1fr PREV_NEXT_SIZE // min-content (?)
-  min-height 100vh
+  min-height 100%
 
   @media BREAKPOINT_MEDIUM
     grid-template-rows 1fr PREV_NEXT_SIZE_MEDIUM
