@@ -90,7 +90,7 @@ const slides = {
       }
     },
 
-    slideshowTotal: (state, getters) => {
+    totalSlideCount: (state, getters) => {
       if (getters.hasSlideshow) {
         return state.slideshow.slides.length;
       }

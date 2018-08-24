@@ -1,49 +1,67 @@
 <template lang="pug">
   div.prev-next
-    p.prev
+    div.prev
       router-link(
         v-if="isFirstSlide",
         class="prev-next__link",
-        :to="{ name: 'cover', params: { slideshow: slideshow } }",
+        title="Cover",
+        :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
       )
       router-link(
-        v-if="slidePrev",
+        v-else-if="slidePrev",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slidePrev.slug } }",
+        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
+        :title="slidePrev.title",
       )
       router-link(
-        v-if="isThumbsView",
+        v-else="isThumbsView",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slideLast.slug } }",
+        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideLast.slug } }",
+        :title="slideLast.title",
       )
         span.prev-next__label Prev
-    p.next
+    div.count {{ currentSlideCount }} of {{ totalSlideCount }}
+    div.next
       router-link(
         v-if="slideNext",
         class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshow, slug: slideNext.slug } }",
+        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
+        :title="slideNext.title",
       )
       router-link(
-        v-if="isLastSlide",
+        v-if="isLastSlide && !isThumbsView",
         class="prev-next__link",
-        :to="{ name: 'thumbs', params: { slideshow: slideshow, slug: 'thumbs' } }",
+        title="Thumbnails",
+        :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
       )
         span.prev-next__label Next
 </template>
 
 <script>
 export default {
+  // TODO: refactor template logic above ^
+
+  // TODO: move computed properties to methods/data (?)
   computed: {
+    currentSlideCount () {
+      return this.$store.getters.slideIndex + 1;
+    },
+
     isFirstSlide () {
-      return this.$store.getters.slideIndex === 0;
+      return (this.$store.getters.slideIndex === 0);
     },
 
     isLastSlide () {
-      return this.$store.getters.slideIndex === this.$store.getters.slideshowTotal;
+      // TODO: Use route.name or route.params.slug for comparison here...
+      return (this.$store.getters.slideIndex === this.$store.getters.slideshowTotal - 1);
     },
 
     isThumbsView () {
       return (this.$route.name === 'thumbs');
+    },
+
+    totalSlideCount () {
+      return this.$store.getters.totalSlideCount;
     },
 
     slideLast () {
@@ -58,7 +76,7 @@ export default {
       return this.$store.getters.slidePrev;
     },
 
-    slideshow () {
+    slideshowRoute () {
       return this.$route.params.slideshow;
     },
   }
@@ -130,5 +148,8 @@ export default {
 
   &:hover
     transform scale(1.1)
+
+.count
+  font-size CAPTION_BASE
 
 </style>
