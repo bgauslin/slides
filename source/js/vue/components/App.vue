@@ -106,6 +106,8 @@ export default {
 
     fetchContent () {
       this.dataLoaded = false;
+      const storedSlideshow = this.$store.getters.hasSlideshow;
+      // console.log('storedSlideshow', storedSlideshow);
 
       switch (this.$route.name) {
 
@@ -124,6 +126,10 @@ export default {
           break;
         }
 
+        // See the following for async/await in Vue.js
+        // https://forum.vuejs.org/t/using-async-function-in-methods/20378
+        // https://github.com/vuejs/vue/issues/3308
+
         // Slideshow cover image and base list of all slides.
         case 'cover': {
           this.showControls = false;
@@ -133,12 +139,19 @@ export default {
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
             this.content = data;
+
             // TODO: updateTitle() is throwing an error here
             // this.updateTitle();
             this.dataLoaded = true;
           }
 
-          fetchData();
+          if (storedSlideshow) {
+            this.content = this.$store.getters.slideshow;
+            this.dataLoaded = true;
+          } else {
+            fetchData();
+          }
+
           break;
         }
 
