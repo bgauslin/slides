@@ -34,7 +34,7 @@ export default {
 
 <style lang="stylus">
 .preloader
-  height 100vh
+  height 100%
   left 0
   position fixed
   right 0
