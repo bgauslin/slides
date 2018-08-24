@@ -88,7 +88,8 @@ export default {
 
 .controls
   align-items center
-  background rgba(DARK_GREY, .7)
+  background rgba(DARK_GREY, .95)
+  border-top 1px solid rgba(WHITE, .3)
   bottom 0
   display flex
   height PREV_NEXT_SIZE
