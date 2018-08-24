@@ -108,6 +108,7 @@ export default {
       this.dataLoaded = false;
       const storedSlideshow = this.$store.getters.hasSlideshow;
       // console.log('storedSlideshow', storedSlideshow);
+      const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
 
       switch (this.$route.name) {
 
@@ -135,7 +136,7 @@ export default {
           this.showControls = false;
 
           const fetchData = async () => {
-            const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
+            const response = await fetch(endpointSlideshow);
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
             this.content = data;
@@ -157,30 +158,35 @@ export default {
 
         // Individual slide from a slideshow.
         case 'slide': {
-          // Update slug for id lookup.
+          // Update slug for id lookup and show controls.
           this.$store.commit('updateSlug', this.$route.params.slug);
-
-          // Show controls.
           this.showControls = true;
 
-          const fetchData = async () => {
-            // If we don't already have the slideshow, fetch it for slide id lookup.
-            if (!this.$store.getters.hasSlideshow) {
-              let response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
+          // Get the slide based on the slug and see if it's already stored.
+          const slide = this.$store.getters.slide;
+          const hasSlideMedia = this.$store.getters.hasSlideMedia;
+
+          const fetchSlideshowThenSlide = async () => {
+            // If we don't have the slideshow stored, fetch it for slide id lookup.
+            if (!storedSlideshow) {
+              let response = await fetch(endpointSlideshow);
               let data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
-            // TODO: See if we already have the slide in the store.
-            const slide = this.$store.getters.slide;
-            let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
-            let data = await response.json();
-
-            // Set up app view when data is available.
-            this.showSlide(data);
+            if (hasSlideMedia) {
+              // If we already have the slide's media in the store, use the stored slide.
+              this.showSlide(slide);
+            } else {
+              // Otherwise, go fetch the slide and store it for return visits.
+              let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
+              let data = await response.json();
+              this.$store.dispatch('updateSlide', data);
+              this.showSlide(data);
+            }
           }
 
-          fetchData();
+          fetchSlideshowThenSlide();
           break;
         }
 
