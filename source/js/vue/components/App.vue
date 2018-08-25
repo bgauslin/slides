@@ -117,13 +117,13 @@ export default {
         case 'home': {
           this.showControls = false;
 
-          const fetchAllSlideshows = async (endpoint) => {
+          const fetchData = async (endpoint) => {
             const response = await fetch(endpoint);
             const data = await response.json();
             this.ready(data.data);
           }
 
-          fetchAllSlideshows(endpointHome);
+          fetchData(endpointHome);
           break;
         }
 
@@ -135,7 +135,7 @@ export default {
         case 'cover': {
           this.showControls = false;
 
-          const fetchSlideshow = async (endpoint) => {
+          const fetchData = async (endpoint) => {
             const response = await fetch(endpoint);
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
@@ -145,7 +145,7 @@ export default {
           if (hasSlideshow) {
             this.ready(this.$store.getters.slideshow);
           } else {
-            fetchSlideshow(endpointSlideshow);
+            fetchData(endpointSlideshow);
           }
 
           break;
@@ -158,7 +158,7 @@ export default {
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
-          const fetchSlide = async (endpoint) => {
+          const fetchData = async (endpoint) => {
             // If we don't have the slideshow stored, fetch it and store it.
             if (!hasSlideshow) {
               const response = await fetch(endpoint);
@@ -180,13 +180,14 @@ export default {
             }
           }
 
-          fetchSlide(endpointSlideshow);
+          fetchData(endpointSlideshow);
+
           break;
         }
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          const fetchThumbs = async (endpoint) => {
+          const fetchData = async (endpoint) => {
             if (!hasSlideshow) {
               const response = await fetch(endpoint);
               const data = await response.json();
@@ -198,7 +199,7 @@ export default {
             this.ready(data, true);
           }
 
-          fetchThumbs(endpointSlideshow);
+          fetchData(endpointSlideshow);
           break;
         }
       }
