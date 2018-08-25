@@ -155,6 +155,8 @@ export default {
 
         // Individual slide from a slideshow.
         case 'slide': {
+          this.showControls = true;
+
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
@@ -181,6 +183,7 @@ export default {
             }
           }
 
+          // TODO: refactor into separate methods, then sequence them as needed.
           fetchSlideshowThenSlide();
           break;
         }
@@ -188,7 +191,6 @@ export default {
         // Thumbnail images for a slideshow.
         case 'thumbs': {
           const fetchData = async () => {
-            // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
             if (!hasSlideshow) {
               const response = await fetch(endpointSlideshow);
               const data = await response.json();
@@ -255,8 +257,9 @@ export default {
 .view
   display grid
   grid-template-columns 1fr
-  grid-template-rows 1fr PREV_NEXT_SIZE // min-content (?)
-  min-height 100%
+  grid-template-rows 1fr
+  // grid-template-rows 1fr PREV_NEXT_SIZE // min-content (?)
+  // min-height 100%
 
   @media BREAKPOINT_MEDIUM
     grid-template-rows 1fr PREV_NEXT_SIZE_MEDIUM
