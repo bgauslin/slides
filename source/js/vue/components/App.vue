@@ -38,7 +38,7 @@ export default {
       apiBaseUrl: apiDomain + '/api/v2',
       content: null,
       dataLoaded: false,
-      metaDescription: null,
+      // metaDescription: null,
       showControls: false,
       siteName: document.title,
       transitionEnter: null,
@@ -53,7 +53,7 @@ export default {
   },
 
   mounted () {
-    this.getMetaDescription();
+    // this.getMetaDescription();
     this.fetchContent();
   },
 
@@ -107,7 +107,6 @@ export default {
     fetchContent () {
       this.dataLoaded = false;
       const hasSlideshow = this.$store.getters.hasSlideshow;
-      // console.log('hasSlideshow', hasSlideshow);
 
       const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
@@ -118,13 +117,13 @@ export default {
         case 'home': {
           this.showControls = false;
 
-          const fetchAllSlideshows = async () => {
-            const response = await fetch(endpointHome);
+          const fetchAllSlideshows = async (endpoint) => {
+            const response = await fetch(endpoint);
             const data = await response.json();
             this.ready(data.data);
           }
 
-          fetchAllSlideshows();
+          fetchAllSlideshows(endpointHome);
           break;
         }
 
@@ -136,8 +135,8 @@ export default {
         case 'cover': {
           this.showControls = false;
 
-          const fetchSlideshow = async () => {
-            const response = await fetch(endpointSlideshow);
+          const fetchSlideshow = async (endpoint) => {
+            const response = await fetch(endpoint);
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
             this.ready(data);
@@ -146,7 +145,7 @@ export default {
           if (hasSlideshow) {
             this.ready(this.$store.getters.slideshow);
           } else {
-            fetchSlideshow();
+            fetchSlideshow(endpointSlideshow);
           }
 
           break;
@@ -159,10 +158,10 @@ export default {
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
-          const fetchSlide = async () => {
+          const fetchSlide = async (endpoint) => {
             // If we don't have the slideshow stored, fetch it and store it.
             if (!hasSlideshow) {
-              const response = await fetch(endpointSlideshow);
+              const response = await fetch(endpoint);
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
@@ -181,16 +180,15 @@ export default {
             }
           }
 
-          fetchSlide();
+          fetchSlide(endpointSlideshow);
           break;
         }
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          const fetchThumbs = async () => {
-            // TODO: do we need to fetch both the slideshow and the thumbs here?
+          const fetchThumbs = async (endpoint) => {
             if (!hasSlideshow) {
-              const response = await fetch(endpointSlideshow);
+              const response = await fetch(endpoint);
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
@@ -200,7 +198,7 @@ export default {
             this.ready(data, true);
           }
 
-          fetchThumbs();
+          fetchThumbs(endpointSlideshow);
           break;
         }
       }
@@ -208,41 +206,32 @@ export default {
 
     ready(data, showControls = false) {
       this.content = data;
-      // this.updateTitle();
       this.showControls = showControls;
       this.dataLoaded = true;
+      document.title = this.docTitle();
     },
 
-    getMetaDescription() {
-      const metaDescriptionEl = document.querySelector('meta[name="description"]');
-      this.metaDescription = metaDescriptionEl.getAttribute('content');
-    },
+    // getMetaDescription() {
+    //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
+    //   this.metaDescription = metaDescriptionEl.getAttribute('content');
+    // },
 
-    updateMetaDescription(content) {
-      const metaContent = (content !== null) ? content : this.metaDescription;
-      const metaDescriptionEl = document.querySelector('meta[name="description"]');
-      metaDescriptionEl.setAttribute('content', metaContent);
-    },
+    // updateMetaDescription(content) {
+    //   const metaContent = (content !== null) ? content : this.metaDescription;
+    //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
+    //   metaDescriptionEl.setAttribute('content', metaContent);
+    // },
 
-    updateTitle() {
-      // Define shorthand references.
-      const site = this.siteName;
-      const slideshow = this.content.slideshow.title;
-      const title = this.content.title;
-
-      // Set the title based on the route.
+    docTitle() {
       switch(this.$route.name) {
         case 'cover':
-          document.title = `${title} · ${site}`;
-          break;
+          return `${this.content.title}`;
         case 'slide':
-          document.title = `${title} · ${slideshow}`;
-          break;
+          return `${this.content.title} · ${this.content.slideshow.title}`;
         case 'thumbs':
-          document.title = `Thumbnails · ${title} · ${slideshow}`;
-          break;
+          return `Thumbnails · ${this.content.title}`;
         default:
-          document.title = site;
+          return this.siteName;
       }
     },
   },
