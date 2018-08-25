@@ -39,7 +39,7 @@ const slides = {
     direction: (state) => state.direction,
 
     hasSlideMedia: (state, getters) => {
-      if (getters.hasSlideshow) {
+      if (getters.hasSlideshow && state.slug) {
         const slide = state.slideshow.slides.find(slide => slide.slug == state.slug);
         return (slide.media !== undefined) ? true : false;
       }
