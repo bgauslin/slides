@@ -47,14 +47,24 @@ export default {
       // metaDescription: null,
       showControls: false,
       siteName: document.title,
-      transitionEnter: null,
-      transitionLeave: null,
+      transitions: {
+        enter: null,
+        leave: null,
+      },
     }
   },
 
   computed: {
+    currentSlide () {
+      return this.$store.getters.slide;
+    },
+
     direction () {
       return this.$store.getters.direction;
+    },
+
+    hasSlideMedia () {
+      return this.$store.getters.hasSlideMedia;
     },
 
     slideshow () {
@@ -75,43 +85,34 @@ export default {
 
   methods: {
     afterEnter (el) {
-      el.classList.remove(this.transitionEnter);
+      el.classList.remove(this.transitions.enter);
     },
 
     afterLeave (el) {
-      el.classList.remove(this.transitionLeave);
+      el.classList.remove(this.transitions.leave);
     },
 
-    // TODO: refactor 'beforeEnter' to be more concise
     beforeEnter (el) {
-      switch (this.direction) {
-        case 'forward':
-          this.transitionEnter = 'slide-in-right';
-          break;
-        case 'back':
-          this.transitionEnter = 'slide-in-left';
-          break;
-        default:
-          this.transitionEnter = 'first-run';
-          break;
-      }
-      el.classList.add(this.transitionEnter);
+      this.transitions.enter = this.getTransitionEnter();
+      el.classList.add(this.transitions.enter);
     },
 
-    // TODO: refactor 'beforeLeave' to be more concise
     beforeLeave (el) {
-      switch (this.direction) {
-        case 'forward':
-          this.transitionLeave = 'slide-out-left';
-          break;
-        case 'back':
-          this.transitionLeave = 'slide-out-right';
-          break;
+      this.transitions.leave = this.getTransitionLeave();
+      el.classList.add(this.transitions.leave);
+    },
+
+    docTitle () {
+      switch(this.$route.name) {
+        case 'cover':
+          return `${this.content.title}`;
+        case 'slide':
+          return `${this.content.title} · ${this.content.slideshow.title}`;
+        case 'thumbs':
+          return `Thumbnails · ${this.content.title}`;
         default:
-          this.transitionEnter = 'first-run';
-          break;
+          return this.siteName;
       }
-      el.classList.add(this.transitionLeave);
     },
 
     fetchJson: async function(endpoint, view) {
@@ -144,7 +145,7 @@ export default {
 
       const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
-      const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`
+      const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
 
       switch (this.$route.name) {
 
@@ -169,18 +170,17 @@ export default {
         // Individual slide from a slideshow.
         case 'slide': {
           this.showControls = true;
-          this.$store.commit('updateSlug', this.$route.params.slug); // Update slug for id lookup.
+          this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
 
           const fetchData = async () => {
-            // 
             if (!this.slideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
-            this.fetchJson(`${this.apiBaseUrl}/slide/${this.$store.getters.slide.id}`, 'slide');
+            this.fetchJson(`${this.apiBaseUrl}/slide/${this.currentSlide.id}`, 'slide');
           }
 
-          if (this.$store.getters.hasSlideMedia) {
-            this.ready(this.$store.getters.slide, true);
+          if (this.hasSlideMedia) {
+            this.ready(this.currentSlide, true);
           } else {
             fetchData();
           }
@@ -203,6 +203,28 @@ export default {
       }
     },
 
+    getTransitionEnter () {
+      switch (this.direction) {
+        case 'forward':
+          return 'slide-in-right';
+        case 'back':
+          return 'slide-in-left';
+        default:
+          return 'first-run';
+      }
+    },
+
+    getTransitionLeave () {
+      switch (this.direction) {
+        case 'forward':
+          return 'slide-out-left';
+        case 'back':
+          return 'slide-out-right';
+        default:
+          return 'first-run';
+      }
+    },
+
     ready(data, showControls = false) {
       this.content = data;
       this.showControls = showControls;
@@ -220,19 +242,6 @@ export default {
     //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
     //   metaDescriptionEl.setAttribute('content', metaContent);
     // },
-
-    docTitle() {
-      switch(this.$route.name) {
-        case 'cover':
-          return `${this.content.title}`;
-        case 'slide':
-          return `${this.content.title} · ${this.content.slideshow.title}`;
-        case 'thumbs':
-          return `Thumbnails · ${this.content.title}`;
-        default:
-          return this.siteName;
-      }
-    },
   },
 }
 </script>
