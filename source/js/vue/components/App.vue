@@ -45,8 +45,7 @@ export default {
       dataLoaded: false,
       showControls: false,
       meta: {
-        // description: null,
-        heading: '',
+        description: null,
         title: document.title,
       },
       transitions: {

@@ -6,10 +6,15 @@
 
 <script>
 export default {
-  // TODO: get/set heading from App/store based on view
   computed: {
+    // TODO: Refactor to avoid console error on initial load with other routes.
     heading () {
-      return 'Slideshows';
+      if (this.$route.name == 'home' || this.$route.name == 'cover') {
+        return 'Slideshows';
+      } else {
+        return 'Shotgun Renovation'; // NOTE: Hard-coded until this gets refactored.
+        // return this.$store.getters.slideshow.title;
+      }
     }
   }
 }
