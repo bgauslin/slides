@@ -114,7 +114,6 @@ export default {
       const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`
 
       switch (this.$route.name) {
-
         // List of all slideshows.
         case 'home': {
           this.showControls = false;
@@ -160,23 +159,20 @@ export default {
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
-          const fetchSlideshowThenSlide = async () => {
-            // If we don't have the slideshow stored, fetch it for slide id lookup.
+          const fetchSlide = async () => {
+            // If we don't have the slideshow stored, fetch it and store it.
             if (!hasSlideshow) {
-              console.log('Fetching slideshow via JSON...');
               const response = await fetch(endpointSlideshow);
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
+            // Now that we have the slideshow, go get the slide.
             if (hasSlideshow && this.$store.getters.hasSlideMedia) {
-              // If we already have the slide's media in the store, use the stored slide.
-              console.log('Fetching slide from the store...');
-              const slide = this.$store.getters.slide;
-              this.ready(slide, true);
+              // If the slide's media is in the store, get the stored slide.
+              this.ready(this.$store.getters.slide, true);
             } else {
-              console.log('Fetching slide via JSON...');
-              // Otherwise, go fetch the slide and store it for return visits.
+              // Otherwise, fetch the slide and store it.
               const slide = this.$store.getters.slide;
               const response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
               const data = await response.json();
@@ -185,14 +181,13 @@ export default {
             }
           }
 
-          // TODO: refactor into separate methods, then sequence them as needed.
-          fetchSlideshowThenSlide();
+          fetchSlide();
           break;
         }
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          const fetchData = async () => {
+          const fetchThumbs = async () => {
             // TODO: do we need to fetch both the slideshow and the thumbs here?
             if (!hasSlideshow) {
               const response = await fetch(endpointSlideshow);
@@ -205,7 +200,7 @@ export default {
             this.ready(data, true);
           }
 
-          fetchData();
+          fetchThumbs();
           break;
         }
       }
