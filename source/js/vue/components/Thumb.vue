@@ -20,6 +20,7 @@ export default {
     'index',
     'thumb',
     'slideshow',
+    'slug',
   ],
 
   computed: {
