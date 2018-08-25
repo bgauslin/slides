@@ -4,7 +4,7 @@
   )
     app-header
     preloader(
-      v-if="!dataLoaded",
+      v-if="!ui.dataLoaded",
     )
     transition(
       @before-enter="beforeEnter",
@@ -14,7 +14,7 @@
       mode="out-in",
     )
       router-view(
-        v-if="dataLoaded",
+        v-if="ui.dataLoaded",
         :content="content",
         :key="content.id",
       )
@@ -41,9 +41,11 @@ export default {
   data () {
     return {
       apiBaseUrl: apiDomain + '/api/v2',
-      content: null,
-      dataLoaded: false,
-      showControls: false,
+      app: {
+        content: null,
+        dataLoaded: false,
+        showControls: false,
+      },
       meta: {
         description: null,
         title: document.title,
@@ -106,11 +108,11 @@ export default {
     docTitle () {
       switch(this.$route.name) {
         case 'cover':
-          return `${this.content.title}`;
+          return `${this.app.content.title}`;
         case 'slide':
-          return `${this.content.title} · ${this.content.slideshow.title}`;
+          return `${this.app.content.title} · ${this.app.content.slideshow.title}`;
         case 'thumbs':
-          return `Thumbnails · ${this.content.title}`;
+          return `Thumbnails · ${this.app.content.title}`;
         default:
           return this.meta.title;
       }
@@ -142,7 +144,7 @@ export default {
     },
 
     getContent () {
-      this.dataLoaded = false;
+      this.app.dataLoaded = false;
 
       const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
@@ -152,7 +154,7 @@ export default {
 
         // Slideshow cover image.
         case 'cover': {
-          this.showControls = false;
+          this.app.showControls = false;
           if (this.slideshow) {
             this.ready(this.slideshow);
           } else {
@@ -163,14 +165,14 @@ export default {
 
         // List of all slideshows.
         case 'home': {
-          this.showControls = false;
+          this.app.showControls = false;
           this.fetchJson(endpointHome, 'home');
           break;
         }
 
         // Individual slide from a slideshow.
         case 'slide': {
-          this.showControls = true;
+          this.app.showControls = true;
           this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
 
           const fetchData = async () => {
@@ -227,9 +229,9 @@ export default {
     },
 
     ready(data, showControls = false) {
-      this.content = data;
-      this.showControls = showControls;
-      this.dataLoaded = true;
+      this.app.content = data;
+      this.app.showControls = showControls;
+      this.app.dataLoaded = true;
       document.title = this.docTitle();
     },
 
