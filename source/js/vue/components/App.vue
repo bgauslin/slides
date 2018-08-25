@@ -4,7 +4,7 @@
   )
     app-header
     preloader(
-      v-if="!ui.dataLoaded",
+      v-if="!app.dataLoaded",
     )
     transition(
       @before-enter="beforeEnter",
@@ -14,12 +14,12 @@
       mode="out-in",
     )
       router-view(
-        v-if="ui.dataLoaded",
-        :content="content",
-        :key="content.id",
+        v-if="app.dataLoaded",
+        :content="app.content",
+        :key="app.content.id",
       )
     controls(
-      v-if="showControls",
+      v-if="app.showControls",
     )
 </template>
 
