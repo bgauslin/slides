@@ -53,13 +53,13 @@ export default {
   },
 
   mounted () {
+    this.getContent();
     // this.getMetaDescription();
-    this.fetchContent();
   },
 
   watch: {
     '$route' (to, from) {      
-      this.fetchContent();
+      this.getContent();
     }
   },
 
@@ -108,15 +108,17 @@ export default {
       const response = await fetch(endpoint);
       const data = await response.json();
 
-      console.log('fetchJson for ', view);
-
       switch (view) {
-        case 'home':
-          this.ready(data.data);
-          break;
         case 'cover':
           this.$store.dispatch('updateSlideshow', data);
           this.ready(data);
+          break;
+        case 'home':
+          this.ready(data.data);
+          break;
+        case 'slide':          
+          this.$store.dispatch('updateSlide', data);
+          this.ready(data, true);
           break;
         case 'slideshow':
           this.$store.dispatch('updateSlideshow', data);
@@ -127,7 +129,7 @@ export default {
       }
     },
 
-    fetchContent () {
+    getContent () {
       this.dataLoaded = false;
       const hasSlideshow = this.$store.getters.hasSlideshow;
 
@@ -136,13 +138,6 @@ export default {
       const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`
 
       switch (this.$route.name) {
-        // List of all slideshows.
-        case 'home': {
-          this.showControls = false;
-          this.fetchJson(endpointHome, 'home');
-          break;
-        }
-
         // Slideshow cover image and base list of all slides.
         case 'cover': {
           this.showControls = false;
@@ -154,35 +149,32 @@ export default {
           break;
         }
 
+        // List of all slideshows.
+        case 'home': {
+          this.showControls = false;
+          this.fetchJson(endpointHome, 'home');
+          break;
+        }
+
         // Individual slide from a slideshow.
         case 'slide': {
           this.showControls = true;
+          this.$store.commit('updateSlug', this.$route.params.slug); // Update slug for id lookup.
 
-          // Update slug for id lookup.
-          this.$store.commit('updateSlug', this.$route.params.slug);
-
-          const fetchData = async (endpoint) => {
+          const fetchData = async () => {
             // If we don't have the slideshow stored, fetch it first and store it.
             if (!hasSlideshow) {
-              const response = await fetch(endpoint);
-              const data = await response.json();
-              this.$store.dispatch('updateSlideshow', data);
+              await this.fetchJson(endpointSlideshow, 'slideshow');
             }
-
             // Get the slide's endpoint from the slideshow, then fetch the slide and store it.
             const slide = this.$store.getters.slide;
-            const response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
-            const data = await response.json();
-            this.$store.dispatch('updateSlide', data);
-            this.ready(data, true);
+            await this.fetchJson(`${this.apiBaseUrl}/slide/${slide.id}`, 'slide');
           }
 
-          // If the slide's media is in the store, get the stored slide.
-          // Otherwise, fetch the slide (and slideshow if needed) and store both.
           if (this.$store.getters.hasSlideMedia) {
             this.ready(this.$store.getters.slide, true);
           } else {
-            fetchData(endpointSlideshow);
+            fetchData();
           }
 
           break;
@@ -192,11 +184,14 @@ export default {
         // TODO: Store the thumbnails in the store.
         case 'thumbs': {
           const fetchData = async () => {
+            // If we don't have the slideshow stored, fetch it first and store it.
             if (!hasSlideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
+            // Then fetch the thumbs.
             await this.fetchJson(endpointThumbs, 'thumbs');
           }
+
           fetchData();
           break;
         }
