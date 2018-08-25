@@ -91,17 +91,13 @@ export default {
   bottom 0
   display flex
   height CONTROLS_HEIGHT
-  grid-row 2
   justify-content space-between
   position fixed
   width 100vw
-  z-index 2
+  z-index 1
 
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
-
-  @media BREAKPOINT_LARGE
-    grid-row 3
 
 .count
   font-size HEADING_SIZE

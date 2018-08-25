@@ -41,11 +41,13 @@ export default {
 
 .slide
   grid-row 2
+  padding 0 0 CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns 1fr
     grid-template-rows 1fr auto 2fr
+    padding 0
 
   @media BREAKPOINT_LARGE
     grid-column-gap px_to_rem(24)

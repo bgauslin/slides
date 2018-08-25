@@ -14,7 +14,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .header
-  background rgba(BLACK, .9)
+  background rgba(DARK_GREY, .9)
   border-bottom 1px solid rgba(WHITE, .3)
   position fixed
   width 100vw
