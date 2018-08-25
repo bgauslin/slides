@@ -43,10 +43,12 @@ export default {
       apiBaseUrl: apiDomain + '/api/v2',
       content: null,
       dataLoaded: false,
-      heading: '',
-      // metaDescription: null,
       showControls: false,
-      siteName: document.title,
+      meta: {
+        // description: null,
+        heading: '',
+        title: document.title,
+      },
       transitions: {
         enter: null,
         leave: null,
@@ -111,7 +113,7 @@ export default {
         case 'thumbs':
           return `Thumbnails · ${this.content.title}`;
         default:
-          return this.siteName;
+          return this.meta.title;
       }
     },
 
@@ -234,11 +236,11 @@ export default {
 
     // getMetaDescription() {
     //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
-    //   this.metaDescription = metaDescriptionEl.getAttribute('content');
+    //   this.meta.description = metaDescriptionEl.getAttribute('content');
     // },
 
     // updateMetaDescription(content) {
-    //   const metaContent = (content !== null) ? content : this.metaDescription;
+    //   const metaContent = (content !== null) ? content : this.meta.description;
     //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
     //   metaDescriptionEl.setAttribute('content', metaContent);
     // },
