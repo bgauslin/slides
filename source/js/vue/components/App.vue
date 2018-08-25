@@ -104,6 +104,21 @@ export default {
       el.classList.add(this.transitionLeave);
     },
 
+    fetchJson: async function(endpoint, view) {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+
+      switch (view) {
+        case 'home':
+          this.ready(data.data);
+          break;
+        case 'cover':
+          this.$store.dispatch('updateSlideshow', data);
+          this.ready(data);
+          break;
+      }
+    },
+
     fetchContent () {
       this.dataLoaded = false;
       const hasSlideshow = this.$store.getters.hasSlideshow;
@@ -116,38 +131,18 @@ export default {
         // List of all slideshows.
         case 'home': {
           this.showControls = false;
-
-          const fetchData = async (endpoint) => {
-            const response = await fetch(endpoint);
-            const data = await response.json();
-            this.ready(data.data);
-          }
-
-          fetchData(endpointHome);
+          this.fetchJson(endpointHome, 'home');
           break;
         }
-
-        // See the following for async/await in Vue.js
-        // https://forum.vuejs.org/t/using-async-function-in-methods/20378
-        // https://github.com/vuejs/vue/issues/3308
 
         // Slideshow cover image and base list of all slides.
         case 'cover': {
           this.showControls = false;
-
-          const fetchData = async (endpoint) => {
-            const response = await fetch(endpoint);
-            const data = await response.json();
-            this.$store.dispatch('updateSlideshow', data);
-            this.ready(data);
-          }
-
           if (hasSlideshow) {
             this.ready(this.$store.getters.slideshow);
           } else {
-            fetchData(endpointSlideshow);
+            this.fetchJson(endpointSlideshow, 'cover');
           }
-
           break;
         }
 
@@ -194,7 +189,6 @@ export default {
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
-
             const response = await fetch(endpointThumbs);
             const data = await response.json();
             this.ready(data, true);
