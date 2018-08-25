@@ -8,13 +8,13 @@
         :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
       )
       router-link(
-        v-else-if="slidePrev",
+        v-if="slidePrev && !isThumbsView",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
         :title="slidePrev.title",
       )
       router-link(
-        v-else="isThumbsView",
+        v-if="slideLast && isThumbsView",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideLast.slug } }",
         :title="slideLast.title",
