@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.view
+  div.view(
+    data-full-height="",
+  )
     app-header(
       v-if="content",
       :heading="content.title",
@@ -242,7 +244,6 @@ export default {
   display grid
   grid-template-columns 1fr
   grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT
-  min-height 100vh // TODO: JS for weird height issues in iOS
 
   @media BREAKPOINT_MEDIUM
     grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT_MEDIUM

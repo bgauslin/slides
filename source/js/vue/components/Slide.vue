@@ -1,6 +1,6 @@
 <template lang="pug">
   div.slide(
-    v-if="content"
+    v-if="content",
   )
     div.slide__media
       media-images(
@@ -46,7 +46,6 @@ export default {
     display grid
     grid-template-columns 1fr
     grid-template-rows 1fr auto 2fr
-    height 100vh
 
   @media BREAKPOINT_LARGE
     grid-column-gap px_to_rem(24)

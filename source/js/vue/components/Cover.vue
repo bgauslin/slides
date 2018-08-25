@@ -1,5 +1,6 @@
 <template lang="pug">
   div.cover(
+    data-full-height="",
     :style="coverImage(content.image)",
   )
     router-link(
@@ -32,9 +33,6 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
-
-.cover
-  height 100vh // TODO: add js to make this work with iOS/Safari
 
 .cover__link
   align-items center
