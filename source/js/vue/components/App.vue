@@ -160,7 +160,6 @@ export default {
         case 'slide': {
           // Update slug for id lookup and show controls.
           this.$store.commit('updateSlug', this.$route.params.slug);
-          this.showControls = true;
 
           // Get the slide based on the slug and see if it's already stored.
           const slide = this.$store.getters.slide;
@@ -217,8 +216,8 @@ export default {
 
     showSlide(data) {
       this.content = data;
-      // this.$store.dispatch('storeSlide', data);
       this.updateTitle();
+      this.showControls = true;
       this.dataLoaded = true;
     },
 
