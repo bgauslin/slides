@@ -20,10 +20,12 @@
         :title="slideLast.title",
       )
         span.prev-next__label Prev
-    div.count {{ currentSlideCount }} of {{ totalSlideCount }}
+    div.count(
+      v-if="!isThumbsView",
+    ) {{ currentSlideCount }} of {{ totalSlideCount }}
     div.next
       router-link(
-        v-if="slideNext",
+        v-if="slideNext && !isThumbsView",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
         :title="slideNext.title",
@@ -39,9 +41,6 @@
 
 <script>
 export default {
-  // TODO: refactor template logic above ^
-
-  // TODO: move computed properties to methods/data (?)
   computed: {
     currentSlideCount () {
       return this.$store.getters.slideIndex + 1;
@@ -52,8 +51,7 @@ export default {
     },
 
     isLastSlide () {
-      // TODO: Use route.name or route.params.slug for comparison here...
-      return (this.$store.getters.slideIndex === this.$store.getters.slideshowTotal - 1);
+      return (this.$store.getters.slideIndex == this.$store.getters.totalSlideCount - 1);
     },
 
     isThumbsView () {
