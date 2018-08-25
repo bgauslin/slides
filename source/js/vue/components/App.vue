@@ -108,6 +108,8 @@ export default {
       this.dataLoaded = false;
       const storedSlideshow = this.$store.getters.hasSlideshow;
       // console.log('storedSlideshow', storedSlideshow);
+
+      const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
 
       switch (this.$route.name) {
@@ -117,7 +119,7 @@ export default {
           this.showControls = false;
 
           const fetchData = async () => {
-            const response = await fetch(`${this.apiBaseUrl}/slideshows`);
+            const response = await fetch(endpointHome);
             const data = await response.json();
             this.ready(data.data);
           }
@@ -152,7 +154,7 @@ export default {
 
         // Individual slide from a slideshow.
         case 'slide': {
-          // Update slug for id lookup and show controls.
+          // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
           // Get the slide based on the slug and see if it's already stored.
@@ -175,7 +177,6 @@ export default {
               let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
               let data = await response.json();
               this.$store.dispatch('updateSlide', data);
-
               this.ready(data, true);
             }
           }
@@ -186,8 +187,6 @@ export default {
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          // this.showControls = true;
-
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
             if (!this.$store.getters.hasSlideshow) {
@@ -198,11 +197,7 @@ export default {
 
             const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`);
             const data = await response.json();
-
-
-            this.content = data;
-            // this.updateTitle();
-            this.dataLoaded = true;
+            this.ready(data, true);
           }
 
           fetchData();
