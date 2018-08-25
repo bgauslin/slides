@@ -60,10 +60,6 @@ export default {
       return this.$store.getters.direction;
     },
 
-    hasSlideshow () {
-      return this.$store.getters.hasSlideshow;
-    },
-
     slideshow () {
       return this.$store.getters.slideshow;
     }
@@ -158,7 +154,7 @@ export default {
         // Slideshow cover image.
         case 'cover': {
           this.showControls = false;
-          if (this.hasSlideshow) {
+          if (this.slideshow) {
             this.ready(this.slideshow);
           } else {
             this.fetchJson(endpointSlideshow, 'cover');
@@ -179,7 +175,8 @@ export default {
           this.$store.commit('updateSlug', this.$route.params.slug); // Update slug for id lookup.
 
           const fetchData = async () => {
-            if (!this.hasSlideshow) {
+            // 
+            if (!this.slideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
             this.fetchJson(`${this.apiBaseUrl}/slide/${this.$store.getters.slide.id}`, 'slide');
@@ -198,7 +195,7 @@ export default {
         // TODO: Store the thumbnails in the store.
         case 'thumbs': {
           const fetchData = async () => {
-            if (!this.hasSlideshow) {
+            if (!this.slideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
             this.fetchJson(endpointThumbs, 'thumbs');
