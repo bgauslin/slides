@@ -119,8 +119,7 @@ export default {
           const fetchData = async () => {
             const response = await fetch(`${this.apiBaseUrl}/slideshows`);
             const data = await response.json();
-            this.content = data.data;
-            this.dataLoaded = true;
+            this.ready(data.data);
           }
 
           fetchData();
@@ -139,16 +138,11 @@ export default {
             const response = await fetch(endpointSlideshow);
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
-            this.content = data;
-
-            // TODO: updateTitle() is throwing an error here
-            // this.updateTitle();
-            this.dataLoaded = true;
+            this.ready(data);
           }
 
           if (storedSlideshow) {
-            this.content = this.$store.getters.slideshow;
-            this.dataLoaded = true;
+            this.ready(this.$store.getters.slideshow);
           } else {
             fetchData();
           }
@@ -175,13 +169,14 @@ export default {
 
             if (hasSlideMedia) {
               // If we already have the slide's media in the store, use the stored slide.
-              this.showSlide(slide);
+              this.ready(slide, true);
             } else {
               // Otherwise, go fetch the slide and store it for return visits.
               let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
               let data = await response.json();
               this.$store.dispatch('updateSlide', data);
-              this.showSlide(data);
+
+              this.ready(data, true);
             }
           }
 
@@ -191,7 +186,7 @@ export default {
 
         // Thumbnail images for a slideshow.
         case 'thumbs': {
-          this.showControls = true;
+          // this.showControls = true;
 
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
@@ -203,6 +198,8 @@ export default {
 
             const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`);
             const data = await response.json();
+
+
             this.content = data;
             // this.updateTitle();
             this.dataLoaded = true;
@@ -214,10 +211,10 @@ export default {
       }
     },
 
-    showSlide(data) {
+    ready(data, showControls = false) {
       this.content = data;
-      this.updateTitle();
-      this.showControls = true;
+      // this.updateTitle();
+      this.showControls = showControls;
       this.dataLoaded = true;
     },
 
