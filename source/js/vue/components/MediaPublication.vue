@@ -67,26 +67,26 @@ export default {
     padding 2rem
 
 .publication__title
-  font-size H2_BASE
+  font-size H2_SIZE
   heading_font()
   margin 0 0 .5em
 
   @media BREAKPOINT_MEDIUM
-    font-size H2_MEDIUM
+    font-size H2_SIZE_MEDIUM
 
 .publication__publisher
-  font-size H3_BASE
+  font-size H3_SIZE
   font-weight normal
   margin 0 0 .5em
 
   @media BREAKPOINT_MEDIUM
-    font-size H3_MEDIUM
+    font-size H3_SIZE_MEDIUM
 
 .publication__date
-  font-size CAPTION_BASE
+  font-size CAPTION_SIZE
   margin .7rem 0 0
 
   @media BREAKPOINT_MEDIUM
-    font-size CAPTION_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
 
 </style>

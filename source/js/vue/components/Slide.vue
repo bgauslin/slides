@@ -40,7 +40,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .slide
-  grid-row 1
+  grid-row 2
 
   @media BREAKPOINT_MEDIUM
     display grid
@@ -64,12 +64,12 @@ export default {
     grid-row 1
 
 .slide__caption
-  font-size CAPTION_BASE
+  font-size CAPTION_SIZE
   margin 0 auto
-  padding px_to_rem(16) px_to_rem(16) PREV_NEXT_SIZE
+  padding px_to_rem(16)
 
   @media BREAKPOINT_MEDIUM
-    font-size CAPTION_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
     padding px_to_rem(32) 0 0

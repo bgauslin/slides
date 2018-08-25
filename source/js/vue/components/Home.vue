@@ -20,6 +20,9 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+.slideshows
+  grid-row 2
+
 .slideshow__link
   display block
   link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
@@ -27,18 +30,18 @@ export default {
 
 .slideshow__heading
   color inherit
-  font-size H3_BASE // TODO: update
+  font-size H3_SIZE // TODO: update
   heading_font()
   margin 0 0 .25em
   padding 0
 
 .slideshow__summary
   color inherit
-  font-size CAPTION_BASE
+  font-size CAPTION_SIZE
   margin 0
   padding 0
 
   @media BREAKPOINT_MEDIUM
-    font-size CAPTION_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
 
 </style>

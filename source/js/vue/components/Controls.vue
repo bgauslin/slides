@@ -86,11 +86,11 @@ export default {
 
 .controls
   align-items center
-  background rgba(DARK_GREY, .95)
+  background rgba(DARK_GREY, .9)
   border-top 1px solid rgba(WHITE, .3)
   bottom 0
   display flex
-  height PREV_NEXT_SIZE
+  height CONTROLS_HEIGHT
   grid-row 2
   justify-content space-between
   position fixed
@@ -98,7 +98,7 @@ export default {
   z-index 2
 
   @media BREAKPOINT_MEDIUM
-    height PREV_NEXT_SIZE_MEDIUM
+    height CONTROLS_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE
     grid-row 3
@@ -109,21 +109,21 @@ export default {
 //   padding 0
 
 .count
-  font-size CAPTION_BASE
+  font-size CAPTION_SIZE
 
 .prev-next__link
   align-items center
   display inline-flex
-  height PREV_NEXT_SIZE
+  height CONTROLS_HEIGHT
   justify-content center
   link(WHITE, WHITE, WHITE, WHITE)
   overflow hidden
   transition transform TRANSITION_SPEED
-  width PREV_NEXT_SIZE
+  width CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
-    height PREV_NEXT_SIZE_MEDIUM
-    width PREV_NEXT_SIZE_MEDIUM
+    height CONTROLS_HEIGHT_MEDIUM
+    width CONTROLS_HEIGHT_MEDIUM
 
   &:active
     transform scale(1.1)

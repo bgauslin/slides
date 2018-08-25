@@ -21,7 +21,7 @@ export default {
 .text__content
   align-items center
   display flex
-  font-size H1_BASE
+  font-size H1_SIZE
   heading_font()
   height 100%
   justify-content center
@@ -31,6 +31,6 @@ export default {
   width 100%
 
   @media BREAKPOINT_MEDIUM
-    font-size H1_MEDIUM
+    font-size H1_SIZE_MEDIUM
 
 </style>

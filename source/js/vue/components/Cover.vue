@@ -51,22 +51,22 @@ export default {
 
 .cover__heading
   color inherit
-  font-size H1_BASE
+  font-size H1_SIZE
   heading_font()
   margin 0 0 .25em
   padding 0
 
   @media BREAKPOINT_MEDIUM
-    font-size H1_MEDIUM
+    font-size H1_SIZE_MEDIUM
 
 .cover__summary
   color inherit
-  font-size CAPTION_BASE
+  font-size CAPTION_SIZE
   margin 0
   padding 0
 
   @media BREAKPOINT_MEDIUM
-    font-size CAPTION_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
 
 START_BUTTON_HEIGHT = px_to_rem(40)
 

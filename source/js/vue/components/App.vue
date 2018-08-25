@@ -1,5 +1,9 @@
 <template lang="pug">
   div.view
+    app-header(
+      v-if="content",
+      :heading="content.title",
+    )
     preloader(
       v-if="!dataLoaded",
     )
@@ -21,14 +25,16 @@
 </template>
 
 <script>
-import Preloader from './Preloader.vue';
+import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
+import Preloader from './Preloader.vue';
 
 import getApiDomain from '../../helpers/getApiDomain';
 const apiDomain = getApiDomain();
 
 export default {
   components: {
+    AppHeader,
     Controls,
     Preloader,
   },
@@ -38,6 +44,7 @@ export default {
       apiBaseUrl: apiDomain + '/api/v2',
       content: null,
       dataLoaded: false,
+      heading: '',
       // metaDescription: null,
       showControls: false,
       siteName: document.title,
@@ -234,15 +241,14 @@ export default {
 .view
   display grid
   grid-template-columns 1fr
-  grid-template-rows 1fr
-  // grid-template-rows 1fr PREV_NEXT_SIZE // min-content (?)
-  // min-height 100%
+  grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT
+  min-height 100vh // TODO: JS for weird height issues in iOS
 
   @media BREAKPOINT_MEDIUM
-    grid-template-rows 1fr PREV_NEXT_SIZE_MEDIUM
+    grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE
-    grid-template-rows PREV_NEXT_SIZE_MEDIUM 1fr PREV_NEXT_SIZE_MEDIUM
+    grid-template-rows CONTROLS_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
 
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
