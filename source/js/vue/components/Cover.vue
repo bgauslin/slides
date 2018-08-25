@@ -34,8 +34,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .cover
-  height 100vh
-  width 100vw
+  height 100vh // TODO: add js to make this work with iOS/Safari
 
 .cover__link
   align-items center

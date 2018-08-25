@@ -45,7 +45,8 @@ export default {
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns 1fr
-    grid-template-rows 1fr auto 1fr
+    grid-template-rows 1fr auto 2fr
+    height 100vh
 
   @media BREAKPOINT_LARGE
     grid-column-gap px_to_rem(24)
@@ -65,7 +66,7 @@ export default {
 .slide__caption
   font-size CAPTION_BASE
   margin 0 auto
-  padding px_to_rem(16)
+  padding px_to_rem(16) px_to_rem(16) PREV_NEXT_SIZE
 
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_MEDIUM
