@@ -25,12 +25,14 @@ export default {
 .thumbs
   grid-row 2
   margin THUMB_GAP
+  padding 0 0 CONTROLS_HEIGHT
 
   @media BREAKPOINT_SMALL
     margin THUMB_GAP_SMALL
 
   @media BREAKPOINT_MEDIUM
     margin THUMB_GAP_MEDIUM
+    padding 0
 
   @media BREAKPOINT_LARGE
     margin THUMB_GAP_LARGE

@@ -2,10 +2,7 @@
   div.view(
     data-full-height="",
   )
-    app-header(
-      v-if="content",
-      :heading="content.title",
-    )
+    app-header
     preloader(
       v-if="!dataLoaded",
     )
