@@ -131,14 +131,16 @@ export default {
 
     getContent () {
       this.dataLoaded = false;
-      const hasSlideshow = this.$store.getters.hasSlideshow;
 
       const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
       const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`
 
+      const hasSlideshow = this.$store.getters.hasSlideshow;
+
       switch (this.$route.name) {
-        // Slideshow cover image and base list of all slides.
+
+        // Slideshow cover image.
         case 'cover': {
           this.showControls = false;
           if (hasSlideshow) {
@@ -162,13 +164,10 @@ export default {
           this.$store.commit('updateSlug', this.$route.params.slug); // Update slug for id lookup.
 
           const fetchData = async () => {
-            // If we don't have the slideshow stored, fetch it first and store it.
             if (!hasSlideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
-            // Get the slide's endpoint from the slideshow, then fetch the slide and store it.
-            const slide = this.$store.getters.slide;
-            await this.fetchJson(`${this.apiBaseUrl}/slide/${slide.id}`, 'slide');
+            this.fetchJson(`${this.apiBaseUrl}/slide/${this.$store.getters.slide.id}`, 'slide');
           }
 
           if (this.$store.getters.hasSlideMedia) {
@@ -184,14 +183,11 @@ export default {
         // TODO: Store the thumbnails in the store.
         case 'thumbs': {
           const fetchData = async () => {
-            // If we don't have the slideshow stored, fetch it first and store it.
             if (!hasSlideshow) {
               await this.fetchJson(endpointSlideshow, 'slideshow');
             }
-            // Then fetch the thumbs.
-            await this.fetchJson(endpointThumbs, 'thumbs');
+            this.fetchJson(endpointThumbs, 'thumbs');
           }
-
           fetchData();
           break;
         }
