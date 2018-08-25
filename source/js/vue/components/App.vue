@@ -108,6 +108,8 @@ export default {
       const response = await fetch(endpoint);
       const data = await response.json();
 
+      console.log('fetchJson for ', view);
+
       switch (view) {
         case 'home':
           this.ready(data.data);
@@ -115,6 +117,12 @@ export default {
         case 'cover':
           this.$store.dispatch('updateSlideshow', data);
           this.ready(data);
+          break;
+        case 'slideshow':
+          this.$store.dispatch('updateSlideshow', data);
+          break;
+        case 'thumbs':
+          this.ready(data, true);
           break;
       }
     },
@@ -183,18 +191,13 @@ export default {
         // Thumbnail images for a slideshow.
         // TODO: Store the thumbnails in the store.
         case 'thumbs': {
-          const fetchData = async (endpoint) => {
+          const fetchData = async () => {
             if (!hasSlideshow) {
-              const response = await fetch(endpoint);
-              const data = await response.json();
-              this.$store.dispatch('updateSlideshow', data);
+              await this.fetchJson(endpointSlideshow, 'slideshow');
             }
-            const response = await fetch(endpointThumbs);
-            const data = await response.json();
-            this.ready(data, true);
+            await this.fetchJson(endpointThumbs, 'thumbs');
           }
-
-          fetchData(endpointSlideshow);
+          fetchData();
           break;
         }
       }
