@@ -106,11 +106,12 @@ export default {
 
     fetchContent () {
       this.dataLoaded = false;
-      const storedSlideshow = this.$store.getters.hasSlideshow;
-      // console.log('storedSlideshow', storedSlideshow);
+      const hasSlideshow = this.$store.getters.hasSlideshow;
+      // console.log('hasSlideshow', hasSlideshow);
 
       const endpointHome = `${this.apiBaseUrl}/slideshows`;
       const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
+      const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`
 
       switch (this.$route.name) {
 
@@ -118,13 +119,13 @@ export default {
         case 'home': {
           this.showControls = false;
 
-          const fetchData = async () => {
+          const fetchAllSlideshows = async () => {
             const response = await fetch(endpointHome);
             const data = await response.json();
             this.ready(data.data);
           }
 
-          fetchData();
+          fetchAllSlideshows();
           break;
         }
 
@@ -136,17 +137,17 @@ export default {
         case 'cover': {
           this.showControls = false;
 
-          const fetchData = async () => {
+          const fetchSlideshow = async () => {
             const response = await fetch(endpointSlideshow);
             const data = await response.json();
             this.$store.dispatch('updateSlideshow', data);
             this.ready(data);
           }
 
-          if (storedSlideshow) {
+          if (hasSlideshow) {
             this.ready(this.$store.getters.slideshow);
           } else {
-            fetchData();
+            fetchSlideshow();
           }
 
           break;
@@ -157,23 +158,22 @@ export default {
           // Update slug for id lookup.
           this.$store.commit('updateSlug', this.$route.params.slug);
 
-          // Get the slide based on the slug and see if it's already stored.
-          const slide = this.$store.getters.slide;
-          const hasSlideMedia = this.$store.getters.hasSlideMedia;
-
           const fetchSlideshowThenSlide = async () => {
             // If we don't have the slideshow stored, fetch it for slide id lookup.
-            if (!storedSlideshow) {
+            if (!hasSlideshow) {
+              console.log('Fetching the slideshow...');
               let response = await fetch(endpointSlideshow);
               let data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
-            if (hasSlideMedia) {
+            if (this.$store.getters.hasSlideMedia) {
               // If we already have the slide's media in the store, use the stored slide.
+              const slide = this.$store.getters.slide;
               this.ready(slide, true);
             } else {
               // Otherwise, go fetch the slide and store it for return visits.
+              const slide = this.$store.getters.slide;
               let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
               let data = await response.json();
               this.$store.dispatch('updateSlide', data);
@@ -189,13 +189,13 @@ export default {
         case 'thumbs': {
           const fetchData = async () => {
             // Fetch the index of all slide ids' and store it for subsequent lookups if we don't already have it.
-            if (!this.$store.getters.hasSlideshow) {
-              const response = await fetch(`${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`);
+            if (!hasSlideshow) {
+              const response = await fetch(endpointSlideshow);
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
-            const response = await fetch(`${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`);
+            const response = await fetch(endpointThumbs);
             const data = await response.json();
             this.ready(data, true);
           }
