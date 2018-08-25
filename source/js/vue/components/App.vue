@@ -159,33 +159,34 @@ export default {
           this.$store.commit('updateSlug', this.$route.params.slug);
 
           const fetchData = async (endpoint) => {
-            // If we don't have the slideshow stored, fetch it and store it.
+            // If we don't have the slideshow stored, fetch it first and store it.
             if (!hasSlideshow) {
               const response = await fetch(endpoint);
               const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
-            // Now that we have the slideshow, go get the slide.
-            if (hasSlideshow && this.$store.getters.hasSlideMedia) {
-              // If the slide's media is in the store, get the stored slide.
-              this.ready(this.$store.getters.slide, true);
-            } else {
-              // Otherwise, fetch the slide and store it.
-              const slide = this.$store.getters.slide;
-              const response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
-              const data = await response.json();
-              this.$store.dispatch('updateSlide', data);
-              this.ready(data, true);
-            }
+            // Get the slide's endpoint from the slideshow, then fetch the slide and store it.
+            const slide = this.$store.getters.slide;
+            const response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
+            const data = await response.json();
+            this.$store.dispatch('updateSlide', data);
+            this.ready(data, true);
           }
 
-          fetchData(endpointSlideshow);
+          // If the slide's media is in the store, get the stored slide.
+          // Otherwise, fetch the slide (and slideshow if needed) and store both.
+          if (this.$store.getters.hasSlideMedia) {
+            this.ready(this.$store.getters.slide, true);
+          } else {
+            fetchData(endpointSlideshow);
+          }
 
           break;
         }
 
         // Thumbnail images for a slideshow.
+        // TODO: Store the thumbnails in the store.
         case 'thumbs': {
           const fetchData = async (endpoint) => {
             if (!hasSlideshow) {
