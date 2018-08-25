@@ -23,6 +23,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .thumbs
+  grid-row 2
   margin THUMB_GAP
 
   @media BREAKPOINT_SMALL

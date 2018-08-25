@@ -103,13 +103,9 @@ export default {
   @media BREAKPOINT_LARGE
     grid-row 3
 
-// .prev
-// .next
-//   margin 0
-//   padding 0
-
 .count
-  font-size CAPTION_SIZE
+  font-size HEADING_SIZE
+  heading_font()
 
 .prev-next__link
   align-items center
