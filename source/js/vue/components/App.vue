@@ -118,7 +118,20 @@ export default {
       }
     },
 
-    fetchJson: async function(endpoint, view) {
+    endpoint (view) {
+      switch (view) {
+        case 'home':
+          return `${this.apiBaseUrl}/slideshows`;
+        case 'slide':
+          return `${this.apiBaseUrl}/slide/${this.currentSlide.id}`;
+        case 'slideshow':
+          return `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
+        case 'thumbs':
+          return `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
+      }
+    },
+
+    fetchJson: async function (endpoint, view) {
       const response = await fetch(endpoint);
       const data = await response.json();
 
@@ -146,64 +159,63 @@ export default {
     getContent () {
       this.app.dataLoaded = false;
 
-      const endpointHome = `${this.apiBaseUrl}/slideshows`;
-      const endpointSlideshow = `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
-      const endpointThumbs = `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
-
       switch (this.$route.name) {
-
-        // Slideshow cover image.
-        case 'cover': {
-          this.app.showControls = false;
-          if (this.slideshow) {
-            this.ready(this.slideshow);
-          } else {
-            this.fetchJson(endpointSlideshow, 'cover');
-          }
+        case 'cover':
+          this.getDataCover();
           break;
-        }
-
-        // List of all slideshows.
-        case 'home': {
-          this.app.showControls = false;
-          this.fetchJson(endpointHome, 'home');
+        case 'home':
+          this.getDataHome();
           break;
-        }
-
-        // Individual slide from a slideshow.
-        case 'slide': {
-          this.app.showControls = true;
-          this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
-
-          const fetchData = async () => {
-            if (!this.slideshow) {
-              await this.fetchJson(endpointSlideshow, 'slideshow');
-            }
-            this.fetchJson(`${this.apiBaseUrl}/slide/${this.currentSlide.id}`, 'slide');
-          }
-
-          if (this.hasSlideMedia) {
-            this.ready(this.currentSlide, true);
-          } else {
-            fetchData();
-          }
-
+        case 'slide':
+          this.getDataSlide();
           break;
-        }
-
-        // Thumbnail images for a slideshow.
-        // TODO: Store the thumbnails in the store.
-        case 'thumbs': {
-          const fetchData = async () => {
-            if (!this.slideshow) {
-              await this.fetchJson(endpointSlideshow, 'slideshow');
-            }
-            this.fetchJson(endpointThumbs, 'thumbs');
-          }
-          fetchData();
+        case 'thumbs':
+          this.getDataThumbs();
           break;
-        }
       }
+    },
+
+    getDataCover () {
+      this.app.showControls = false;
+      if (this.slideshow) {
+        this.ready(this.slideshow);
+      } else {
+        this.fetchJson(this.endpoint('slideshow'), 'cover');
+      }
+    },
+
+    getDataHome () {
+      this.app.showControls = false;
+      this.fetchJson(this.endpoint('home'), 'home');
+    },
+
+    getDataSlide () {
+      this.app.showControls = true;
+      this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
+
+      const fetchData = async () => {
+        if (!this.slideshow) {
+          await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
+        }
+        this.fetchJson(this.endpoint('slide'), 'slide');
+      }
+
+      if (this.hasSlideMedia) {
+        this.ready(this.currentSlide, true);
+      } else {
+        fetchData();
+      }
+    },
+
+    getDataThumbs () {
+      // TODO: Store the thumbnails in the store.
+      const fetchData = async () => {
+        if (!this.slideshow) {
+          await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
+        }
+        this.fetchJson(this.endpoint('thumbs'), 'thumbs');
+      }
+      fetchData();
     },
 
     getTransitionEnter () {
