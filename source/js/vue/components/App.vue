@@ -163,21 +163,23 @@ export default {
           const fetchSlideshowThenSlide = async () => {
             // If we don't have the slideshow stored, fetch it for slide id lookup.
             if (!hasSlideshow) {
-              console.log('Fetching the slideshow...');
-              let response = await fetch(endpointSlideshow);
-              let data = await response.json();
+              console.log('Fetching slideshow via JSON...');
+              const response = await fetch(endpointSlideshow);
+              const data = await response.json();
               this.$store.dispatch('updateSlideshow', data);
             }
 
-            if (this.$store.getters.hasSlideMedia) {
+            if (hasSlideshow && this.$store.getters.hasSlideMedia) {
               // If we already have the slide's media in the store, use the stored slide.
+              console.log('Fetching slide from the store...');
               const slide = this.$store.getters.slide;
               this.ready(slide, true);
             } else {
+              console.log('Fetching slide via JSON...');
               // Otherwise, go fetch the slide and store it for return visits.
               const slide = this.$store.getters.slide;
-              let response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
-              let data = await response.json();
+              const response = await fetch(`${this.apiBaseUrl}/slide/${slide.id}`)
+              const data = await response.json();
               this.$store.dispatch('updateSlide', data);
               this.ready(data, true);
             }
@@ -191,6 +193,7 @@ export default {
         // Thumbnail images for a slideshow.
         case 'thumbs': {
           const fetchData = async () => {
+            // TODO: do we need to fetch both the slideshow and the thumbs here?
             if (!hasSlideshow) {
               const response = await fetch(endpointSlideshow);
               const data = await response.json();

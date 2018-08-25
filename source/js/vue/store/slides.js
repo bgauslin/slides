@@ -38,10 +38,7 @@ const slides = {
   getters: {
     direction: (state) => state.direction,
 
-    // This getter is throwing an error...
     hasSlideMedia: (state, getters) => {
-      return false; // for debugging
-
       if (getters.hasSlideshow) {
         const slide = state.slideshow.slides.find(slide => slide.slug == state.slug);
         return (slide.media !== undefined) ? true : false;
