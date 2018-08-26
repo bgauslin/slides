@@ -7,8 +7,8 @@
       v-for="image in images",
     )
       single-image(
+        :className="imageClassName",
         :image="image",
-        
       )
 </template>
 
@@ -24,6 +24,12 @@ export default {
     className () {
       if (this.images.length > 1) {
        return 'images--multiple';
+      }
+    },
+
+    imageClassName () {
+      if (this.images.length > 1) {
+       return 'image--multiple';
       }
     },
   }
@@ -45,20 +51,5 @@ export default {
     flex-wrap nowrap
     margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
     width auto
-
-// TODO: refactor selector for lower specificity
-.images--multiple .image
-  padding IMAGE_GAP 0 0 0
-
-  @media BREAKPOINT_MEDIUM
-    flex 0 0 50%
-    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
-
-// TODO: refactor selector for lower specificity
-.images--multiple .image:first-child
-  padding 0
-
-  @media BREAKPOINT_MEDIUM
-    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
 
 </style>

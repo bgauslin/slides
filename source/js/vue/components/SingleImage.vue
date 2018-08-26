@@ -1,6 +1,6 @@
 <template lang="pug">
   div(
-    :class="['image', 'image--' + orientation(image)]",
+    :class="['image', 'image--' + orientation(image), className]",
   )
     figure.image__frame(
       :style="aspectRatio(image)",
@@ -20,7 +20,10 @@
 import imagesLoaded from 'imagesloaded';
 
 export default {
-  props: ['image'],
+  props: [
+    'className',
+    'image',
+  ],
 
   data () {
     return {
@@ -85,5 +88,17 @@ export default {
 
 .image__hi-res
   animation fadeIn IMAGE_TRANSITION
+
+.image--multiple:first-child
+  padding 0
+
+.image--multiple
+  padding IMAGE_GAP 0 0 0
+
+.image--multiple
+.image--multiple:first-child
+  @media BREAKPOINT_MEDIUM
+    flex 0 0 50%
+    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
 
 </style>
