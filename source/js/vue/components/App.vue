@@ -193,6 +193,12 @@ export default {
       this.app.showControls = true;
       this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
 
+      // TODO: When loading new data, wait until the transition ends, and then fetch and load the data.
+      // It looks fine when we transition between data that's been stored. It's new data that introduces
+      // jumpy behavior. See docs for how we might do this:
+      // 
+      // https://vuejs.org/v2/guide/transitions.html
+
       const fetchData = async () => {
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
@@ -200,16 +206,10 @@ export default {
         await this.fetchJson(this.endpoint('slide'), 'slide');
       }
 
-      // FIXME: Component transition is jumpy when:
-      // 'direction' = 'back',
-      //  new slide has to be fetched via JSON.
-      // I *think* the bug may be with the 'direction' logic in routes.js...
-
       if (this.hasSlideMedia) {
         this.ready(this.currentSlide);
       } else {
         fetchData();
-      }
     },
 
     getDataThumbs () {
@@ -270,10 +270,6 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// FIXME: Vue component transitions in grid layout get weird because
-// Vue loads two instances of the slide into a single grid cell so they 
-// overlap each other when a) going back, and b) fetching a new slide via JSON.
-// Going back to a previously-stored slide doesn't have this problem.
 .view
   @media BREAKPOINT_MEDIUM
     display grid
