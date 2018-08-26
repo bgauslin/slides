@@ -54,10 +54,6 @@ export default {
   padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
   width 100vw
 
-  // FIXME: Vue component transitions in grid layout get weird because
-  // Vue loads two instances of the slide into a single grid cell so they 
-  // overlap each other when a) going back, and b) fetching a new slide via JSON.
-  // Going back to a previously-stored slide doesn't have this problem.
   @media BREAKPOINT_MEDIUM
     align-self center
     grid-row 2

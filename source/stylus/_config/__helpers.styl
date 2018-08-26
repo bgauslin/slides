@@ -74,13 +74,3 @@ shadow(value)
 
   if value == 3
     box-shadow 0 3px 6px rgba(BLACK, .16), 0 3px 6px rgba(BLACK, .23)
-
-// TODO: update to use variable fonts
-webfont(name, file)
-  @font-face
-    font-family name
-    src url(file + '.eot')
-    src url(file + '.eot?#iefix') format('embedded-opentype'),
-        url(file + '.woff') format('woff'),
-        url(file + '.woff2') format('woff2'),
-        url(file + '.ttf') format('truetype')

@@ -35,7 +35,7 @@ export default {
 
 .slideshow__heading
   color inherit
-  font-size H3_SIZE // TODO: update
+  font-size H3_SIZE
   heading_font()
   margin 0 0 .25em
   padding 0
