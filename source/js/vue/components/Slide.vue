@@ -2,7 +2,9 @@
   div.slide(
     v-if="content",
   )
-    div.slide__media
+    div(
+      :class="['slide__media', className]"
+    )
       media-images(
         v-if="content.media.images",
         :images="content.media.images",
@@ -33,6 +35,14 @@ export default {
   },
 
   props: ['content'],
+
+  computed: {
+    className () {
+      if (this.content.media.images.length > 1) {
+       return 'slide__media--multiple';
+      }
+    },
+  }
 }
 </script>
 
@@ -68,6 +78,10 @@ export default {
     align-self center
     grid-column 3
     grid-row 1
+
+.slide__media--multiple
+  @media BREAKPOINT_MEDIUM
+    margin 0 px_to_rem(24)
 
 .slide__caption
   font-size CAPTION_SIZE
