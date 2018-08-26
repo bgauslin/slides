@@ -36,18 +36,17 @@ export default {
 
 .thumb
   padding THUMB_GAP 0 0 THUMB_GAP
-  flex '0 0 %s%' % (1 / 3 * 100)
+  flex '0 0 %s%' % (1 / 4 * 100)
 
   @media BREAKPOINT_SMALL
     padding THUMB_GAP_SMALL 0 0 THUMB_GAP_SMALL
-    flex '0 0 %s%' % (1 / 4 * 100)
+    flex '0 0 %s%' % (1 / 5 * 100)
 
   @media BREAKPOINT_MEDIUM
     padding THUMB_GAP_MEDIUM 0 0 THUMB_GAP_MEDIUM
-    flex '0 0 %s%' % (1 / 6 * 100)
 
   @media BREAKPOINT_LARGE
-    flex '0 0 %s%' % (1 / 8 * 100)
+    flex '0 0 %s%' % (1 / 6 * 100)
 
 .thumb__link
   display block

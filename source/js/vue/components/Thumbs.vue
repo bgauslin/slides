@@ -23,23 +23,23 @@ export default {
 @import '../../../stylus/_config/'
 
 .thumbs
-  grid-row 2
   margin THUMB_GAP
-  padding 0 0 CONTROLS_HEIGHT
+  padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
 
   @media BREAKPOINT_SMALL
     margin THUMB_GAP_SMALL
 
   @media BREAKPOINT_MEDIUM
+    grid-row 2
     margin THUMB_GAP_MEDIUM
     padding 0
 
   @media BREAKPOINT_LARGE
     margin THUMB_GAP_LARGE
 
-  @media BREAKPOINT_XLARGE
-    margin THUMB_GAP_LARGE auto
-    max-width MAX_WIDTH
+  // @media BREAKPOINT_XLARGE
+  //   margin THUMB_GAP_LARGE auto
+  //   max-width MAX_WIDTH
 
 .thumbs__group
   display flex
