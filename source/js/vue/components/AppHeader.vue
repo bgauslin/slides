@@ -25,16 +25,19 @@ export default {
 
 .header
   background rgba(DARK_GREY, .9)
-  // border-bottom 1px solid rgba(WHITE, .3)
   position fixed
   width 100vw
   z-index 1
+
+  @media BREAKPOINT_LARGE
+    background 0
+    margin-left COLUMN_GAP_LARGE
+    width SIDEBAR_WIDTH
 
 .header__content
   align-items center
   display flex
   height HEADER_HEIGHT
-  // max-width CONTENT_MAX_WIDTH
   position relative
 
 .header__heading
@@ -51,5 +54,9 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
+  
+  @media BREAKPOINT_LARGE
+    margin 0
+    text-align left
 
 </style>

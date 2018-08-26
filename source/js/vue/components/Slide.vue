@@ -38,7 +38,7 @@ export default {
 
   computed: {
     className () {
-      if (this.content.media.images.length > 1) {
+      if (this.content.media.images && this.content.media.images.length > 1) {
        return 'slide__media--multiple';
       }
     },
@@ -64,11 +64,12 @@ export default {
     height auto
     padding 0
 
-  // @media BREAKPOINT_LARGE
-    // display grid
-    // grid-column-gap px_to_rem(24)
-    // grid-template-columns 0 px_to_rem(256) 1fr 0
-    // grid-template-rows 1fr
+  @media BREAKPOINT_LARGE
+    display grid
+    grid-column-gap COLUMN_GAP_LARGE
+    grid-row 1 / span 2
+    grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
+    grid-template-rows 1fr
 
 .slide__media
   @media BREAKPOINT_MEDIUM

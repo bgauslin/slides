@@ -87,7 +87,6 @@ export default {
 .controls
   align-items center
   background rgba(DARK_GREY, .9)
-  // border-top 1px solid rgba(WHITE, .3)
   bottom 0
   display flex
   height CONTROLS_HEIGHT
@@ -98,6 +97,11 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
+  
+  @media BREAKPOINT_LARGE
+    background 0
+    padding 0 (COLUMN_GAP_LARGE / 2)
+    width SIDEBAR_WIDTH + (COLUMN_GAP_LARGE * 2)
 
 .count
   font-size HEADING_SIZE
