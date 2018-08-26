@@ -193,11 +193,6 @@ export default {
       this.app.showControls = true;
       this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
 
-      // TODO: When loading new data, wait until the transition ends, and then fetch and load the data.
-      // It looks fine when we transition between data that's been stored. It's new data that introduces
-      // jumpy behavior. See docs for how we might do this:
-      // 
-      // https://vuejs.org/v2/guide/transitions.html
 
       const fetchData = async () => {
         if (!this.slideshow) {
@@ -210,6 +205,7 @@ export default {
         this.ready(this.currentSlide);
       } else {
         fetchData();
+      }
     },
 
     getDataThumbs () {
