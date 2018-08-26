@@ -12,7 +12,7 @@ export default router => {
     } else if (from.name === 'slide' && to.name === 'thumbs') {
       direction = 'forward';
 
-    } else if (from.name === 'slide' && (to.name === 'home' || to.name === 'cover')) {
+    } else if ((from.name === 'cover' || from.name === 'slide') && (to.name === 'home' || to.name === 'cover')) {
       direction = 'back';
 
     } else if (from.name === 'thumbs' && to.name === 'slide') {

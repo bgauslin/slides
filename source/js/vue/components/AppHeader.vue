@@ -1,21 +1,46 @@
 <template lang="pug">
   header.header
     div.header__content
-      h1.header__heading {{ heading }}
+      router-link(
+        v-if="slideshowTitle && !homeLink",
+        :class="className",
+        :title="slideshowTitle",
+        :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
+      ) {{ slideshowTitle }}
+      router-link(
+        v-if="homeLink",
+        :class="className",
+        exact,
+        title="Home",
+        :to="{ name: 'home' }",
+      ) Slideshows
 </template>
 
 <script>
 export default {
   computed: {
-    // TODO: Refactor to avoid console error on initial load with other routes.
-    heading () {
-      if (this.$route.name == 'home' || this.$route.name == 'cover') {
-        return 'Slideshows';
+    className () {
+      if (this.$route.name == 'home') {
+        return 'header__link';
       } else {
-        return 'Shotgun Renovation'; // NOTE: Hard-coded until this gets refactored.
-        // return this.$store.getters.slideshow.title;
+        return 'header__link header__link--back';
       }
-    }
+    },
+
+    homeLink () {
+      return (this.$route.name == 'home' || this.$route.name == 'cover');
+    },
+
+    slideshowRoute () {
+      return this.$route.params.slideshow;
+    },
+
+    slideshowTitle () {
+      const slideshow = this.$store.getters.slideshow
+      if (slideshow !== undefined) {
+        return slideshow.title;
+      }
+    },
   }
 }
 </script>
@@ -31,32 +56,35 @@ export default {
 
   @media BREAKPOINT_LARGE
     background 0
-    margin-left COLUMN_GAP_LARGE
     width SIDEBAR_WIDTH
 
-.header__content
+.header__link
   align-items center
-  display flex
-  height HEADER_HEIGHT
-  position relative
-
-.header__heading
   color WHITE
-  flex 1
+  display inline-flex
   font-size HEADING_SIZE
   font-weight normal
   heading_font()
-  margin 0 HEADER_BUTTON_SIZE
+  height HEADER_HEIGHT
   overflow hidden
-  text-align center
+  padding 0 px_to_rem(16)
   text-overflow ellipsis
   white-space nowrap
 
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
-  
+
   @media BREAKPOINT_LARGE
-    margin 0
-    text-align left
+    padding 0 COLUMN_GAP_LARGE
+
+.header__link--back
+  padding-left px_to_rem(8)
+
+.header__link--back::before
+  content ICON_ANGLE_LEFT
+  font-size BACK_ARROW_SIZE
+  icon()
+  overflow hidden
+  width BACK_ARROW_SIZE
 
 </style>
