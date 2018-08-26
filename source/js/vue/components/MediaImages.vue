@@ -54,4 +54,11 @@ export default {
     flex 0 0 50%
     padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
 
+// TODO: refactor selector for lower specificity
+.images--multiple .image:first-child
+  padding 0
+
+  @media BREAKPOINT_MEDIUM
+    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
+
 </style>
