@@ -21,7 +21,12 @@ export default {
 @import '../../../stylus/_config/'
 
 .slideshows
-  grid-row 2
+  height 100%
+  padding HEADER_HEIGHT 0 0
+  width 100%
+
+  @media BREAKPOINT_MEDIUM
+    grid-row 2
 
 .slideshow__link
   display block

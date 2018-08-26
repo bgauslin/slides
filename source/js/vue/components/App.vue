@@ -265,11 +265,9 @@ export default {
 @import '../../../stylus/_config/'
 
 .view
-  display grid
-  grid-template-columns 1fr
-  grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT
-
   @media BREAKPOINT_MEDIUM
+    display grid
+    grid-template-columns 1fr
     grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE

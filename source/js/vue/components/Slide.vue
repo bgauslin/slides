@@ -40,11 +40,13 @@ export default {
 @import '../../../stylus/_config/'
 
 .slide
-  grid-row 2
-  padding 0 0 CONTROLS_HEIGHT
+  height 100%
+  padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
+  width 100vw
 
   @media BREAKPOINT_MEDIUM
     display grid
+    grid-row 2
     grid-template-columns 1fr
     grid-template-rows 1fr auto 2fr
     padding 0
