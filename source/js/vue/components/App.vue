@@ -50,7 +50,7 @@ export default {
         description: null,
         title: document.title,
       },
-      transitions: {
+      transition: {
         enter: null,
         leave: null,
       },
@@ -88,21 +88,21 @@ export default {
 
   methods: {
     afterEnter (el) {
-      el.classList.remove(this.transitions.enter);
+      el.classList.remove(this.transition.enter);
     },
 
     afterLeave (el) {
-      el.classList.remove(this.transitions.leave);
+      el.classList.remove(this.transition.leave);
     },
 
     beforeEnter (el) {
-      this.transitions.enter = this.getTransitionEnter();
-      el.classList.add(this.transitions.enter);
+      this.transition.enter = this.transitionEnterClass();
+      el.classList.add(this.transition.enter);
     },
 
     beforeLeave (el) {
-      this.transitions.leave = this.getTransitionLeave();
-      el.classList.add(this.transitions.leave);
+      this.transition.leave = this.transitionLeaveClass();
+      el.classList.add(this.transition.leave);
     },
 
     docTitle () {
@@ -218,7 +218,14 @@ export default {
       fetchData();
     },
 
-    getTransitionEnter () {
+    ready(data, showControls = false) {
+      this.app.content = data;
+      this.app.showControls = showControls;
+      this.app.dataLoaded = true;
+      document.title = this.docTitle();
+    },
+
+    transitionEnterClass () {
       switch (this.direction) {
         case 'forward':
           return 'slide-in-right';
@@ -229,7 +236,7 @@ export default {
       }
     },
 
-    getTransitionLeave () {
+    transitionLeaveClass () {
       switch (this.direction) {
         case 'forward':
           return 'slide-out-left';
@@ -238,13 +245,6 @@ export default {
         default:
           return 'first-run';
       }
-    },
-
-    ready(data, showControls = false) {
-      this.app.content = data;
-      this.app.showControls = showControls;
-      this.app.dataLoaded = true;
-      document.title = this.docTitle();
     },
 
     // getMetaDescription() {
