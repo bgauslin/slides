@@ -94,9 +94,6 @@ export default {
   position fixed
   width 100vw
   z-index 1
-
-  @media BREAKPOINT_MEDIUM
-    height CONTROLS_HEIGHT_MEDIUM
   
   @media BREAKPOINT_LARGE
     background 0
@@ -116,10 +113,6 @@ export default {
   overflow hidden
   transition transform TRANSITION_SPEED
   width CONTROLS_HEIGHT
-
-  @media BREAKPOINT_MEDIUM
-    height CONTROLS_HEIGHT_MEDIUM
-    width CONTROLS_HEIGHT_MEDIUM
 
   &:active
     transform scale(1.1)

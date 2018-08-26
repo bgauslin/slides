@@ -270,7 +270,7 @@ export default {
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns minmax(auto, 1fr)
-    grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT_MEDIUM
+    grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT
 
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
