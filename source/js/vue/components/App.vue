@@ -264,14 +264,15 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// FIXME: Vue component transitions in grid layout get weird because
+// Vue loads two instances of the slide into a single grid cell so they 
+// overlap each other when a) going back, and b) fetching a new slide via JSON.
+// Going back to a previously-stored slide doesn't have this problem.
 .view
   @media BREAKPOINT_MEDIUM
     display grid
-    grid-template-columns 1fr
+    grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT 1fr CONTROLS_HEIGHT_MEDIUM
-
-  @media BREAKPOINT_LARGE
-    grid-template-rows CONTROLS_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
 
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION
@@ -287,13 +288,5 @@ export default {
 
 .first-run
   animation fadeIn SLIDE_TRANSITION
-
-@media BREAKPOINT_MEDIUM
-  .slide-in-left
-  .slide-in-right
-  .slide-out-left
-  .slide-out-right
-  .first-run
-    animation-duration SLIDE_TRANSITION_MEDIUM
 
 </style>
