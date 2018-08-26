@@ -83,7 +83,7 @@ export default {
 .slide__caption
   font-size CAPTION_SIZE
   margin 0 auto
-  padding px_to_rem(16)
+  padding px_to_rem(16) px_to_rem(16) CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_SIZE_MEDIUM
