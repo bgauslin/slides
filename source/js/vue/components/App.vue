@@ -145,13 +145,13 @@ export default {
           break;
         case 'slide':          
           this.$store.dispatch('updateSlide', data);
-          this.ready(data, true);
+          this.ready(data);
           break;
         case 'slideshow':
           this.$store.dispatch('updateSlideshow', data);
           break;
         case 'thumbs':
-          this.ready(data, true);
+          this.ready(data);
           break;
       }
     },
@@ -197,30 +197,36 @@ export default {
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
-        this.fetchJson(this.endpoint('slide'), 'slide');
+        await this.fetchJson(this.endpoint('slide'), 'slide');
       }
 
+      // FIXME: Component transition is jumpy when:
+      // 'direction' = 'back',
+      //  new slide has to be fetched via JSON.
+      // I *think* the bug may be with the 'direction' logic in routes.js...
+
       if (this.hasSlideMedia) {
-        this.ready(this.currentSlide, true);
+        this.ready(this.currentSlide);
       } else {
         fetchData();
       }
     },
 
     getDataThumbs () {
+      this.app.showControls = true;
+
       // TODO: Store the thumbnails in the store.
       const fetchData = async () => {
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
-        this.fetchJson(this.endpoint('thumbs'), 'thumbs');
+        await this.fetchJson(this.endpoint('thumbs'), 'thumbs');
       }
       fetchData();
     },
 
-    ready(data, showControls = false) {
+    ready(data) {
       this.app.content = data;
-      this.app.showControls = showControls;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
     },
