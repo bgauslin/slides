@@ -3,14 +3,14 @@
     data-full-height="",
     :style="coverImage(content.image)",
   )
-    router-link(
-      class="cover__link",
-      :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
-    )
+    div.cover__frame
       header.cover__header
         h2.cover__heading {{ content.title }}
         p.cover__summary {{ content.summary }}
-        P.cover__start Start slideshow
+        router-link(
+          class="cover__link",
+          :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
+        ) Start slideshow
 </template>
 
 <script>
@@ -34,21 +34,22 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.cover__link
+.cover
+.cover__frame
   align-items center
-  background-color rgba(DARK_GREY, .85)
   display flex
-  height 100%
   justify-content center
-  link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
   width 100%
+
+.cover__frame
+  background-color rgba(DARK_GREY, .85)
+  height 100%
 
 .cover__header
   padding 1rem
   text-align center
 
 .cover__heading
-  color inherit
   font-size H1_SIZE
   heading_font()
   margin 0 0 .25em
@@ -58,7 +59,6 @@ export default {
     font-size H1_SIZE_MEDIUM
 
 .cover__summary
-  color inherit
   font-size CAPTION_SIZE
   margin 0
   padding 0
@@ -68,17 +68,18 @@ export default {
 
 START_BUTTON_HEIGHT = px_to_rem(40)
 
-.cover__start
+.cover__link
   align-items center
   border 2px solid WHITE
   border-radius (START_BUTTON_HEIGHT / 2)
   display inline-flex
   heading_font()
   height START_BUTTON_HEIGHT
-  margin px_to_rem(32) 0 0
+  link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
+  margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16) 0 px_to_rem(24)
 
-.cover__start::after
+.cover__link::after
   content ICON_ANGLE_RIGHT
   font-size px_to_rem(24)
   icon()
