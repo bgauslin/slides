@@ -9,13 +9,13 @@ export default router => {
     } else if ((from.name === 'home' || from.name === 'cover') && (to.name === 'cover' || to.name === 'slide')) {
       direction = 'forward';
 
-    } else if (from.name === 'slide' && to.name === 'thumbs') {
+    } else if ((from.name === 'home' || from.name === 'cover' || from.name === 'slide') && to.name === 'thumbs') {
       direction = 'forward';
 
     } else if ((from.name === 'cover' || from.name === 'slide') && (to.name === 'home' || to.name === 'cover')) {
       direction = 'back';
 
-    } else if (from.name === 'thumbs' && to.name === 'slide') {
+    } else if (from.name === 'thumbs' && (to.name === 'home' || to.name === 'cover' || to.name === 'slide')) {
       direction = 'back';
 
     } else if (from.name === 'slide' && to.name === 'slide') {
