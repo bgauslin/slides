@@ -60,7 +60,7 @@ export default {
 
 .header__link
   align-items center
-  color WHITE
+  link(WHITE, WHITE, rgba(WHITE, .7), WHITE)
   display inline-flex
   font-size HEADING_SIZE
   font-weight normal
@@ -69,6 +69,7 @@ export default {
   overflow hidden
   padding 0 px_to_rem(16)
   text-overflow ellipsis
+  transition color TRANSITION_SPEED
   white-space nowrap
 
   @media BREAKPOINT_MEDIUM

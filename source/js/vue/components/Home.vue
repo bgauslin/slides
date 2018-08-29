@@ -33,6 +33,7 @@ export default {
   display block
   link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
   padding 1rem
+  transition color TRANSITION_SPEED
 
 .slideshow__heading
   color inherit

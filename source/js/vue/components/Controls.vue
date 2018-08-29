@@ -114,7 +114,7 @@ export default {
   display inline-flex
   height CONTROLS_HEIGHT
   justify-content center
-  link(WHITE, WHITE, WHITE, WHITE)
+  link(WHITE, WHITE, rgba(WHITE, .7), rgba(WHITE, .7))
   overflow hidden
   transition transform TRANSITION_SPEED
   width CONTROLS_HEIGHT
@@ -124,7 +124,7 @@ export default {
     width CONTROLS_HEIGHT_MEDIUM
 
 .prev-next__link:active
-  transform scale(1.5)
+  transform scale(.8)
 
 .prev-next__link::before
 .prev-next__link::after
@@ -142,11 +142,5 @@ export default {
 .next .prev-next__link::after
   content ICON_ANGLE_RIGHT
   left .1rem
-
-.no-touch .prev-next__link
-  link_hover(WHITE)
-
-  &:hover
-    transform scale(1.1)
 
 </style>

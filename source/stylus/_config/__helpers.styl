@@ -50,22 +50,23 @@ font_weight(weight)
     font-variation-settings 'wght' weight
 
 link(link, visited, hover, active)
-  &
-    &:link
-      color link
+  &:link
+    color link
 
-    &:visited
-      color visited
+  &:visited
+    color visited
 
-    &:active
-    &:focus
-      color active
+  &:active
+  &:focus
+    color active
 
-  [no-touch]&
-    &:hover
-      color hover
+  [no-touch] &:hover
+    color hover
 
 shadow(value)
+  if value == 0
+    box-shadow none
+
   if value == 1
     box-shadow 0 0 10px 0 rgba(BLACK, .12)
 
