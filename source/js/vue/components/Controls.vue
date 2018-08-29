@@ -114,7 +114,6 @@ export default {
   display inline-flex
   height CONTROLS_HEIGHT
   justify-content center
-  link(WHITE, WHITE, rgba(WHITE, .7), rgba(WHITE, .7))
   overflow hidden
   transition transform TRANSITION_SPEED
   width CONTROLS_HEIGHT

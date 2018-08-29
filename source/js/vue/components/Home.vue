@@ -31,19 +31,18 @@ export default {
 
 .slideshow__link
   display block
-  link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
   padding 1rem
   transition color TRANSITION_SPEED
 
 .slideshow__heading
-  color inherit
+  // color inherit
   font-size H3_SIZE
   heading_font()
   margin 0 0 .25em
   padding 0
 
 .slideshow__summary
-  color inherit
+  // color inherit
   font-size CAPTION_SIZE
   margin 0
   padding 0

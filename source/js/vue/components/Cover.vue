@@ -42,7 +42,6 @@ export default {
   width 100%
 
 .cover__frame
-  background-color rgba(DARK_GREY, .85)
   height 100%
 
 .cover__header
@@ -70,12 +69,10 @@ START_BUTTON_HEIGHT = px_to_rem(40)
 
 .cover__link
   align-items center
-  border 2px solid WHITE // TODO: border styles for link
   border-radius (START_BUTTON_HEIGHT / 2)
   display inline-flex
   heading_font()
   height START_BUTTON_HEIGHT
-  link(WHITE, WHITE, rgba(WHITE, .75), rgba(WHITE, .75))
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16) 0 px_to_rem(24)
   transition color TRANSITION_SPEED

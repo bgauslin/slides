@@ -1,0 +1,47 @@
+body[data-theme="dark"]
+  background DARK_GREY
+  color OFF_WHITE
+
+  .cover__frame
+    background-color rgba(DARK_GREY, .85)
+
+  .cover__header
+    color WHITE
+
+  .header__link
+    link(WHITE, WHITE, rgba(WHITE, .7), WHITE)
+
+  .cover__link
+  .prev-next__link
+  .slideshow__link
+    link(WHITE, WHITE, rgba(WHITE, .7), rgba(WHITE, .7))
+
+  .cover__link
+    border 2px solid WHITE // TODO: border styles for link
+
+  .publication
+    background WHITE // TODO: revisit .publication styles
+
+body[data-theme="light"]
+  background OFF_WHITE
+  color DARK_GREY
+
+  .cover__frame
+    background-color rgba(WHITE, .85)
+
+  .cover__header
+    color DARK_GREY
+
+  .header__link
+    link(DARK_GREY, DARK_GREY, rgba(DARK_GREY, .7), DARK_GREY)
+
+  .cover__link
+  .prev-next__link
+  .slideshow__link
+    link(DARK_GREY, DARK_GREY, rgba(DARK_GREY, .7), rgba(DARK_GREY, .7))
+
+  .cover__link
+    border 2px solid DARK_GREY // TODO: border styles for link
+
+  .publication
+    background WHITE // TODO: revisit .publication styles

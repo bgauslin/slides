@@ -60,7 +60,6 @@ export default {
 
 .header__link
   align-items center
-  link(WHITE, WHITE, rgba(WHITE, .7), WHITE)
   display inline-flex
   font-size HEADING_SIZE
   font-weight normal

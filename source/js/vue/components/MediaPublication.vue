@@ -30,7 +30,6 @@ export default {
 @import '../../../stylus/_config/'
 
 .publication
-  background WHITE
   padding px_to_rem(16)
 
   @media BREAKPOINT_MEDIUM
