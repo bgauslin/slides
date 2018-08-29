@@ -3,6 +3,7 @@
     data-full-height="",
   )
     app-header
+    theme
     preloader(
       v-if="!app.dataLoaded",
     )
@@ -27,6 +28,7 @@
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
+import Theme from './Theme.vue';
 
 import getApiDomain from '../../helpers/getApiDomain';
 const apiDomain = getApiDomain();
@@ -36,6 +38,7 @@ export default {
     AppHeader,
     Controls,
     Preloader,
+    Theme,
   },
 
   data () {
