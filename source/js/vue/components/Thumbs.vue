@@ -32,10 +32,7 @@ export default {
   @media BREAKPOINT_MEDIUM
     grid-row 2
     margin 0 THUMB_GAP_MEDIUM
-    padding 0 0 CONTROLS_HEIGHT
-
-  @media BREAKPOINT_LARGE
-    margin 0 THUMB_GAP_LARGE
+    padding 0 0 CONTROLS_HEIGHT_MEDIUM
 
 .thumbs__group
   display flex

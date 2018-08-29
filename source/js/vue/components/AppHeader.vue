@@ -73,6 +73,7 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
+    height HEADER_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE
     padding 0 COLUMN_GAP_LARGE

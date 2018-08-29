@@ -27,6 +27,7 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     grid-row 2
+    padding 0
 
 .slideshow__link
   display block

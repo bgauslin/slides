@@ -95,9 +95,11 @@ export default {
   width 100vw
   z-index 1
   
+  @media BREAKPOINT_MEDIUM
+    height CONTROLS_HEIGHT_MEDIUM
+
   @media BREAKPOINT_LARGE
     background 0
-    padding 0 (COLUMN_GAP_LARGE / 2)
     width SIDEBAR_WIDTH + (COLUMN_GAP_LARGE * 2)
 
 .count
@@ -114,8 +116,12 @@ export default {
   transition transform TRANSITION_SPEED
   width CONTROLS_HEIGHT
 
-  &:active
-    transform scale(1.1)
+  @media BREAKPOINT_MEDIUM
+    height CONTROLS_HEIGHT_MEDIUM
+    width CONTROLS_HEIGHT_MEDIUM
+
+.prev-next__link:active
+  transform scale(1.5)
 
 .prev-next__link::before
 .prev-next__link::after
