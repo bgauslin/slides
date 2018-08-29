@@ -103,8 +103,11 @@ export default {
     width SIDEBAR_WIDTH + (COLUMN_GAP_LARGE * 2)
 
 .count
-  font-size HEADING_SIZE
+  font-size CAPTION_SIZE
   heading_font()
+
+  @media BREAKPOINT_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
 
 .prev-next__link
   align-items center

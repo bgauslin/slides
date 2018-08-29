@@ -59,12 +59,12 @@ export default {
     font-size H1_SIZE_MEDIUM
 
 .cover__summary
-  font-size CAPTION_SIZE
+  font-size H3_SIZE
   margin 0
   padding 0
 
   @media BREAKPOINT_MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
+    font-size H3_SIZE_MEDIUM
 
 START_BUTTON_HEIGHT = px_to_rem(40)
 
