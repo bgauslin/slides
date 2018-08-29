@@ -63,7 +63,7 @@ export default {
   @media BREAKPOINT_LARGE
     display grid
     grid-column-gap COLUMN_GAP_LARGE
-    grid-row 1 / span 2
+    grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
 
@@ -79,6 +79,9 @@ export default {
 .slide__media--multiple
   @media BREAKPOINT_MEDIUM
     margin 0 px_to_rem(24)
+
+  @media BREAKPOINT_LARGE
+    margin 0
 
 .slide__caption
   font-size CAPTION_SIZE
