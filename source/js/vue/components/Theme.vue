@@ -65,58 +65,81 @@ THEME_ICON_LIGHT = 'brightness_high'
   icon()
 
 // TODO: loop over array of values for theming...
+
+COLOR_DARK = WHITE
+BACKGROUND_DARK = DARK_GREY
+
 body[data-theme="dark"]
-  background DARK_GREY
+  background BACKGROUND_DARK
   color OFF_WHITE
 
+  .header
+  .controls
+    background rgba(BACKGROUND_DARK, .9)
+
+    @media BREAKPOINT_LARGE
+      background 0
+
   .cover__frame
-    background-color rgba(DARK_GREY, .85)
+    background-color rgba(BACKGROUND_DARK, .85)
 
   .theme
   .cover__header
-    color WHITE
+    color COLOR_DARK
 
   .theme::before
     content THEME_ICON_DARK
 
   .header__link
-    link(WHITE, WHITE, rgba(WHITE, .7), WHITE)
+    link(COLOR_DARK, COLOR_DARK, rgba(COLOR_DARK, .7), COLOR_DARK)
 
   .cover__link
   .prev-next__link
   .slideshow__link
-    link(WHITE, WHITE, rgba(WHITE, .7), rgba(WHITE, .7))
+    link(COLOR_DARK, COLOR_DARK, rgba(COLOR_DARK, .7), rgba(COLOR_DARK, .7))
 
   .cover__link
-    border 2px solid WHITE // TODO: border styles for link
+    border 2px solid COLOR_DARK // TODO: border styles for link
 
   .publication
     background WHITE // TODO: revisit .publication styles
 
+
+
+COLOR_LIGHT = DARK_GREY
+BACKGROUND_LIGHT = OFF_WHITE
+
 body[data-theme="light"]
-  background OFF_WHITE
-  color DARK_GREY
+  background BACKGROUND_LIGHT
+  color COLOR_LIGHT
+
+  .header
+  .controls
+    background rgba(BACKGROUND_LIGHT, .9)
+
+    @media BREAKPOINT_LARGE
+      background 0
 
   .cover__frame
-    background-color rgba(WHITE, .85)
+    background-color rgba(WHITE, .5)
 
   .theme
   .cover__header
-    color DARK_GREY
+    color COLOR_LIGHT
   
   .theme::before
     content THEME_ICON_LIGHT
 
   .header__link
-    link(DARK_GREY, DARK_GREY, rgba(DARK_GREY, .7), DARK_GREY)
+    link(COLOR_LIGHT, COLOR_LIGHT, rgba(COLOR_LIGHT, .7), COLOR_LIGHT)
 
   .cover__link
   .prev-next__link
   .slideshow__link
-    link(DARK_GREY, DARK_GREY, rgba(DARK_GREY, .7), rgba(DARK_GREY, .7))
+    link(COLOR_LIGHT, COLOR_LIGHT, rgba(COLOR_LIGHT, .7), rgba(COLOR_LIGHT, .7))
 
   .cover__link
-    border 2px solid DARK_GREY // TODO: border styles for link
+    border 2px solid COLOR_LIGHT // TODO: border styles for link
 
   .publication
     background WHITE // TODO: revisit .publication styles

@@ -86,7 +86,6 @@ export default {
 
 .controls
   align-items center
-  background rgba(DARK_GREY, .9)
   bottom 0
   display flex
   height CONTROLS_HEIGHT
@@ -99,7 +98,6 @@ export default {
     height CONTROLS_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE
-    background 0
     width SIDEBAR_WIDTH + (COLUMN_GAP_LARGE * 2)
 
 .count

@@ -49,13 +49,11 @@ export default {
 @import '../../../stylus/_config/'
 
 .header
-  background rgba(DARK_GREY, .9)
   position fixed
   width 100vw
   z-index 1
 
   @media BREAKPOINT_LARGE
-    background 0
     width SIDEBAR_WIDTH
 
 .header__link
