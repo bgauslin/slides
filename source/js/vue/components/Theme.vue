@@ -64,84 +64,68 @@ THEME_ICON_LIGHT = 'brightness_high'
   font-size THEME_ICON_SIZE
   icon()
 
-// TODO: loop over array of values for theming...
+THEMES = {
+  dark: {
+    BACKGROUND: DARK_GREY
+    CHROME_BACKGROUND: rgba(DARK_GREY, .9)
+    // CHROME_SHADOW: none
+    COVER_BACKGROUND: rgba(DARK_GREY, .9)
+    ICON: THEME_ICON_DARK
+    LINK: WHITE
+    LINK_ACTIVE: rgba(WHITE, .7)
+    LINK_HOVER: rgba(WHITE, .7)
+    TEXT_COLOR: WHITE
+  },
+  light: {
+    BACKGROUND: OFF_WHITE
+    CHROME_BACKGROUND: rgba(OFF_WHITE, .9)
+    // CHROME_SHADOW: '0 1px 3px rgba(%s, .12), 0 1px 2px rgba(%s, .24)' % BLACK
+    COVER_BACKGROUND: rgba(WHITE, .5)
+    ICON: THEME_ICON_LIGHT
+    LINK: DARK_GREY
+    LINK_ACTIVE: rgba(DARK_GREY, .7)
+    LINK_HOVER: rgba(DARK_GREY, .7)
+    TEXT_COLOR: DARK_GREY
+  }
+}
 
-COLOR_DARK = WHITE
-BACKGROUND_DARK = DARK_GREY
+for name, theme in THEMES
+  [data-theme=\"{name}\"]
+    {body}&
+      background theme['BACKGROUND'];
+      color theme['TEXT_COLOR'];
 
-body[data-theme="dark"]
-  background BACKGROUND_DARK
-  color OFF_WHITE
+      .theme::before
+        content theme['ICON'];
 
-  .header
-  .controls
-    background rgba(BACKGROUND_DARK, .9)
+      .header
+      .controls
+        background theme['CHROME_BACKGROUND'];
+        // box-shadow theme['CHROME_SHADOW'];
 
-    @media BREAKPOINT_LARGE
-      background 0
+        @media BREAKPOINT_LARGE
+          background 0;
 
-  .cover__frame
-    background-color rgba(BACKGROUND_DARK, .85)
+      .cover__frame
+        background-color theme['COVER_BACKGROUND'];
 
-  .theme
-  .cover__header
-    color COLOR_DARK
+      .theme
+      .cover__header
+        color theme['TEXT_COLOR'];
 
-  .theme::before
-    content THEME_ICON_DARK
+      .cover__link
+      .prev-next__link
+      .slideshow__link
+        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
 
-  .header__link
-    link(COLOR_DARK, COLOR_DARK, rgba(COLOR_DARK, .7), COLOR_DARK)
+      // TODO: border states for .cover__link
+      .cover__link
+        border 2px solid theme['LINK'];
 
-  .cover__link
-  .prev-next__link
-  .slideshow__link
-    link(COLOR_DARK, COLOR_DARK, rgba(COLOR_DARK, .7), rgba(COLOR_DARK, .7))
+      .header__link
+        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
 
-  .cover__link
-    border 2px solid COLOR_DARK // TODO: border styles for link
-
-  .publication
-    background WHITE // TODO: revisit .publication styles
-
-
-
-COLOR_LIGHT = DARK_GREY
-BACKGROUND_LIGHT = OFF_WHITE
-
-body[data-theme="light"]
-  background BACKGROUND_LIGHT
-  color COLOR_LIGHT
-
-  .header
-  .controls
-    background rgba(BACKGROUND_LIGHT, .9)
-
-    @media BREAKPOINT_LARGE
-      background 0
-
-  .cover__frame
-    background-color rgba(WHITE, .5)
-
-  .theme
-  .cover__header
-    color COLOR_LIGHT
-  
-  .theme::before
-    content THEME_ICON_LIGHT
-
-  .header__link
-    link(COLOR_LIGHT, COLOR_LIGHT, rgba(COLOR_LIGHT, .7), COLOR_LIGHT)
-
-  .cover__link
-  .prev-next__link
-  .slideshow__link
-    link(COLOR_LIGHT, COLOR_LIGHT, rgba(COLOR_LIGHT, .7), rgba(COLOR_LIGHT, .7))
-
-  .cover__link
-    border 2px solid COLOR_LIGHT // TODO: border styles for link
-
-  .publication
-    background WHITE // TODO: revisit .publication styles
+      .publication
+        background WHITE; // TODO: revisit .publication styles
 
 </style>
