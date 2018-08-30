@@ -2,7 +2,9 @@
   div.view(
     data-full-height="",
   )
-    app-header
+    app-header(
+      :view="view",
+    )
     theme
     preloader(
       v-if="!app.dataLoaded",
@@ -21,6 +23,7 @@
       )
     controls(
       v-if="app.showControls",
+      :view="view",
     )
 </template>
 
@@ -75,17 +78,23 @@ export default {
 
     slideshow () {
       return this.$store.getters.slideshow;
+    },
+
+    view () {
+      return this.$route.name;
     }
   },
 
   mounted () {
     this.getContent();
+    this.updateView();
     // this.getMetaDescription();
   },
 
   watch: {
     '$route' (to, from) {      
       this.getContent();
+      this.updateView();
     }
   },
 
@@ -250,6 +259,10 @@ export default {
         default:
           return 'first-run';
       }
+    },
+
+    updateView () {
+      document.body.setAttribute('data-view', this.view);
     },
 
     // getMetaDescription() {
