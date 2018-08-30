@@ -87,14 +87,12 @@ export default {
 
   mounted () {
     this.getContent();
-    this.updateView();
     // this.getMetaDescription();
   },
 
   watch: {
     '$route' (to, from) {      
       this.getContent();
-      this.updateView();
     }
   },
 
@@ -259,10 +257,6 @@ export default {
         default:
           return 'first-run';
       }
-    },
-
-    updateView () {
-      document.body.setAttribute('data-view', this.view);
     },
 
     // getMetaDescription() {
