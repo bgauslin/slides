@@ -1,15 +1,17 @@
 <template lang="pug">
-  header.header
+  header(
+    :class="['header', 'header--' + view]",
+  )
     div.header__content
       router-link(
         v-if="slideshowTitle && !homeLink",
-        :class="className",
+        :class="linkClass",
         :title="slideshowTitle",
         :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
       ) {{ slideshowTitle }}
       router-link(
         v-if="homeLink",
-        :class="className",
+        :class="linkClass",
         exact,
         title="Home",
         :to="{ name: 'home' }",
@@ -18,17 +20,19 @@
 
 <script>
 export default {
+  props: ['view'],
+
   computed: {
-    className () {
+    homeLink () {
+      return (this.$route.name == 'home' || this.$route.name == 'cover');
+    },
+
+    linkClass () {
       if (this.$route.name == 'home') {
         return 'header__link';
       } else {
         return 'header__link header__link--back';
       }
-    },
-
-    homeLink () {
-      return (this.$route.name == 'home' || this.$route.name == 'cover');
     },
 
     slideshowRoute () {
@@ -55,6 +59,10 @@ export default {
 
   @media BREAKPOINT_LARGE
     width SIDEBAR_WIDTH
+
+.header--thumbs
+  @media BREAKPOINT_LARGE
+    width 100vw
 
 .header__link
   align-items center
