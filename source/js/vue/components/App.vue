@@ -23,7 +23,6 @@
       )
     controls(
       v-if="app.showControls",
-      :view="view",
     )
 </template>
 

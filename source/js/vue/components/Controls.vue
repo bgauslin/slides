@@ -13,12 +13,6 @@
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
         :title="slidePrev.title",
       )
-      router-link(
-        v-if="slideLast && isThumbsView",
-        class="prev-next__link",
-        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideLast.slug } }",
-        :title="slideLast.title",
-      )
         span.prev-next__label Prev
     div.count(
       v-if="!isThumbsView",
