@@ -39,16 +39,12 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.images
-  display flex
-
 .images--multiple
-  flex-wrap wrap
   margin 0 auto
   width 50%
 
   @media BREAKPOINT_MEDIUM
-    flex-wrap nowrap
+    display flex
     margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
     width auto
 

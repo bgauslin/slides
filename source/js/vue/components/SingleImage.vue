@@ -67,11 +67,9 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.image
-  flex 0 0 100%
-
+// /shotgun/walk-in-closet
 .image--portrait
-  flex 0 0 50%
+  width 50%
   margin 0 auto
 
 .image__frame
@@ -89,11 +87,12 @@ export default {
 .image__hi-res
   animation fadeIn IMAGE_TRANSITION
 
-.image--multiple:first-child
-  padding 0
-
+// /shotgun/bedroom-to-laundry
 .image--multiple
   padding IMAGE_GAP 0 0 0
+
+.image--multiple:first-child
+  padding 0
 
 .image--multiple
 .image--multiple:first-child
