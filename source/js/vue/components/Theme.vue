@@ -55,10 +55,7 @@ THEME_ICON_LIGHT = 'brightness_high'
 
   @media BREAKPOINT_MEDIUM
     height HEADER_HEIGHT_MEDIUM
-
-  @media BREAKPOINT_LARGE
-    left SIDEBAR_WIDTH
-    right auto
+    width HEADER_HEIGHT_MEDIUM
 
 .theme::before
   font-size THEME_ICON_SIZE
@@ -68,7 +65,6 @@ THEMES = {
   dark: {
     BACKGROUND: DARK_GREY
     CHROME_BACKGROUND: rgba(DARK_GREY, .9)
-    // CHROME_SHADOW: none
     COVER_BACKGROUND: rgba(DARK_GREY, .9)
     ICON: THEME_ICON_DARK
     LINK: WHITE
@@ -79,7 +75,6 @@ THEMES = {
   light: {
     BACKGROUND: OFF_WHITE
     CHROME_BACKGROUND: rgba(OFF_WHITE, .9)
-    // CHROME_SHADOW: '0 1px 3px rgba(%s, .12), 0 1px 2px rgba(%s, .24)' % BLACK
     COVER_BACKGROUND: rgba(WHITE, .5)
     ICON: THEME_ICON_LIGHT
     LINK: DARK_GREY
@@ -101,10 +96,13 @@ for name, theme in THEMES
       .header
       .controls
         background theme['CHROME_BACKGROUND'];
-        // box-shadow theme['CHROME_SHADOW'];
 
         @media BREAKPOINT_LARGE
           background 0;
+
+      .header--thumbs
+        @media BREAKPOINT_LARGE
+          background theme['CHROME_BACKGROUND'];
 
       .cover__frame
         background-color theme['COVER_BACKGROUND'];
@@ -125,7 +123,8 @@ for name, theme in THEMES
       .header__link
         link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
 
+      // TODO: revise .publication styles
       .publication
-        background WHITE; // TODO: revisit .publication styles
+        background WHITE;
 
 </style>
