@@ -276,6 +276,10 @@ export default {
 @import '../../../stylus/_config/'
 
 .view
+  margin auto
+  max-width 1280px // TODO: use a constant
+  // overflow hidden
+
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns minmax(auto, 1fr)

@@ -68,6 +68,7 @@ export default {
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
     // height 100%
+    width 100%
 
 .slide__media
   @media BREAKPOINT_MEDIUM
@@ -102,6 +103,10 @@ export default {
     align-self center
     grid-column 2
     grid-row 1
+    margin HEADER_HEIGHT_MEDIUM 0 CONTROLS_HEIGHT_MEDIUM
+    // TODO: wrap the caption in a container for vertical overflow...
+    // height 100%
+    // overflow auto
     padding 0
 
 </style>
