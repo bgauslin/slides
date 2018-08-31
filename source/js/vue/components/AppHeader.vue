@@ -92,6 +92,8 @@ export default {
   font-size BACK_ARROW_SIZE
   icon()
   overflow hidden
+  position relative
+  top .05em
   width BACK_ARROW_SIZE
 
 </style>
