@@ -14,7 +14,12 @@
         :title="slidePrev.title",
       )
         span.prev-next__label Prev
-    div.count {{ currentSlideCount }} of {{ totalSlideCount }}
+    div.count
+      router-link(
+        class="count__link",
+        :to="{ name: 'thumbs' }",
+        title="View thumbnails",
+      ) {{ currentSlideCount }} of {{ totalSlideCount }}
     div.next
       router-link(
         v-if="slideNext",
@@ -95,7 +100,8 @@ export default {
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_SIZE_MEDIUM
 
-.prev-next__link
+.prev-next__link,
+.count__link
   align-items center
   display inline-flex
   height CONTROLS_HEIGHT
@@ -109,6 +115,7 @@ export default {
     width CONTROLS_HEIGHT_MEDIUM
 
 .prev-next__link:active
+.count__link:active
   transform scale(.8)
 
 .prev-next__link::before

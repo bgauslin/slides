@@ -104,6 +104,9 @@ for name, theme in THEMES
         @media BREAKPOINT_LARGE
           background theme['CHROME_BACKGROUND'];
 
+      .header__link
+        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
+
       .cover__frame
         background-color theme['COVER_BACKGROUND'];
 
@@ -111,6 +114,7 @@ for name, theme in THEMES
       .cover__header
         color theme['TEXT_COLOR'];
 
+      .count__link
       .cover__link
       .prev-next__link
       .slideshow__link
@@ -119,9 +123,6 @@ for name, theme in THEMES
       // TODO: border states for .cover__link
       .cover__link
         border 2px solid theme['LINK'];
-
-      .header__link
-        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
 
       // TODO: revise .publication styles
       .publication
