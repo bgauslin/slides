@@ -58,8 +58,11 @@ THEME_ICON_LIGHT = 'brightness_high'
     width HEADER_HEIGHT_MEDIUM
 
 .theme::before
+  border-radius 50%
+  display inline-block
   font-size THEME_ICON_SIZE
   icon()
+  padding px_to_rem(10)
 
 THEMES = {
   dark: {
@@ -74,7 +77,7 @@ THEMES = {
   },
   light: {
     BACKGROUND: OFF_WHITE
-    CHROME_BACKGROUND: rgba(OFF_WHITE, .9)
+    CHROME_BACKGROUND: rgba(OFF_WHITE, .95)
     COVER_BACKGROUND: rgba(WHITE, .5)
     ICON: THEME_ICON_LIGHT
     LINK: DARK_GREY
@@ -113,6 +116,10 @@ for name, theme in THEMES
       .theme
       .cover__header
         color theme['TEXT_COLOR'];
+
+      .theme::before
+        @media BREAKPOINT_LARGE
+          background theme['CHROME_BACKGROUND'];
 
       .count__link
       .cover__link
