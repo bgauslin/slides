@@ -34,6 +34,10 @@ export default {
     margin 0 THUMB_GAP_MEDIUM THUMB_GAP_MEDIUM
     padding 0
 
+  @media BREAKPOINT_LARGE
+    margin 0 auto
+    max-width CONTENT_MAX_WIDTH
+
 .thumbs__group
   display flex
   flex-wrap wrap

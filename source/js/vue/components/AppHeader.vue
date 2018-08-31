@@ -16,11 +16,16 @@
         title="Home",
         :to="{ name: 'home' }",
       ) Slideshows
+      theme
 </template>
 
 <script>
+import Theme from './Theme.vue';
+
 export default {
   props: ['view'],
+
+  components: { Theme },
 
   computed: {
     homeLink () {
@@ -53,16 +58,24 @@ export default {
 @import '../../../stylus/_config/'
 
 .header
+  align-items center
+  display flex
+  justify-content center
   position fixed
   width 100vw
   z-index 1
 
-  @media BREAKPOINT_LARGE
-    width SIDEBAR_WIDTH
+// .header--thumbs
+//   @media BREAKPOINT_LARGE
+//     width 100vw
 
-.header--thumbs
-  @media BREAKPOINT_LARGE
-    width 100vw
+.header__content
+  display flex
+  flex 1
+
+  @media BREAKPOINT_XLARGE    
+    margin 0 auto
+    max-width CONTENT_MAX_WIDTH
 
 .header__link
   align-items center
@@ -76,6 +89,9 @@ export default {
   text-overflow ellipsis
   transition color TRANSITION_SPEED
   white-space nowrap
+
+  // @media BREAKPOINT_LARGE
+    // width SIDEBAR_WIDTH
 
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM

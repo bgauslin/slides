@@ -67,8 +67,16 @@ export default {
     grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
+    margin 0 auto
+    max-width CONTENT_MAX_WIDTH
     // height 100%
     width 100%
+  
+  @media BREAKPOINT_XLARGE
+    grid-column-gap COLUMN_GAP_XLARGE
+    grid-template-columns '%s 1fr' % SIDEBAR_WIDTH
+    // margin 0 auto
+    // max-width CONTENT_MAX_WIDTH
 
 .slide__media
   @media BREAKPOINT_MEDIUM
@@ -80,6 +88,9 @@ export default {
     grid-row 1
     // max-height 100%
     // overflow hidden // This sets proper height in the DOM
+
+  @media BREAKPOINT_XLARGE
+    grid-column 2
 
 .slide__media--multiple
   @media BREAKPOINT_MEDIUM
@@ -108,5 +119,8 @@ export default {
     // height 100%
     // overflow auto
     padding 0
+
+  @media BREAKPOINT_XLARGE
+    grid-column 1
 
 </style>

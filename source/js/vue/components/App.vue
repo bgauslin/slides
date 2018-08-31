@@ -5,7 +5,6 @@
     app-header(
       :view="view",
     )
-    theme
     preloader(
       v-if="!app.dataLoaded",
     )
@@ -30,7 +29,6 @@
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
-import Theme from './Theme.vue';
 
 import getApiDomain from '../../helpers/getApiDomain';
 const apiDomain = getApiDomain();
@@ -40,7 +38,6 @@ export default {
     AppHeader,
     Controls,
     Preloader,
-    Theme,
   },
 
   data () {
@@ -277,13 +274,14 @@ export default {
 
 .view
   margin auto
-  max-width 1280px // TODO: use a constant
-  // overflow hidden
 
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
+
+  // @media BREAKPOINT_XLARGE    
+    // max-width CONTENT_MAX_WIDTH
 
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION

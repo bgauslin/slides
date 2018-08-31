@@ -45,17 +45,17 @@ THEME_ICON_LIGHT = 'brightness_high'
   display inline-flex
   height HEADER_HEIGHT
   justify-content center
+  margin-left auto
   overflow hidden
   outline none
-  position fixed
-  right 0
-  top 0
   width HEADER_HEIGHT
-  z-index 1
 
   @media BREAKPOINT_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     width HEADER_HEIGHT_MEDIUM
+  
+  @media BREAKPOINT_XLARGE
+    margin-right px_to_rem(-20)
 
 .theme::before
   border-radius 50%
