@@ -1,13 +1,13 @@
 <template lang="pug">
   div(
     v-if="images",
-    :class="['images', className]",
+    :class="['images', imagesClass]",
   )
     template(
       v-for="image in images",
     )
       single-image(
-        :className="imageClassName",
+        :className="imageClass",
         :image="image",
       )
 </template>
@@ -21,13 +21,13 @@ export default {
   props: ['images'],
   
   computed: {
-    className () {
+    imagesClass () {
       if (this.images.length > 1) {
        return 'images--multiple';
       }
     },
 
-    imageClassName () {
+    imageClass () {
       if (this.images.length > 1) {
        return 'image--multiple';
       }
@@ -38,6 +38,11 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
+
+// TODO: make image height fluid at large breakpoint
+// .images
+//   @media BREAKPOINT_LARGE
+//     max-height 100%
 
 .images--multiple
   margin 0 auto
