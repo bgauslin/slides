@@ -8,24 +8,22 @@
         :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
       )
       router-link(
-        v-if="slidePrev && !isThumbsView",
+        v-if="slidePrev",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
         :title="slidePrev.title",
       )
         span.prev-next__label Prev
-    div.count(
-      v-if="!isThumbsView",
-    ) {{ currentSlideCount }} of {{ totalSlideCount }}
+    div.count {{ currentSlideCount }} of {{ totalSlideCount }}
     div.next
       router-link(
-        v-if="slideNext && !isThumbsView",
+        v-if="slideNext",
         class="prev-next__link",
         :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
         :title="slideNext.title",
       )
       router-link(
-        v-if="isLastSlide && !isThumbsView",
+        v-if="isLastSlide",
         class="prev-next__link",
         title="Thumbnails",
         :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
@@ -46,10 +44,6 @@ export default {
 
     isLastSlide () {
       return (this.$store.getters.slideIndex == this.$store.getters.totalSlideCount - 1);
-    },
-
-    isThumbsView () {
-      return (this.$route.name === 'thumbs');
     },
 
     totalSlideCount () {

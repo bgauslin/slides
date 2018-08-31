@@ -218,7 +218,7 @@ export default {
     },
 
     getDataThumbs () {
-      this.app.showControls = true;
+      this.app.showControls = false;
 
       // TODO: Store the thumbnails in the store.
       const fetchData = async () => {
