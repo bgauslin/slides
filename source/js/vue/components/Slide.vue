@@ -49,6 +49,7 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// TODO: make image height fluid at large breakpoint
 .slide
   height 100%
   padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
@@ -66,6 +67,7 @@ export default {
     grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
+    // height 100%
 
 .slide__media
   @media BREAKPOINT_MEDIUM
@@ -75,6 +77,8 @@ export default {
     align-self center
     grid-column 3
     grid-row 1
+    // max-height 100%
+    // overflow hidden // This sets proper height in the DOM
 
 .slide__media--multiple
   @media BREAKPOINT_MEDIUM

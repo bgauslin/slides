@@ -67,6 +67,11 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
+// TODO: make image height fluid at large breakpoint
+// .image
+//   @media BREAKPOINT_LARGE
+//     max-height 100%
+
 // /shotgun/walk-in-closet
 .image--portrait
   width 50%
