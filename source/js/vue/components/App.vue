@@ -272,11 +272,8 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-.view
-  margin auto
-  max-width CONTENT_MAX_WIDTH
-
-  @media BREAKPOINT_MEDIUM
+@media BREAKPOINT_MEDIUM
+  .view
     display grid
     grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
