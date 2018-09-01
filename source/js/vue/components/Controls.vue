@@ -1,40 +1,41 @@
 <template lang="pug">
   div.controls
-    div.controls__content
-      div.prev
-        router-link(
-          v-if="isFirstSlide",
-          class="prev-next__link",
-          title="Cover",
-          :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-        )
-        router-link(
-          v-if="slidePrev",
-          class="prev-next__link",
-          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
-          :title="slidePrev.title",
-        )
-          span.prev-next__label Prev
-      div.count
-        router-link(
-          class="count__link",
-          :to="{ name: 'thumbs' }",
-          title="View thumbnails",
-        ) {{ currentSlideCount }} of {{ totalSlideCount }}
-      div.next
-        router-link(
-          v-if="slideNext",
-          class="prev-next__link",
-          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
-          :title="slideNext.title",
-        )
-        router-link(
-          v-if="isLastSlide",
-          class="prev-next__link",
-          title="Thumbnails",
-          :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
-        )
-          span.prev-next__label Next
+    div.controls__frame
+      div.controls__content
+        div.prev
+          router-link(
+            v-if="isFirstSlide",
+            class="prev-next__link",
+            title="Cover",
+            :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
+          )
+          router-link(
+            v-if="slidePrev",
+            class="prev-next__link",
+            :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
+            :title="slidePrev.title",
+          )
+            span.prev-next__label Prev
+        div.count
+          router-link(
+            class="count__link",
+            :to="{ name: 'thumbs' }",
+            title="View thumbnails",
+          ) {{ currentSlideCount }} of {{ totalSlideCount }}
+        div.next
+          router-link(
+            v-if="slideNext",
+            class="prev-next__link",
+            :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
+            :title="slideNext.title",
+          )
+          router-link(
+            v-if="isLastSlide",
+            class="prev-next__link",
+            title="Thumbnails",
+            :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
+          )
+            span.prev-next__label Next
 </template>
 
 <script>
@@ -88,16 +89,21 @@ export default {
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
 
+.controls__frame
+  margin 0 auto
+  max-width CONTENT_MAX_WIDTH
+
 .controls__content
   align-items center
   display flex
   justify-content space-between
-  margin 0 auto
-  max-width CONTENT_MAX_WIDTH
 
   @media BREAKPOINT_LARGE
-    justify-content flex-start
-    // width SIDEBAR_WIDTH + (COLUMN_GAP_LARGE * 2)
+    margin 0 0 0 COLUMN_GAP_LARGE
+    width SIDEBAR_WIDTH
+
+  @media BREAKPOINT_XLARGE
+    margin 0
 
 .count
   font-size CAPTION_SIZE
@@ -106,7 +112,7 @@ export default {
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_SIZE_MEDIUM
 
-.prev-next__link,
+.prev-next__link
 .count__link
   align-items center
   display inline-flex
@@ -140,5 +146,12 @@ export default {
 .next .prev-next__link::after
   content ICON_ANGLE_RIGHT
   left .1rem
+
+@media BREAKPOINT_LARGE
+  .prev
+    margin-left px_to_rem(-16)
+
+  .next
+    margin-right px_to_rem(-16)
 
 </style>
