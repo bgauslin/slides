@@ -5,8 +5,6 @@ CAPTION_MAX_WIDTH = px_to_rem(400)
 
 COLUMN_GAP_LARGE = px_to_rem(24)
 
-CONTENT_MAX_WIDTH = px_to_rem(1248)
-
 CONTROLS_HEIGHT = px_to_rem(44)
 CONTROLS_HEIGHT_MEDIUM = px_to_rem(60)
 CONTROLS_ICON_SIZE = px_to_rem(36)
@@ -20,19 +18,26 @@ IMAGE_GAP_MEDIUM = px_to_rem(24)
 
 SIDEBAR_WIDTH = px_to_rem(256)
 
+SLIDE_MAX_WIDTH = px_to_rem(960)
+
 THUMB_GAP = px_to_rem(4)
 THUMB_GAP_SMALL = px_to_rem(6)
 THUMB_GAP_MEDIUM = px_to_rem(8)
 
 // Transitions.
-TRANSITION_SPEED = .3s
+DEFAULT_TRANSITION = .3s
+
 IMAGE_TRANSITION = .3s
-SLIDE_TRANSITION = .2s ease-out
+
+SLIDE_TRANSITION = .2s
+SLIDE_TRANSITION_LARGE = .3s
 
 // Breakpoint values.
-BREAKPOINT_SMALL_UNITS = px_to_rem(448)
-BREAKPOINT_MEDIUM_UNITS = px_to_rem(736)
-BREAKPOINT_LARGE_UNITS = px_to_rem(992)
+CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP_LARGE + SLIDE_MAX_WIDTH
+
+BREAKPOINT_SMALL_UNITS = px_to_rem(480)
+BREAKPOINT_MEDIUM_UNITS = px_to_rem(720)
+BREAKPOINT_LARGE_UNITS = px_to_rem(960)
 
 // Media queries with breakpoints.
 BREAKPOINT_SMALL = 'screen and (min-width: %s)' % BREAKPOINT_SMALL_UNITS
