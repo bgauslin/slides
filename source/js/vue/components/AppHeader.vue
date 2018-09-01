@@ -83,7 +83,7 @@ export default {
   overflow hidden
   position relative
   text-overflow ellipsis
-  transition color TRANSITION_SPEED
+  transition color DEFAULT_TRANSITION
   white-space nowrap
 
   @media BREAKPOINT_MEDIUM

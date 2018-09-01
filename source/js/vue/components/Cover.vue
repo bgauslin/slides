@@ -75,7 +75,7 @@ START_BUTTON_HEIGHT = px_to_rem(40)
   height START_BUTTON_HEIGHT
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16) 0 px_to_rem(24)
-  transition color TRANSITION_SPEED
+  transition color DEFAULT_TRANSITION
 
 .cover__link::after
   content ICON_ANGLE_RIGHT

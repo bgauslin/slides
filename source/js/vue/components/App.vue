@@ -278,19 +278,31 @@ export default {
     grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
 
-.slide-in-left
-  animation slideInLeft SLIDE_TRANSITION
-
-.slide-in-right
-  animation slideInRight SLIDE_TRANSITION
-
-.slide-out-left
-  animation slideOutLeft SLIDE_TRANSITION
-
-.slide-out-right
-  animation slideOutRight SLIDE_TRANSITION
 
 .first-run
-  animation fadeIn SLIDE_TRANSITION
+  animation-name fadeIn
+
+.slide-in-left
+  animation-name slideInLeft
+
+.slide-in-right
+  animation-name slideInRight
+
+.slide-out-left
+  animation-name slideOutLeft
+
+.slide-out-right
+  animation-name slideOutRight
+
+.first-run
+.slide-in-left
+.slide-in-right
+.slide-out-left
+.slide-out-right
+  animation-duration SLIDE_TRANSITION
+  animation-timing-function ease-out
+
+  @media BREAKPOINT_LARGE
+    animation-duration SLIDE_TRANSITION_LARGE
 
 </style>

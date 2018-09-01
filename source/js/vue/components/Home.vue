@@ -32,7 +32,7 @@ export default {
 .slideshow__link
   display block
   padding 1rem
-  transition color TRANSITION_SPEED
+  transition color DEFAULT_TRANSITION
 
 .slideshow__heading
   // color inherit

@@ -117,7 +117,7 @@ export default {
   height CONTROLS_HEIGHT
   justify-content center
   overflow hidden
-  transition transform TRANSITION_SPEED
+  transition transform DEFAULT_TRANSITION
   width CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
