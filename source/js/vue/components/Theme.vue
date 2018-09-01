@@ -34,8 +34,8 @@ export default {
 
 THEME_BUTTON_SIZE = px_to_rem(44)
 THEME_ICON_SIZE = px_to_rem(18)
-THEME_ICON_DARK = 'brightness_low'
-THEME_ICON_LIGHT = 'brightness_high'
+THEME_ICON_DARK = 'brightness_3'
+THEME_ICON_LIGHT = 'brightness_5'
 
 .theme
   align-items center
@@ -53,13 +53,19 @@ THEME_ICON_LIGHT = 'brightness_high'
   @media BREAKPOINT_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     width HEADER_HEIGHT_MEDIUM
+  
+  @media BREAKPOINT_LARGE
+    position fixed
+    right 0
+
+.theme:hover
+  cursor pointer
 
 .theme::before
   border-radius 50%
   display inline-block
   font-size THEME_ICON_SIZE
   icon()
-  padding px_to_rem(10)
 
 THEMES = {
   dark: {
@@ -116,10 +122,6 @@ for name, theme in THEMES
     .theme
     .cover__header
       color theme['TEXT_COLOR'];
-
-    .theme::before
-      @media BREAKPOINT_LARGE
-        background theme['CHROME_BACKGROUND'];
 
     .count__link
     .cover__link
