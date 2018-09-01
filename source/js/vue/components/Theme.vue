@@ -90,49 +90,49 @@ for name, theme in THEMES
       background theme['BACKGROUND'];
       color theme['TEXT_COLOR'];
 
-      .theme::before
-        content theme['ICON'];
+    .theme::before
+      content theme['ICON'];
 
-      .header
-      .controls
-        background theme['CHROME_BACKGROUND'];
+    .header
+    .controls
+      background theme['CHROME_BACKGROUND'];
 
-        @media BREAKPOINT_LARGE
-          background 0;
-
-      .header--cover
+      @media BREAKPOINT_LARGE
         background 0;
 
-      .header--thumbs
-        @media BREAKPOINT_LARGE
-          background theme['CHROME_BACKGROUND'];
+    .header--cover
+      background 0;
 
-      .header__link
-        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
+    .header--thumbs
+      @media BREAKPOINT_LARGE
+        background theme['CHROME_BACKGROUND'];
 
-      .cover__frame
-        background-color theme['COVER_BACKGROUND'];
+    .header__link
+      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
 
-      .theme
-      .cover__header
-        color theme['TEXT_COLOR'];
+    .cover__frame
+      background-color theme['COVER_BACKGROUND'];
 
-      .theme::before
-        @media BREAKPOINT_LARGE
-          background theme['CHROME_BACKGROUND'];
+    .theme
+    .cover__header
+      color theme['TEXT_COLOR'];
 
-      .count__link
-      .cover__link
-      .prev-next__link
-      .slideshow__link
-        link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
+    .theme::before
+      @media BREAKPOINT_LARGE
+        background theme['CHROME_BACKGROUND'];
 
-      // TODO: border states for .cover__link
-      .cover__link
-        border 2px solid theme['LINK'];
+    .count__link
+    .cover__link
+    .prev-next__link
+    .slideshow__link
+      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
 
-      // TODO: revise .publication styles
-      .publication
-        background WHITE;
+    // TODO: border states for .cover__link
+    .cover__link
+      border 2px solid theme['LINK'];
+
+    // TODO: revise .publication styles
+    .publication
+      background WHITE;
 
 </style>
