@@ -38,13 +38,14 @@ export default {
   methods: {
     aspectRatio(image) {
       const ratio = image.large.height / image.large.width * 100;
-      return `padding-bottom: ${ratio}%;`;
+      return `padding: 0 0 ${ratio}%;`;
     },
 
     loadImages () {
       this.loading = true;
       const self = this;
-      imagesLoaded(this.$el.querySelector('.image__hi-res'), self, instance => {
+      const image = this.$el.querySelector('.image__hi-res');
+      imagesLoaded(image, self, instance => {
         self.loading = false;
       });
     },
@@ -66,11 +67,6 @@ export default {
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
-
-// TODO: make image height fluid at large breakpoint
-// .image
-//   @media BREAKPOINT_LARGE
-//     max-height 100%
 
 // /shotgun/walk-in-closet
 .image--portrait
