@@ -14,11 +14,12 @@
       )
       p.publication__date {{ publication.date }}
       a.publication__link(
+        :data-url-type="publication.urlType",
         :href="publication.url",
         :title="'Read the ' + publication.publisher + ' article'",
         rel="noopener",
         target="_blank",
-      ) Link
+      ) {{ linkLabel }}
 </template>
 
 <script>
@@ -26,7 +27,14 @@ import SingleImage from './SingleImage.vue';
 
 export default {
   components: { SingleImage },
+
   props: ['publication'],
+
+  computed: {
+    linkLabel () {
+      return (this.publication.urlType === 'link') ? 'Visit website' : 'Read article'
+    }
+  }
 }
 </script>
 
@@ -90,8 +98,27 @@ export default {
   border-radius 4px
   display inline-flex
   heading_font()
-  height px_to_rem(32)
+  height px_to_rem(36)
   margin px_to_rem(16) 0 0
-  padding 0 px_to_rem(20)
+  padding 0 px_to_rem(20) 0 px_to_rem(12)
+
+[href$="pdf"]::after
+  bottom -.1em
+  content '[PDF]'
+  font-size 75%
+  margin-left .75rem
+  position relative
+
+[data-url-type="download"]::before
+[data-url-type="link"]::before
+  icon()
+  font-size px_to_em(18)
+  margin-right px_to_rem(8)
+
+[data-url-type="download"]::before
+  content ICON_DOWNLOAD
+
+[data-url-type="link"]::before
+  content ICON_NEW_WINDOW
 
 </style>
