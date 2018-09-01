@@ -53,9 +53,6 @@ THEME_ICON_LIGHT = 'brightness_high'
   @media BREAKPOINT_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     width HEADER_HEIGHT_MEDIUM
-  
-  @media BREAKPOINT_XLARGE
-    margin-right px_to_rem(-20)
 
 .theme::before
   border-radius 50%

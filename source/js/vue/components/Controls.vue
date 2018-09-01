@@ -82,6 +82,7 @@ export default {
 .controls
   bottom 0
   height CONTROLS_HEIGHT
+  left 0
   position fixed
   width 100vw
   z-index 1
@@ -101,9 +102,6 @@ export default {
   @media BREAKPOINT_LARGE
     margin 0 0 0 COLUMN_GAP_LARGE
     width SIDEBAR_WIDTH
-
-  @media BREAKPOINT_XLARGE
-    margin 0
 
 .count
   font-size CAPTION_SIZE
@@ -132,7 +130,7 @@ export default {
 
 .prev-next__link::before
 .prev-next__link::after
-  font-size PREV_NEXT_ICON_SIZE
+  font-size CONTROLS_ICON_SIZE
   icon()
   position relative
 

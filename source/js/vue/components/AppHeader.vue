@@ -61,21 +61,16 @@ export default {
   align-items center
   display flex
   justify-content center
+  left 0
   position fixed
   width 100vw
   z-index 1
 
-// .header--thumbs
-//   @media BREAKPOINT_LARGE
-//     width 100vw
-
 .header__content
   display flex
   flex 1
-
-  @media BREAKPOINT_XLARGE    
-    margin 0 auto
-    max-width CONTENT_MAX_WIDTH
+  margin 0 auto
+  max-width CONTENT_MAX_WIDTH
 
 .header__link
   align-items center

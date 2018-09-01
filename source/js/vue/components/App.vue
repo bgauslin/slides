@@ -274,14 +274,12 @@ export default {
 
 .view
   margin auto
+  max-width CONTENT_MAX_WIDTH
 
   @media BREAKPOINT_MEDIUM
     display grid
     grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
-
-  // @media BREAKPOINT_XLARGE    
-    // max-width CONTENT_MAX_WIDTH
 
 .slide-in-left
   animation slideInLeft SLIDE_TRANSITION

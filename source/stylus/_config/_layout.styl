@@ -4,9 +4,12 @@ BACK_ARROW_SIZE = px_to_rem(24)
 CAPTION_MAX_WIDTH = px_to_rem(400)
 
 COLUMN_GAP_LARGE = px_to_rem(24)
-COLUMN_GAP_XLARGE = px_to_rem(48)
 
 CONTENT_MAX_WIDTH = px_to_rem(1248)
+
+CONTROLS_HEIGHT = px_to_rem(44)
+CONTROLS_HEIGHT_MEDIUM = px_to_rem(60)
+CONTROLS_ICON_SIZE = px_to_rem(36)
 
 HEADER_HEIGHT = px_to_rem(44)
 HEADER_HEIGHT_MEDIUM = px_to_rem(60)
@@ -14,11 +17,6 @@ HEADER_BUTTON_SIZE = px_to_rem(44)
 
 IMAGE_GAP = px_to_rem(16)
 IMAGE_GAP_MEDIUM = px_to_rem(24)
-
-PREV_NEXT_ICON_SIZE = px_to_rem(36)
-// PREV_NEXT_ICON_SIZE_MEDIUM = px_to_rem(48)
-CONTROLS_HEIGHT = px_to_rem(44)
-CONTROLS_HEIGHT_MEDIUM = px_to_rem(60)
 
 SIDEBAR_WIDTH = px_to_rem(256)
 
@@ -31,17 +29,12 @@ TRANSITION_SPEED = .3s
 IMAGE_TRANSITION = .3s
 SLIDE_TRANSITION = .2s ease-out
 
-// Overall margins and breakpoints.
-MARGINS_XLARGE = px_to_rem(64)
-
+// Breakpoint values.
 BREAKPOINT_SMALL_UNITS = px_to_rem(448)
 BREAKPOINT_MEDIUM_UNITS = px_to_rem(736)
 BREAKPOINT_LARGE_UNITS = px_to_rem(992)
-BREAKPOINT_XLARGE_UNITS = CONTENT_MAX_WIDTH
-// BREAKPOINT_XLARGE_UNITS = CONTENT_MAX_WIDTH + (MARGINS_XLARGE * 2)
 
 // Media queries with breakpoints.
 BREAKPOINT_SMALL = 'screen and (min-width: %s)' % BREAKPOINT_SMALL_UNITS
 BREAKPOINT_MEDIUM = 'screen and (min-width: %s)' % BREAKPOINT_MEDIUM_UNITS
 BREAKPOINT_LARGE = 'screen and (min-width: %s)' % BREAKPOINT_LARGE_UNITS
-BREAKPOINT_XLARGE = 'screen and (min-width: %s)' % BREAKPOINT_XLARGE_UNITS
