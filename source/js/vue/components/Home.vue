@@ -7,11 +7,14 @@
         class="slideshow__link",
         :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
       )
+        img(
+          :src="slideshow.image.src",
+        )
         h2.slideshow__heading {{ slideshow.title }}
-        p.slideshow__summary {{ slideshow.summary }}
 </template>
 
 <script>
+
 export default {
   props: ['content'],
 }
@@ -21,12 +24,14 @@ export default {
 @import '../../../stylus/_config/'
 
 .slideshows
-  height 100%
+  margin 0 auto
+  max-width CONTENT_MAX_WIDTH
   padding HEADER_HEIGHT 0 0
-  width 100%
 
   @media BREAKPOINT_MEDIUM
+    align-items center
     grid-row 2
+    justify-items center
     padding 0
 
 .slideshow__link
@@ -35,14 +40,12 @@ export default {
   transition color DEFAULT_TRANSITION
 
 .slideshow__heading
-  // color inherit
   font-size H3_SIZE
   heading_font()
   margin 0 0 .25em
   padding 0
 
 .slideshow__summary
-  // color inherit
   font-size CAPTION_SIZE
   margin 0
   padding 0
