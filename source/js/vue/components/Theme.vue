@@ -100,6 +100,9 @@ for name, theme in THEMES
         @media BREAKPOINT_LARGE
           background 0;
 
+      .header--cover
+        background 0;
+
       .header--thumbs
         @media BREAKPOINT_LARGE
           background theme['CHROME_BACKGROUND'];

@@ -79,32 +79,29 @@ export default {
   font-weight normal
   heading_font()
   height HEADER_HEIGHT
+  padding 0 0 0 px_to_rem(16) // TODO: new constant
   overflow hidden
-  padding 0 px_to_rem(16)
+  position relative
   text-overflow ellipsis
   transition color TRANSITION_SPEED
   white-space nowrap
 
-  // @media BREAKPOINT_LARGE
-    // width SIDEBAR_WIDTH
-
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
+    padding 0 0 0 COLUMN_GAP_LARGE
 
-  @media BREAKPOINT_LARGE
-    padding 0 COLUMN_GAP_LARGE
+  // @media BREAKPOINT_LARGE
+    // width SIDEBAR_WIDTH
 
-.header__link--back
-  padding-left px_to_rem(8)
-
-.header__link--back::before
-  content ICON_ANGLE_LEFT
-  font-size BACK_ARROW_SIZE
-  icon()
-  overflow hidden
-  position relative
-  top .05em
-  width BACK_ARROW_SIZE
+// .header__link--back::before
+//   content ICON_ANGLE_LEFT
+//   font-size BACK_ARROW_SIZE
+//   icon()
+//   left px_to_rem(- BACK_ARROW_SIZE)
+//   overflow hidden
+//   position absolute
+//   top .05em
+//   width BACK_ARROW_SIZE
 
 </style>
