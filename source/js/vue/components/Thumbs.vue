@@ -26,17 +26,17 @@ export default {
 .thumbs
   margin 0 auto
   max-width CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2)
-  padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
+  padding HEADER_HEIGHT 0 0
 
   @media BREAKPOINT_MEDIUM
     grid-row 2
     padding 0
 
 .thumbs__frame
-  margin 0 THUMB_GAP
+  margin 0 THUMB_GAP THUMB_GAP
 
   @media BREAKPOINT_SMALL
-    margin 0 THUMB_GAP_SMALL
+    margin 0 THUMB_GAP_SMALL THUMB_GAP_SMALL
 
   @media BREAKPOINT_MEDIUM
     margin 0 THUMB_GAP_MEDIUM THUMB_GAP_MEDIUM
