@@ -51,6 +51,8 @@ export default {
 
 .slide
   height 100%
+  margin 0 auto
+  max-width CONTENT_MAX_WIDTH
   padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
   width 100vw
 
@@ -62,12 +64,10 @@ export default {
 
   @media BREAKPOINT_LARGE
     display grid
-    grid-column-gap COLUMN_GAP_LARGE
+    grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
-    margin 0 auto
-    max-width CONTENT_MAX_WIDTH
     width 100%
 
 .slide__media

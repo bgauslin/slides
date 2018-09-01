@@ -24,6 +24,7 @@ export default {
 
 .thumbs
   margin 0 THUMB_GAP
+  max-width CONTENT_MAX_WIDTH - (COLUMN_GAP * 2)
   padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
 
   @media BREAKPOINT_SMALL
@@ -36,7 +37,6 @@ export default {
 
   @media BREAKPOINT_LARGE
     margin 0 auto
-    max-width CONTENT_MAX_WIDTH - (COLUMN_GAP_LARGE * 2)
 
 .thumbs__group
   display flex

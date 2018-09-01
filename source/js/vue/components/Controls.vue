@@ -100,7 +100,7 @@ export default {
   justify-content space-between
 
   @media BREAKPOINT_LARGE
-    margin 0 0 0 COLUMN_GAP_LARGE
+    margin 0 0 0 COLUMN_GAP
     width SIDEBAR_WIDTH
 
 .count
