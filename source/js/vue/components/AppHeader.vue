@@ -8,14 +8,16 @@
         :class="linkClass",
         :title="slideshowTitle",
         :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-      ) {{ slideshowTitle }}
+      )
+        span.header__link__label {{ slideshowTitle }}
       router-link(
         v-if="homeLink",
         :class="linkClass",
         exact,
         title="Home",
         :to="{ name: 'home' }",
-      ) Slideshows
+      )
+        span.header__link__label Slideshows
       theme
 </template>
 
@@ -72,6 +74,7 @@ export default {
   margin 0 auto
   max-width CONTENT_MAX_WIDTH
 
+// TODO: create nested element for overflow: ellipsis
 .header__link
   align-items center
   display inline-flex
@@ -79,29 +82,36 @@ export default {
   font-weight normal
   heading_font()
   height HEADER_HEIGHT
-  padding 0 0 0 px_to_rem(16) // TODO: new constant
-  overflow hidden
-  position relative
-  text-overflow ellipsis
+  padding-left px_to_rem(16)
   transition color DEFAULT_TRANSITION
-  white-space nowrap
-
+  
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
-    padding 0 0 0 COLUMN_GAP
+    padding-left COLUMN_GAP
+    position relative
 
-  // @media BREAKPOINT_LARGE
-    // width SIDEBAR_WIDTH
+.header__link--back
+  padding-left px_to_rem(8)
 
-// .header__link--back::before
-//   content ICON_ANGLE_LEFT
-//   font-size BACK_ARROW_SIZE
-//   icon()
-//   left px_to_rem(- BACK_ARROW_SIZE)
-//   overflow hidden
-//   position absolute
-//   top .05em
-//   width BACK_ARROW_SIZE
+  @media BREAKPOINT_MEDIUM
+    padding-left COLUMN_GAP
+
+.header__link--back::before
+  content ICON_ANGLE_LEFT
+  font-size BACK_ARROW_SIZE
+  icon()
+  overflow hidden
+  width BACK_ARROW_SIZE
+
+  @media BREAKPOINT_MEDIUM
+    left .2em
+    position absolute
+    top .8em
+
+.header__link__label
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
 
 </style>
