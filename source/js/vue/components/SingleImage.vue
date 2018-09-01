@@ -92,11 +92,6 @@ export default {
 .image--multiple
   padding IMAGE_GAP 0 0 0
 
-.image--multiple:first-child
-  padding 0
-
-.image--multiple
-.image--multiple:first-child
   @media BREAKPOINT_MEDIUM
     flex 0 0 50%
     padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM

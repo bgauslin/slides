@@ -63,7 +63,8 @@ export default {
 THEMES = {
   dark: {
     BACKGROUND: DARK_GREY
-    CHROME_BACKGROUND: rgba(DARK_GREY, .9)
+    CHROME_BACKGROUND: DARK_GREY
+    CHROME_BORDER: rgba(WHITE, .25)
     COVER_BACKGROUND: rgba(DARK_GREY, .9)
     ICON: ICON_THEME_DARK
     LINK: WHITE
@@ -73,12 +74,13 @@ THEMES = {
   },
   light: {
     BACKGROUND: OFF_WHITE
-    CHROME_BACKGROUND: rgba(OFF_WHITE, .95)
-    COVER_BACKGROUND: rgba(WHITE, .5)
+    CHROME_BACKGROUND: OFF_WHITE
+    CHROME_BORDER: rgba(DARK_GREY, .25)
+    COVER_BACKGROUND: rgba(WHITE, .25)
     ICON: ICON_THEME_LIGHT
-    LINK: DARK_GREY
-    LINK_ACTIVE: rgba(DARK_GREY, .7)
-    LINK_HOVER: rgba(DARK_GREY, .7)
+    LINK: rgba(DARK_GREY, .7)
+    LINK_ACTIVE: DARK_GREY
+    LINK_HOVER: DARK_GREY
     TEXT_COLOR: DARK_GREY
   }
 }
@@ -98,6 +100,18 @@ for name, theme in THEMES
 
       @media BREAKPOINT_LARGE
         background 0;
+
+    .header
+      border-bottom 1px solid theme['CHROME_BORDER'];
+
+      @media BREAKPOINT_LARGE
+        border 0;
+
+    .controls
+      border-top 1px solid theme['CHROME_BORDER'];
+
+      @media BREAKPOINT_LARGE
+        border 0;
 
     .header--cover
       background 0;
