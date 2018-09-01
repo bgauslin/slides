@@ -101,12 +101,6 @@ for name, theme in THEMES
       @media BREAKPOINT_LARGE
         background 0;
 
-    .header
-      border-bottom 1px solid theme['CHROME_BORDER'];
-
-      @media BREAKPOINT_LARGE
-        border 0;
-
     .controls
       border-top 1px solid theme['CHROME_BORDER'];
 
