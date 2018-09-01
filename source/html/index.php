@@ -42,7 +42,7 @@ if ($tld == 'com') {
     <style><?php include('.' . $css_path) ?>"></style>
   </head>
 
-  <body ontouchstart data-theme="dark">
+  <body ontouchstart>
     <div id="app">
       <app></app>
 

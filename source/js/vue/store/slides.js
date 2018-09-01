@@ -3,6 +3,7 @@ const slides = {
     direction: null,
     slideshow: {},
     slug: null,
+    theme: JSON.parse(localStorage.getItem('theme')) || 'light',
   },
 
   mutations: {
@@ -22,6 +23,11 @@ const slides = {
 
     updateSlug (state, payload) {
       state.slug = payload;
+    },
+
+    updateTheme (state, payload) {
+      localStorage.setItem('theme', JSON.stringify(payload));
+      state.theme = payload;
     },
   },
 
@@ -96,6 +102,8 @@ const slides = {
         return state.slideshow;
       }
     },
+
+    theme: (state) => state.theme,
 
     totalSlideCount: (state, getters) => {
       if (getters.hasSlideshow) {

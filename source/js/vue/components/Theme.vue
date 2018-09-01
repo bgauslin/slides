@@ -6,36 +6,32 @@
 
 <script>
 export default {
-  data () {
-    return {
-      theme: null,
-    }
+  mounted () {
+    this.setTheme();
   },
 
-  mounted () {
-    this.getTheme();
+  computed: {
+    theme () {
+      return this.$store.getters.theme;
+    },
   },
 
   methods: {
-    getTheme () {
-      this.theme = document.body.getAttribute('data-theme');
+    setTheme () {
+      document.body.setAttribute('data-theme', this.theme);
     },
 
     toggleTheme () {
-      this.theme = (this.theme === 'light') ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', this.theme);
-    }
+      const theme = (this.theme === 'light') ? 'dark' : 'light';
+      this.$store.commit('updateTheme', theme);
+      this.setTheme();
+    },
   }
 }
 </script>
 
 <style lang="stylus">
 @import '../../../stylus/_config/'
-
-THEME_BUTTON_SIZE = px_to_rem(44)
-THEME_ICON_SIZE = px_to_rem(18)
-THEME_ICON_DARK = 'brightness_3'
-THEME_ICON_LIGHT = 'brightness_5'
 
 .theme
   align-items center
@@ -45,24 +41,21 @@ THEME_ICON_LIGHT = 'brightness_5'
   display inline-flex
   height HEADER_HEIGHT
   justify-content center
-  margin-left auto
   overflow hidden
   outline none
+  position fixed
+  right 0
+  top 0
   width HEADER_HEIGHT
 
   @media BREAKPOINT_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     width HEADER_HEIGHT_MEDIUM
-  
-  @media BREAKPOINT_LARGE
-    position fixed
-    right 0
 
 .theme:hover
   cursor pointer
 
 .theme::before
-  border-radius 50%
   display inline-block
   font-size THEME_ICON_SIZE
   icon()
@@ -72,7 +65,7 @@ THEMES = {
     BACKGROUND: DARK_GREY
     CHROME_BACKGROUND: rgba(DARK_GREY, .9)
     COVER_BACKGROUND: rgba(DARK_GREY, .9)
-    ICON: THEME_ICON_DARK
+    ICON: ICON_THEME_DARK
     LINK: WHITE
     LINK_ACTIVE: rgba(WHITE, .7)
     LINK_HOVER: rgba(WHITE, .7)
@@ -82,7 +75,7 @@ THEMES = {
     BACKGROUND: OFF_WHITE
     CHROME_BACKGROUND: rgba(OFF_WHITE, .95)
     COVER_BACKGROUND: rgba(WHITE, .5)
-    ICON: THEME_ICON_LIGHT
+    ICON: ICON_THEME_LIGHT
     LINK: DARK_GREY
     LINK_ACTIVE: rgba(DARK_GREY, .7)
     LINK_HOVER: rgba(DARK_GREY, .7)
