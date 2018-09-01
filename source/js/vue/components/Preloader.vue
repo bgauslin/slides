@@ -4,17 +4,22 @@
 
 <script>
 import Spinner from 'spin'
+
 export default {
   data () {
     return {
-      spinnerOptions: {
-        color: '#ffffff',
+      options: {
+        color: null,
         lines: 12,
         length: 8,
         width: 3,
         radius: 8,
       }
     }
+  },
+
+  created () {
+    this.setColor();
   },
 
   mounted () {
@@ -24,9 +29,14 @@ export default {
   methods: {
     attachSpinner () {
       window.setTimeout(() => {
-        const spinner = new Spinner(this.spinnerOptions).spin();
+        const spinner = new Spinner(this.options).spin();
         this.$el.appendChild(spinner.el);
       }, 500);
+    },
+
+    setColor () {
+      const theme = this.$store.getters.theme;
+      this.options.color = (theme === 'light') ? '#000' : '#fff';
     },
   },
 }
