@@ -36,7 +36,7 @@ export default {
 
   @media BREAKPOINT_LARGE
     margin 0 auto
-    max-width CONTENT_MAX_WIDTH
+    max-width CONTENT_MAX_WIDTH - (COLUMN_GAP_LARGE * 2)
 
 .thumbs__group
   display flex
