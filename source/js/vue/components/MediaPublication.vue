@@ -5,9 +5,7 @@
       class="publication__image",
       :image="publication.image",
     )
-    a.publication__link(
-      :href="publication.url",
-    )
+    div.publication__details
       h2.publication__title(
         v-html="publication.title",
       )
@@ -15,6 +13,12 @@
         v-html="publication.publisher",
       )
       p.publication__date {{ publication.date }}
+      a.publication__link(
+        :href="publication.url",
+        :title="'Read the ' + publication.publisher + ' article'",
+        rel="noopener",
+        target="_blank",
+      ) Link
 </template>
 
 <script>
@@ -34,10 +38,9 @@ export default {
 
   @media BREAKPOINT_MEDIUM
     align-items center
-    border-radius 2px
     display flex
-    margin 0 px_to_rem(48)
-    padding px_to_rem(24)
+    margin 0 px_to_rem(32)
+    padding 0
   
   @media BREAKPOINT_LARGE
     margin 0
@@ -47,19 +50,13 @@ export default {
   width 50%
 
   @media BREAKPOINT_MEDIUM
-    flex 0 0 33.3333%
+    flex 0 0 33.33%
     width auto
   
   @media BREAKPOINT_MEDIUM
     margin 0
 
-.publication__image .image__frame
-  overflow visible
-  shadow(2)
-
-.publication__link
-  color DARK_GREY
-  display block
+.publication__details
   padding 1rem 0 0
 
   @media BREAKPOINT_MEDIUM
@@ -68,7 +65,7 @@ export default {
 .publication__title
   font-size H2_SIZE
   heading_font()
-  margin 0 0 .5em
+  margin 0 0 px_to_rem(4)
 
   @media BREAKPOINT_MEDIUM
     font-size H2_SIZE_MEDIUM
@@ -76,16 +73,25 @@ export default {
 .publication__publisher
   font-size H3_SIZE
   font-weight normal
-  margin 0 0 .5em
+  margin 0 0 px_to_rem(6)
 
   @media BREAKPOINT_MEDIUM
     font-size H3_SIZE_MEDIUM
 
 .publication__date
   font-size CAPTION_SIZE
-  margin .7rem 0 0
+  margin 0
 
   @media BREAKPOINT_MEDIUM
     font-size CAPTION_SIZE_MEDIUM
+
+.publication__link
+  align-items center
+  border-radius 4px
+  display inline-flex
+  heading_font()
+  height px_to_rem(32)
+  margin px_to_rem(16) 0 0
+  padding 0 px_to_rem(20)
 
 </style>

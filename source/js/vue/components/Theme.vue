@@ -140,8 +140,8 @@ for name, theme in THEMES
     .cover__link
       border 2px solid theme['LINK'];
 
-    // TODO: revise .publication styles
-    .publication
-      background WHITE;
+    .publication__link
+      border 1px solid theme['TEXT'];
+      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
 
 </style>
