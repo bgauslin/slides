@@ -62,80 +62,133 @@ export default {
 
 THEMES = {
   dark: {
-    BACKGROUND: DARK_GREY
-    CHROME_BACKGROUND: DARK_GREY
-    CHROME_BORDER: rgba(WHITE, .25)
+    APP: {
+      BACKGROUND: DARK_GREY
+      TEXT: WHITE
+    },
+    CONTROLS: {
+      BACKGROUND: rgba(DARK_GREY, .97)
+      BORDER: rgba(WHITE, .25)
+      LINK: rgba(WHITE, .7)
+      HOVER: WHITE
+      ACTIVE: WHITE
+    }
+    COUNT: {
+      LINK: WHITE
+      HOVER: rgba(WHITE, .7)
+      ACTIVE: rgba(WHITE, .7)
+    }
+    HEADER: {
+      BACKGROUND: rgba(DARK_GREY, .97)
+      LINK: WHITE
+      HOVER: rgba(WHITE, .7)
+      ACTIVE: rgba(WHITE, .7)
+    }
     COVER_BACKGROUND: rgba(DARK_GREY, .9)
     ICON: ICON_THEME_DARK
-    LINK: WHITE
-    LINK_ACTIVE: rgba(WHITE, .7)
-    LINK_HOVER: rgba(WHITE, .7)
-    TEXT_COLOR: WHITE
+    LINK: {
+      LINK: WHITE
+      HOVER: rgba(WHITE, .7)
+      ACTIVE: rgba(WHITE, .7)
+    }
   },
   light: {
-    BACKGROUND: OFF_WHITE
-    CHROME_BACKGROUND: OFF_WHITE
-    CHROME_BORDER: rgba(DARK_GREY, .25)
+    APP: {
+      BACKGROUND: OFF_WHITE
+      TEXT: DARK_GREY
+    },
+    CONTROLS: {
+      BACKGROUND: rgba(WHITE, .9)
+      BORDER: rgba(DARK_GREY, .25)
+      LINK: rgba(DARK_GREY, .7)
+      HOVER: DARK_GREY
+      ACTIVE: DARK_GREY
+    }
+    COUNT: {
+      LINK: DARK_GREY
+      HOVER: rgba(DARK_GREY, .7)
+      ACTIVE: rgba(DARK_GREY, .7)
+    }
+    HEADER: {
+      BACKGROUND: rgba(OFF_WHITE, .97)
+      LINK: DARK_GREY
+      HOVER: rgba(DARK_GREY, .7)
+      ACTIVE: rgba(DARK_GREY, .7)
+    }
     COVER_BACKGROUND: rgba(WHITE, .25)
     ICON: ICON_THEME_LIGHT
-    LINK: rgba(DARK_GREY, .7)
-    LINK_ACTIVE: DARK_GREY
-    LINK_HOVER: DARK_GREY
-    TEXT_COLOR: DARK_GREY
+    LINK: {
+      LINK: LINK_COLOR
+      HOVER: rgba(LINK_COLOR, .7)
+      ACTIVE: rgba(LINK_COLOR, .7)
+    } 
   }
 }
 
 for name, theme in THEMES
-  [data-theme=\"{name}\"]
-    {body}&
-      background theme['BACKGROUND'];
-      color theme['TEXT_COLOR'];
+  app_ = theme['APP']
+  controls_ = theme['CONTROLS']
+  count_ = theme['COUNT']
+  header_ = theme['HEADER']
+  link_ = theme['LINK']
 
-    .theme::before
-      content theme['ICON'];
+  body[data-theme=\"{name}\"]
+    background app_['BACKGROUND'];
+    color app_['TEXT'];
 
-    .header
+    // footer navigation
     .controls
-      background theme['CHROME_BACKGROUND'];
+      background controls_['BACKGROUND'];
+      border-top 1px solid controls_['BORDER'];
 
       @media BREAKPOINT_LARGE
         background 0;
+        border 0;
 
-    .controls
-      border-top 1px solid theme['CHROME_BORDER'];
+    .prev-next__link
+      link(controls_['LINK'], controls_['LINK'], controls_['HOVER'], controls_['ACTIVE']);
+
+    .count__link
+      link(count_['LINK'], count_['LINK'], count_['HOVER'], count_['ACTIVE']);
+
+    // header + header navigation
+    .header
+      background header_['BACKGROUND'];
 
       @media BREAKPOINT_LARGE
-        border 0;
+        background 0;
 
     .header--cover
       background 0;
 
     .header--thumbs
       @media BREAKPOINT_LARGE
-        background theme['CHROME_BACKGROUND'];
+        background header_['BACKGROUND'];
 
     .header__link
-      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK']);
+      link(header_['LINK'], header_['LINK'], header_['HOVER'], header_['ACTIVE']);
 
+    // slideshow cover
     .cover__frame
       background-color theme['COVER_BACKGROUND'];
 
-    .theme
-    .cover__header
-      color theme['TEXT_COLOR'];
-
-    .count__link
     .cover__link
-    .prev-next__link
+      border 2px solid link_['LINK']; // TODO: border states for .cover__link
+
+    // other links
+    .cover__link
     .slideshow__link
-      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
-
-    // TODO: border states for .cover__link
-    .cover__link
-      border 2px solid theme['LINK'];
+    .publication__link
+      link(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
 
     .publication__link
-      border 1px solid theme['TEXT'];
-      link(theme['LINK'], theme['LINK'], theme['LINK_HOVER'], theme['LINK_ACTIVE']);
+      border 1px solid theme['TEXT']; // TODO: border states for .publication__link
+
+    // theme icon
+    .theme
+      color app_['TEXT'];
+
+    .theme::before
+      content theme['ICON'];
 
 </style>
