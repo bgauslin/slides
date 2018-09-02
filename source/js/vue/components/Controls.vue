@@ -2,40 +2,35 @@
   div.controls
     div.controls__frame
       div.controls__content
-        div.prev
-          router-link(
-            v-if="isFirstSlide",
-            class="prev-next__link",
-            title="Cover",
-            :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-          )
-          router-link(
-            v-if="slidePrev",
-            class="prev-next__link",
-            :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
-            :title="slidePrev.title",
-          )
-            span.prev-next__label Prev
-        div.count
-          router-link(
-            class="count__link",
-            :to="{ name: 'thumbs' }",
-            title="View thumbnails",
-          ) {{ currentSlideCount }} of {{ totalSlideCount }}
-        div.next
-          router-link(
-            v-if="slideNext",
-            class="prev-next__link",
-            :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
-            :title="slideNext.title",
-          )
-          router-link(
-            v-if="isLastSlide",
-            class="prev-next__link",
-            title="Thumbnails",
-            :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
-          )
-            span.prev-next__label Next
+        router-link(
+          v-if="isFirstSlide",
+          class="prev-next__link prev-next--prev",
+          title="Cover",
+          :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
+        )
+        router-link(
+          v-if="slidePrev",
+          class="prev-next__link prev-next--prev",
+          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
+          :title="slidePrev.title",
+        )
+        router-link(
+          class="count__link",
+          :to="{ name: 'thumbs' }",
+          title="View thumbnails",
+        ) {{ currentSlideCount }} of {{ totalSlideCount }}
+        router-link(
+          v-if="slideNext",
+          class="prev-next__link prev-next--next",
+          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
+          :title="slideNext.title",
+        )
+        router-link(
+          v-if="isLastSlide",
+          class="prev-next__link prev-next--next",
+          title="Thumbnails",
+          :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
+        )
 </template>
 
 <script>
@@ -103,53 +98,68 @@ export default {
     margin 0 0 0 COLUMN_GAP
     width SIDEBAR_WIDTH
 
-.count
-  font-size CAPTION_SIZE
-  heading_font()
-
-  @media BREAKPOINT_MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
-
-.prev-next__link
 .count__link
+.prev-next__link
   align-items center
   display inline-flex
   height CONTROLS_HEIGHT
   justify-content center
   overflow hidden
-  transition transform DEFAULT_TRANSITION
-  width CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
-    width CONTROLS_HEIGHT_MEDIUM
 
-.prev-next__link:active
+.count__link
+  font-size CAPTION_SIZE
+  heading_font()
+  padding 0 px_to_rem(16)
+  transition transform DEFAULT_TRANSITION
+  white-space nowrap
+
+  @media BREAKPOINT_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
+
 .count__link:active
-  transform scale(.8)
+  transform scale(.9)
+
+.prev-next__link
+  flex 1
 
 .prev-next__link::before
 .prev-next__link::after
   font-size CONTROLS_ICON_SIZE
   icon()
   position relative
+  transition transform DEFAULT_TRANSITION
 
-.prev-next__label
-  display none
-
-.prev .prev-next__link::before
+.prev-next--prev::before
   content ICON_ANGLE_LEFT
+  margin-right auto
   right .1rem
 
-.next .prev-next__link::after
+.prev-next--next::after
   content ICON_ANGLE_RIGHT
+  margin-left auto
   left .1rem
 
-@media BREAKPOINT_LARGE
-  .prev
-    margin-left px_to_rem(-16)
+.prev-next__link:active::before
+.prev-next__link:active::after
+  transform scale(.8)
 
-  .next
-    margin-right px_to_rem(-16)
+@media BREAKPOINT_MEDIUM
+  .prev-next--prev
+    padding-left px_to_rem(12)
+
+  .prev-next--next
+    padding-right px_to_rem(12)
+
+@media BREAKPOINT_LARGE
+  .prev-next--prev
+    margin-left px_to_rem(-8)
+    padding-left 0
+
+  .prev-next--next
+    margin-right px_to_rem(-8)
+    padding-right 0
 
 </style>
