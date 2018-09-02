@@ -2,6 +2,10 @@
   button.theme(
     @click="toggleTheme",
   )
+    img(
+      class="theme__icon",
+      :src="svgIcon",
+    )
 </template>
 
 <script>
@@ -14,6 +18,10 @@ export default {
     theme () {
       return this.$store.getters.theme;
     },
+    
+    svgIcon () {
+      return `/ui/icons/contrast-${this.theme}.svg`;
+    }
   },
 
   methods: {
@@ -55,18 +63,18 @@ export default {
 .theme:hover
   cursor pointer
 
-.theme::before
-  border-radius 50%
-  content ''
-  display inline-block
+.theme__icon
   height THEME_ICON_SIZE
   width THEME_ICON_SIZE
+
+  @media BREAKPOINT_MEDIUM
+    height THEME_ICON_SIZE_MEDIUM
+    width THEME_ICON_SIZE_MEDIUM
 
 THEMES = {
   'dark': {
     APP: {
       BACKGROUND: DARK_GREY
-      ICON_COLOR: WHITE
       TEXT: WHITE
     },
     CONTROLS: {
@@ -99,7 +107,6 @@ THEMES = {
   'light': {
     APP: {
       BACKGROUND: OFF_WHITE
-      ICON_COLOR: DARK_GREY
       TEXT: DARK_GREY
     },
     CONTROLS: {
@@ -190,9 +197,5 @@ for name, theme in THEMES
 
     .publication__link
       border 1px solid link_['TEXT']; // TODO: border states for .publication__link
-
-    // theme icon
-    .theme::before
-      background app_['ICON_COLOR'];
 
 </style>
