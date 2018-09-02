@@ -39,13 +39,8 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// TODO: make image height fluid at large breakpoint
-// .images
-//   @media BREAKPOINT_LARGE
-//     max-height 100%
-
 .images--multiple
-  margin 0 auto
+  margin (- IMAGE_GAP) auto 0
   width 50%
 
   @media BREAKPOINT_MEDIUM

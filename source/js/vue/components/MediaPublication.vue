@@ -42,7 +42,7 @@ export default {
 @import '../../../stylus/_config/'
 
 .publication
-  padding px_to_rem(16)
+  padding 0 px_to_rem(16)
 
   @media BREAKPOINT_MEDIUM
     align-items center
