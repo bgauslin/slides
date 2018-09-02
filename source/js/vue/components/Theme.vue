@@ -56,21 +56,23 @@ export default {
   cursor pointer
 
 .theme::before
+  border-radius 50%
+  content ''
   display inline-block
-  font-size THEME_ICON_SIZE
-  icon()
+  height THEME_ICON_SIZE
+  width THEME_ICON_SIZE
 
 THEMES = {
   'dark': {
     APP: {
       BACKGROUND: DARK_GREY
-      ICON: ICON_THEME_DARK
+      ICON_COLOR: WHITE
       TEXT: WHITE
     },
     CONTROLS: {
       BACKGROUND: rgba(DARK_GREY, .9)
       BORDER: rgba(WHITE, .2)
-      LINK: rgba(WHITE, .7)
+      LINK: rgba(WHITE, .5)
       HOVER: WHITE
       ACTIVE: WHITE
     }
@@ -97,13 +99,13 @@ THEMES = {
   'light': {
     APP: {
       BACKGROUND: OFF_WHITE
-      ICON: ICON_THEME_LIGHT
+      ICON_COLOR: DARK_GREY
       TEXT: DARK_GREY
     },
     CONTROLS: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       BORDER: rgba(DARK_GREY, .3)
-      LINK: rgba(DARK_GREY, .7)
+      LINK: rgba(DARK_GREY, .5)
       HOVER: DARK_GREY
       ACTIVE: DARK_GREY
     }
@@ -190,10 +192,7 @@ for name, theme in THEMES
       border 1px solid link_['TEXT']; // TODO: border states for .publication__link
 
     // theme icon
-    .theme
-      color app_['TEXT'];
-
     .theme::before
-      content app_['ICON'];
+      background app_['ICON_COLOR'];
 
 </style>
