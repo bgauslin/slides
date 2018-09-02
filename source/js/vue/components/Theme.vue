@@ -61,14 +61,15 @@ export default {
   icon()
 
 THEMES = {
-  dark: {
+  'dark': {
     APP: {
       BACKGROUND: DARK_GREY
+      ICON: ICON_THEME_DARK
       TEXT: WHITE
     },
     CONTROLS: {
       BACKGROUND: rgba(DARK_GREY, .97)
-      BORDER: rgba(WHITE, .25)
+      BORDER: rgba(WHITE, .2)
       LINK: rgba(WHITE, .7)
       HOVER: WHITE
       ACTIVE: WHITE
@@ -78,45 +79,48 @@ THEMES = {
       HOVER: rgba(WHITE, .7)
       ACTIVE: rgba(WHITE, .7)
     }
+    COVER: {
+      BACKGROUND: rgba(DARK_GREY, .8)
+    },
     HEADER: {
       BACKGROUND: rgba(DARK_GREY, .97)
       LINK: WHITE
       HOVER: rgba(WHITE, .7)
       ACTIVE: rgba(WHITE, .7)
     }
-    COVER_BACKGROUND: rgba(DARK_GREY, .9)
-    ICON: ICON_THEME_DARK
     LINK: {
       LINK: WHITE
       HOVER: rgba(WHITE, .7)
       ACTIVE: rgba(WHITE, .7)
     }
   },
-  light: {
+  'light': {
     APP: {
       BACKGROUND: OFF_WHITE
+      ICON: ICON_THEME_LIGHT
       TEXT: DARK_GREY
     },
     CONTROLS: {
       BACKGROUND: rgba(WHITE, .9)
-      BORDER: rgba(DARK_GREY, .25)
+      BORDER: rgba(DARK_GREY, .2)
       LINK: rgba(DARK_GREY, .7)
-      HOVER: DARK_GREY
-      ACTIVE: DARK_GREY
+      HOVER: LINK_COLOR
+      ACTIVE: LINK_COLOR
     }
     COUNT: {
       LINK: DARK_GREY
       HOVER: rgba(DARK_GREY, .7)
       ACTIVE: rgba(DARK_GREY, .7)
     }
+    COVER: {
+      BACKGROUND: rgba(WHITE, .8)
+    },
     HEADER: {
       BACKGROUND: rgba(OFF_WHITE, .97)
       LINK: DARK_GREY
       HOVER: rgba(DARK_GREY, .7)
       ACTIVE: rgba(DARK_GREY, .7)
     }
-    COVER_BACKGROUND: rgba(WHITE, .25)
-    ICON: ICON_THEME_LIGHT
     LINK: {
       LINK: LINK_COLOR
       HOVER: rgba(LINK_COLOR, .7)
@@ -129,6 +133,7 @@ for name, theme in THEMES
   app_ = theme['APP']
   controls_ = theme['CONTROLS']
   count_ = theme['COUNT']
+  cover_ = theme['COVER']
   header_ = theme['HEADER']
   link_ = theme['LINK']
 
@@ -139,7 +144,7 @@ for name, theme in THEMES
     // footer navigation
     .controls
       background controls_['BACKGROUND'];
-      border-top 1px solid controls_['BORDER'];
+      border-top .5px solid controls_['BORDER'];
 
       @media BREAKPOINT_LARGE
         background 0;
@@ -170,7 +175,7 @@ for name, theme in THEMES
 
     // slideshow cover
     .cover__frame
-      background-color theme['COVER_BACKGROUND'];
+      background-color cover_['BACKGROUND'];
 
     .cover__link
       border 2px solid link_['LINK']; // TODO: border states for .cover__link
@@ -182,13 +187,13 @@ for name, theme in THEMES
       link(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
 
     .publication__link
-      border 1px solid theme['TEXT']; // TODO: border states for .publication__link
+      border 1px solid link_['TEXT']; // TODO: border states for .publication__link
 
     // theme icon
     .theme
       color app_['TEXT'];
 
     .theme::before
-      content theme['ICON'];
+      content app_['ICON'];
 
 </style>
