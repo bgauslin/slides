@@ -68,7 +68,7 @@ THEMES = {
       TEXT: WHITE
     },
     CONTROLS: {
-      BACKGROUND: rgba(DARK_GREY, .97)
+      BACKGROUND: rgba(DARK_GREY, .9)
       BORDER: rgba(WHITE, .2)
       LINK: rgba(WHITE, .7)
       HOVER: WHITE
@@ -83,7 +83,7 @@ THEMES = {
       BACKGROUND: rgba(DARK_GREY, .8)
     },
     HEADER: {
-      BACKGROUND: rgba(DARK_GREY, .97)
+      BACKGROUND: rgba(DARK_GREY, .9)
       LINK: WHITE
       HOVER: rgba(WHITE, .7)
       ACTIVE: rgba(WHITE, .7)
@@ -101,11 +101,11 @@ THEMES = {
       TEXT: DARK_GREY
     },
     CONTROLS: {
-      BACKGROUND: rgba(WHITE, .9)
-      BORDER: rgba(DARK_GREY, .2)
+      BACKGROUND: rgba(OFF_WHITE, .95)
+      BORDER: rgba(DARK_GREY, .3)
       LINK: rgba(DARK_GREY, .7)
-      HOVER: LINK_COLOR
-      ACTIVE: LINK_COLOR
+      HOVER: DARK_GREY
+      ACTIVE: DARK_GREY
     }
     COUNT: {
       LINK: DARK_GREY
@@ -116,7 +116,7 @@ THEMES = {
       BACKGROUND: rgba(WHITE, .8)
     },
     HEADER: {
-      BACKGROUND: rgba(OFF_WHITE, .97)
+      BACKGROUND: rgba(OFF_WHITE, .95)
       LINK: DARK_GREY
       HOVER: rgba(DARK_GREY, .7)
       ACTIVE: rgba(DARK_GREY, .7)
