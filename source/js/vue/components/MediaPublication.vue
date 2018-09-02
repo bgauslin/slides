@@ -98,9 +98,10 @@ export default {
   border-radius 4px
   display inline-flex
   heading_font()
-  height px_to_rem(36)
+  font-size px_to_em(14)
+  height PUBLICATION_LINK_HEIGHT
   margin px_to_rem(16) 0 0
-  padding 0 px_to_rem(20) 0 px_to_rem(12)
+  padding 0 px_to_rem(16) 0 px_to_rem(8)
 
 [href$="pdf"]::after
   bottom -.1em
