@@ -146,20 +146,21 @@ export default {
 .prev-next__link:active::after
   transform scale(.8)
 
-@media BREAKPOINT_MEDIUM
-  .prev-next--prev
-    padding-left px_to_rem(12)
+.prev-next--prev
+.prev-next--next
+  padding 0 px_to_rem(8)
 
-  .prev-next--next
-    padding-right px_to_rem(12)
+  @media BREAKPOINT_MEDIUM
+    padding 0 px_to_rem(12)
+
+  @media BREAKPOINT_LARGE
+    padding 0
 
 @media BREAKPOINT_LARGE
   .prev-next--prev
     margin-left px_to_rem(-8)
-    padding-left 0
 
   .prev-next--next
     margin-right px_to_rem(-8)
-    padding-right 0
 
 </style>
