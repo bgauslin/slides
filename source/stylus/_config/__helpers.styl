@@ -63,6 +63,34 @@ link(link, visited, hover, active)
   [no-touch]&:hover
     color hover
 
+link_background(link, visited, hover, active)
+  &:link
+    background link
+
+  &:visited
+    background visited
+
+  &:active
+  &:focus
+    background active
+
+  [no-touch]&:hover
+    background hover
+
+link_border(link, visited, hover, active)
+  &:link
+    border-color link
+
+  &:visited
+    border-color visited
+
+  &:active
+  &:focus
+    border-color active
+
+  [no-touch]&:hover
+    border-color hover
+
 shadow(value)
   if value == 0
     box-shadow none
