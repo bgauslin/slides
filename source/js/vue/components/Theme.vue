@@ -80,7 +80,15 @@ THEMES = {
     APP: {
       BACKGROUND: DARK_GREY
       TEXT: WHITE
-    },
+    }
+    BUTTON: {
+      LINK: WHITE
+      HOVER: DARK_GREY
+      ACTIVE: DARK_GREY
+      BACKGROUND: rgba(WHITE, .1)
+      BACKGROUND_HOVER: WHITE
+      BACKGROUND_ACTIVE: WHITE
+    }
     CONTROLS: {
       BACKGROUND: rgba(DARK_GREY, .9)
       BORDER: rgba(WHITE, .2)
@@ -95,14 +103,9 @@ THEMES = {
     }
     COVER: {
       BACKGROUND: rgba(DARK_GREY, .8)
-    },
+    }
     HEADER: {
       BACKGROUND: rgba(DARK_GREY, .9)
-      LINK: WHITE
-      HOVER: rgba(WHITE, .7)
-      ACTIVE: rgba(WHITE, .7)
-    }
-    LINK: {
       LINK: WHITE
       HOVER: rgba(WHITE, .7)
       ACTIVE: rgba(WHITE, .7)
@@ -112,7 +115,15 @@ THEMES = {
     APP: {
       BACKGROUND: OFF_WHITE
       TEXT: DARK_GREY
-    },
+    }
+    BUTTON: {
+      LINK: DARK_GREY
+      HOVER: WHITE
+      ACTIVE: WHITE
+      BACKGROUND: rgba(DARK_GREY, .1)
+      BACKGROUND_HOVER: rgba(DARK_GREY, .7)
+      BACKGROUND_ACTIVE: rgba(DARK_GREY, .7)
+    } 
     CONTROLS: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       BORDER: rgba(DARK_GREY, .3)
@@ -127,28 +138,23 @@ THEMES = {
     }
     COVER: {
       BACKGROUND: rgba(WHITE, .8)
-    },
+    }
     HEADER: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       LINK: DARK_GREY
       HOVER: rgba(DARK_GREY, .7)
       ACTIVE: rgba(DARK_GREY, .7)
     }
-    LINK: {
-      LINK: LINK_COLOR
-      HOVER: rgba(LINK_COLOR, .7)
-      ACTIVE: rgba(LINK_COLOR, .7)
-    } 
   }
 }
 
 for name, theme in THEMES
   app_ = theme['APP']
+  button_ = theme['BUTTON']
   controls_ = theme['CONTROLS']
   count_ = theme['COUNT']
   cover_ = theme['COVER']
   header_ = theme['HEADER']
-  link_ = theme['LINK']
 
   body[data-theme=\"{name}\"]
     background app_['BACKGROUND'];
@@ -195,15 +201,16 @@ for name, theme in THEMES
       background-color cover_['BACKGROUND'];
 
     .cover__link
-      link_border(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
+      link_border(button_['LINK'], button_['LINK'], button_['HOVER'], button_['ACTIVE']);
+      link_background(button_['BACKGROUND'], button_['BACKGROUND'], button_['BACKGROUND_HOVER'], button_['BACKGROUND_ACTIVE']);
 
     // other links
     .cover__link
     .slideshow__link
     .publication__link
-      link(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
+      link(button_['LINK'], button_['LINK'], button_['HOVER'], button_['ACTIVE']);
 
     .publication__link
-      link_border(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
+      link_background(button_['BACKGROUND'], button_['BACKGROUND'], button_['BACKGROUND_HOVER'], button_['BACKGROUND_ACTIVE']);
 
 </style>

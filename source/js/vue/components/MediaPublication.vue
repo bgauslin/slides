@@ -96,8 +96,6 @@ export default {
 .publication__link
   align-items center
   border-radius (PUBLICATION_LINK_HEIGHT / 2)
-  border-style solid
-  border-width 1px
   display inline-flex
   heading_font(600)
   font-size px_to_em(14)
@@ -105,8 +103,11 @@ export default {
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16)
   transition background DEFAULT_TRANSITION,
-             border DEFAULT_TRANSITION,
-             color DEFAULT_TRANSITION
+             color DEFAULT_TRANSITION,
+             transform DEFAULT_TRANSITION
+
+.publication__link:active
+  transform scale(.9)
 
 [href$="pdf"]::after
   bottom -.1em
