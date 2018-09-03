@@ -24,22 +24,26 @@ export default {
 @import '../../../stylus/_config/'
 
 .thumbs
-  margin 0 auto
-  max-width CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2)
   padding HEADER_HEIGHT 0 0
+  width 100%
 
   @media BREAKPOINT_MEDIUM
     grid-row 2
+    margin 0 auto
+    max-width CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2)
     padding 0
 
 .thumbs__frame
-  margin 0 THUMB_GAP THUMB_GAP
+  margin 0 THUMB_GAP
+  padding 0 0 THUMB_GAP
 
   @media BREAKPOINT_SMALL
-    margin 0 THUMB_GAP_SMALL THUMB_GAP_SMALL
+    margin 0 THUMB_GAP_SMALL
+    padding 0 0 THUMB_GAP_SMALL
 
   @media BREAKPOINT_MEDIUM
-    margin 0 THUMB_GAP_MEDIUM THUMB_GAP_MEDIUM
+    margin 0 THUMB_GAP_MEDIUM
+    padding 0 0 THUMB_GAP_MEDIUM
 
 .thumbs__group
   display flex
