@@ -182,6 +182,9 @@ for name, theme in THEMES
     .header__link
       link(header_['LINK'], header_['LINK'], header_['HOVER'], header_['ACTIVE']);
 
+    .header__link--home.current
+      color header_['LINK']
+
     // slideshow cover
     .cover__frame
       background-color cover_['BACKGROUND'];
