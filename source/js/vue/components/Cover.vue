@@ -75,10 +75,10 @@ export default {
   height COVER_LINK_HEIGHT
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16) 0 px_to_rem(24)
-  transform background DEFAULT_TRANSITION,
-            border DEFAULT_TRANSITION,
-            color DEFAULT_TRANSITION,
-            transform DEFAULT_TRANSITION
+  transition background DEFAULT_TRANSITION,
+             border DEFAULT_TRANSITION,
+             color DEFAULT_TRANSITION,
+             transform DEFAULT_TRANSITION
 
 .cover__link:active
   transform scale(.95)
