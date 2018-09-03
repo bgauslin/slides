@@ -52,12 +52,11 @@ export default {
 .thumb__link
   display block
   shadow(0)
-  transition box-shadow DEFAULT_TRANSITION,
-             transform DEFAULT_TRANSITION
+  transition box-shadow THUMB_TRANSITION, transform THUMB_TRANSITION
 
 [no-touch] .thumb__link:hover
   shadow(2)
-  transform scale(1.1)
+  transform scale(1.05)
 
 .thumb__link:active
 [no-touch] .thumb__link:hover:active
