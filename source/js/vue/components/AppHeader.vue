@@ -84,7 +84,6 @@ export default {
   heading_font()
   height HEADER_HEIGHT
   padding 0 HEADER_HEIGHT 0 px_to_rem(16)
-  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
   width 100%
 
   @media BREAKPOINT_MEDIUM
@@ -93,16 +92,9 @@ export default {
     padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
     position relative
 
-// TODO: only apply transform when navigating between 'cover' and 'home' routes
-.header__link:active
-  transform scale(.8)
-
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
   cursor default
-
-.header__link--home.current:active
-  transform none
 
 .header__link--back
   padding-left px_to_rem(8)
@@ -125,6 +117,14 @@ export default {
 .header__link__label
   overflow hidden
   text-overflow ellipsis
+  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
   white-space nowrap
+
+// TODO: only apply transform when navigating between 'cover' and 'home' routes
+.header__link:active .header__link__label
+  transform scale(.9)
+
+.header__link--home.current:active  .header__link__label
+  transform none
 
 </style>

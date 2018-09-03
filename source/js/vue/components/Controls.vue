@@ -120,7 +120,7 @@ export default {
     font-size CAPTION_SIZE_MEDIUM
 
 .count__link:active
-  transform scale(.8)
+  transform scale(.9)
 
 .prev-next__link
   flex 1

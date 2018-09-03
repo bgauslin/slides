@@ -54,6 +54,7 @@ export default {
   position fixed
   right 0
   top 0
+  transition transform DEFAULT_TRANSITION
   width HEADER_HEIGHT
 
   @media BREAKPOINT_MEDIUM
@@ -62,6 +63,9 @@ export default {
 
 .theme:hover
   cursor pointer
+
+.theme:active
+  transform scale(.9)
 
 .theme__icon
   height THEME_ICON_SIZE
