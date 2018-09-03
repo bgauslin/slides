@@ -9,13 +9,13 @@
         v-if="content.media.images",
         :images="content.media.images",
       )
-      media-text(
-        v-if="content.media.text",
-        :text="content.media.text",
-      )
       media-publication(
         v-if="content.media.publication",
         :publication="content.media.publication",
+      )
+      media-text(
+        v-if="content.media.text",
+        :text="content.media.text",
       )
     div.slide__caption(
       v-html="content.caption",
