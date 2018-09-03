@@ -4,13 +4,6 @@
   )
     div.header__content
       router-link(
-        v-if="slideshowTitle && !homeLink",
-        :class="linkClass",
-        :title="slideshowTitle",
-        :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-      )
-        span.header__link__label {{ slideshowTitle }}
-      router-link(
         v-if="homeLink",
         :class="linkClass",
         :to="{ name: 'home' }",
@@ -18,6 +11,20 @@
         exact,
       )
         span.header__link__label Slideshows
+      router-link(
+        v-if="slideshowTitle && !homeLink && !backToSlide",
+        :class="linkClass",
+        :title="slideshowTitle",
+        :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
+      )
+        span.header__link__label {{ slideshowTitle }}
+      router-link(
+        v-if="backToSlide",
+        :class="linkClass",
+        title="slideshowTitle",
+        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: lastSlug } }",
+      )
+        span.header__link__label Back
       theme
 </template>
 
@@ -30,8 +37,16 @@ export default {
   components: { Theme },
 
   computed: {
+    backToSlide () {
+      return (this.$route.name === 'thumbs' && this.lastSlug);
+    },
+
+    lastSlug () {
+      return this.$store.getters.slug;
+    },
+
     homeLink () {
-      return (this.$route.name == 'home' || this.$route.name == 'cover');
+      return (this.$route.name === 'home' || this.$route.name === 'cover');
     },
 
     linkClass () {

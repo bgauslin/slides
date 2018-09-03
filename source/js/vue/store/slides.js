@@ -103,6 +103,8 @@ const slides = {
       }
     },
 
+    slug: (state) => state.slug,
+
     theme: (state) => state.theme,
 
     totalSlideCount: (state, getters) => {
