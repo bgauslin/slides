@@ -76,6 +76,10 @@ export default {
       return this.$store.getters.slideshow;
     },
 
+    thumbs () {
+      return this.$store.getters.thumbs;
+    },
+
     view () {
       return this.$route.name;
     }
@@ -141,6 +145,8 @@ export default {
       const response = await fetch(endpoint);
       const data = await response.json();
 
+      // NOTE: All store actions are async via 'dispatch' (instead of 'commit')
+      // since we usually need to hit more than one endpoint on first run.
       switch (view) {
         case 'cover':
           this.$store.dispatch('updateSlideshow', data);
@@ -157,6 +163,7 @@ export default {
           this.$store.dispatch('updateSlideshow', data);
           break;
         case 'thumbs':
+          this.$store.dispatch('updateThumbs', data);
           this.ready(data);
           break;
       }
@@ -197,10 +204,12 @@ export default {
 
     getDataSlide () {
       this.app.showControls = true;
-      this.$store.commit('updateSlug', this.$route.params.slug); // Set slug for slide id lookup.
 
+       // Set slug for slide id lookup.
+      this.$store.commit('updateSlug', this.$route.params.slug);
 
       const fetchData = async () => {
+        // Get the slideshow first, then the slide (or the slide won't have a slot to get stored in).
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
@@ -217,14 +226,20 @@ export default {
     getDataThumbs () {
       this.app.showControls = false;
 
-      // TODO: Store the thumbnails in the store.
       const fetchData = async () => {
+        // Fetch thumbs, then slideshow if we don't have it yet.
+        await this.fetchJson(this.endpoint('thumbs'), 'thumbs');
+
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
-        await this.fetchJson(this.endpoint('thumbs'), 'thumbs');
       }
-      fetchData();
+
+      if (this.thumbs) {
+        this.ready(this.thumbs);
+      } else {
+        fetchData();
+      }
     },
 
     ready(data) {
@@ -277,7 +292,6 @@ export default {
     display grid
     grid-template-columns minmax(auto, 1fr)
     grid-template-rows HEADER_HEIGHT_MEDIUM 1fr CONTROLS_HEIGHT_MEDIUM
-
 
 .first-run
   animation-name fadeIn

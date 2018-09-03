@@ -4,6 +4,7 @@ const slides = {
     slideshow: {},
     slug: null,
     theme: JSON.parse(localStorage.getItem('theme')) || 'light',
+    thumbs: null,
   },
 
   mutations: {
@@ -29,6 +30,10 @@ const slides = {
       localStorage.setItem('theme', JSON.stringify(payload));
       state.theme = payload;
     },
+
+    updateThumbs (state, payload) {
+      state.thumbs = payload;
+    },
   },
 
   actions: {
@@ -38,6 +43,10 @@ const slides = {
 
     updateSlideshow (context, value) {
       context.commit('updateSlideshow', value);
+    },
+
+    updateThumbs (context, value) {
+      context.commit('updateThumbs', value);
     },
   },
 
@@ -106,6 +115,8 @@ const slides = {
     slug: (state) => state.slug,
 
     theme: (state) => state.theme,
+
+    thumbs: (state) => state.thumbs,
 
     totalSlideCount: (state, getters) => {
       if (getters.hasSlideshow) {
