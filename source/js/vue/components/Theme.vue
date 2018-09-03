@@ -83,31 +83,30 @@ THEMES = {
     }
     BUTTON: {
       LINK: WHITE
-      HOVER: DARK_GREY
       ACTIVE: DARK_GREY
       BACKGROUND: rgba(WHITE, .1)
-      BACKGROUND_HOVER: WHITE
       BACKGROUND_ACTIVE: WHITE
     }
     CONTROLS: {
       BACKGROUND: rgba(DARK_GREY, .9)
       BORDER: rgba(WHITE, .2)
       LINK: rgba(WHITE, .5)
-      HOVER: WHITE
       ACTIVE: WHITE
-    }
-    COUNT: {
-      LINK: WHITE
-      HOVER: rgba(WHITE, .7)
-      ACTIVE: rgba(WHITE, .7)
     }
     COVER: {
       BACKGROUND: rgba(DARK_GREY, .8)
+      LINK: WHITE
+      ACTIVE: WHITE
+      LINK_BACKGROUND: rgba(WHITE, .15)
+      LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
       BACKGROUND: rgba(DARK_GREY, .9)
       LINK: WHITE
-      HOVER: rgba(WHITE, .7)
+      ACTIVE: rgba(WHITE, .7)
+    }
+    LINK: {
+      LINK: WHITE
       ACTIVE: rgba(WHITE, .7)
     }
   },
@@ -118,31 +117,30 @@ THEMES = {
     }
     BUTTON: {
       LINK: DARK_GREY
-      HOVER: WHITE
       ACTIVE: WHITE
       BACKGROUND: rgba(DARK_GREY, .1)
       BACKGROUND_HOVER: rgba(DARK_GREY, .7)
-      BACKGROUND_ACTIVE: rgba(DARK_GREY, .7)
     } 
     CONTROLS: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       BORDER: rgba(DARK_GREY, .3)
       LINK: rgba(DARK_GREY, .5)
-      HOVER: DARK_GREY
       ACTIVE: DARK_GREY
-    }
-    COUNT: {
-      LINK: DARK_GREY
-      HOVER: rgba(DARK_GREY, .7)
-      ACTIVE: rgba(DARK_GREY, .7)
     }
     COVER: {
       BACKGROUND: rgba(WHITE, .8)
+      LINK: DARK_GREY
+      ACTIVE: DARK_GREY
+      LINK_BACKGROUND: rgba(DARK_GREY, .15)
+      LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       LINK: DARK_GREY
-      HOVER: rgba(DARK_GREY, .7)
+      ACTIVE: rgba(DARK_GREY, .7)
+    }
+    LINK: {
+      LINK: DARK_GREY
       ACTIVE: rgba(DARK_GREY, .7)
     }
   }
@@ -152,9 +150,9 @@ for name, theme in THEMES
   app_ = theme['APP']
   button_ = theme['BUTTON']
   controls_ = theme['CONTROLS']
-  count_ = theme['COUNT']
   cover_ = theme['COVER']
   header_ = theme['HEADER']
+  link_ = theme['LINK']
 
   body[data-theme=\"{name}\"]
     background app_['BACKGROUND'];
@@ -169,12 +167,6 @@ for name, theme in THEMES
       @media BREAKPOINT_LARGE
         background 0;
         border 0;
-
-    .prev-next__link
-      link(controls_['LINK'], controls_['LINK'], controls_['HOVER'], controls_['ACTIVE']);
-
-    .count__link
-      link(count_['LINK'], count_['LINK'], count_['HOVER'], count_['ACTIVE']);
 
     // header + header navigation
     .header
@@ -191,7 +183,7 @@ for name, theme in THEMES
         background header_['BACKGROUND'];
 
     .header__link
-      link(header_['LINK'], header_['LINK'], header_['HOVER'], header_['ACTIVE']);
+      link(header_['LINK'], header_['LINK'], header_['ACTIVE'], header_['ACTIVE']);
 
     .header__link--home.current
       color header_['LINK']
@@ -200,17 +192,20 @@ for name, theme in THEMES
     .cover__frame
       background-color cover_['BACKGROUND'];
 
-    .cover__link
-      link_border(button_['LINK'], button_['LINK'], button_['HOVER'], button_['ACTIVE']);
-      link_background(button_['BACKGROUND'], button_['BACKGROUND'], button_['BACKGROUND_HOVER'], button_['BACKGROUND_ACTIVE']);
-
-    // other links
-    .cover__link
+    // links
     .slideshow__link
-    .publication__link
-      link(button_['LINK'], button_['LINK'], button_['HOVER'], button_['ACTIVE']);
+    .count__link
+      link(link_['LINK'], link_['LINK'], link_['ACTIVE'], link_['ACTIVE']);
+
+    .cover__link
+      link(cover_['LINK'], cover_['LINK'], cover_['ACTIVE'], cover_['ACTIVE']);
+      link_background(cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND_ACTIVE'], cover_['LINK_BACKGROUND_ACTIVE']);
+
+    .prev-next__link
+      link(controls_['LINK'], controls_['LINK'], controls_['ACTIVE'], controls_['ACTIVE']);
 
     .publication__link
-      link_background(button_['BACKGROUND'], button_['BACKGROUND'], button_['BACKGROUND_HOVER'], button_['BACKGROUND_ACTIVE']);
+      link(button_['LINK'], button_['LINK'], button_['ACTIVE'], button_['ACTIVE']);
+      link_background(button_['BACKGROUND'], button_['BACKGROUND'], button_['BACKGROUND_ACTIVE'], button_['BACKGROUND_ACTIVE']);
 
 </style>
