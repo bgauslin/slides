@@ -13,9 +13,9 @@
       router-link(
         v-if="homeLink",
         :class="linkClass",
-        exact,
-        title="Home",
         :to="{ name: 'home' }",
+        title="Home",
+        exact,
       )
         span.header__link__label Slideshows
       theme
@@ -36,7 +36,7 @@ export default {
 
     linkClass () {
       if (this.$route.name == 'home') {
-        return 'header__link';
+        return 'header__link header__link--home';
       } else {
         return 'header__link header__link--back';
       }
@@ -73,6 +73,7 @@ export default {
   flex 1
   margin 0 auto
   max-width CONTENT_MAX_WIDTH
+  width 100%
 
 // TODO: create nested element for overflow: ellipsis
 .header__link
@@ -82,14 +83,26 @@ export default {
   font-weight normal
   heading_font()
   height HEADER_HEIGHT
-  padding-left px_to_rem(16)
-  transition color DEFAULT_TRANSITION
-  
+  padding 0 HEADER_HEIGHT 0 px_to_rem(16)
+  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
+  width 100%
+
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
-    padding-left COLUMN_GAP
+    padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
     position relative
+
+// TODO: only apply transform when navigating between 'cover' and 'home' routes
+.header__link:active
+  transform scale(.8)
+
+// NOTE: 'current' class is auto-generated for 'exact' router-links
+.header__link--home.current
+  cursor default
+
+.header__link--home.current:active
+  transform none
 
 .header__link--back
   padding-left px_to_rem(8)
