@@ -80,6 +80,9 @@ export default {
              color DEFAULT_TRANSITION,
              transform DEFAULT_TRANSITION
 
+  @media BREAKPOINT_MEDIUM
+    margin px_to_rem(24) 0 0
+
 .cover__link:active
   transform scale(.95)
 

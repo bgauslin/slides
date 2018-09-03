@@ -95,9 +95,9 @@ THEMES = {
     }
     COVER: {
       BACKGROUND: rgba(DARK_GREY, .8)
-      LINK: WHITE
+      LINK: DARK_GREY
       ACTIVE: WHITE
-      LINK_BACKGROUND: rgba(WHITE, .15)
+      LINK_BACKGROUND: WHITE
       LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
@@ -129,9 +129,9 @@ THEMES = {
     }
     COVER: {
       BACKGROUND: rgba(WHITE, .8)
-      LINK: DARK_GREY
+      LINK: WHITE
       ACTIVE: DARK_GREY
-      LINK_BACKGROUND: rgba(DARK_GREY, .15)
+      LINK_BACKGROUND: DARK_GREY
       LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
@@ -198,6 +198,7 @@ for name, theme in THEMES
       link(link_['LINK'], link_['LINK'], link_['ACTIVE'], link_['ACTIVE']);
 
     .cover__link
+      border-color cover_['ACTIVE'];
       link(cover_['LINK'], cover_['LINK'], cover_['ACTIVE'], cover_['ACTIVE']);
       link_background(cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND_ACTIVE'], cover_['LINK_BACKGROUND_ACTIVE']);
 
