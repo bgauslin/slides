@@ -22,7 +22,7 @@ export default {
 
   computed: {
     headerLinkClassModifier () {
-      return (this.$route.name == 'home') ? 'home' : 'back';
+      return (this.$route.name === 'home') ? 'home' : 'back';
     },
 
     headerLinkLabel () {

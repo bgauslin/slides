@@ -12,7 +12,7 @@ const slides = {
     },
 
     updateSlide (state, payload) {
-      const mySlide = state.slideshow.slides.find(slide => payload.slug == slide.slug);
+      const mySlide = state.slideshow.slides.find(slide => payload.slug === slide.slug);
       const slideIndex = state.slideshow.slides.indexOf(mySlide);
       state.slideshow.slides[slideIndex] = payload;
     },
@@ -46,7 +46,7 @@ const slides = {
 
     hasSlideMedia: (state, getters) => {
       if (getters.hasSlideshow && state.slug) {
-        const slide = state.slideshow.slides.find(slide => slide.slug == state.slug);
+        const slide = state.slideshow.slides.find(slide => slide.slug === state.slug);
         return (slide.media !== undefined) ? true : false;
       }
     },

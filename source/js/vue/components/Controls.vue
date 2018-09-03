@@ -29,7 +29,7 @@ export default {
     },
 
     isLastSlide () {
-      return (this.$store.getters.slideIndex == this.$store.getters.totalSlideCount - 1);
+      return (this.$store.getters.slideIndex === this.$store.getters.totalSlideCount - 1);
     },
 
     nextLabel () {
