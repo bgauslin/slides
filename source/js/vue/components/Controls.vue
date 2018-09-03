@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.controls
+  div.controls(
+    v-if="prevSlide || nextSlide",
+  )
     div.controls__frame
       div.controls__content
         router-link(
