@@ -4,27 +4,12 @@
   )
     div.header__content
       router-link(
-        v-if="homeLink",
-        :class="linkClass",
-        :to="{ name: 'home' }",
-        title="Home",
-        exact,
+        v-if="slideshowTitle",
+        :class="headerLinkClass",
+        :to="headerLinkRoute",
+        :title="headerLinkLabel",
       )
-        span.header__link__label Slideshows
-      router-link(
-        v-if="slideshowTitle && !homeLink && !backToSlide",
-        :class="linkClass",
-        :title="slideshowTitle",
-        :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-      )
-        span.header__link__label {{ slideshowTitle }}
-      router-link(
-        v-if="backToSlide",
-        :class="linkClass",
-        title="slideshowTitle",
-        :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: lastSlug } }",
-      )
-        span.header__link__label Back
+        span.header__link__label {{ headerLinkLabel }}
       theme
 </template>
 
@@ -37,19 +22,7 @@ export default {
   components: { Theme },
 
   computed: {
-    backToSlide () {
-      return (this.$route.name === 'thumbs' && this.lastSlug);
-    },
-
-    lastSlug () {
-      return this.$store.getters.slug;
-    },
-
-    homeLink () {
-      return (this.$route.name === 'home' || this.$route.name === 'cover');
-    },
-
-    linkClass () {
+    headerLinkClass () {
       if (this.$route.name == 'home') {
         return 'header__link header__link--home';
       } else {
@@ -57,16 +30,61 @@ export default {
       }
     },
 
+    headerLinkLabel () {
+      const route = this.$route.name;
+      if (route === 'slide') {
+        return this.slideshowTitle;
+      } else if (route === 'thumbs') {
+        if (this.$store.getters.slug) {
+          return 'Back';
+        } else {
+          return this.slideshowTitle;
+        }
+      } else {
+        return 'Slideshows';
+      }
+    },
+
+    headerLinkRoute () {
+      const route = this.$route.name;
+      if (route === 'slide') {
+        return {
+          name: 'cover',
+          params: {
+            slideshow: this.slideshowRoute
+          }
+        }
+      } else if (route === 'thumbs') {
+        if (this.$store.getters.slug) {
+          return {
+            name: 'slide',
+            params: {
+              slideshow: this.slideshowRoute,
+              slug: this.$store.getters.slug
+            }
+          }
+        } else {
+          return {
+            name: 'cover',
+            params: {
+              slideshow: this.slideshowRoute
+            }
+          }
+        }
+      } else {
+        return {
+          name: 'home',
+        }
+      }
+    },
+
     slideshowRoute () {
-      return this.$route.params.slideshow;
+      return this.$route.params.slideshow
     },
 
     slideshowTitle () {
-      const slideshow = this.$store.getters.slideshow
-      if (slideshow !== undefined) {
-        return slideshow.title;
-      }
-    },
+      return (this.$store.getters.slideshowTitle) ? this.$store.getters.slideshowTitle : 'Slideshows';
+    }
   }
 }
 </script>

@@ -103,6 +103,12 @@ const slides = {
       }
     },
 
+    slideshowTitle: (state, getters) => {
+      if (getters.hasSlideshow) {
+        return state.slideshow.title;
+      }
+    },
+
     slug: (state) => state.slug,
 
     theme: (state) => state.theme,
