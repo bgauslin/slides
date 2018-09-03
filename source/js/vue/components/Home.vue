@@ -1,18 +1,20 @@
 <template lang="pug">
   div.slideshows
-    div.slideshow(
-      v-for="slideshow in content",
-    )
-      router-link(
-        class="slideshow__link",
-        :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
-      )
-        single-image(
-          v-if="slideshow.image",
-          :className="imageClass",
-          :image="slideshow.image",
+    div.slideshows__frame
+      div.slideshows__group
+        div.slideshow(
+          v-for="slideshow in content",
         )
-        h2.slideshow__heading {{ slideshow.title }}
+          router-link(
+            class="slideshow__link",
+            :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
+          )
+            single-image(
+              v-if="slideshow.image",
+              :className="imageClass",
+              :image="slideshow.image",
+            )
+            h2.slideshow__heading {{ slideshow.title }}
 </template>
 
 <script>
@@ -27,17 +29,42 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// TODO: update slideshows html/css layout similar to thumbs
 .slideshows
-  max-width CONTENT_MAX_WIDTH
-  padding HEADER_HEIGHT px_to_rem(16) 0
+  padding HEADER_HEIGHT 0 0
+  width 100%
 
   @media BREAKPOINT_MEDIUM
     grid-row 2
-    padding 0 COLUMN_GAP
+    padding 0
+
+  @media BREAKPOINT_LARGE
+    margin 0 auto
+    max-width CONTENT_MAX_WIDTH
+
+.slideshows__frame
+  margin 0 SLIDESHOW_GAP SLIDESHOW_GAP
+
+  @media BREAKPOINT_MEDIUM
+    margin 0 SLIDESHOW_GAP_MEDIUM SLIDESHOW_GAP_MEDIUM
+
+.slideshows__group
+  display flex
+  flex-wrap wrap
+  margin (- SLIDESHOW_GAP) 0 0 (- SLIDESHOW_GAP)
+
+  @media BREAKPOINT_MEDIUM
+    margin (- SLIDESHOW_GAP_MEDIUM) 0 0 (- SLIDESHOW_GAP_MEDIUM)
 
 .slideshow
-  margin 0 0 px_to_rem(16)
+  padding SLIDESHOW_GAP 0 0 SLIDESHOW_GAP
+  flex 0 0 100%
+
+  @media BREAKPOINT_MEDIUM
+    padding SLIDESHOW_GAP_MEDIUM 0 0 SLIDESHOW_GAP_MEDIUM
+    flex 0 0 50%
+
+  @media BREAKPOINT_LARGE
+    flex 0 0 33.33%
 
 .slideshow__link
   display block
