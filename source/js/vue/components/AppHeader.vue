@@ -4,7 +4,7 @@
   )
     div.header__content
       router-link(
-        :class="headerLinkClass",
+        :class="['header__link', 'header__link--' + headerLinkClassModifier]",
         :to="headerLinkRoute",
         :title="headerLinkLabel",
       )
@@ -21,18 +21,14 @@ export default {
   components: { Theme },
 
   computed: {
-    headerLinkClass () {
-      if (this.$route.name == 'home') {
-        return 'header__link header__link--home';
-      } else {
-        return 'header__link header__link--back';
-      }
+    headerLinkClassModifier () {
+      return (this.$route.name == 'home') ? 'home' : 'back';
     },
 
     headerLinkLabel () {
       const route = this.$route.name;
 
-      if (route === 'thumbs' && this.lastSlug) {
+      if (route === 'thumbs' && this.lastVisitedSlug) {
         return 'Back';
       } else if (route === 'thumbs' || route === 'slide') {
         return this.slideshowTitle;
@@ -44,12 +40,12 @@ export default {
     headerLinkRoute () {
       const route = this.$route.name;
 
-      if (route === 'thumbs' && this.lastSlug) {
+      if (route === 'thumbs' && this.lastVisitedSlug) {
         return {
           name: 'slide',
           params: {
             slideshow: this.slideshowRoute,
-            slug: this.lastSlug
+            slug: this.lastVisitedSlug
           }
         };
       } else if (route === 'thumbs' || route === 'slide') {
@@ -64,7 +60,7 @@ export default {
       }
     },
 
-    lastSlug () {
+    lastVisitedSlug () {
       return this.$store.getters.slug;
     },
 
