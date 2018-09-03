@@ -95,19 +95,24 @@ export default {
 
 .publication__link
   align-items center
-  border-radius 4px
+  border-radius (PUBLICATION_LINK_HEIGHT / 2)
+  border-style solid
+  border-width 1px
   display inline-flex
-  heading_font()
+  heading_font(600)
   font-size px_to_em(14)
   height PUBLICATION_LINK_HEIGHT
   margin px_to_rem(16) 0 0
-  padding 0 px_to_rem(16) 0 px_to_rem(8)
+  padding 0 px_to_rem(16)
+  transform background DEFAULT_TRANSITION,
+            border DEFAULT_TRANSITION,
+            color DEFAULT_TRANSITION
 
 [href$="pdf"]::after
   bottom -.1em
   content '[PDF]'
   font-size 75%
-  margin-left .75rem
+  margin-left .5rem
   position relative
 
 [data-url-type="download"]::before

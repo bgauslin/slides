@@ -150,6 +150,7 @@ for name, theme in THEMES
     background app_['BACKGROUND'];
     color app_['TEXT'];
 
+  [data-theme=\"{name}\"]
     // footer navigation
     .controls
       background controls_['BACKGROUND'];
@@ -190,7 +191,7 @@ for name, theme in THEMES
       background-color cover_['BACKGROUND'];
 
     .cover__link
-      border 2px solid link_['LINK']; // TODO: border states for .cover__link
+      link_border(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
 
     // other links
     .cover__link
@@ -199,6 +200,6 @@ for name, theme in THEMES
       link(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
 
     .publication__link
-      border 1px solid link_['TEXT']; // TODO: border states for .publication__link
+      link_border(link_['LINK'], link_['LINK'], link_['HOVER'], link_['ACTIVE']);
 
 </style>

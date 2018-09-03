@@ -65,17 +65,23 @@ export default {
   @media BREAKPOINT_MEDIUM
     font-size H3_SIZE_MEDIUM
 
-START_BUTTON_HEIGHT = px_to_rem(40)
-
 .cover__link
   align-items center
-  border-radius (START_BUTTON_HEIGHT / 2)
+  border-radius (COVER_LINK_HEIGHT / 2)
+  border-style solid 
+  border-width 2px
   display inline-flex
-  heading_font()
-  height START_BUTTON_HEIGHT
+  heading_font(600)
+  height COVER_LINK_HEIGHT
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16) 0 px_to_rem(24)
-  transition color DEFAULT_TRANSITION
+  transform background DEFAULT_TRANSITION,
+            border DEFAULT_TRANSITION,
+            color DEFAULT_TRANSITION,
+            transform DEFAULT_TRANSITION
+
+.cover__link:active
+  transform scale(.95)
 
 .cover__link::after
   content ICON_ANGLE_RIGHT
