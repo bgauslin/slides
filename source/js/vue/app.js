@@ -10,6 +10,8 @@ import transitions from './transitions';
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
+Vue.config.productionTip = false;
+
 const store = new Vuex.Store({
   modules: {
     slides: slides,

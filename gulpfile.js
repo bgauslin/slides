@@ -7,7 +7,6 @@ const browserify   = require('browserify');
 const browserSync  = require('browser-sync');
 const buffer       = require('vinyl-buffer');
 const cssnano      = require('gulp-cssnano');
-const envify       = require('envify');
 const hash         = require('gulp-hash');
 const plumber      = require('gulp-plumber');
 const rename       = require("gulp-rename");
@@ -46,11 +45,6 @@ gulp.task('js', () => {
   return browserify({ entries: pkg.paths.js.src, debug: true })
     .transform('babelify', { presets: ['@babel/preset-env'] })
     .transform('vueify')
-    // TODO: The following doesn't seem to remove the vue warning...
-    .transform('envify',
-      { global: true },
-      { NODE_ENV: 'production' }
-    )
     .bundle()
     .pipe(source(pkg.paths.js.bundleSrc))
     .pipe(buffer())
