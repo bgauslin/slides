@@ -59,7 +59,6 @@ export default {
   @media BREAKPOINT_MEDIUM
     align-self center
     grid-row 2
-    height auto
     padding 0
 
   @media BREAKPOINT_LARGE
@@ -78,6 +77,8 @@ export default {
     align-self center
     grid-column 3
     grid-row 1
+    max-height 100%
+    overflow hidden
 
 .slide__media--multiple
   @media BREAKPOINT_MEDIUM
