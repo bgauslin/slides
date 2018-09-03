@@ -4,7 +4,6 @@
   )
     div.header__content
       router-link(
-        v-if="slideshowTitle",
         :class="headerLinkClass",
         :to="headerLinkRoute",
         :title="headerLinkLabel",
@@ -32,14 +31,11 @@ export default {
 
     headerLinkLabel () {
       const route = this.$route.name;
-      if (route === 'slide') {
+
+      if (route === 'thumbs' && this.lastSlug) {
+        return 'Back';
+      } else if (route === 'thumbs' || route === 'slide') {
         return this.slideshowTitle;
-      } else if (route === 'thumbs') {
-        if (this.$store.getters.slug) {
-          return 'Back';
-        } else {
-          return this.slideshowTitle;
-        }
       } else {
         return 'Slideshows';
       }
@@ -47,43 +43,37 @@ export default {
 
     headerLinkRoute () {
       const route = this.$route.name;
-      if (route === 'slide') {
+
+      if (route === 'thumbs' && this.lastSlug) {
+        return {
+          name: 'slide',
+          params: {
+            slideshow: this.slideshowRoute,
+            slug: this.lastSlug
+          }
+        };
+      } else if (route === 'thumbs' || route === 'slide') {
         return {
           name: 'cover',
           params: {
             slideshow: this.slideshowRoute
           }
-        }
-      } else if (route === 'thumbs') {
-        if (this.$store.getters.slug) {
-          return {
-            name: 'slide',
-            params: {
-              slideshow: this.slideshowRoute,
-              slug: this.$store.getters.slug
-            }
-          }
-        } else {
-          return {
-            name: 'cover',
-            params: {
-              slideshow: this.slideshowRoute
-            }
-          }
-        }
+        };
       } else {
-        return {
-          name: 'home',
-        }
+        return { name: 'home' };
       }
     },
 
+    lastSlug () {
+      return this.$store.getters.slug;
+    },
+
     slideshowRoute () {
-      return this.$route.params.slideshow
+      return this.$route.params.slideshow;
     },
 
     slideshowTitle () {
-      return (this.$store.getters.slideshowTitle) ? this.$store.getters.slideshowTitle : 'Slideshows';
+      return this.$store.getters.slideshowTitle;
     }
   }
 }
