@@ -75,12 +75,6 @@ const slides = {
       }
     },
 
-    slideLast: (state, getters) => {
-      if (getters.hasSlideshow) {
-        return state.slideshow.slides[state.slideshow.slides.length - 1];
-      }
-    },
-
     slideNext: (state, getters) => {
       if (getters.hasSlideshow) {
         const next = state.slideshow.slides[getters.slideIndex + 1];

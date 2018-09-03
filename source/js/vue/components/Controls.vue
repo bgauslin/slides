@@ -3,43 +3,25 @@
     div.controls__frame
       div.controls__content
         router-link(
-          v-if="isFirstSlide",
           class="prev-next__link prev-next--prev",
-          title="Cover",
-          :to="{ name: 'cover', params: { slideshow: slideshowRoute } }",
-        )
-        router-link(
-          v-if="slidePrev",
-          class="prev-next__link prev-next--prev",
-          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slidePrev.slug } }",
-          :title="slidePrev.title",
+          :to="prevRoute",
+          :title="prevLabel",
         )
         router-link(
           class="count__link",
-          :to="{ name: 'thumbs' }",
           title="View thumbnails",
-        ) {{ currentSlideCount }} of {{ totalSlideCount }}
+          :to="{ name: 'thumbs' }",
+        ) {{ slideCountCurrent }} of {{ slideCountTotal }}
         router-link(
-          v-if="slideNext",
           class="prev-next__link prev-next--next",
-          :to="{ name: 'slide', params: { slideshow: slideshowRoute, slug: slideNext.slug } }",
-          :title="slideNext.title",
-        )
-        router-link(
-          v-if="isLastSlide",
-          class="prev-next__link prev-next--next",
-          title="Thumbnails",
-          :to="{ name: 'thumbs', params: { slideshow: slideshowRoute, slug: 'thumbs' } }",
+          :to="nextRoute",
+          :title="nextLabel",
         )
 </template>
 
 <script>
 export default {
   computed: {
-    currentSlideCount () {
-      return this.$store.getters.slideIndex + 1;
-    },
-
     isFirstSlide () {
       return (this.$store.getters.slideIndex === 0);
     },
@@ -48,20 +30,75 @@ export default {
       return (this.$store.getters.slideIndex == this.$store.getters.totalSlideCount - 1);
     },
 
-    totalSlideCount () {
-      return this.$store.getters.totalSlideCount;
+    nextLabel () {
+      if (this.isLastSlide) {
+        return 'Thumbnails';
+      } else {
+        return this.nextSlide.title;
+      }
     },
 
-    slideLast () {
-      return this.$store.getters.slideLast;
+    nextRoute () {
+      if (this.isLastSlide) {
+        return {
+          name: 'thumbs',
+          params: {
+            slideshow: this.slideshowRoute,
+            slug: 'thumbs'
+          }
+        };
+      } else {
+        return {
+          name: 'slide',
+          params: {
+            slideshow: this.slideshowRoute,
+            slug: this.nextSlide.slug
+          }
+        };
+      }
     },
 
-    slideNext () {
+    nextSlide () {
       return this.$store.getters.slideNext;
     },
 
-    slidePrev () {
+    prevLabel () {
+      if (this.isFirstSlide) {
+        return 'Cover';
+      } else {
+        return this.prevSlide.title;
+      }
+    },
+
+    prevRoute () {
+      if (this.isFirstSlide) {
+        return {
+          name: 'cover',
+          params: {
+            slideshow: this.slideshowRoute
+          }
+        };
+      } else {
+        return {
+          name: 'slide',
+          params: {
+            slideshow: this.slideshowRoute,
+            slug: this.prevSlide.slug
+          }
+        };
+      }
+    },
+
+    prevSlide () {
       return this.$store.getters.slidePrev;
+    },
+
+    slideCountCurrent () {
+      return this.$store.getters.slideIndex + 1;
+    },
+
+    slideCountTotal () {
+      return this.$store.getters.totalSlideCount;
     },
 
     slideshowRoute () {
