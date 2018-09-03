@@ -194,7 +194,7 @@ for name, theme in THEMES
 
     // links
     .slideshow__link
-    .count__link
+    .counter__link
       link(link_['LINK'], link_['LINK'], link_['ACTIVE'], link_['ACTIVE']);
 
     .cover__link

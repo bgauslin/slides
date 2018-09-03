@@ -7,11 +7,7 @@
           :to="prevRoute",
           :title="prevLabel",
         )
-        router-link(
-          class="count__link",
-          title="View thumbnails",
-          :to="{ name: 'thumbs' }",
-        ) {{ slideCountCurrent }} of {{ slideCountTotal }}
+        counter
         router-link(
           class="prev-next__link prev-next--next",
           :to="nextRoute",
@@ -20,7 +16,11 @@
 </template>
 
 <script>
+import Counter from './Counter.vue';
+
 export default {
+  components: { Counter },
+
   computed: {
     isFirstSlide () {
       return (this.$store.getters.slideIndex === 0);
@@ -93,14 +93,6 @@ export default {
       return this.$store.getters.slidePrev;
     },
 
-    slideCountCurrent () {
-      return this.$store.getters.slideIndex + 1;
-    },
-
-    slideCountTotal () {
-      return this.$store.getters.totalSlideCount;
-    },
-
     slideshowRoute () {
       return this.$route.params.slideshow;
     },
@@ -135,32 +127,16 @@ export default {
     margin 0 0 0 COLUMN_GAP
     width SIDEBAR_WIDTH
 
-.count__link
 .prev-next__link
   align-items center
   display inline-flex
+  flex 1
   height CONTROLS_HEIGHT
   justify-content center
   overflow hidden
 
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
-
-.count__link
-  font-size CAPTION_SIZE
-  heading_font()
-  padding 0 px_to_rem(16)
-  transition transform DEFAULT_TRANSITION
-  white-space nowrap
-
-  @media BREAKPOINT_MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
-
-.count__link:active
-  transform scale(.9)
-
-.prev-next__link
-  flex 1
 
 .prev-next__link::before
 .prev-next__link::after
