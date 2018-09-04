@@ -5,15 +5,10 @@
     div(
       :class="['slide__media', className]"
     )
-      router-link(
-        v-if="images && nextSlide",
-        class="slide__media__link",
-        :title="nextSlideLabel",
-        :to="nextSlideRoute",
+      media-images(
+        v-if="content.media.images",
+        :images="content.media.images",
       )
-        media-images(
-          :images="images",
-        )
       media-publication(
         v-if="content.media.publication",
         :publication="content.media.publication",
@@ -43,31 +38,9 @@ export default {
 
   computed: {
     className () {
-      if (this.images && this.images.length > 1) {
+      if (this.content.media.images && this.content.media.images.length > 1) {
        return 'slide__media--multiple';
       }
-    },
-
-    images () {
-      return this.content.media.images;
-    },
-
-    nextSlide () {
-      return this.$store.getters.slideNext;
-    },
-
-    nextSlideRoute () { 
-      return {
-        name: 'slide',
-        params: {
-          slideshow: this.$route.params.slideshow,
-          slug: this.nextSlide.slug
-        }
-      };
-    },
-
-    nextSlideLabel () {
-      return this.nextSlide.title;
     },
   }
 }
@@ -113,12 +86,6 @@ export default {
 
   @media BREAKPOINT_LARGE
     margin 0
-
-.slide__media__link
-  display block
-
-.slide__media__link:hover
-  cursor default
 
 .slide__caption
   font-size CAPTION_SIZE
