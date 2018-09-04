@@ -1,11 +1,8 @@
 <template lang="pug">
   button.theme(
     @click="toggleTheme",
+    v-html="svgIcon",
   )
-    img(
-      class="theme__icon",
-      :src="svgIcon",
-    )
 </template>
 
 <script>
@@ -15,13 +12,18 @@ export default {
   },
 
   computed: {
+    svgIcon () {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+          <circle class="theme__icon--circle" cx="16" cy="16" r="14.5" stroke-width="3" fill-opacity="0"/>
+          <path class="theme__icon--path" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" d="m16.000002,0c8.773518,0 15.880063,7.106548 15.880063,15.880063c0,8.773515 -7.106545,15.880063 -15.880063,15.880063l0,-31.760127z"/>
+        </svg>
+      `;
+    },
+
     theme () {
       return this.$store.getters.theme;
     },
-    
-    svgIcon () {
-      return `/ui/icons/contrast-${this.theme}.svg`;
-    }
   },
 
   methods: {
@@ -67,13 +69,14 @@ export default {
 .theme:active
   transform scale(.9)
 
-.theme__icon
+.theme svg
   height THEME_ICON_SIZE
+  overflow visible
+  transform scale(.5)
   width THEME_ICON_SIZE
 
   @media BREAKPOINT_MEDIUM
-    height THEME_ICON_SIZE_MEDIUM
-    width THEME_ICON_SIZE_MEDIUM
+    transform scale(.75)
 
 THEMES = {
   'dark': {
@@ -187,6 +190,12 @@ for name, theme in THEMES
 
     .header__link--home.current
       color header_['LINK']
+
+    // contrast toggle icon
+    .theme__icon--circle
+    .theme__icon--path
+      fill app_['TEXT'];
+      stroke app_['TEXT'];
 
     // slideshow cover
     .cover__frame
