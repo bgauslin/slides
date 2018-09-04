@@ -78,6 +78,7 @@ export default {
   @media BREAKPOINT_MEDIUM
     transform scale(.75)
 
+// TODO: Remove rgba() from ACTIVE states; restore HOVER states instead where applicable.
 THEMES = {
   'dark': {
     APP: {
