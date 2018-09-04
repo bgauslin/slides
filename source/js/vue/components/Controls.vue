@@ -8,12 +8,14 @@
           class="prev-next__link prev-next--prev",
           :to="prevRoute",
           :title="prevLabel",
+          v-html="svgArrowLeft",
         )
         counter
         router-link(
           class="prev-next__link prev-next--next",
           :to="nextRoute",
           :title="nextLabel",
+          v-html="svgArrowRight",
         )
 </template>
 
@@ -98,6 +100,22 @@ export default {
     slideshowRoute () {
       return this.$route.params.slideshow;
     },
+
+    svgArrowLeft () {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+          <path class="prev-next__icon" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
+        </svg>
+      `;
+    },
+
+    svgArrowRight () {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+          <path class="prev-next__icon" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
+        </svg>
+      `;
+    },
   }
 }
 </script>
@@ -140,27 +158,6 @@ export default {
   @media BREAKPOINT_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
 
-.prev-next__link::before
-.prev-next__link::after
-  font-size CONTROLS_ICON_SIZE
-  icon()
-  position relative
-  transition transform DEFAULT_TRANSITION
-
-.prev-next--prev::before
-  content ICON_ANGLE_LEFT
-  margin-right auto
-  right .1rem
-
-.prev-next--next::after
-  content ICON_ANGLE_RIGHT
-  margin-left auto
-  left .1rem
-
-.prev-next__link:active::before
-.prev-next__link:active::after
-  transform scale(.8)
-
 .prev-next--prev
 .prev-next--next
   padding 0 px_to_rem(8)
@@ -177,5 +174,24 @@ export default {
 
   .prev-next--next
     margin-right px_to_rem(-8)
+
+.prev-next__link svg
+  height CONTROLS_ICON_SIZE
+  width CONTROLS_ICON_SIZE
+  transition transform DEFAULT_TRANSITION
+
+.prev-next__link:active svg
+  transform scale(.8)
+
+.prev-next--prev svg
+  margin-right auto
+
+.prev-next--next svg
+  margin-left auto
+
+.prev-next__icon
+  fill none
+  stroke-width 4
+  transition stroke DEFAULT_TRANSITION
 
 </style>

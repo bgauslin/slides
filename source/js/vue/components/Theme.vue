@@ -202,8 +202,15 @@ for name, theme in THEMES
       link(cover_['LINK'], cover_['LINK'], cover_['ACTIVE'], cover_['ACTIVE']);
       link_background(cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND_ACTIVE'], cover_['LINK_BACKGROUND_ACTIVE']);
 
-    .prev-next__link
-      link(controls_['LINK'], controls_['LINK'], controls_['ACTIVE'], controls_['ACTIVE']);
+    .prev-next__link:link .prev-next__icon
+    .prev-next__link:visited .prev-next__icon
+      stroke controls_['LINK']
+
+    .prev-next__link:active .prev-next__icon
+      stroke controls_['ACTIVE']
+
+    &[no-touch] .prev-next__link:hover .prev-next__icon
+      stroke controls_['ACTIVE']
 
     .publication__link
       link(button_['LINK'], button_['LINK'], button_['ACTIVE'], button_['ACTIVE']);
