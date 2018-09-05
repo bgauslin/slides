@@ -4,7 +4,7 @@
   )
     div.header__content
       router-link(
-        :class="['header__link', 'header__link--' + headerLinkClassModifier]",
+        :class="['header__link', headerLinkClass]",
         :to="headerLinkRoute",
         :title="headerLinkLabel",
       )
@@ -21,8 +21,15 @@ export default {
   components: { Theme },
 
   computed: {
-    headerLinkClassModifier () {
-      return (this.$route.name === 'home') ? 'home' : 'back';
+    headerLinkClass () {
+      const route = this.$route.name;
+      if (route === 'home') {
+        return 'header__link--home';
+      } else if (route === 'thumbs') {
+        return 'header__link--back';
+      } else {
+        return;
+      }
     },
 
     headerLinkLabel () {
