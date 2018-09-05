@@ -76,16 +76,17 @@ export default {
   height COVER_LINK_HEIGHT
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
-  transition background DEFAULT_TRANSITION,
-             border DEFAULT_TRANSITION,
-             color DEFAULT_TRANSITION,
-             transform DEFAULT_TRANSITION
 
   @media BREAKPOINT_MEDIUM
     margin px_to_rem(24) 0 0
 
-.cover__link:active
-  transform scale(.95)
+[no-touch] .cover__link
+  transition background DEFAULT_TRANSITION,
+             color DEFAULT_TRANSITION,
+             transform DEFAULT_TRANSITION
+
+[no-touch] .cover__link:active
+  transform scale(.9)
 
 // TODO: svg icon for forward arrow
 // .cover__link::after
