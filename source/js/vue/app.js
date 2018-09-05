@@ -6,6 +6,7 @@ import App from './components/App.vue';
 
 import direction from './store/direction';
 import slides from './store/slides';
+import theme from './store/theme';
 import thumbs from './store/thumbs';
 
 import routeConfig from './routes';
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
   modules: {
     direction: direction,
     slides: slides,
+    theme: theme,
     thumbs: thumbs,
   }
 });
