@@ -1,4 +1,4 @@
-const slides = {
+const slideshow = {
   state: {
     slideshow: {},
     slug: null,
@@ -100,4 +100,4 @@ const slides = {
   },
 }
 
-export default slides;
+export default slideshow;

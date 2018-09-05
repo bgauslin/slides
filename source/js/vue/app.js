@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 import App from './components/App.vue';
 
 import direction from './store/direction';
-import slides from './store/slides';
+import slideshow from './store/slideshow';
 import theme from './store/theme';
 import thumbs from './store/thumbs';
 
@@ -20,13 +20,12 @@ Vue.config.productionTip = false;
 const store = new Vuex.Store({
   modules: {
     direction: direction,
-    slides: slides,
+    slideshow: slideshow,
     theme: theme,
     thumbs: thumbs,
   }
 });
 
-// TODO: remember scroll position instead of resetting it
 const scrollBehavior = (to, from, savedPosition) => {
   return {
     x: 0,
