@@ -17,6 +17,7 @@
 export default {
   props: ['content'],
 
+  // TODO: Add SVG right arrow icon.
   computed: {
     slideFirst () {
       return this.$store.getters.slideFirst;
@@ -74,7 +75,7 @@ export default {
   heading_font(600)
   height COVER_LINK_HEIGHT
   margin px_to_rem(16) 0 0
-  padding 0 px_to_rem(16) 0 px_to_rem(24)
+  padding 0 px_to_rem(24)
   transition background DEFAULT_TRANSITION,
              border DEFAULT_TRANSITION,
              color DEFAULT_TRANSITION,
@@ -86,10 +87,10 @@ export default {
 .cover__link:active
   transform scale(.95)
 
-.cover__link::after
-  content ICON_ANGLE_RIGHT
-  font-size px_to_rem(24)
-  icon()
-  margin-left px_to_rem(4)
+// .cover__link::after
+//   content ICON_ANGLE_RIGHT
+//   font-size px_to_rem(24)
+//   icon()
+//   margin-left px_to_rem(4)
 
 </style>

@@ -20,6 +20,7 @@ export default {
 
   components: { Theme },
 
+  // TODO: Add SVG left arrow icon.
   computed: {
     headerLinkClassModifier () {
       return (this.$route.name === 'home') ? 'home' : 'back';
