@@ -12,16 +12,9 @@ px_to_rem(px)
 // --------------------------------------------------
 // mixins
 
-aspect_ratio(width, height)
-  padding-bottom (height / width) * 100%
-  position relative
-
-  img
-    bottom 0
-    left 0
-    position absolute
-    right 0
-    top 0
+body_font(weight = 400)
+  font-family 'Source Sans Pro', sans-serif
+  font-weight weight
 
 heading_font(weight = 500)
   font-family 'Avenir Medium' sans-serif // fallback

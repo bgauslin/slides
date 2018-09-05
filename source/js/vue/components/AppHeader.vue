@@ -20,7 +20,6 @@ export default {
 
   components: { Theme },
 
-  // TODO: Add SVG left arrow icon.
   computed: {
     headerLinkClassModifier () {
       return (this.$route.name === 'home') ? 'home' : 'back';
@@ -116,23 +115,24 @@ export default {
 .header__link--home.current
   cursor default
 
-.header__link--back
-  padding-left px_to_rem(8)
+// TODO: svg icon for back arrow
+// .header__link--back
+//   padding-left px_to_rem(8)
 
-  @media BREAKPOINT_MEDIUM
-    padding-left COLUMN_GAP
+//   @media BREAKPOINT_MEDIUM
+//     padding-left COLUMN_GAP
 
-.header__link--back::before
-  content ICON_ANGLE_LEFT
-  font-size BACK_ARROW_SIZE
-  icon()
-  overflow hidden
-  width BACK_ARROW_SIZE
+// .header__link--back::before
+//   background url()
+//   content ''
+//   height BACK_ARROW_SIZE
+//   overflow hidden
+//   width BACK_ARROW_SIZE
 
-  @media BREAKPOINT_MEDIUM
-    left .2em
-    position absolute
-    top .8em
+//   @media BREAKPOINT_MEDIUM
+//     left .2em
+//     position absolute
+//     top .8em
 
 .header__link__label
   overflow hidden

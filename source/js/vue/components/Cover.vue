@@ -87,10 +87,11 @@ export default {
 .cover__link:active
   transform scale(.95)
 
+// TODO: svg icon for forward arrow
 // .cover__link::after
-//   content ICON_ANGLE_RIGHT
-//   font-size px_to_rem(24)
-//   icon()
+//   content ''
+//   height px_to_rem(24)
 //   margin-left px_to_rem(4)
+//   width px_to_rem(24)
 
 </style>

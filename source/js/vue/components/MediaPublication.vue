@@ -116,16 +116,18 @@ export default {
   margin-left .5rem
   position relative
 
-[data-url-type="download"]::before
-[data-url-type="link"]::before
-  icon()
-  font-size px_to_em(18)
-  margin-right px_to_rem(8)
+// TODO: svg icon for external links
+// [data-url-type="download"]::before
+// [data-url-type="link"]::before
+//   content ''
+//   height px_to_em(18)
+//   margin-right px_to_rem(8)
+//   width px_to_em(18)
 
-[data-url-type="download"]::before
-  content ICON_DOWNLOAD
+// [data-url-type="download"]::before
+//   background url()
 
-[data-url-type="link"]::before
-  content ICON_NEW_WINDOW
+// [data-url-type="link"]::before
+//   background url()
 
 </style>
