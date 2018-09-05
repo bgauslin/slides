@@ -214,13 +214,13 @@ for name, theme in THEMES
 
     .prev-next__link:link .prev-next__icon
     .prev-next__link:visited .prev-next__icon
-      stroke controls_['LINK']
+      stroke controls_['LINK'];
 
     .prev-next__link:active .prev-next__icon
-      stroke controls_['ACTIVE']
+      stroke controls_['ACTIVE'];
 
     &[no-touch] .prev-next__link:hover .prev-next__icon
-      stroke controls_['ACTIVE']
+      stroke controls_['ACTIVE'];
 
     .publication__link
       link(button_['LINK'], button_['LINK'], button_['ACTIVE'], button_['ACTIVE']);
