@@ -11,7 +11,10 @@ export default {
     this.setTheme();
   },
 
+  
   computed: {
+    // TODO: Make the SVG scaleable.
+    // https://css-tricks.com/scale-svg/
     svgIcon () {
       return `
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -69,6 +72,7 @@ export default {
 .theme:active
   transform scale(.9)
 
+// TODO: Make the SVG scaleable.
 .theme svg
   height THEME_ICON_SIZE
   overflow visible
@@ -212,14 +216,14 @@ for name, theme in THEMES
       link(cover_['LINK'], cover_['LINK'], cover_['ACTIVE'], cover_['ACTIVE']);
       link_background(cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND'], cover_['LINK_BACKGROUND_ACTIVE'], cover_['LINK_BACKGROUND_ACTIVE']);
 
-    .prev-next__link:link .prev-next__icon
-    .prev-next__link:visited .prev-next__icon
+    .prev-next__link:link .prev-next__svg__path
+    .prev-next__link:visited .prev-next__svg__path
       stroke controls_['LINK'];
 
-    .prev-next__link:active .prev-next__icon
+    .prev-next__link:active .prev-next__svg__path
       stroke controls_['ACTIVE'];
 
-    &[no-touch] .prev-next__link:hover .prev-next__icon
+    &[no-touch] .prev-next__link:hover .prev-next__svg__path
       stroke controls_['ACTIVE'];
 
     .publication__link

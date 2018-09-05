@@ -101,18 +101,20 @@ export default {
       return this.$route.params.slideshow;
     },
 
+    // Make the SVG scaleable.
+    // https://css-tricks.com/scale-svg/
     svgArrowLeft () {
       return `
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-          <path class="prev-next__icon" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
+        <svg class="prev-next__svg" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path class="prev-next__svg__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
         </svg>
       `;
     },
 
     svgArrowRight () {
       return `
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-          <path class="prev-next__icon" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
+        <svg class="prev-next__svg" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path class="prev-next__svg__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
         </svg>
       `;
     },
@@ -175,21 +177,21 @@ export default {
   .prev-next--next
     margin-right px_to_rem(-8)
 
-.prev-next__link svg
-  height CONTROLS_ICON_SIZE
+.prev-next__svg
+  height auto
   width CONTROLS_ICON_SIZE
   transition transform DEFAULT_TRANSITION
 
-.prev-next__link:active svg
+.prev-next__link:active .prev-next__svg
   transform scale(.8)
 
-.prev-next--prev svg
+.prev-next--prev .prev-next__svg
   margin-right auto
 
-.prev-next--next svg
+.prev-next--next .prev-next__svg
   margin-left auto
 
-.prev-next__icon
+.prev-next__svg__path
   fill none
   stroke-width 4
   transition stroke DEFAULT_TRANSITION
