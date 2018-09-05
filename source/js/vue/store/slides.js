@@ -1,6 +1,5 @@
 const slides = {
   state: {
-    direction: null,
     slideshow: {},
     slug: null,
     theme: JSON.parse(localStorage.getItem('theme')) || 'light',
@@ -8,10 +7,6 @@ const slides = {
   },
 
   mutations: {
-    updateDirection (state, payload) {
-      state.direction = payload;
-    },
-
     updateSlide (state, payload) {
       const mySlide = state.slideshow.slides.find(slide => payload.slug === slide.slug);
       const slideIndex = state.slideshow.slides.indexOf(mySlide);
@@ -25,7 +20,7 @@ const slides = {
     updateSlug (state, payload) {
       state.slug = payload;
     },
-
+    
     updateTheme (state, payload) {
       localStorage.setItem('theme', JSON.stringify(payload));
       state.theme = payload;
@@ -51,8 +46,6 @@ const slides = {
   },
 
   getters: {
-    direction: (state) => state.direction,
-
     hasSlideMedia: (state, getters) => {
       if (getters.hasSlideshow && state.slug) {
         const slide = state.slideshow.slides.find(slide => slide.slug === state.slug);
@@ -111,7 +104,7 @@ const slides = {
         return state.slideshow.title;
       }
     },
-
+    
     slug: (state) => state.slug,
 
     theme: (state) => state.theme,

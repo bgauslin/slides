@@ -3,7 +3,10 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 
 import App from './components/App.vue';
+
+import direction from './store/direction';
 import slides from './store/slides';
+
 import routeConfig from './routes';
 import transitions from './transitions';
 
@@ -14,6 +17,7 @@ Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
   modules: {
+    direction: direction,
     slides: slides,
   }
 });
