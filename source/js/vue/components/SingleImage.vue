@@ -36,7 +36,7 @@ export default {
       loading: true,
       preloaderOptions: {
         length: 5,
-        lines: 9,
+        lines: 8,
         radius: 5,
         width: 2,
       },
