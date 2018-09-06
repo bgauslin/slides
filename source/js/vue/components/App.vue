@@ -7,6 +7,8 @@
     )
     preloader(
       v-if="!app.dataLoaded",
+      position="fixed",
+      :options="preloaderOptions",
     )
     transition(
       @before-enter="beforeEnter",
@@ -51,6 +53,12 @@ export default {
       meta: {
         description: null,
         title: document.title,
+      },
+      preloaderOptions: {
+        length: 8,
+        lines: 12,
+        radius: 8,
+        width: 3,
       },
       transition: {
         enter: null,

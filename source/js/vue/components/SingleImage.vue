@@ -5,18 +5,27 @@
     figure.image__frame(
       :style="aspectRatio(image)",
     )
+      preloader(
+        v-if="loading",
+        position="absolute",
+        :options="preloaderOptions",
+      )
       img.image__placeholder(
         :src="image.placeholder",
       )
       img.image__hi-res(
         :ready="!loading",
         :alt="image.alt",
-        :src="image.large.src",
+        :src="image.medium.src",
       )
 </template>
 
 <script>
+import Preloader from './Preloader.vue';
+
 export default {
+  components: { Preloader },
+
   props: [
     'className',
     'image',
@@ -25,6 +34,12 @@ export default {
   data () {
     return {
       loading: true,
+      preloaderOptions: {
+        length: 5,
+        lines: 9,
+        radius: 5,
+        width: 2,
+      },
     }
   },
 
@@ -43,7 +58,7 @@ export default {
     loadImage () {
       const target = this.$el.querySelector('.image__hi-res');
       const img = new Image();
-      img.src = this.image.large.src; 
+      img.src = this.image.medium.src; 
       img.onload = () => {
         this.loading = false;
         target.setAttribute('ready', '');

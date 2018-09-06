@@ -1,25 +1,27 @@
 <template lang="pug">
-  div.preloader
+  div.preloader(
+    :style="setPosition()",
+  )
 </template>
 
 <script>
 import Spinner from 'spin'
 
 export default {
+
+  props: [
+    'options',
+    'position',
+  ],
+
   data () {
     return {
-      options: {
-        color: null,
-        lines: 12,
-        length: 8,
-        width: 3,
-        radius: 8,
-      }
+      delay: 1000,
     }
   },
 
   created () {
-    this.setColor();
+    this.setOptions();
   },
 
   mounted () {
@@ -31,12 +33,16 @@ export default {
       window.setTimeout(() => {
         const spinner = new Spinner(this.options).spin();
         this.$el.appendChild(spinner.el);
-      }, 500);
+      }, this.delay);
     },
 
-    setColor () {
+    setOptions () {
       const theme = this.$store.getters.theme;
       this.options.color = (theme === 'light') ? '#000' : '#fff';
+    },
+
+    setPosition() {
+      return `position: ${this.position}`;
     },
   },
 }
@@ -46,7 +52,6 @@ export default {
 .preloader
   height 100%
   left 0
-  position fixed
   right 0
   top 0
 
