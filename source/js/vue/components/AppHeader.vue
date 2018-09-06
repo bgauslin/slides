@@ -144,14 +144,16 @@ export default {
 .header__link__label
   overflow hidden
   text-overflow ellipsis
-  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
+  transition transform DEFAULT_TRANSITION
   white-space nowrap
 
-// TODO: only apply transform when navigating between 'cover' and 'home' routes
+[no-touch] .header__link__label
+  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
+
 .header__link:active .header__link__label
   transform scale(.9)
 
-.header__link--home.current:active  .header__link__label
+.header__link--home.current:active .header__link__label
   transform none
 
 </style>
