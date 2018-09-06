@@ -9,16 +9,13 @@
         :src="image.placeholder",
       )
       img.image__hi-res(
-        v-if="!loading",
+        :ready="!loading",
         :alt="image.alt",
-        :src="image.small.src",
-        :srcset="srcset(image)",
+        :src="image.large.src",
       )
 </template>
 
 <script>
-import imagesLoaded from 'imagesloaded';
-
 export default {
   props: [
     'className',
@@ -27,12 +24,12 @@ export default {
 
   data () {
     return {
-      loading: null,
+      loading: true,
     }
   },
 
   mounted () {
-    this.loadImages();
+    this.loadImage();
   },
 
   methods: {
@@ -41,13 +38,16 @@ export default {
       return `padding: 0 0 ${ratio}%;`;
     },
 
-    loadImages () {
-      this.loading = true;
-      const self = this;
-      const image = this.$el.querySelector('.image__hi-res');
-      imagesLoaded(image, self, instance => {
-        self.loading = false;
-      });
+    // TODO: Coordinate 'this.image.SIZE.src' with image from srcset that is actually loaded.
+    // Fade-in works just fine with just 'src' - not so much with 'srcset'.
+    loadImage () {
+      const target = this.$el.querySelector('.image__hi-res');
+      const img = new Image();
+      img.src = this.image.large.src; 
+      img.onload = () => {
+        this.loading = false;
+        target.setAttribute('ready', '');
+      };
     },
 
     orientation (image) {
@@ -68,7 +68,7 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/_config/'
 
-// /shotgun/walk-in-closet
+// Example: /shotgun/walk-in-closet
 .image--portrait
   width 50%
   margin 0 auto
@@ -86,9 +86,13 @@ export default {
   z-index -1
 
 .image__hi-res
-  animation fadeIn IMAGE_TRANSITION
+  opacity 0
+  transition opacity IMAGE_TRANSITION
 
-// /shotgun/bedroom-to-laundry
+.image__hi-res[ready]
+  opacity 1
+
+// Example: /shotgun/bedroom-to-laundry
 .image--multiple
   padding IMAGE_GAP 0 0 0
 
