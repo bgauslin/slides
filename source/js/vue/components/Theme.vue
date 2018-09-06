@@ -193,6 +193,9 @@ for name, theme in THEMES
     .header__link
       link(header_['LINK'], header_['LINK'], header_['ACTIVE'], header_['ACTIVE']);
 
+    .header__link--back::before
+      css_triangle(header_['LINK'], BACK_ARROW_SIZE, 'left')
+
     .header__link--home.current
       color header_['LINK']
 

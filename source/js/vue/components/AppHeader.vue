@@ -116,30 +116,23 @@ export default {
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
-    position relative
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
   cursor default
 
-// TODO: svg icon for back arrow
-// .header__link--back
-//   padding-left px_to_rem(8)
+.header__link--back
+  padding-left px_to_rem(8)
 
-//   @media BREAKPOINT_MEDIUM
-//     padding-left COLUMN_GAP
+  @media BREAKPOINT_MEDIUM
+    padding-left COLUMN_GAP
 
-// .header__link--back::before
-//   background url()
-//   content ''
-//   height BACK_ARROW_SIZE
-//   overflow hidden
-//   width BACK_ARROW_SIZE
+.header__link--back::before
+  content ''
+  margin-right px_to_rem(6)
 
-//   @media BREAKPOINT_MEDIUM
-//     left .2em
-//     position absolute
-//     top .8em
+  @media BREAKPOINT_MEDIUM
+    margin-left px_to_rem(-12)
 
 .header__link__label
   overflow hidden
