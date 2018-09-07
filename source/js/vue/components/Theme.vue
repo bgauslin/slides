@@ -193,11 +193,16 @@ for name, theme in THEMES
     .header__link
       link(header_['LINK'], header_['LINK'], header_['ACTIVE'], header_['ACTIVE']);
 
-    .header__link--back::before
-      css_triangle(header_['LINK'], BACK_ARROW_SIZE, 'left')
-
     .header__link--home.current
       color header_['LINK']
+
+    .header__link:link::before
+    .header__link:visited::before
+      border-right-color header_['LINK'];
+
+    .header__link:active::before
+    [no-touch] .header__link:hover::before
+      border-right-color header_['ACTIVE'];
 
     // contrast toggle icon
     .theme__icon--circle

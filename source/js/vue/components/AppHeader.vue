@@ -110,12 +110,22 @@ export default {
   heading_font()
   height HEADER_HEIGHT
   padding 0 HEADER_HEIGHT 0 px_to_rem(16)
+  transition transform DEFAULT_TRANSITION
   width 100%
 
   @media BREAKPOINT_MEDIUM
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
+
+.header__link:active
+  transform scale(.9)
+
+.header__link--home.current:active
+  transform none
+
+[no-touch] .header__link
+  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
@@ -127,8 +137,10 @@ export default {
   @media BREAKPOINT_MEDIUM
     padding-left COLUMN_GAP
 
+// NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back::before
   content ''
+  css_triangle(DARK_GREY, BACK_ARROW_SIZE, 'left')
   margin-right px_to_rem(6)
 
   @media BREAKPOINT_MEDIUM
@@ -137,16 +149,6 @@ export default {
 .header__link__label
   overflow hidden
   text-overflow ellipsis
-  transition transform DEFAULT_TRANSITION
   white-space nowrap
-
-[no-touch] .header__link__label
-  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
-
-.header__link:active .header__link__label
-  transform scale(.9)
-
-.header__link--home.current:active .header__link__label
-  transform none
 
 </style>
