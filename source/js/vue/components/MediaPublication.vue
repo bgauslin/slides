@@ -102,12 +102,10 @@ export default {
   height PUBLICATION_LINK_HEIGHT
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16)
-  transition background DEFAULT_TRANSITION,
-             color DEFAULT_TRANSITION,
-             transform DEFAULT_TRANSITION
 
-.publication__link:active
-  transform scale(.9)
+[no-touch] .publication__link
+  transition background DEFAULT_TRANSITION,
+             color DEFAULT_TRANSITION
 
 [href$="pdf"]::after
   bottom -.1em
@@ -115,19 +113,5 @@ export default {
   font-size 75%
   margin-left .5rem
   position relative
-
-// TODO: svg icon for external links
-// [data-url-type="download"]::before
-// [data-url-type="link"]::before
-//   content ''
-//   height px_to_em(18)
-//   margin-right px_to_rem(8)
-//   width px_to_em(18)
-
-// [data-url-type="download"]::before
-//   background url()
-
-// [data-url-type="link"]::before
-//   background url()
 
 </style>
