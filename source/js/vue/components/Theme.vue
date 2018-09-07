@@ -196,12 +196,12 @@ for name, theme in THEMES
     .header__link--home.current
       color header_['LINK']
 
-    .header__link:link::before
-    .header__link:visited::before
+    .header__link--back:link .header__link__label::before
+    .header__link--back:visited .header__link__label::before
       border-right-color header_['LINK'];
 
-    .header__link:active::before
-    [no-touch] .header__link:hover::before
+    .header__link--back:active .header__link__label::before
+    [no-touch] .header__link--back:hover .header__link__label::before
       border-right-color header_['ACTIVE'];
 
     // contrast toggle icon
