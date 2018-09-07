@@ -101,7 +101,6 @@ export default {
   max-width CONTENT_MAX_WIDTH
   width 100%
 
-// TODO: create nested element for overflow: ellipsis
 .header__link
   align-items center
   display inline-flex

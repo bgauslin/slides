@@ -17,7 +17,6 @@
 export default {
   props: ['content'],
 
-  // TODO: Add SVG right arrow icon.
   computed: {
     slideFirst () {
       return this.$store.getters.slideFirst;
@@ -87,12 +86,5 @@ export default {
 
 [no-touch] .cover__link:active
   transform scale(.9)
-
-// TODO: svg icon for forward arrow
-// .cover__link::after
-//   content ''
-//   height px_to_rem(24)
-//   margin-left px_to_rem(4)
-//   width px_to_rem(24)
 
 </style>

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-// TODO: Use SingleImage component for thumb images - TBD.
+// TODO: Use SingleImage component for thumb images (TBD).
 export default {
   props: [
     'index',
