@@ -111,7 +111,8 @@ THEMES = {
     HEADER: {
       BACKGROUND: rgba(DARK_GREY, .9)
       LINK: WHITE
-      ACTIVE: rgba(WHITE, .7)
+      HOVER: rgba(WHITE, .7)
+      ACTIVE: WHITE
     }
     LINK: {
       LINK: WHITE
@@ -145,7 +146,8 @@ THEMES = {
     HEADER: {
       BACKGROUND: rgba(OFF_WHITE, .95)
       LINK: DARK_GREY
-      ACTIVE: rgba(DARK_GREY, .7)
+      HOVER: rgba(DARK_GREY, .7)
+      ACTIVE: DARK_GREY
     }
     LINK: {
       LINK: DARK_GREY
@@ -191,9 +193,10 @@ for name, theme in THEMES
         background header_['BACKGROUND'];
 
     .header__link
-      link(header_['LINK'], header_['LINK'], header_['ACTIVE'], header_['ACTIVE']);
+      link(header_['LINK'], header_['LINK'], header_['HOVER'], header_['ACTIVE']);
 
     .header__link--home.current
+    .header__link--home.current:hover
       color header_['LINK']
 
     .header__link--back:link .header__link__label::before
