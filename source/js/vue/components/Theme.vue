@@ -131,7 +131,7 @@ THEMES = {
       BACKGROUND_ACTIVE: DARK_GREY
     } 
     CONTROLS: {
-      BACKGROUND: rgba(OFF_WHITE, .95)
+      BACKGROUND: rgba(OFF_WHITE, .85)
       BORDER: rgba(DARK_GREY, .3)
       LINK: rgba(DARK_GREY, .5)
       ACTIVE: DARK_GREY
