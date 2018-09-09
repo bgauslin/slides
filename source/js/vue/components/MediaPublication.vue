@@ -32,7 +32,8 @@ export default {
 
   computed: {
     linkLabel () {
-      return (this.publication.urlType === 'link') ? 'Visit website' : 'Read article'
+      return 'Read the article';
+      // return (this.publication.urlType === 'link') ? 'Visit website' : 'Read article'
     }
   }
 }
