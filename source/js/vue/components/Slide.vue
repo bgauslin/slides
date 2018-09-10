@@ -17,10 +17,9 @@
         v-if="content.media.text",
         :text="content.media.text",
       )
-    div.slide__caption
-      div.slide__caption__content(
-        v-html="content.caption",
-      )
+    div.slide__caption(
+      v-html="content.caption",
+    )
 </template>
 
 <script>
@@ -90,10 +89,12 @@ export default {
 
 .slide__caption
   box-sizing border-box
+  font-size CAPTION_SIZE
   margin 0 auto
   padding px_to_rem(16) px_to_rem(16) CONTROLS_HEIGHT
 
   @media BREAKPOINT_MEDIUM
+    font-size CAPTION_SIZE_MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
     padding px_to_rem(32) 0 0
@@ -105,11 +106,5 @@ export default {
     max-height 'calc(100% - %s)' % (HEADER_HEIGHT_MEDIUM + CONTROLS_HEIGHT_MEDIUM)
     overflow auto
     padding 0
-
-.slide__caption__content
-  font-size CAPTION_SIZE
-
-  @media BREAKPOINT_MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
 
 </style>
