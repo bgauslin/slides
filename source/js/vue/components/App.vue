@@ -250,11 +250,13 @@ export default {
       }
     },
 
+    // FIXME: 'docTitle' throws a console error on:
+    // slide (first run) -> thumbs -> back
     ready(data) {
       this.app.content = data;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
-    },
+},
 
     transitionEnterClass () {
       switch (this.direction) {
