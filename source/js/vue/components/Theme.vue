@@ -70,7 +70,7 @@ export default {
   cursor pointer
 
 .theme:active
-  transform scale(.9)
+  transform scale(.8)
 
 // TODO: Make the SVG scaleable.
 .theme svg

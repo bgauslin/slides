@@ -40,6 +40,6 @@ export default {
     height CONTROLS_HEIGHT_MEDIUM
 
 .counter__link:active
-  transform scale(.9)
+  transform scale(.8)
 
 </style>
