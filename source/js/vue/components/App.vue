@@ -71,7 +71,7 @@ export default {
     currentSlide () {
       return this.$store.getters.slide;
     },
-
+    
     direction () {
       return this.$store.getters.direction;
     },
@@ -221,7 +221,11 @@ export default {
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
-        await this.fetchJson(this.endpoint('slide'), 'slide');
+        // Wait until we've confirmed that the slide doesn't have media before fetching the full slide
+        // and storing its media.
+        if (!this.hasSlideMedia) {
+          await this.fetchJson(this.endpoint('slide'), 'slide');
+        }
       }
 
       if (this.hasSlideMedia) {
@@ -250,13 +254,11 @@ export default {
       }
     },
 
-    // FIXME: 'docTitle' throws a console error on:
-    // slide (first run) -> thumbs -> back
     ready(data) {
       this.app.content = data;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
-},
+    },
 
     transitionEnterClass () {
       switch (this.direction) {
