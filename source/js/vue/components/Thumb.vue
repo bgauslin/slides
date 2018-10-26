@@ -2,7 +2,7 @@
   div.thumb
     router-link(
       class="thumb__link",
-      :title="thumb.title",
+      :title="thumb.alt",
       :to="{ name: 'slide', params: { slideshow: slideshow, slug: slug } }",
     )
       figure.thumb__frame
