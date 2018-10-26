@@ -2,6 +2,7 @@
   button.theme(
     @click="toggleTheme",
     v-html="svgIcon",
+    :aria-label="'Switch to ' + themeLabel + ' theme'",
   )
 </template>
 
@@ -11,7 +12,6 @@ export default {
     this.setTheme();
   },
 
-  
   computed: {
     // TODO: Make the SVG scaleable.
     // https://css-tricks.com/scale-svg/
@@ -26,6 +26,10 @@ export default {
 
     theme () {
       return this.$store.getters.theme;
+    },
+
+    themeLabel () {
+      return (this.theme === 'dark') ? 'light' : 'dark';
     },
   },
 
