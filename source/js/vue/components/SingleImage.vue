@@ -12,6 +12,7 @@
       )
       img.image__placeholder(
         :src="image.placeholder",
+        :alt="image.alt",
       )
       img.image__hi-res(
         :ready="!loading",
