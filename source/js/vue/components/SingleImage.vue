@@ -55,21 +55,15 @@ export default {
       return `padding: 0 0 ${ratio}%;`;
     },
 
-    // TODO: async/await 'currentSrc' before proceeding...
-    loadImage: async function (endpoint, view) {
-      const target = this.$el.querySelector('.image__hi-res');
-      const img = new Image();
-  
-      console.log('await');
-      img.src = await target.currentSrc; 
-      console.log('img.src', img.src);
-
-      if (img.src) {
-        img.onload = () => {
-          this.loading = false;
-          target.setAttribute('ready', '');
-        };
-      }
+    loadImage() {
+      const fullImage = this.$el.querySelector('.image__hi-res');
+      let img = new Image();
+      img = fullImage;
+      img.onload = () => {
+        console.log('img.currentSrc loaded', img.currentSrc);
+        this.loading = false;
+        fullImage.setAttribute('ready', '');
+      };
     },
 
     orientation (image) {
