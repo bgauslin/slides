@@ -3,12 +3,12 @@
     :class="['header', 'header--' + view]",
   )
     div.header__content
-      router-link(
-        :class="['header__link', headerLinkClass]",
-        :to="headerLinkRoute",
-        :title="headerLinkLabel",
-      )
-        span.header__link__label {{ headerLinkLabel }}
+      h1.header__link__label
+        router-link(
+          :class="['header__link', headerLinkClass]",
+          :to="headerLinkRoute",
+          :title="headerLinkLabel",
+        ) {{ headerLinkLabel }}
       theme
 </template>
 
@@ -77,7 +77,7 @@ export default {
 
     slideshowTitle () {
       return this.$store.getters.slideshowTitle;
-    }
+    },
   }
 }
 </script>
@@ -121,6 +121,8 @@ export default {
   cursor default
 
 .header__link__label
+  font-size 1em
+  margin 0
   overflow hidden
   text-overflow ellipsis
   transition transform DEFAULT_TRANSITION
