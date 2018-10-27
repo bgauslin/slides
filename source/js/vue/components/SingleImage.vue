@@ -18,6 +18,7 @@
         :ready="!loading",
         :alt="image.alt",
         :src="image.medium.src",
+        :srcset="srcset(image)",
       )
 </template>
 
@@ -54,16 +55,21 @@ export default {
       return `padding: 0 0 ${ratio}%;`;
     },
 
-    // TODO: Coordinate 'this.image.SIZE.src' with image from srcset that is actually loaded.
-    // Fade-in works just fine with just 'src' - not so much with 'srcset'.
-    loadImage () {
+    // TODO: async/await 'currentSrc' before proceeding...
+    loadImage: async function (endpoint, view) {
       const target = this.$el.querySelector('.image__hi-res');
       const img = new Image();
-      img.src = this.image.medium.src; 
-      img.onload = () => {
-        this.loading = false;
-        target.setAttribute('ready', '');
-      };
+  
+      console.log('await');
+      img.src = await target.currentSrc; 
+      console.log('img.src', img.src);
+
+      if (img.src) {
+        img.onload = () => {
+          this.loading = false;
+          target.setAttribute('ready', '');
+        };
+      }
     },
 
     orientation (image) {
