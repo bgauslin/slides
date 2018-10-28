@@ -60,7 +60,6 @@ export default {
       let img = new Image();
       img = fullImage;
       img.onload = () => {
-        console.log('img.currentSrc loaded', img.currentSrc);
         this.loading = false;
         fullImage.setAttribute('ready', '');
       };
