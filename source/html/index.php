@@ -1,6 +1,6 @@
 <?php
 $site_name = 'Slideshows';
-$meta_description = 'Meta description goes here.';
+$meta_description = 'Ben Gauslin’s Slideshows';
 
 // Sets default paths.
 $site = 'slides';
