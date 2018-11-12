@@ -19,6 +19,7 @@
         :alt="image.alt",
         :src="image.medium.src",
         :srcset="srcset(image)",
+        sizes="100vw",
       )
 </template>
 
