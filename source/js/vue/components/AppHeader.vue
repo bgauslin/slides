@@ -3,12 +3,12 @@
     :class="['header', 'header--' + view]",
   )
     div.header__content
-      h1.header__link__label
-        router-link(
-          :class="['header__link', headerLinkClass]",
-          :to="headerLinkRoute",
-          :title="headerLinkLabel",
-        ) {{ headerLinkLabel }}
+      router-link(
+        :class="['header__link', headerLinkClass]",
+        :to="headerLinkRoute",
+        :title="headerLinkLabel",
+      ) 
+        h1.header__link__label {{ headerLinkLabel }}
       theme
 </template>
 
@@ -142,8 +142,5 @@ export default {
 .header__link--back .header__link__label::before
   css_triangle(DARK_GREY, BACK_ARROW_SIZE, 'left')
   margin-right px_to_rem(6)
-
-[no-touch] .header__link__label
-  transition color DEFAULT_TRANSITION, transform DEFAULT_TRANSITION
 
 </style>
