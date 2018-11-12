@@ -1,6 +1,6 @@
 const theme = {
     state: {
-      theme: JSON.parse(localStorage.getItem('theme')) || 'light',
+      theme: JSON.parse(localStorage.getItem('theme')) || 'dark',
     },
   
     mutations: {
