@@ -97,12 +97,13 @@ export default {
     font-size CAPTION_SIZE_MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
-    padding px_to_rem(32) 0 0
+    padding px_to_rem(32) 0 CONTROLS_HEIGHT_MEDIUM
 
   @media BREAKPOINT_LARGE
     align-self center
     grid-column 2
     grid-row 1
+    margin 0
     max-height 'calc(100% - %s)' % (HEADER_HEIGHT_MEDIUM + CONTROLS_HEIGHT_MEDIUM)
     overflow auto
     padding 0
