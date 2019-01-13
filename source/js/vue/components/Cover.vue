@@ -49,21 +49,21 @@ export default {
   text-align center
 
 .cover__heading
-  font-size H1_SIZE
+  font-size '%s' % FontSizes.Base.H1
   heading_font()
   margin 0 0 .25em
   padding 0
 
   @media Breakpoints.MEDIUM
-    font-size H1_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.H1
 
 .cover__summary
-  font-size H3_SIZE
+  font-size '%s' % FontSizes.Base.H3
   margin 0
   padding 0
 
   @media Breakpoints.MEDIUM
-    font-size H3_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.H3
 
 .cover__link
   align-items center

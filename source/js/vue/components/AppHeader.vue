@@ -104,7 +104,7 @@ export default {
 .header__link
   align-items center
   display inline-flex
-  font-size HEADING_SIZE
+  font-size '%s' % FontSizes.Base.HEADING
   font-weight normal
   heading_font()
   height HEADER_HEIGHT
@@ -112,7 +112,7 @@ export default {
   width 100%
 
   @media Breakpoints.MEDIUM
-    font-size HEADING_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.HEADING
     height HEADER_HEIGHT_MEDIUM
     padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
 

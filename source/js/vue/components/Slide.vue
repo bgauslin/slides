@@ -89,12 +89,12 @@ export default {
 
 .slide__caption
   box-sizing border-box
-  font-size CAPTION_SIZE
+  font-size '%s' % FontSizes.Base.CAPTION
   margin 0 auto
   padding px_to_rem(16) px_to_rem(16) CONTROLS_HEIGHT
 
   @media Breakpoints.MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.CAPTION
     grid-row 3
     max-width CAPTION_MAX_WIDTH
     padding px_to_rem(32) 0 CONTROLS_HEIGHT_MEDIUM

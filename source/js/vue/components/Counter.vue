@@ -26,7 +26,7 @@ export default {
 .counter__link
   align-items center
   display inline-flex
-  font-size CAPTION_SIZE
+  font-size '%s' % FontSizes.Base.CAPTION
   heading_font()
   height CONTROLS_HEIGHT
   justify-content center
@@ -36,7 +36,7 @@ export default {
   white-space nowrap
 
   @media Breakpoints.MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.CAPTION
     height CONTROLS_HEIGHT_MEDIUM
 
 .counter__link:active

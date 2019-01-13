@@ -71,12 +71,12 @@ export default {
   transition color DEFAULT_TRANSITION
 
 .slideshow__heading
-  font-size H3_SIZE
+  font-size '%s' % FontSizes.Base.H3
   heading_font()
   margin px_to_em(12) 0
   padding 0
 
   @media Breakpoints.MEDIUM
-    font-size H3_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.H3
 
 </style>

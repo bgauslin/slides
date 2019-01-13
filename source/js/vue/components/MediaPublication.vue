@@ -72,27 +72,27 @@ export default {
     padding 2rem
 
 .publication__title
-  font-size H2_SIZE
+  font-size '%s' % FontSizes.Base.H2
   heading_font()
   margin 0 0 px_to_rem(4)
 
   @media Breakpoints.MEDIUM
-    font-size H2_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.H2
 
 .publication__publisher
-  font-size H3_SIZE
+  font-size '%s' % FontSizes.Base.H3
   font-weight normal
   margin 0 0 px_to_rem(6)
 
   @media Breakpoints.MEDIUM
-    font-size H3_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.H3
 
 .publication__date
-  font-size CAPTION_SIZE
+  font-size '%s' % FontSizes.Base.CAPTION
   margin 0
 
   @media Breakpoints.MEDIUM
-    font-size CAPTION_SIZE_MEDIUM
+    font-size '%s' % FontSizes.Medium.CAPTION
 
 .publication__link
   align-items center

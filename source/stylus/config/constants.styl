@@ -1,0 +1,26 @@
+@import 'functions'
+
+// @type Hash
+Breakpoints = {
+  SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
+  MEDIUM: 'screen and (min-width: %s)' % px_to_rem(720)
+  LARGE: 'screen and (min-width: %s)' % px_to_rem(960)
+}
+
+// @type Hash
+FontSizes = {
+  Base: {
+    CAPTION: px_to_em(13)
+    HEADING: px_to_em(16)
+    H1: px_to_em(24)
+    H2: px_to_em(18)
+    H3: px_to_em(14)
+  }
+  Medium: {
+    CAPTION: px_to_em(15)
+    HEADING: px_to_em(20)
+    H1: px_to_em(36)
+    H2: px_to_em(24)
+    H3: px_to_em(18)
+  }
+}
