@@ -43,7 +43,7 @@ export default {
   margin (- IMAGE_GAP) auto 0
   width 50%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     display flex
     margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
     width auto

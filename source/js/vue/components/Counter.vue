@@ -35,7 +35,7 @@ export default {
   transition transform DEFAULT_TRANSITION
   white-space nowrap
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size CAPTION_SIZE_MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
 

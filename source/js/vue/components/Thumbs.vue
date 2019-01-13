@@ -27,7 +27,7 @@ export default {
   padding HEADER_HEIGHT 0 0
   width 100%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     grid-row 2
     margin 0 auto
     max-width CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2)
@@ -37,11 +37,11 @@ export default {
   margin 0 THUMB_GAP
   padding 0 0 THUMB_GAP
 
-  @media BREAKPOINT_SMALL
+  @media Breakpoints.SMALL
     margin 0 THUMB_GAP_SMALL
     padding 0 0 THUMB_GAP_SMALL
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin 0 THUMB_GAP_MEDIUM
     padding 0 0 THUMB_GAP_MEDIUM
 
@@ -50,10 +50,10 @@ export default {
   flex-wrap wrap
   margin (- THUMB_GAP) 0 0 (- THUMB_GAP)
 
-  @media BREAKPOINT_SMALL
+  @media Breakpoints.SMALL
     margin (- THUMB_GAP_SMALL) 0 0 (- THUMB_GAP_SMALL)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin (- THUMB_GAP_MEDIUM) 0 0 (- THUMB_GAP_MEDIUM)
 
 </style>

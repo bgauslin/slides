@@ -45,30 +45,30 @@ export default {
 .publication
   padding 0 px_to_rem(16)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     align-items center
     display flex
     margin 0 px_to_rem(32)
     padding 0
   
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     margin 0
 
 .publication__image
   margin 0
   width 50%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     flex 0 0 33.33%
     width auto
   
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin 0
 
 .publication__details
   padding 1rem 0 0
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     padding 2rem
 
 .publication__title
@@ -76,7 +76,7 @@ export default {
   heading_font()
   margin 0 0 px_to_rem(4)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H2_SIZE_MEDIUM
 
 .publication__publisher
@@ -84,14 +84,14 @@ export default {
   font-weight normal
   margin 0 0 px_to_rem(6)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H3_SIZE_MEDIUM
 
 .publication__date
   font-size CAPTION_SIZE
   margin 0
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size CAPTION_SIZE_MEDIUM
 
 .publication__link

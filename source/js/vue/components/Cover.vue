@@ -54,7 +54,7 @@ export default {
   margin 0 0 .25em
   padding 0
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H1_SIZE_MEDIUM
 
 .cover__summary
@@ -62,7 +62,7 @@ export default {
   margin 0
   padding 0
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H3_SIZE_MEDIUM
 
 .cover__link
@@ -76,7 +76,7 @@ export default {
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin px_to_rem(24) 0 0
 
 [no-touch] .cover__link

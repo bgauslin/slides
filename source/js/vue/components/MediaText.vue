@@ -30,7 +30,7 @@ export default {
   text-align center
   width 100%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H1_SIZE_MEDIUM
 
 </style>

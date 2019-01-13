@@ -133,7 +133,7 @@ export default {
   width 100vw
   z-index 1
   
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
 
 .controls__frame
@@ -145,7 +145,7 @@ export default {
   display flex
   justify-content space-between
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     margin 0 0 0 COLUMN_GAP
     width SIDEBAR_WIDTH
 
@@ -157,20 +157,20 @@ export default {
   justify-content center
   overflow hidden
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     height CONTROLS_HEIGHT_MEDIUM
 
 .prev-next--prev
 .prev-next--next
   padding 0 px_to_rem(8)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     padding 0 px_to_rem(12)
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     padding 0
 
-@media BREAKPOINT_LARGE
+@media Breakpoints.LARGE
   .prev-next--prev
     margin-left px_to_rem(-8)
 

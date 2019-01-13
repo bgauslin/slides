@@ -47,11 +47,9 @@ THUMB_TRANSITION = .2s
 // Breakpoint values.
 CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
 
-BREAKPOINT_SMALL_UNITS = px_to_rem(480)
-BREAKPOINT_MEDIUM_UNITS = px_to_rem(720)
-BREAKPOINT_LARGE_UNITS = px_to_rem(960)
-
-// Media queries with breakpoints.
-BREAKPOINT_SMALL = 'screen and (min-width: %s)' % BREAKPOINT_SMALL_UNITS
-BREAKPOINT_MEDIUM = 'screen and (min-width: %s)' % BREAKPOINT_MEDIUM_UNITS
-BREAKPOINT_LARGE = 'screen and (min-width: %s)' % BREAKPOINT_LARGE_UNITS
+// @type Hash
+Breakpoints = {
+  SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
+  MEDIUM: 'screen and (min-width: %s)' % px_to_rem(720)
+  LARGE: 'screen and (min-width: %s)' % px_to_rem(960)
+}

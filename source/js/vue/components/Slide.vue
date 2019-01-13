@@ -56,12 +56,12 @@ export default {
   padding HEADER_HEIGHT 0 CONTROLS_HEIGHT
   width 100vw
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     align-self center
     grid-row 2
     padding 0
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     display grid
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
@@ -70,10 +70,10 @@ export default {
     width 100%
 
 .slide__media
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     grid-row 2
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     align-self center
     grid-column 3
     grid-row 1
@@ -81,10 +81,10 @@ export default {
     overflow hidden
 
 .slide__media--multiple
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin 0 px_to_rem(24)
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     margin 0
 
 .slide__caption
@@ -93,13 +93,13 @@ export default {
   margin 0 auto
   padding px_to_rem(16) px_to_rem(16) CONTROLS_HEIGHT
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size CAPTION_SIZE_MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
     padding px_to_rem(32) 0 CONTROLS_HEIGHT_MEDIUM
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     align-self center
     grid-column 2
     grid-row 1

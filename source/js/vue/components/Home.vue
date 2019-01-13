@@ -33,18 +33,18 @@ export default {
   padding HEADER_HEIGHT 0 0
   width 100%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     grid-row 2
     padding 0
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     margin 0 auto
     max-width CONTENT_MAX_WIDTH
 
 .slideshows__frame
   margin 0 SLIDESHOW_GAP SLIDESHOW_GAP
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin 0 SLIDESHOW_GAP_MEDIUM SLIDESHOW_GAP_MEDIUM
 
 .slideshows__group
@@ -52,18 +52,18 @@ export default {
   flex-wrap wrap
   margin (- SLIDESHOW_GAP) 0 0 (- SLIDESHOW_GAP)
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin (- SLIDESHOW_GAP_MEDIUM) 0 0 (- SLIDESHOW_GAP_MEDIUM)
 
 .slideshow
   padding SLIDESHOW_GAP 0 0 SLIDESHOW_GAP
   flex 0 0 100%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     padding SLIDESHOW_GAP_MEDIUM 0 0 SLIDESHOW_GAP_MEDIUM
     flex 0 0 50%
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     flex 0 0 33.33%
 
 .slideshow__link
@@ -76,7 +76,7 @@ export default {
   margin px_to_em(12) 0
   padding 0
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size H3_SIZE_MEDIUM
 
 </style>

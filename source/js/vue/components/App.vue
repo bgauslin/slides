@@ -298,7 +298,7 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/config/'
 
-@media BREAKPOINT_MEDIUM
+@media Breakpoints.MEDIUM
   .view
     display grid
     grid-template-columns minmax(auto, 1fr)
@@ -327,7 +327,7 @@ export default {
   animation-duration SLIDE_TRANSITION
   animation-timing-function ease-out
 
-  @media BREAKPOINT_LARGE
+  @media Breakpoints.LARGE
     animation-duration SLIDE_TRANSITION_LARGE
 
 </style>

@@ -26,7 +26,7 @@ export default {
   padding 0 2rem
   text-align center
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size 1500%
     padding-bottom 4rem
 

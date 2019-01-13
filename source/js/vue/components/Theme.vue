@@ -66,7 +66,7 @@ export default {
   transition transform DEFAULT_TRANSITION
   width HEADER_HEIGHT
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     height HEADER_HEIGHT_MEDIUM
     width HEADER_HEIGHT_MEDIUM
 
@@ -83,7 +83,7 @@ export default {
   transform scale(.5)
   width THEME_ICON_SIZE
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     transform scale(.75)
 
 // TODO: Remove rgba() from ACTIVE states; restore HOVER states instead where applicable.
@@ -178,7 +178,7 @@ for name, theme in THEMES
       background controls_['BACKGROUND'];
       border-top .5px solid controls_['BORDER'];
 
-      @media BREAKPOINT_LARGE
+      @media Breakpoints.LARGE
         background 0;
         border 0;
 
@@ -186,14 +186,14 @@ for name, theme in THEMES
     .header
       background header_['BACKGROUND'];
 
-      @media BREAKPOINT_LARGE
+      @media Breakpoints.LARGE
         background 0;
 
     .header--cover
       background 0;
 
     .header--thumbs
-      @media BREAKPOINT_LARGE
+      @media Breakpoints.LARGE
         background header_['BACKGROUND'];
 
     .header__link

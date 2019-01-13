@@ -111,7 +111,7 @@ export default {
   padding 0 HEADER_HEIGHT 0 px_to_rem(16)
   width 100%
 
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     font-size HEADING_SIZE_MEDIUM
     height HEADER_HEIGHT_MEDIUM
     padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
@@ -135,7 +135,7 @@ export default {
   transform none
 
 .header__link--back .header__link__label
-  @media BREAKPOINT_MEDIUM
+  @media Breakpoints.MEDIUM
     margin-left px_to_rem(-12)
 
 // NOTE: css_triangle() color gets overridden by Theme component.
