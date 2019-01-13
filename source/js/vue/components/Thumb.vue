@@ -36,15 +36,15 @@ export default {
 @import '../../../stylus/config/'
 
 .thumb
-  padding THUMB_GAP 0 0 THUMB_GAP
+  padding '%s %s %s %s' % (Layout.ThumbGap.BASE 0 0 Layout.ThumbGap.BASE)
   flex '0 0 %s%' % (1 / 4 * 100)
 
   @media Breakpoints.SMALL
-    padding THUMB_GAP_SMALL 0 0 THUMB_GAP_SMALL
+    padding '%s %s %s %s' % (Layout.ThumbGap.SMALL 0 0 Layout.ThumbGap.SMALL)
     flex '0 0 %s%' % (1 / 5 * 100)
 
   @media Breakpoints.MEDIUM
-    padding THUMB_GAP_MEDIUM 0 0 THUMB_GAP_MEDIUM
+    padding '%s %s %s %s' % (Layout.ThumbGap.MEDIUM 0 0 Layout.ThumbGap.MEDIUM)
     flex '0 0 %s%' % (1 / 6 * 100)
 
   @media Breakpoints.LARGE
@@ -53,7 +53,7 @@ export default {
 .thumb__link
   display block
   shadow(0)
-  transition 'box-shadow %s, transform %s' % Transitions.THUMB
+  transition 'box-shadow %s, transform %s' % (Transitions.THUMB Transitions.THUMB)
 
 [no-touch] .thumb__link:hover
   shadow(2)
