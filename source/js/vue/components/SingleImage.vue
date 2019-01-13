@@ -102,7 +102,7 @@ export default {
 
 .image__hi-res
   opacity 0
-  transition opacity IMAGE_TRANSITION
+  transition opacity '%s' % Transitions.IMAGE
 
 .image__hi-res[ready]
   opacity 1

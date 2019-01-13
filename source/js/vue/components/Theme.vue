@@ -63,7 +63,7 @@ export default {
   position fixed
   right 0
   top 0
-  transition transform DEFAULT_TRANSITION
+  transition transform '%s' % Transitions.DEFAULT
   width HEADER_HEIGHT
 
   @media Breakpoints.MEDIUM

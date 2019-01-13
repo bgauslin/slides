@@ -68,7 +68,7 @@ export default {
 
 .slideshow__link
   display block
-  transition color DEFAULT_TRANSITION
+  transition color '%s' % Transitions.DEFAULT
 
 .slideshow__heading
   font-size '%s' % FontSizes.Base.H3

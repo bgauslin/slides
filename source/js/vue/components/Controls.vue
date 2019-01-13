@@ -180,7 +180,7 @@ export default {
 .prev-next__svg
   height auto
   width CONTROLS_ICON_SIZE
-  transition transform DEFAULT_TRANSITION
+  transition transform '%s' % Transitions.DEFAULT
 
 .prev-next__link:active .prev-next__svg
   transform scale(.8)
@@ -194,6 +194,6 @@ export default {
 .prev-next__svg__path
   fill none
   stroke-width 4
-  transition stroke DEFAULT_TRANSITION
+  transition stroke '%s' % Transitions.DEFAULT
 
 </style>

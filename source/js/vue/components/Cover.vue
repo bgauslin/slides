@@ -80,9 +80,7 @@ export default {
     margin px_to_rem(24) 0 0
 
 [no-touch] .cover__link
-  transition background DEFAULT_TRANSITION,
-             color DEFAULT_TRANSITION,
-             transform DEFAULT_TRANSITION
+  transition 'background %s, color %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT Transitions.DEFAULT)
 
 [no-touch] .cover__link:active
   transform scale(.9)

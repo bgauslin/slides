@@ -324,10 +324,10 @@ export default {
 .slide-in-right
 .slide-out-left
 .slide-out-right
-  animation-duration SLIDE_TRANSITION
+  animation-duration '%s' % Transitions.SLIDE
   animation-timing-function ease-out
 
   @media Breakpoints.LARGE
-    animation-duration SLIDE_TRANSITION_LARGE
+    animation-duration '%s' % Transitions.SLIDE_LARGE
 
 </style>

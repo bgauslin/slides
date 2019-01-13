@@ -105,8 +105,7 @@ export default {
   padding 0 px_to_rem(16)
 
 [no-touch] .publication__link
-  transition background DEFAULT_TRANSITION,
-             color DEFAULT_TRANSITION
+  transition 'background %s, color %s' % (Transitions.DEFAULT Transitions.DEFAULT)
 
 [href$="pdf"]::after
   bottom -.1em

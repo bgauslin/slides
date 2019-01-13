@@ -53,7 +53,7 @@ export default {
 .thumb__link
   display block
   shadow(0)
-  transition box-shadow THUMB_TRANSITION, transform THUMB_TRANSITION
+  transition 'box-shadow %s, transform %s' % Transitions.THUMB
 
 [no-touch] .thumb__link:hover
   shadow(2)

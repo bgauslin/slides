@@ -125,7 +125,7 @@ export default {
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition transform DEFAULT_TRANSITION
+  transition transform '%s' % Transitions.DEFAULT
   white-space nowrap
 
 .header__link:active .header__link__label
