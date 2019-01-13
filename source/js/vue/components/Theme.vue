@@ -87,7 +87,8 @@ export default {
     transform scale(.75)
 
 // TODO: Remove rgba() from ACTIVE states; restore HOVER states instead where applicable.
-THEMES = {
+// @type Hash
+Themes = {
   'dark': {
     APP: {
       BACKGROUND: '%s' % Colors.DARK_GREY
@@ -160,7 +161,8 @@ THEMES = {
   }
 }
 
-for name, theme in THEMES
+// TODO: Refactor all theming values with interpolation.
+for name, theme in Themes
   app_ = theme['APP']
   button_ = theme['BUTTON']
   controls_ = theme['CONTROLS']
