@@ -1,5 +1,29 @@
 @import 'functions'
 
+// TODO: Move constants into hashes where applicable.
+BACK_ARROW_SIZE = px_to_rem(6)
+CAPTION_MAX_WIDTH = px_to_rem(400)
+COLUMN_GAP = px_to_rem(32)
+CONTROLS_HEIGHT = px_to_rem(44)
+CONTROLS_HEIGHT_MEDIUM = px_to_rem(60)
+CONTROLS_ICON_SIZE = px_to_rem(32)
+COVER_LINK_HEIGHT = px_to_rem(40)
+HEADER_HEIGHT = px_to_rem(44)
+HEADER_HEIGHT_MEDIUM = px_to_rem(60)
+HEADER_BUTTON_SIZE = px_to_rem(44)
+IMAGE_GAP = px_to_rem(16)
+IMAGE_GAP_MEDIUM = px_to_rem(24)
+PUBLICATION_LINK_HEIGHT = px_to_rem(32)
+SIDEBAR_WIDTH = px_to_rem(256)
+SLIDE_MAX_WIDTH = px_to_rem(960)
+SLIDESHOW_GAP = px_to_rem(16)
+SLIDESHOW_GAP_MEDIUM = px_to_rem(32) // equal to COLUMN_GAP
+THEME_BUTTON_SIZE = px_to_rem(44)
+THEME_ICON_SIZE = px_to_rem(32)
+
+// Calculated constants.
+CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
+
 // @type Hash
 Breakpoints = {
   SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
