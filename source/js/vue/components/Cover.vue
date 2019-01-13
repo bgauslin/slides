@@ -67,12 +67,12 @@ export default {
 
 .cover__link
   align-items center
-  border-radius (COVER_LINK_HEIGHT / 2)
+  border-radius '%s' % (Layout.LinkHeights.COVER / 2)
   border-style solid 
   border-width 2px
   display inline-flex
   heading_font(600)
-  height COVER_LINK_HEIGHT
+  height '%s' % Layout.LinkHeights.COVER
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
 

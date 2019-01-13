@@ -96,11 +96,11 @@ export default {
 
 .publication__link
   align-items center
-  border-radius (PUBLICATION_LINK_HEIGHT / 2)
+  border-radius '%s' % (Layout.LinkHeights.PUBLICATION / 2)
   display inline-flex
   heading_font(600)
   font-size px_to_em(14)
-  height PUBLICATION_LINK_HEIGHT
+  height '%s' % Layout.LinkHeights.PUBLICATION
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16)
 

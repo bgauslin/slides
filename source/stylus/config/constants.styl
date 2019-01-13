@@ -1,21 +1,18 @@
 @import 'functions'
 
-// TODO: Move constants into hashes where applicable.
-CAPTION_MAX_WIDTH = px_to_rem(400)
+// TODO: Move these constants into hashes.
 COLUMN_GAP = px_to_rem(32)
-COVER_LINK_HEIGHT = px_to_rem(40)
-HEADER_BUTTON_SIZE = px_to_rem(44)
+SIDEBAR_WIDTH = px_to_rem(256)
+
+// TODO: Move *_GAP constants into hashes.
 IMAGE_GAP = px_to_rem(16)
 IMAGE_GAP_MEDIUM = px_to_rem(24)
-PUBLICATION_LINK_HEIGHT = px_to_rem(32)
-SIDEBAR_WIDTH = px_to_rem(256)
-SLIDE_MAX_WIDTH = px_to_rem(960)
 SLIDESHOW_GAP = px_to_rem(16)
-SLIDESHOW_GAP_MEDIUM = px_to_rem(32) // equal to COLUMN_GAP
-THEME_BUTTON_SIZE = px_to_rem(44)
+SLIDESHOW_GAP_MEDIUM = px_to_rem(32) // Same as COLUMN_GAP
 
-// Calculated constants.
-CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
+// TODO: Move *_MAX_WIDTH constants into hashes.
+CAPTION_MAX_WIDTH = px_to_rem(400)
+SLIDE_MAX_WIDTH = px_to_rem(960)
 
 // @type Hash
 Breakpoints = {
@@ -64,6 +61,10 @@ Layout = {
     CONTROLS: px_to_rem(32)
     THEME: px_to_rem(32)
   }
+  LinkHeights: {
+    COVER: px_to_rem(40)
+    PUBLICATION: px_to_rem(32)
+  }
   ThumbGap: {
     BASE: px_to_rem(4)
     SMALL: px_to_rem(6)
@@ -79,3 +80,9 @@ Transitions = {
   SLIDE_LARGE: .3s
   THUMB: .2s
 }
+
+// -----------------------------------------------------------------------------
+// Calculated constants.
+
+// @type String
+CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
