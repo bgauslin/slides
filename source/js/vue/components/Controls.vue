@@ -105,7 +105,7 @@ export default {
     // https://css-tricks.com/scale-svg/
     svgArrowLeft () {
       return `
-        <svg class="prev-next__svg" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <svg class="prev-next__svg" viewBox="0 0 32 32">
           <path class="prev-next__svg__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
         </svg>
       `;
@@ -113,7 +113,7 @@ export default {
 
     svgArrowRight () {
       return `
-        <svg class="prev-next__svg" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <svg class="prev-next__svg" viewBox="0 0 32 32">
           <path class="prev-next__svg__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
         </svg>
       `;
