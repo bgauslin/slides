@@ -24,7 +24,7 @@ export default {
 @import '../../../stylus/config/'
 
 .thumbs
-  padding '%s %s %s' % (Layout.HeaderHeights.BASE 0 0)
+  padding '%s 0 0' % Layout.HeaderHeights.BASE
   width 100%
 
   @media Breakpoints.MEDIUM
@@ -34,26 +34,31 @@ export default {
     padding 0
 
 .thumbs__frame
-  margin '%s %s' % (0 Layout.ThumbGaps.BASE)
-  padding '%s %s %s' % (0 0 Layout.ThumbGaps.BASE)
+  margin '0 %s' % Layout.ThumbGaps.BASE
+  padding '0 0 %s' % Layout.ThumbGaps.BASE
 
   @media Breakpoints.SMALL
-    margin '%s %s' % (0 Layout.ThumbGaps.BASE)
-    padding '%s %s %s' % (0 0 Layout.ThumbGaps.BASE)
+    margin '0 %s' % Layout.ThumbGaps.BASE
+    padding '0 0 %s' % Layout.ThumbGaps.BASE
 
   @media Breakpoints.MEDIUM
-    margin '%s %s' % (0 Layout.ThumbGaps.MEDIUM)
-    padding '%s %s %s' % (0 0 Layout.ThumbGaps.MEDIUM)
+    margin '0 %s' % Layout.ThumbGaps.MEDIUM
+    padding '0 0 %s' % Layout.ThumbGaps.MEDIUM
 
 .thumbs__group
-  display flex
-  flex-wrap wrap
-  margin '-%s %s %s -%s' % (Layout.ThumbGaps.BASE 0 0 Layout.ThumbGaps.BASE)
-
+  display grid
+  grid-gap '%s' % Layout.ThumbGaps.BASE
+  grid-template-columns repeat(4, 1fr)
+  
   @media Breakpoints.SMALL
-    margin '-%s %s %s -%s' % (Layout.ThumbGaps.SMALL 0 0 Layout.ThumbGaps.SMALL)
+    grid-gap '%s' % Layout.ThumbGaps.SMALL
+    grid-template-columns repeat(5, 1fr)
 
   @media Breakpoints.MEDIUM
-    margin '-%s %s %s -%s' % (Layout.ThumbGaps.MEDIUM 0 0 Layout.ThumbGaps.MEDIUM)
+    grid-gap '%s' % Layout.ThumbGaps.MEDIUM
+    grid-template-columns repeat(6, 1fr)
+
+  @media Breakpoints.LARGE
+    grid-template-columns repeat(7, 1fr)
 
 </style>
