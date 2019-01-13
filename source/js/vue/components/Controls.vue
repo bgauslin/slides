@@ -101,20 +101,18 @@ export default {
       return this.$route.params.slideshow;
     },
 
-    // Make the SVG scaleable.
-    // https://css-tricks.com/scale-svg/
     svgArrowLeft () {
       return `
-        <svg class="prev-next__svg" viewBox="0 0 32 32">
-          <path class="prev-next__svg__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
+        <svg class="arrow-icon" viewBox="0 0 32 32">
+          <path class="arrow-icon__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
         </svg>
       `;
     },
 
     svgArrowRight () {
       return `
-        <svg class="prev-next__svg" viewBox="0 0 32 32">
-          <path class="prev-next__svg__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
+        <svg class="arrow-icon" viewBox="0 0 32 32">
+          <path class="arrow-icon__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
         </svg>
       `;
     },
@@ -177,21 +175,21 @@ export default {
   .prev-next--next
     margin-right px_to_rem(-8)
 
-.prev-next__svg
+.arrow-icon
   height auto
   width '%s' % Layout.IconSizes.CONTROLS
   transition transform '%s' % Transitions.DEFAULT
 
-.prev-next__link:active .prev-next__svg
+.prev-next__link:active .arrow-icon
   transform scale(.8)
 
-.prev-next--prev .prev-next__svg
+.prev-next--prev .arrow-icon
   margin-right auto
 
-.prev-next--next .prev-next__svg
+.prev-next--next .arrow-icon
   margin-left auto
 
-.prev-next__svg__path
+.arrow-icon__path
   fill none
   stroke-width 4
   transition stroke '%s' % Transitions.DEFAULT

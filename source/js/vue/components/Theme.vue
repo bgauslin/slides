@@ -15,9 +15,9 @@ export default {
   computed: {
     svgIcon () {
       return `
-        <svg class="theme__icon" viewbox="0 0 32 32">
-          <circle class="theme__icon--circle" cx="16" cy="16" r="14.5" stroke-width="3" fill-opacity="0"/>
-          <path class="theme__icon--path" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" d="m16.000002,0c8.773518,0 15.880063,7.106548 15.880063,15.880063c0,8.773515 -7.106545,15.880063 -15.880063,15.880063l0,-31.760127z"/>
+        <svg class="theme-icon" viewbox="0 0 32 32">
+          <circle class="theme-icon__circle" cx="16" cy="16" r="14.5" stroke-width="3" fill-opacity="0"/>
+          <path class="theme-icon__path" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" d="m16.000002,0c8.773518,0 15.880063,7.106548 15.880063,15.880063c0,8.773515 -7.106545,15.880063 -15.880063,15.880063l0,-31.760127z"/>
         </svg>
       `
     },
@@ -74,7 +74,7 @@ export default {
 .theme:active
   transform scale(.8)
 
-.theme__icon
+.theme-icon
   width '%s' % Layout.IconSizes.Theme.BASE
 
   @media Breakpoints.MEDIUM
@@ -199,8 +199,8 @@ for name, theme in Themes
       border-right-color '%s' % theme.Header.ACTIVE
 
     // contrast toggle icon
-    .theme__icon--circle
-    .theme__icon--path
+    .theme-icon__circle
+    .theme-icon__path
       fill '%s' % theme.App.TEXT
       stroke '%s' % theme.App.TEXT
 
@@ -218,14 +218,14 @@ for name, theme in Themes
       link(theme.Cover.LINK, theme.Cover.LINK, theme.Cover.ACTIVE, theme.Cover.ACTIVE)
       link_background(theme.Cover.LINK_BACKGROUND, theme.Cover.LINK_BACKGROUND, theme.Cover.LINK_BACKGROUND_ACTIVE, theme.Cover.LINK_BACKGROUND_ACTIVE)
 
-    .prev-next__link:link .prev-next__svg__path
-    .prev-next__link:visited .prev-next__svg__path
+    .prev-next__link:link .arrow-icon__path
+    .prev-next__link:visited .arrow-icon__path
       stroke '%s' % theme.Controls.LINK
 
-    .prev-next__link:active .prev-next__svg__path
+    .prev-next__link:active .arrow-icon__path
       stroke '%s' % theme.Controls.ACTIVE
 
-    &[no-touch] .prev-next__link:hover .prev-next__svg__path
+    &[no-touch] .prev-next__link:hover .arrow-icon__path
       stroke '%s' % theme.Controls.ACTIVE
 
     .publication__link
