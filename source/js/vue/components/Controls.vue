@@ -178,7 +178,7 @@ export default {
 .arrow-icon
   height auto
   width '%s' % Layout.IconSizes.CONTROLS
-  transition transform '%s' % Transitions.DEFAULT
+  transition 'transform %s' % Transitions.DEFAULT
 
 .prev-next__link:active .arrow-icon
   transform scale(.8)
@@ -192,6 +192,6 @@ export default {
 .arrow-icon__path
   fill none
   stroke-width 4
-  transition stroke '%s' % Transitions.DEFAULT
+  transition 'stroke %s' % Transitions.DEFAULT
 
 </style>

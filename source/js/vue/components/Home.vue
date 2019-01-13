@@ -30,7 +30,7 @@ export default {
 @import '../../../stylus/config/'
 
 .slideshows
-  padding '%s %s %s' % (Layout.HeaderHeights.BASE 0 0)
+  padding '%s 0 0' % Layout.HeaderHeights.BASE
   width 100%
 
   @media Breakpoints.MEDIUM
@@ -42,25 +42,25 @@ export default {
     max-width CONTENT_MAX_WIDTH
 
 .slideshows__frame
-  margin '%s %s %s' % (0 Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
+  margin '0 %s %s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
 
   @media Breakpoints.MEDIUM
-    margin '%s %s %s' % (0 Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
+    margin '0 %s %s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
 
 .slideshows__group
   display flex
   flex-wrap wrap
-  margin '-%s %s %s -%s' % (Layout.SlideshowGaps.BASE 0 0 Layout.SlideshowGaps.BASE)
+  margin '-%s 0 0 -%s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
 
   @media Breakpoints.MEDIUM
-    margin '-%s %s %s -%s' % (Layout.SlideshowGaps.MEDIUM 0 0 Layout.SlideshowGaps.MEDIUM)
+    margin '-%s 0 0 -%s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
 
 .slideshow
-  padding '%s %s %s %s' % (Layout.SlideshowGaps.BASE 0 0 Layout.SlideshowGaps.BASE)
+  padding '%s 0 0 %s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
   flex 0 0 100%
 
   @media Breakpoints.MEDIUM
-    padding '%s %s %s %s' % (Layout.SlideshowGaps.MEDIUM 0 0 Layout.SlideshowGaps.MEDIUM)
+    padding '%s 0 0 %s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
     flex 0 0 50%
 
   @media Breakpoints.LARGE
@@ -68,7 +68,7 @@ export default {
 
 .slideshow__link
   display block
-  transition color '%s' % Transitions.DEFAULT
+  transition 'color %s' % Transitions.DEFAULT
 
 .slideshow__heading
   font-size '%s' % FontSizes.Base.H3

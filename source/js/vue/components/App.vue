@@ -302,7 +302,7 @@ export default {
   .view
     display grid
     grid-template-columns minmax(auto, 1fr)
-    grid-template-rows '%s %s %s' % (Layout.HeaderHeights.MEDIUM 1fr Layout.ControlsHeights.MEDIUM)
+    grid-template-rows '%s 1fr %s' % (Layout.HeaderHeights.MEDIUM Layout.ControlsHeights.MEDIUM)
 
 .first-run
   animation-name fadeIn

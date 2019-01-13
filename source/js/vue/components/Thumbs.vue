@@ -38,8 +38,8 @@ export default {
   padding '0 0 %s' % Layout.ThumbGaps.BASE
 
   @media Breakpoints.SMALL
-    margin '0 %s' % Layout.ThumbGaps.BASE
-    padding '0 0 %s' % Layout.ThumbGaps.BASE
+    margin '0 %s' % Layout.ThumbGaps.SMALL
+    padding '0 0 %s' % Layout.ThumbGaps.SMALL
 
   @media Breakpoints.MEDIUM
     margin '0 %s' % Layout.ThumbGaps.MEDIUM

@@ -32,7 +32,7 @@ export default {
   justify-content center
   overflow hidden
   padding 0 px_to_rem(16)
-  transition transform '%s' % Transitions.DEFAULT
+  transition 'transform %s' % Transitions.DEFAULT
   white-space nowrap
 
   @media Breakpoints.MEDIUM

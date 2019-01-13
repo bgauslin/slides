@@ -61,7 +61,7 @@ export default {
   position fixed
   right 0
   top 0
-  transition transform '%s' % Transitions.DEFAULT
+  transition 'transform %s' % Transitions.DEFAULT
   width '%s' % Layout.HeaderHeights.BASE
 
   @media Breakpoints.MEDIUM

@@ -108,13 +108,13 @@ export default {
   font-weight normal
   heading_font()
   height '%s' % Layout.HeaderHeights.BASE
-  padding '%s %s %s %s' % (0 Layout.HeaderHeights.BASE 0 px_to_rem(16))
+  padding '0 %s 0 %s' % (Layout.HeaderHeights.BASE px_to_rem(16))
   width 100%
 
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.HEADING
     height '%s' % Layout.HeaderHeights.MEDIUM
-    padding '%s %s %s %s' % (0 Layout.HeaderHeights.MEDIUM 0 COLUMN_GAP)
+    padding '0 %s 0 %s' % (Layout.HeaderHeights.MEDIUM COLUMN_GAP)
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
@@ -125,7 +125,7 @@ export default {
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition transform '%s' % Transitions.DEFAULT
+  transition 'transform %s' % Transitions.DEFAULT
   white-space nowrap
 
 .header__link:active .header__link__label

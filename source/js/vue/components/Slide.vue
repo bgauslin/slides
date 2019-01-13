@@ -53,7 +53,7 @@ export default {
   height 100%
   margin 0 auto
   max-width CONTENT_MAX_WIDTH
-  padding '%s %s %s' % (Layout.HeaderHeights.BASE 0 Layout.ControlsHeights.BASE)
+  padding '%s 0 %s' % (Layout.HeaderHeights.BASE Layout.ControlsHeights.BASE)
   width 100vw
 
   @media Breakpoints.MEDIUM
@@ -65,7 +65,7 @@ export default {
     display grid
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
-    grid-template-columns '%s %s %s %s' % (0 SIDEBAR_WIDTH 1fr 0)
+    grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
     grid-template-rows 1fr
     width 100%
 
@@ -97,7 +97,7 @@ export default {
     font-size '%s' % FontSizes.Medium.CAPTION
     grid-row 3
     max-width '%s' % Layout.MaxWidths.CAPTION
-    padding '%s %s %s' % (px_to_rem(32) 0 Layout.ControlsHeights.MEDIUM)
+    padding '%s 0 %s' % (px_to_rem(32) Layout.ControlsHeights.MEDIUM)
 
   @media Breakpoints.LARGE
     align-self center
