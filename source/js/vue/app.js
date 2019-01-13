@@ -1,19 +1,27 @@
+// Vue.
 import Vue from 'vue/dist/vue.js';
-import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
+
+// App.
 import App from './components/App.vue';
+
+// Store.
 import direction from './store/direction';
 import slideshow from './store/slideshow';
 import theme from './store/theme';
 import thumbs from './store/thumbs';
-import routeConfig from './routes';
 import transitions from './transitions';
 
+// Routes.
+import routeConfig from './routes';
+
+// Initialize Vue modules.
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
-/** @const {Object} */
+/** @instance */
 const store = new Vuex.Store({
   modules: {
     direction: direction,
@@ -23,7 +31,7 @@ const store = new Vuex.Store({
   }
 });
 
-/** @const {Object} */
+/** @instance */
 const scrollBehavior = (to, from, savedPosition) => {
   return {
     x: 0,
@@ -31,7 +39,7 @@ const scrollBehavior = (to, from, savedPosition) => {
   }
 };
 
-/** @const {Object} */
+/** @instance */
 const router = new VueRouter({
   routes: routeConfig(),
   mode: 'history',
@@ -41,7 +49,7 @@ const router = new VueRouter({
 
 transitions(router);
 
-/** @const {Object} */
+/** @instance */
 const app = new Vue({
   components: { App },
   store,
