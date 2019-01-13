@@ -127,14 +127,14 @@ export default {
 
 .controls
   bottom 0
-  height CONTROLS_HEIGHT
+  height '%s' % Layout.ControlsHeights.BASE
   left 0
   position fixed
   width 100vw
   z-index 1
   
   @media Breakpoints.MEDIUM
-    height CONTROLS_HEIGHT_MEDIUM
+    height '%s' % Layout.ControlsHeights.MEDIUM
 
 .controls__frame
   margin 0 auto
@@ -153,12 +153,12 @@ export default {
   align-items center
   display inline-flex
   flex 1
-  height CONTROLS_HEIGHT
+  height '%s' % Layout.ControlsHeights.BASE
   justify-content center
   overflow hidden
 
   @media Breakpoints.MEDIUM
-    height CONTROLS_HEIGHT_MEDIUM
+    height '%s' % Layout.ControlsHeights.MEDIUM
 
 .prev-next--prev
 .prev-next--next
@@ -179,7 +179,7 @@ export default {
 
 .prev-next__svg
   height auto
-  width CONTROLS_ICON_SIZE
+  width '%s' % Layout.IconSizes.CONTROLS
   transition transform '%s' % Transitions.DEFAULT
 
 .prev-next__link:active .prev-next__svg

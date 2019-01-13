@@ -56,7 +56,7 @@ export default {
   background 0
   border 0
   display inline-flex
-  height HEADER_HEIGHT
+  height '%s' % Layout.HeaderHeights.BASE
   justify-content center
   overflow hidden
   outline none
@@ -64,11 +64,11 @@ export default {
   right 0
   top 0
   transition transform '%s' % Transitions.DEFAULT
-  width HEADER_HEIGHT
+  width '%s' % Layout.HeaderHeights.BASE
 
   @media Breakpoints.MEDIUM
-    height HEADER_HEIGHT_MEDIUM
-    width HEADER_HEIGHT_MEDIUM
+    height '%s' % Layout.HeaderHeights.MEDIUM
+    width '%s' % Layout.HeaderHeights.MEDIUM
 
 .theme:hover
   cursor pointer
@@ -78,10 +78,10 @@ export default {
 
 // TODO: Make the SVG scaleable.
 .theme svg
-  height THEME_ICON_SIZE
+  height '%s' % Layout.IconSizes.THEME
   overflow visible
   transform scale(.5)
-  width THEME_ICON_SIZE
+  width '%s' % Layout.IconSizes.THEME
 
   @media Breakpoints.MEDIUM
     transform scale(.75)

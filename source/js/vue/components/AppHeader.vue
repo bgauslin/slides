@@ -107,14 +107,14 @@ export default {
   font-size '%s' % FontSizes.Base.HEADING
   font-weight normal
   heading_font()
-  height HEADER_HEIGHT
-  padding 0 HEADER_HEIGHT 0 px_to_rem(16)
+  height '%s' % Layout.HeaderHeights.BASE
+  padding '%s %s %s %s' % (0 Layout.HeaderHeights.BASE 0 px_to_rem(16))
   width 100%
 
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.HEADING
-    height HEADER_HEIGHT_MEDIUM
-    padding 0 HEADER_HEIGHT_MEDIUM 0 COLUMN_GAP
+    height '%s' % Layout.HeaderHeights.MEDIUM
+    padding '%s %s %s %s' % (0 Layout.HeaderHeights.MEDIUM 0 COLUMN_GAP)
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
@@ -140,7 +140,7 @@ export default {
 
 // NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back .header__link__label::before
-  css_triangle(Colors.DARK_GREY, BACK_ARROW_SIZE, 'left')
+  css_triangle(Colors.DARK_GREY, Layout.IconSizes.BACK_ARROW, 'left')
   margin-right px_to_rem(6)
 
 </style>

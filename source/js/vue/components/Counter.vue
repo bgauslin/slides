@@ -28,7 +28,7 @@ export default {
   display inline-flex
   font-size '%s' % FontSizes.Base.CAPTION
   heading_font()
-  height CONTROLS_HEIGHT
+  height '%s' % Layout.ControlsHeights.BASE
   justify-content center
   overflow hidden
   padding 0 px_to_rem(16)
@@ -37,7 +37,7 @@ export default {
 
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.CAPTION
-    height CONTROLS_HEIGHT_MEDIUM
+    height '%s' % Layout.ControlsHeights.MEDIUM
 
 .counter__link:active
   transform scale(.8)

@@ -30,7 +30,7 @@ export default {
 @import '../../../stylus/config/'
 
 .slideshows
-  padding HEADER_HEIGHT 0 0
+  padding '%s %s %s' % (Layout.HeaderHeights.BASE 0 0)
   width 100%
 
   @media Breakpoints.MEDIUM
