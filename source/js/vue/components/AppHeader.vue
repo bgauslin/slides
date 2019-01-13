@@ -140,7 +140,7 @@ export default {
 
 // NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back .header__link__label::before
-  css_triangle(DARK_GREY, BACK_ARROW_SIZE, 'left')
+  css_triangle(Colors.DARK_GREY, BACK_ARROW_SIZE, 'left')
   margin-right px_to_rem(6)
 
 </style>

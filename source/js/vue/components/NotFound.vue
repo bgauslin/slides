@@ -19,7 +19,7 @@ export default {
 @import '../../../stylus/config/'
 
 .error-404__message
-  color LIGHTER_GREY
+  color '%s' % Colors.LIGHT_GREY
   font-size 750%
   line-height 1
   margin 2rem 0

@@ -90,30 +90,30 @@ export default {
 THEMES = {
   'dark': {
     APP: {
-      BACKGROUND: DARK_GREY
+      BACKGROUND: '%s' % Colors.DARK_GREY
       TEXT: white
     }
     BUTTON: {
       LINK: white
-      ACTIVE: DARK_GREY
+      ACTIVE: '%s' % Colors.DARK_GREY
       BACKGROUND: rgba(white, .1)
       BACKGROUND_ACTIVE: white
     }
     CONTROLS: {
-      BACKGROUND: rgba(DARK_GREY, .9)
+      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .9)
       BORDER: rgba(white, .2)
       LINK: rgba(white, .5)
       ACTIVE: white
     }
     COVER: {
-      BACKGROUND: rgba(DARK_GREY, .8)
-      LINK: DARK_GREY
+      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .8)
+      LINK: '%s' % Colors.DARK_GREY
       ACTIVE: white
       LINK_BACKGROUND: white
       LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
-      BACKGROUND: rgba(DARK_GREY, .9)
+      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .9)
       LINK: white
       HOVER: rgba(white, .7)
       ACTIVE: white
@@ -125,37 +125,37 @@ THEMES = {
   },
   'light': {
     APP: {
-      BACKGROUND: OFF_WHITE
-      TEXT: DARK_GREY
+      BACKGROUND: '%s' % Colors.OFF_WHITE
+      TEXT: '%s' % Colors.DARK_GREY
     }
     BUTTON: {
-      LINK: DARK_GREY
+      LINK: '%s' % Colors.DARK_GREY
       ACTIVE: white
-      BACKGROUND: rgba(DARK_GREY, .1)
-      BACKGROUND_ACTIVE: DARK_GREY
+      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .1)
+      BACKGROUND_ACTIVE: '%s' % Colors.DARK_GREY
     } 
     CONTROLS: {
-      BACKGROUND: rgba(OFF_WHITE, .85)
-      BORDER: rgba(DARK_GREY, .3)
-      LINK: rgba(DARK_GREY, .5)
-      ACTIVE: DARK_GREY
+      BACKGROUND: '%s' % rgba(Colors.OFF_WHITE, .85)
+      BORDER: '%s' % rgba(Colors.DARK_GREY, .3)
+      LINK: '%s' % rgba(Colors.DARK_GREY, .5)
+      ACTIVE: '%s' % Colors.DARK_GREY
     }
     COVER: {
       BACKGROUND: rgba(white, .8)
       LINK: white
-      ACTIVE: DARK_GREY
-      LINK_BACKGROUND: DARK_GREY
+      ACTIVE: '%s' % Colors.DARK_GREY
+      LINK_BACKGROUND: '%s' % Colors.DARK_GREY
       LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
-      BACKGROUND: rgba(OFF_WHITE, .95)
-      LINK: DARK_GREY
-      HOVER: rgba(DARK_GREY, .7)
-      ACTIVE: DARK_GREY
+      BACKGROUND: '%s' rgba(Colors.OFF_WHITE, .95)
+      LINK: '%s' % Colors.DARK_GREY
+      HOVER: '%s' % rgba(Colors.DARK_GREY, .7)
+      ACTIVE: '%s' % Colors.DARK_GREY
     }
     LINK: {
-      LINK: DARK_GREY
-      ACTIVE: rgba(DARK_GREY, .7)
+      LINK: '%s' % Colors.DARK_GREY
+      ACTIVE: '%s' % rgba(Colors.DARK_GREY, .7)
     }
   }
 }
