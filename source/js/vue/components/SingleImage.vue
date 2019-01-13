@@ -107,12 +107,11 @@ export default {
 .image__hi-res[ready]
   opacity 1
 
-// Example: /shotgun/bedroom-to-laundry
 .image--multiple
-  padding IMAGE_GAP 0 0 0
+  padding '%s %s %s' % (Layout.ImageGaps.Base 0 0)
 
   @media Breakpoints.MEDIUM
     flex 0 0 50%
-    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
+    padding '%s %s %s %s' % (Layout.ImageGaps.MEDIUM 0 0 Layout.ImageGaps.MEDIUM)
 
 </style>

@@ -30,30 +30,30 @@ export default {
   @media Breakpoints.MEDIUM
     grid-row 2
     margin 0 auto
-    max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGap.MEDIUM * 2) - (COLUMN_GAP * 2))
+    max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGaps.MEDIUM * 2) - (COLUMN_GAP * 2))
     padding 0
 
 .thumbs__frame
-  margin '%s %s' % (0 Layout.ThumbGap.BASE)
-  padding '%s %s %s' % (0 0 Layout.ThumbGap.BASE)
+  margin '%s %s' % (0 Layout.ThumbGaps.BASE)
+  padding '%s %s %s' % (0 0 Layout.ThumbGaps.BASE)
 
   @media Breakpoints.SMALL
-    margin '%s %s' % (0 Layout.ThumbGap.BASE)
-    padding '%s %s %s' % (0 0 Layout.ThumbGap.BASE)
+    margin '%s %s' % (0 Layout.ThumbGaps.BASE)
+    padding '%s %s %s' % (0 0 Layout.ThumbGaps.BASE)
 
   @media Breakpoints.MEDIUM
-    margin '%s %s' % (0 Layout.ThumbGap.MEDIUM)
-    padding '%s %s %s' % (0 0 Layout.ThumbGap.MEDIUM)
+    margin '%s %s' % (0 Layout.ThumbGaps.MEDIUM)
+    padding '%s %s %s' % (0 0 Layout.ThumbGaps.MEDIUM)
 
 .thumbs__group
   display flex
   flex-wrap wrap
-  margin '-%s %s %s -%s' % (Layout.ThumbGap.BASE 0 0 Layout.ThumbGap.BASE)
+  margin '-%s %s %s -%s' % (Layout.ThumbGaps.BASE 0 0 Layout.ThumbGaps.BASE)
 
   @media Breakpoints.SMALL
-    margin '-%s %s %s -%s' % (Layout.ThumbGap.SMALL 0 0 Layout.ThumbGap.SMALL)
+    margin '-%s %s %s -%s' % (Layout.ThumbGaps.SMALL 0 0 Layout.ThumbGaps.SMALL)
 
   @media Breakpoints.MEDIUM
-    margin '-%s %s %s -%s' % (Layout.ThumbGap.MEDIUM 0 0 Layout.ThumbGap.MEDIUM)
+    margin '-%s %s %s -%s' % (Layout.ThumbGaps.MEDIUM 0 0 Layout.ThumbGaps.MEDIUM)
 
 </style>

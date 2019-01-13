@@ -42,25 +42,25 @@ export default {
     max-width CONTENT_MAX_WIDTH
 
 .slideshows__frame
-  margin 0 SLIDESHOW_GAP SLIDESHOW_GAP
+  margin '%s %s %s' % (0 Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
 
   @media Breakpoints.MEDIUM
-    margin 0 SLIDESHOW_GAP_MEDIUM SLIDESHOW_GAP_MEDIUM
+    margin '%s %s %s' % (0 Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
 
 .slideshows__group
   display flex
   flex-wrap wrap
-  margin (- SLIDESHOW_GAP) 0 0 (- SLIDESHOW_GAP)
+  margin '-%s %s %s -%s' % (Layout.SlideshowGaps.BASE 0 0 Layout.SlideshowGaps.BASE)
 
   @media Breakpoints.MEDIUM
-    margin (- SLIDESHOW_GAP_MEDIUM) 0 0 (- SLIDESHOW_GAP_MEDIUM)
+    margin '-%s %s %s -%s' % (Layout.SlideshowGaps.MEDIUM 0 0 Layout.SlideshowGaps.MEDIUM)
 
 .slideshow
-  padding SLIDESHOW_GAP 0 0 SLIDESHOW_GAP
+  padding '%s %s %s %s' % (Layout.SlideshowGaps.BASE 0 0 Layout.SlideshowGaps.BASE)
   flex 0 0 100%
 
   @media Breakpoints.MEDIUM
-    padding SLIDESHOW_GAP_MEDIUM 0 0 SLIDESHOW_GAP_MEDIUM
+    padding '%s %s %s %s' % (Layout.SlideshowGaps.MEDIUM 0 0 Layout.SlideshowGaps.MEDIUM)
     flex 0 0 50%
 
   @media Breakpoints.LARGE

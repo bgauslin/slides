@@ -1,19 +1,5 @@
 @import 'functions'
 
-// TODO: Move these constants into hashes.
-COLUMN_GAP = px_to_rem(32)
-SIDEBAR_WIDTH = px_to_rem(256)
-
-// TODO: Move *_GAP constants into hashes.
-IMAGE_GAP = px_to_rem(16)
-IMAGE_GAP_MEDIUM = px_to_rem(24)
-SLIDESHOW_GAP = px_to_rem(16)
-SLIDESHOW_GAP_MEDIUM = px_to_rem(32) // Same as COLUMN_GAP
-
-// TODO: Move *_MAX_WIDTH constants into hashes.
-CAPTION_MAX_WIDTH = px_to_rem(400)
-SLIDE_MAX_WIDTH = px_to_rem(960)
-
 // @type Hash
 Breakpoints = {
   SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
@@ -61,11 +47,23 @@ Layout = {
     CONTROLS: px_to_rem(32)
     THEME: px_to_rem(32)
   }
+  ImageGaps: {
+    BASE: px_to_rem(16)
+    MEDIUM: px_to_rem(24)
+  }
   LinkHeights: {
     COVER: px_to_rem(40)
     PUBLICATION: px_to_rem(32)
   }
-  ThumbGap: {
+  MaxWidths: {
+    CAPTION: px_to_rem(400)
+    SLIDE: px_to_rem(960)
+  }
+  SlideshowGaps: {
+    BASE: px_to_rem(16)
+    MEDIUM: px_to_rem(32) // Same as COLUMN_GAP
+  }
+  ThumbGaps: {
     BASE: px_to_rem(4)
     SMALL: px_to_rem(6)
     MEDIUM: px_to_rem(8)
@@ -81,8 +79,11 @@ Transitions = {
   THUMB: .2s
 }
 
-// -----------------------------------------------------------------------------
-// Calculated constants.
+// @type String
+COLUMN_GAP = px_to_rem(32)
 
 // @type String
-CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
+SIDEBAR_WIDTH = px_to_rem(256)
+
+// @type String
+CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + Layout.MaxWidths.SLIDE

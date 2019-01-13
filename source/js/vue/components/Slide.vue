@@ -65,7 +65,7 @@ export default {
     display grid
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
-    grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
+    grid-template-columns '%s %s %s %s' % (0 SIDEBAR_WIDTH 1fr 0)
     grid-template-rows 1fr
     width 100%
 
@@ -96,7 +96,7 @@ export default {
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.CAPTION
     grid-row 3
-    max-width CAPTION_MAX_WIDTH
+    max-width '%s' % Layout.MaxWidths.CAPTION
     padding '%s %s %s' % (px_to_rem(32) 0 Layout.ControlsHeights.MEDIUM)
 
   @media Breakpoints.LARGE

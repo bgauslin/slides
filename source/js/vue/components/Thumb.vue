@@ -36,15 +36,15 @@ export default {
 @import '../../../stylus/config/'
 
 .thumb
-  padding '%s %s %s %s' % (Layout.ThumbGap.BASE 0 0 Layout.ThumbGap.BASE)
+  padding '%s %s %s %s' % (Layout.ThumbGaps.BASE 0 0 Layout.ThumbGaps.BASE)
   flex '0 0 %s%' % (1 / 4 * 100)
 
   @media Breakpoints.SMALL
-    padding '%s %s %s %s' % (Layout.ThumbGap.SMALL 0 0 Layout.ThumbGap.SMALL)
+    padding '%s %s %s %s' % (Layout.ThumbGaps.SMALL 0 0 Layout.ThumbGaps.SMALL)
     flex '0 0 %s%' % (1 / 5 * 100)
 
   @media Breakpoints.MEDIUM
-    padding '%s %s %s %s' % (Layout.ThumbGap.MEDIUM 0 0 Layout.ThumbGap.MEDIUM)
+    padding '%s %s %s %s' % (Layout.ThumbGaps.MEDIUM 0 0 Layout.ThumbGaps.MEDIUM)
     flex '0 0 %s%' % (1 / 6 * 100)
 
   @media Breakpoints.LARGE
