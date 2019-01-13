@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .images--multiple
   margin (- IMAGE_GAP) auto 0

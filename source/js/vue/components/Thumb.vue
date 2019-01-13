@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .thumb
   padding THUMB_GAP 0 0 THUMB_GAP

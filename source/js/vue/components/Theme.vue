@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .theme
   align-items center
@@ -91,36 +91,36 @@ THEMES = {
   'dark': {
     APP: {
       BACKGROUND: DARK_GREY
-      TEXT: WHITE
+      TEXT: white
     }
     BUTTON: {
-      LINK: WHITE
+      LINK: white
       ACTIVE: DARK_GREY
-      BACKGROUND: rgba(WHITE, .1)
-      BACKGROUND_ACTIVE: WHITE
+      BACKGROUND: rgba(white, .1)
+      BACKGROUND_ACTIVE: white
     }
     CONTROLS: {
       BACKGROUND: rgba(DARK_GREY, .9)
-      BORDER: rgba(WHITE, .2)
-      LINK: rgba(WHITE, .5)
-      ACTIVE: WHITE
+      BORDER: rgba(white, .2)
+      LINK: rgba(white, .5)
+      ACTIVE: white
     }
     COVER: {
       BACKGROUND: rgba(DARK_GREY, .8)
       LINK: DARK_GREY
-      ACTIVE: WHITE
-      LINK_BACKGROUND: WHITE
+      ACTIVE: white
+      LINK_BACKGROUND: white
       LINK_BACKGROUND_ACTIVE: transparent
     }
     HEADER: {
       BACKGROUND: rgba(DARK_GREY, .9)
-      LINK: WHITE
-      HOVER: rgba(WHITE, .7)
-      ACTIVE: WHITE
+      LINK: white
+      HOVER: rgba(white, .7)
+      ACTIVE: white
     }
     LINK: {
-      LINK: WHITE
-      ACTIVE: rgba(WHITE, .7)
+      LINK: white
+      ACTIVE: rgba(white, .7)
     }
   },
   'light': {
@@ -130,7 +130,7 @@ THEMES = {
     }
     BUTTON: {
       LINK: DARK_GREY
-      ACTIVE: WHITE
+      ACTIVE: white
       BACKGROUND: rgba(DARK_GREY, .1)
       BACKGROUND_ACTIVE: DARK_GREY
     } 
@@ -141,8 +141,8 @@ THEMES = {
       ACTIVE: DARK_GREY
     }
     COVER: {
-      BACKGROUND: rgba(WHITE, .8)
-      LINK: WHITE
+      BACKGROUND: rgba(white, .8)
+      LINK: white
       ACTIVE: DARK_GREY
       LINK_BACKGROUND: DARK_GREY
       LINK_BACKGROUND_ACTIVE: transparent

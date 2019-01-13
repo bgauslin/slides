@@ -31,7 +31,6 @@
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
-
 import getApiDomain from '../../helpers/getApiDomain';
 const apiDomain = getApiDomain();
 
@@ -297,7 +296,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 @media BREAKPOINT_MEDIUM
   .view

@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .error-404__message
   color LIGHTER_GREY

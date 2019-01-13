@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .thumbs
   padding HEADER_HEIGHT 0 0

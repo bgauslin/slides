@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
 .publication
   padding 0 px_to_rem(16)

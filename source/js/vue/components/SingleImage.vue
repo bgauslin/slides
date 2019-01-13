@@ -82,9 +82,8 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../../stylus/_config/'
+@import '../../../stylus/config/'
 
-// Example: /shotgun/walk-in-closet
 .image--portrait
   width 50%
   margin 0 auto
