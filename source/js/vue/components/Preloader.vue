@@ -14,33 +14,40 @@ export default {
     'position',
   ],
 
-  data () {
+  data() {
     return {
       delay: 1000,
     }
   },
 
-  created () {
+  created() {
     this.setOptions();
   },
 
-  mounted () {
+  mounted() {
     this.attachSpinner();
   },
 
   methods: {
-    attachSpinner () {
+    /**  @description Attaches a loading spinner to an element. */
+    attachSpinner() {
       window.setTimeout(() => {
         const spinner = new Spinner(this.options).spin();
         this.$el.appendChild(spinner.el);
       }, this.delay);
     },
 
-    setOptions () {
+    /** @description Sets loading spinner color based on current theme. */
+    setOptions() {
       const theme = this.$store.getters.theme;
       this.options.color = (theme === 'light') ? '#000' : '#fff';
     },
 
+    /**
+     * Renders inline style with 'position' property depending on what element
+     * the loading spinner is attached to.
+     * @return {string}
+     */
     setPosition() {
       return `position: ${this.position}`;
     },

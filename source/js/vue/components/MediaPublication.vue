@@ -19,7 +19,7 @@
         :title="'Read the ' + publication.publisher + ' article'",
         rel="noopener",
         target="_blank",
-      ) {{ linkLabel }}
+      ) Read the article
 </template>
 
 <script>
@@ -27,15 +27,7 @@ import SingleImage from './SingleImage.vue';
 
 export default {
   components: { SingleImage },
-
   props: ['publication'],
-
-  computed: {
-    linkLabel () {
-      return 'Read the article';
-      // return (this.publication.urlType === 'link') ? 'Visit website' : 'Read article'
-    }
-  }
 }
 </script>
 

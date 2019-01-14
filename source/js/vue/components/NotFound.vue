@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       errorMessage: '404',
       summary: 'That page cannot be found. :(',

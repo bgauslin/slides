@@ -21,13 +21,15 @@ export default {
   props: ['images'],
   
   computed: {
-    imagesClass () {
+    /** @return {string} CSS class for multiple images. */
+    imagesClass() {
       if (this.images.length > 1) {
        return 'images--multiple';
       }
     },
 
-    imageClass () {
+    /** @return {string} CSS class for a single image. */
+    imageClass() {
       if (this.images.length > 1) {
        return 'image--multiple';
       }
