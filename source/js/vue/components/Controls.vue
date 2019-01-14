@@ -8,15 +8,23 @@
           class="prev-next__link prev-next--prev",
           :to="prevRoute",
           :title="prevLabel",
-          v-html="svgArrowLeft",
         )
+          svg(
+            class="arrow-icon",
+            viewBox="0 0 32 32",
+            v-html="svgArrow('left')",
+          )
         counter
         router-link(
           class="prev-next__link prev-next--next",
           :to="nextRoute",
           :title="nextLabel",
-          v-html="svgArrowRight",
         )
+          svg(
+            class="arrow-icon",
+            viewBox="0 0 32 32",
+            v-html="svgArrow('right')",
+          )
 </template>
 
 <script>
@@ -26,23 +34,23 @@ export default {
   components: { Counter },
 
   computed: {
-    isFirstSlide () {
-      return (this.$store.getters.slideIndex === 0);
+    /** @return {boolean} */
+    isFirstSlide() {
+      return this.$store.getters.slideIndex === 0;
     },
 
-    isLastSlide () {
-      return (this.$store.getters.slideIndex === this.$store.getters.totalSlideCount - 1);
+    /** @return {boolean} */
+    isLastSlide() {
+      return this.$store.getters.slideIndex === this.$store.getters.totalSlideCount - 1;
     },
 
-    nextLabel () {
-      if (this.isLastSlide) {
-        return 'Thumbnails';
-      } else {
-        return this.nextSlide.title;
-      }
+    /** @return {string} */
+    nextLabel() {
+      return this.isLastSlide ? 'Thumbnails' : this.nextSlide.title;
     },
 
-    nextRoute () {
+    /** @return {Object} */
+    nextRoute() {
       if (this.isLastSlide) {
         return {
           name: 'thumbs',
@@ -62,19 +70,18 @@ export default {
       }
     },
 
-    nextSlide () {
+    /** @return {Object} */
+    nextSlide() {
       return this.$store.getters.slideNext;
     },
 
-    prevLabel () {
-      if (this.isFirstSlide) {
-        return 'Cover';
-      } else {
-        return this.prevSlide.title;
-      }
+    /** @return {string} */
+    prevLabel() {
+      return this.isFirstSlide ? 'Cover' : this.prevSlide.title;
     },
 
-    prevRoute () {
+    /** @return {Object} */
+    prevRoute() {
       if (this.isFirstSlide) {
         return {
           name: 'cover',
@@ -93,28 +100,28 @@ export default {
       }
     },
 
-    prevSlide () {
+    /** @return {Object} */
+    prevSlide() {
       return this.$store.getters.slidePrev;
     },
 
-    slideshowRoute () {
+    /** @return {Object} */
+    slideshowRoute() {
       return this.$route.params.slideshow;
     },
+  },
 
-    svgArrowLeft () {
-      return `
-        <svg class="arrow-icon" viewBox="0 0 32 32">
-          <path class="arrow-icon__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>
-        </svg>
-      `;
-    },
-
-    svgArrowRight () {
-      return `
-        <svg class="arrow-icon" viewBox="0 0 32 32">
-          <path class="arrow-icon__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>
-        </svg>
-      `;
+  methods: {
+    /**
+     * @param {!string} direction - 'right' or 'left'
+     * @return {string}
+     */
+    svgArrow(direction) {
+      if (direction === 'left') {
+        return '<path class="arrow-icon__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>';
+      } else {
+        return '<path class="arrow-icon__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>';
+      }
     },
   }
 }
