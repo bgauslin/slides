@@ -25,7 +25,9 @@ export default {
 
 .thumbs
   padding '%s 0 0' % Layout.HeaderHeights.BASE
+  position relative
   width 100%
+  z-index 2
 
   @media Breakpoints.MEDIUM
     grid-row 2
