@@ -12,7 +12,7 @@
           svg(
             class="arrow-icon",
             viewBox="0 0 32 32",
-            v-html="svgArrow('left')",
+            v-html="svgArrowPath('left')",
           )
         counter
         router-link(
@@ -23,7 +23,7 @@
           svg(
             class="arrow-icon",
             viewBox="0 0 32 32",
-            v-html="svgArrow('right')",
+            v-html="svgArrowPath('right')",
           )
 </template>
 
@@ -136,7 +136,7 @@ export default {
      * @param {!string} direction - 'right' or 'left'
      * @return {string} SVG path for an arrow icon.
      */
-    svgArrow(direction) {
+    svgArrowPath(direction) {
       if (direction === 'left') {
         return '<path class="arrow-icon__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>';
       } else {
