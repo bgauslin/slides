@@ -9,11 +9,18 @@
 <script>
 export default {
   computed: {
-    countCurrent () {
+    /**
+     * @return {number} The current slide's index relative to the total number
+     *     of slides in the slideshow.
+     */
+    countCurrent() {
       return this.$store.getters.slideIndex + 1;
     },
 
-    countTotal () {
+    /**
+     * @return {number} The total number of slides in the slideshow.
+     */
+    countTotal() {
       return this.$store.getters.totalSlideCount;
     },
   }

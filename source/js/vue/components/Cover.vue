@@ -18,14 +18,21 @@ export default {
   props: ['content'],
 
   computed: {
-    slideFirst () {
+    /**
+     * @return {Object} The first slide in a slideshow.
+     */
+    slideFirst() {
       return this.$store.getters.slideFirst;
     }
   },
 
   methods: {
-    coverImage (image) {
-      return `background: url(${image.large.src}) center center / cover no-repeat;`;
+    /** 
+     * @param {!Object} image
+     * @return {string} An inline 'style' attribute for a background image.
+     */
+    coverImage(image) {
+      return `background: url(${image.large.src}) center / cover no-repeat;`;
     },
   }
 }

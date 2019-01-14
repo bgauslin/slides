@@ -21,7 +21,10 @@ export default {
   components: { Theme },
 
   computed: {
-    headerLinkClass () {
+    /**
+     * @return {string|null} CSS class for the header link based on the current route.
+     */
+    headerLinkClass() {
       const route = this.$route.name;
       if (route === 'home') {
         return 'header__link--home';
@@ -32,7 +35,10 @@ export default {
       }
     },
 
-    headerLinkLabel () {
+    /**
+     * @return {string} The header link's text label based on the current route.
+     */
+    headerLinkLabel() {
       const route = this.$route.name;
 
       if (route === 'thumbs' && this.lastVisitedSlug) {
@@ -44,7 +50,10 @@ export default {
       }
     },
 
-    headerLinkRoute () {
+    /**
+     * @return {Object} The route to go to when header link is clicked.
+     */
+    headerLinkRoute() {
       const route = this.$route.name;
 
       if (route === 'thumbs' && this.lastVisitedSlug) {
@@ -67,15 +76,24 @@ export default {
       }
     },
 
-    lastVisitedSlug () {
+    /**
+     * @return {string} The 'slug' URL param of the last visited route.
+     */
+    lastVisitedSlug() {
       return this.$store.getters.slug;
     },
 
-    slideshowRoute () {
+    /**
+     * @return {string} The 'slideshow' URL param.
+     */
+    slideshowRoute() {
       return this.$route.params.slideshow;
     },
 
-    slideshowTitle () {
+    /**
+     * @return {string} The slideshow's title.
+     */
+    slideshowTitle() {
       return this.$store.getters.slideshowTitle;
     },
   }
