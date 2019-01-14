@@ -37,7 +37,8 @@ export default {
   props: ['content'],
 
   computed: {
-    className () {
+    /** @return {string} */
+    className() {
       if (this.content.media.images && this.content.media.images.length > 1) {
        return 'slide__media--multiple';
       }

@@ -24,7 +24,8 @@ export default {
   ],
 
   computed: {
-    count () {
+    /** @return {number} */
+    count() {
       return this.index + 1;
     }
   },

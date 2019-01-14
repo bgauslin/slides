@@ -34,7 +34,7 @@ export default {
     'image',
   ],
 
-  data () {
+  data() {
     return {
       loading: true,
       preloaderOptions: {
@@ -46,16 +46,25 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.loadImage();
   },
 
   methods: {
+    /**
+     * @param {!Object} image
+     * @return {string} The image's aspect ratio as a percentage applied to
+     *     bottom padding of an inline 'style' element.
+     */
     aspectRatio(image) {
       const ratio = image.large.height / image.large.width * 100;
       return `padding: 0 0 ${ratio}%;`;
     },
 
+    /**
+     * @description Sets 'ready' attribute on the image after it has fully
+     *     downloaded.
+     */
     loadImage() {
       const fullImage = this.$el.querySelector('.image__hi-res');
       let img = new Image();
@@ -66,16 +75,28 @@ export default {
       };
     },
 
-    orientation (image) {
+    /**
+     * @param {!Object} image
+     * @return {string}
+     */
+    orientation(image) {
       return (image.large.height > image.large.width) ? 'portrait' : 'landscape';
     },
 
-    placeholder (image) {
-      return `background: url(${image.placeholder}) center center / contain no-repeat;`;
+    /**
+     * @param {!Object} image
+     * @return {string}
+     */
+    placeholder(image) {
+      return `background: url(${image.placeholder}) center / contain no-repeat;`;
     },
 
-    srcset (image) {
-      return `${image.medium.src} ${image.medium.width}w, ${image.large.src} ${image.large.width}w`;
+    /**
+     * @param {!Object} image
+     * @return {string}
+     */
+    srcset(image) {
+      return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
     },
   },
 }
