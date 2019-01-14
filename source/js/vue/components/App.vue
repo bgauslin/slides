@@ -32,10 +32,6 @@ import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
 
-// TODO: Make apiDomain computed/method instead of importing separate module.
-import getApiDomain from '../../modules/getApiDomain';
-const apiDomain = getApiDomain();
-
 export default {
   components: {
     AppHeader,
@@ -45,7 +41,7 @@ export default {
 
   data () {
     return {
-      apiBaseUrl: apiDomain + '/api/v2',
+      apiBaseUrl: '',
       app: {
         content: null,
         dataLoaded: false,
@@ -98,6 +94,10 @@ export default {
     view() {
       return this.$route.name;
     }
+  },
+
+  created() {
+    this.apiBaseUrl = this.getApiUrl();
   },
 
   mounted() {
@@ -209,6 +209,18 @@ export default {
           this.ready(data);
           break;
       }
+    },
+
+    /**
+     * Gets JSON API's base URL depending on server environment.
+     * @return {string}
+     */
+    getApiUrl() {
+      const hostnameParts = window.location.hostname.split('.');
+      const tld = hostnameParts[hostnameParts.length - 1];
+      const apiDomain = tld === 'com' ? 'https://gauslin.com' : 'http://gauslin.test';
+      
+      return `${apiDomain}/api/v2`;
     },
 
     /**

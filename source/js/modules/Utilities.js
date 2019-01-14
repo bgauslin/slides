@@ -1,9 +1,3 @@
-/** @enum {string} */
-const Domains = {
-  DEV: 'http://slides.gauslin.test',
-  PROD: 'https://slides.gauslin.com',
-}
-
 /** @class */
 class Utilities {
   /**
@@ -22,23 +16,6 @@ class Utilities {
     this.googleAnalytics(this.analyticsData);
     this.noTouch();
     this.viewportHeight();
-  }
-
-  /**
-   * @return {string}
-   * @public
-   */
-  getApiDomain() {
-    return this.getTLD_() === 'com' ? Domains.PROD : Domains.DEV;
-  }
-
-  /**
-   * @return {string}
-   * @private
-   */
-  getTLD_() {
-    const hostnameParts = window.location.hostname.split('.');
-    return hostnameParts[hostnameParts.length - 1];
   }
 
   /**
