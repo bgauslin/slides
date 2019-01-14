@@ -31,7 +31,9 @@
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
-import getApiDomain from '../../helpers/getApiDomain';
+
+// TODO: Make apiDomain computed/method instead of importing separate module.
+import getApiDomain from '../../modules/getApiDomain';
 const apiDomain = getApiDomain();
 
 export default {

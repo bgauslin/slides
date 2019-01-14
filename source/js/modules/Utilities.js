@@ -1,5 +1,5 @@
 /** @enum {string} */
-Domains = {
+const Domains = {
   DEV: 'http://slides.gauslin.test',
   PROD: 'https://slides.gauslin.com',
 }
@@ -7,8 +7,26 @@ Domains = {
 /** @class */
 class Utilities {
   /**
+   * @param {Object} config
+   * @param {Object} config.analyticsData
+   */
+  constructor(config) {
+    /** @const {!Object} */
+    this.analyticsData = config.analyticsData;
+  }
+
+  /**
+   * @public
+   */
+  init() {
+    this.googleAnalytics(this.analyticsData);
+    this.noTouch();
+    this.viewportHeight();
+  }
+
+  /**
    * @return {string}
-   * @static
+   * @public
    */
   getApiDomain() {
     return this.getTLD_() === 'com' ? Domains.PROD : Domains.DEV;
@@ -41,7 +59,7 @@ class Utilities {
   }
 
   /**
-   * @description TODO
+   * @description TODO...
    * @public
    */
   noTouch() {
@@ -52,7 +70,7 @@ class Utilities {
   }
 
   /**
-   * @description TODO
+   * @description TODO...
    * @public
    */
   viewportHeight() {
