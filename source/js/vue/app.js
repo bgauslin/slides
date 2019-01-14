@@ -1,22 +1,14 @@
-// Vue.
 import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
-
-// App.
 import App from './components/App.vue';
-
-// Store.
+import routeConfig from './routes';
 import direction from './store/direction';
 import slideshow from './store/slideshow';
 import theme from './store/theme';
 import thumbs from './store/thumbs';
 import transitions from './transitions';
 
-// Routes.
-import routeConfig from './routes';
-
-// Initialize Vue modules.
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
@@ -47,6 +39,7 @@ const router = new VueRouter({
   scrollBehavior,
 });
 
+// Pass router to transitions.
 transitions(router);
 
 /** @instance */
