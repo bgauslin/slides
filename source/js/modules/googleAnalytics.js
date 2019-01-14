@@ -1,3 +1,4 @@
+// TODO: Move this to Utilities class.
 export default data => {
   const hostName = window.location.hostname;
 

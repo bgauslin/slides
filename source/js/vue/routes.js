@@ -4,7 +4,7 @@ import Cover from './components/Cover.vue';
 import Thumbs from './components/Thumbs.vue';
 import NotFound from './components/NotFound.vue';
 
-export default function() {
+export default () => {
   const routes = [
     {
       path: '/',

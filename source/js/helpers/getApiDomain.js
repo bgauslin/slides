@@ -1,3 +1,4 @@
+// TODO: Move this to Utilities class.
 import getTLD from './getTLD';
 
 export default () => {

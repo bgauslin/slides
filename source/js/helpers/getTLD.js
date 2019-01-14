@@ -1,3 +1,4 @@
+// TODO: Move this to Utilities class.
 export default () => {
   const hostName = window.location.hostname;
   const hostNameArray = hostName.split('.');

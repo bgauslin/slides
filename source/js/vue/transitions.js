@@ -1,4 +1,4 @@
-export default router => {
+export default (router) => {
 
   router.beforeEach((to, from, next) => {
     let direction;

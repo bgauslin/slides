@@ -23,7 +23,7 @@ const store = new Vuex.Store({
   }
 });
 
-/** @instance */
+/** @function */
 const scrollBehavior = (to, from, savedPosition) => {
   return {
     x: 0,
