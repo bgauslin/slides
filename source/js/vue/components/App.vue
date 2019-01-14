@@ -67,34 +67,39 @@ export default {
   },
 
   computed: {
-    currentSlide () {
+    /** @return {Object} */
+    currentSlide() {
       return this.$store.getters.slide;
     },
     
-    direction () {
+    /** @return {string} */
+    direction() {
       return this.$store.getters.direction;
     },
 
-    hasSlideMedia () {
+    /** @return {boolean} */
+    hasSlideMedia() {
       return this.$store.getters.hasSlideMedia;
     },
 
-    slideshow () {
+    /** @return {Object} */
+    slideshow() {
       return this.$store.getters.slideshow;
     },
 
-    thumbs () {
+    /** @return {Object}  */
+    thumbs() {
       return this.$store.getters.thumbs;
     },
 
-    view () {
+    /** @return {string} */
+    view() {
       return this.$route.name;
     }
   },
 
-  mounted () {
+  mounted() {
     this.getContent();
-    // this.getMetaDescription();
   },
 
   watch: {
@@ -104,25 +109,42 @@ export default {
   },
 
   methods: {
-    afterEnter (el) {
-      el.classList.remove(this.transition.enter);
+    /**
+     * @param {!Element} element - DOM element to remove a CSS class from after
+     * entering a new route.
+     */
+    afterEnter(element) {
+      element.classList.remove(this.transition.enter);
     },
 
-    afterLeave (el) {
-      el.classList.remove(this.transition.leave);
+    /**
+     * @param {!Element} element - DOM element to remove a CSS class from after
+     * leaving the current route.
+     */
+    afterLeave(element) {
+      element.classList.remove(this.transition.leave);
     },
 
-    beforeEnter (el) {
-      this.transition.enter = this.transitionEnterClass();
-      el.classList.add(this.transition.enter);
+    /**
+     * @param {!Element} element - DOM element to add a CSS class to before
+     * entering a new route.
+     */
+    beforeEnter(element) {
+      element.classList.add(this.transitionEnterClass());
     },
 
-    beforeLeave (el) {
-      this.transition.leave = this.transitionLeaveClass();
-      el.classList.add(this.transition.leave);
+    /**
+     * @param {!Element} element - DOM element to remove a CSS class from before
+     * leaving the current route.
+     */
+    beforeLeave(element) {
+      element.classList.add(this.transitionLeaveClass());
     },
 
-    docTitle () {
+    /**
+     * @return {string} Formats the title based on the current route.
+     */
+    docTitle() {
       switch(this.$route.name) {
         case 'cover':
           return `${this.app.content.title}`;
@@ -135,7 +157,12 @@ export default {
       }
     },
 
-    endpoint (view) {
+    /**
+     * Sets the API endpoint depending on the route/view.
+     * @param {!string} view - Route name.
+     * @return {string}
+     */
+    endpoint(view) {
       switch (view) {
         case 'home':
           return `${this.apiBaseUrl}/slideshows`;
@@ -148,7 +175,13 @@ export default {
       }
     },
 
-    fetchJson: async function (endpoint, view) {
+    /**
+     * Fetches API data from an endpoint (which is based on the view/route),
+     * then stores that data to avoid further (redundant) API calls.
+     * @param {!string} endpoint - API endpoint.
+     * @param {!string} view - Which route/view.
+     */
+    fetchJson: async function(endpoint, view) {
       const response = await fetch(endpoint);
       const data = await response.json();
 
@@ -176,7 +209,11 @@ export default {
       }
     },
 
-    getContent () {
+    /**
+     * @description Sets the loaded flag to false and calls a method based
+     * on the current route.
+     */
+    getContent() {
       this.app.dataLoaded = false;
 
       switch (this.$route.name) {
@@ -195,7 +232,10 @@ export default {
       }
     },
 
-    getDataCover () {
+    /**
+     * @description Fetches API data for the 'cover' route/view.
+     */
+    getDataCover() {
       this.app.showControls = false;
       if (this.slideshow) {
         this.ready(this.slideshow);
@@ -204,24 +244,33 @@ export default {
       }
     },
 
-    getDataHome () {
+    /**
+     * @description Fetches API data for the 'home' route/view.
+     */
+    getDataHome() {
       this.app.showControls = false;
       this.fetchJson(this.endpoint('home'), 'home');
     },
 
-    getDataSlide () {
+    /**
+     * @description Fetches API data for the 'slide' route/view and fetches
+     * full 'slideshow' data if it hasn't been fetched and stored yet.
+     * @async
+     */
+    getDataSlide() {
       this.app.showControls = true;
 
        // Set slug for slide id lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
       const fetchData = async () => {
-        // Get the slideshow first, then the slide (or the slide won't have a slot to get stored in).
+        // Get the slideshow first, then the slide (or the slide won't have
+        // a slot to get stored in).
         if (!this.slideshow) {
           await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
         }
-        // Wait until we've confirmed that the slide doesn't have media before fetching the full slide
-        // and storing its media.
+        // Wait until we've confirmed that the slide doesn't have media before
+        // fetching the full slide and storing its media.
         if (!this.hasSlideMedia) {
           await this.fetchJson(this.endpoint('slide'), 'slide');
         }
@@ -234,11 +283,15 @@ export default {
       }
     },
 
-    getDataThumbs () {
+    /**
+     * @description Fetches API data for the 'thumbs' route/view and fetches
+     * full 'slideshow' data if it hasn't been fetched and stored yet.
+     * @async
+     */
+    getDataThumbs() {
       this.app.showControls = false;
 
       const fetchData = async () => {
-        // Fetch thumbs, then slideshow if we don't have it yet.
         await this.fetchJson(this.endpoint('thumbs'), 'thumbs');
 
         if (!this.slideshow) {
@@ -253,13 +306,22 @@ export default {
       }
     },
 
+    /**
+     * Passes API data as a prop, sets loaded flag to true, and updates the
+     * document title.
+     * @param {Object} data
+     */
     ready(data) {
       this.app.content = data;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
     },
 
-    transitionEnterClass () {
+    /**
+     * @return {string} The CSS class to apply on transition's 'enter' tick
+     * based on the current 'direction'.
+     */
+    transitionEnterClass() {
       switch (this.direction) {
         case 'forward':
           return 'slide-in-right';
@@ -270,7 +332,11 @@ export default {
       }
     },
 
-    transitionLeaveClass () {
+    /**
+     * @return {string} The CSS class to apply on transition's 'leave' tick
+     * based on the current 'direction'.
+     */
+    transitionLeaveClass() {
       switch (this.direction) {
         case 'forward':
           return 'slide-out-left';
@@ -280,17 +346,6 @@ export default {
           return 'first-run';
       }
     },
-
-    // getMetaDescription() {
-    //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
-    //   this.meta.description = metaDescriptionEl.getAttribute('content');
-    // },
-
-    // updateMetaDescription(content) {
-    //   const metaContent = (content !== null) ? content : this.meta.description;
-    //   const metaDescriptionEl = document.querySelector('meta[name="description"]');
-    //   metaDescriptionEl.setAttribute('content', metaContent);
-    // },
   },
 }
 </script>
