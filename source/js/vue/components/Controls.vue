@@ -34,22 +34,31 @@ export default {
   components: { Counter },
 
   computed: {
-    /** @return {boolean} */
+    /**
+     * @return {boolean} Whether the current route is for the first slide.
+     */
     isFirstSlide() {
       return this.$store.getters.slideIndex === 0;
     },
 
-    /** @return {boolean} */
+    /**
+     * @return {boolean} Whether the current route is for the last slide.
+     */
     isLastSlide() {
       return this.$store.getters.slideIndex === this.$store.getters.totalSlideCount - 1;
     },
 
-    /** @return {string} */
+    /**
+     * @return {string} Label for next route based on whether or not the 
+     * current route is for the last slide.
+     */
     nextLabel() {
       return this.isLastSlide ? 'Thumbnails' : this.nextSlide.title;
     },
 
-    /** @return {Object} */
+    /**
+     * @return {Object} The next route.
+     */
     nextRoute() {
       if (this.isLastSlide) {
         return {
@@ -70,17 +79,24 @@ export default {
       }
     },
 
-    /** @return {Object} */
+    /**
+     * @return {Object} The next slide.
+     */
     nextSlide() {
       return this.$store.getters.slideNext;
     },
 
-    /** @return {string} */
+    /**
+     * @return {string} Label for previous route based on whether or not the 
+     * current route is for the first slide.
+     */
     prevLabel() {
       return this.isFirstSlide ? 'Cover' : this.prevSlide.title;
     },
 
-    /** @return {Object} */
+    /**
+     * @return {Object} The previous route.
+     */
     prevRoute() {
       if (this.isFirstSlide) {
         return {
@@ -100,12 +116,16 @@ export default {
       }
     },
 
-    /** @return {Object} */
+    /**
+     * @return {Object} The previous slide.
+     */
     prevSlide() {
       return this.$store.getters.slidePrev;
     },
 
-    /** @return {Object} */
+    /**
+     * @return {Object} The current slideshow.
+     */
     slideshowRoute() {
       return this.$route.params.slideshow;
     },
@@ -114,7 +134,7 @@ export default {
   methods: {
     /**
      * @param {!string} direction - 'right' or 'left'
-     * @return {string}
+     * @return {string} SVG path for an arrow icon.
      */
     svgArrow(direction) {
       if (direction === 'left') {
