@@ -227,7 +227,7 @@ export default {
     getApiUrl() {
       const hostnameParts = window.location.hostname.split('.');
       const tld = hostnameParts[hostnameParts.length - 1];
-      const apiDomain = tld === 'com' ? 'https://gauslin.com' : 'http://gauslin.test';
+      const apiDomain = (tld === 'test') ? 'http://gauslin.test' : 'https://gauslin.com';
       
       return `${apiDomain}/api/v2`;
     },
