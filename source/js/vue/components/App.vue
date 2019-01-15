@@ -25,22 +25,31 @@
     controls(
       v-if="app.showControls",
     )
+    utilities(
+      :analytics="analytics",
+    )
 </template>
 
 <script>
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
+import Utilities from './Utilities.vue';
 
 export default {
   components: {
     AppHeader,
     Controls,
     Preloader,
+    Utilities,
   },
 
-  data () {
+  data() {
     return {
+      analytics: {
+        domain: 'slides.gauslin.com',
+        id: 'UA-626192-17',
+      },
       apiBaseUrl: '',
       app: {
         content: null,

@@ -1,14 +1,6 @@
+// TODO: move app.js up to this file.
 import attachFastClick from 'fastclick';
-import { Utilities } from './modules/Utilities';
-import './vue/app';
-
-/** @instance */
-const utils = new Utilities({
-  analyticsData: {
-    domain: 'slides.gauslin.com',
-    id: 'UA-626192-17',
-  }
-});
+import './vue/app'; 
 
 /**
  * Initializes module methods when DOM is ready.
@@ -16,13 +8,4 @@ const utils = new Utilities({
  */
 window.addEventListener('DOMContentLoaded', () => { 
   attachFastClick(document.body);
-  utils.init();
-});
-
-/**
- * Calls module methods when window is resized.
- * @listens resize
- */
-window.addEventListener('resize', () => {
-  utils.viewportHeight();
 });
