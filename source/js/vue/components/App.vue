@@ -153,7 +153,8 @@ export default {
     },
 
     /**
-     * @return {string} Formats the title based on the current route.
+     * Formats and updates document title based on the current route.
+     * @return {string}
      */
     docTitle() {
       switch(this.$route.name) {
