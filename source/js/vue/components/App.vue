@@ -339,6 +339,19 @@ export default {
       this.app.content = data;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
+      this.sendPageview();
+    },
+
+    /**
+     * Gets global Google Analytics object and sends a new pageview.
+     */
+    sendPageview() {
+      const ga = window.ga;
+      if (ga) {
+        ga('set', 'page', this.$route.path);
+        ga('set', 'title', this.docTitle());
+        ga('send', 'pageview');
+      }
     },
 
     /**

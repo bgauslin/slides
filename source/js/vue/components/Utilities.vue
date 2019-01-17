@@ -13,6 +13,7 @@ export default {
     this.viewportHeight();
   },
 
+  // If not, add new method that sends a pageview to GA.
   methods: {
     /**
      * Initializes Google Analytics tracking.
