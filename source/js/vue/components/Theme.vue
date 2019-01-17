@@ -147,7 +147,7 @@ Themes = {
       LINK_BACKGROUND_ACTIVE: transparent
     }
     Header: {
-      BACKGROUND: '%s' rgba(Colors.OFF_WHITE, .95)
+      BACKGROUND: '%s' % rgba(Colors.OFF_WHITE, .95)
       LINK: '%s' % Colors.DARK_GREY
       HOVER: '%s' % rgba(Colors.DARK_GREY, .7)
       ACTIVE: '%s' % Colors.DARK_GREY
