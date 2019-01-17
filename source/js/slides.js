@@ -17,6 +17,18 @@ Vue.config.productionTip = false;
 /** Initializes FastClick. */
 attachFastClick(document.body);
 
+// TODO: Fix scrollBehavior.
+/**
+ * Resets scroll position when route changes.
+ * @const
+ */
+const scrollBehavior = (to, from, savedPosition) => {
+  return {
+    x: 0,
+    y: 0,
+  }
+};
+
 /**
  * Initializes data store.
  * @instance
@@ -43,17 +55,6 @@ const router = new VueRouter({
 
 /** Binds transitions and router. */
 transitions(router);
-
-/**
- * Resets scroll position when route changes.
- * @const
- */
-const scrollBehavior = (to, from, savedPosition) => {
-  return {
-    x: 0,
-    y: 0,
-  }
-};
 
 /**
  * Initializes app, passes it the store and router, and mounts it to the DOM.
