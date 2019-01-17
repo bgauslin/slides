@@ -143,7 +143,7 @@ export default {
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition 'transform %s' % Transitions.DEFAULT
+  transition 'color %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT)
   white-space nowrap
 
 .header__link:active .header__link__label
@@ -160,5 +160,12 @@ export default {
 .header__link--back .header__link__label::before
   css_triangle(Colors.DARK_GREY, Layout.IconSizes.BACK_ARROW, 'left')
   margin-right px_to_rem(6)
+
+// back arrow hover/active styles
+[no-touch] .header__link__label::before
+  transition 'opacity %s' % Transitions.DEFAULT
+
+[no-touch] .header__link--back:hover .header__link__label::before
+  opacity .7
 
 </style>

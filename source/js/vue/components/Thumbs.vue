@@ -23,11 +23,11 @@ export default {
 <style lang="stylus">
 @import '../../../stylus/config/'
 
+// TODO: Update layout so that top row of thumbs aren't cut off by header
+// (if possible - it may not be).
 .thumbs
   padding '%s 0 0' % Layout.HeaderHeights.BASE
-  position relative
   width 100%
-  z-index 2
 
   @media Breakpoints.MEDIUM
     grid-row 2
