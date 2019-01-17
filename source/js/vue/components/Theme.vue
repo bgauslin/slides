@@ -73,6 +73,12 @@ export default {
     height '%s' % Layout.HeaderHeights.MEDIUM
     width '%s' % Layout.HeaderHeights.MEDIUM
 
+[no-touch] .theme
+  transition 'opacity %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT)
+
+[no-touch] .theme:hover
+  opacity .7
+
 .theme:hover
   cursor pointer
 
