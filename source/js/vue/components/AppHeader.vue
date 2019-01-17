@@ -129,6 +129,9 @@ export default {
   padding '0 %s 0 %s' % (Layout.HeaderHeights.BASE px_to_rem(16))
   width 100%
 
+  @media Breakpoints.SMALL
+    width auto
+
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.HEADING
     height '%s' % Layout.HeaderHeights.MEDIUM
