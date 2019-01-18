@@ -107,8 +107,8 @@ Themes = {
     Controls: {
       BACKGROUND: '%s' % rgba(Color.DARK_GREY, .9)
       BORDER: rgba(white, .2)
-      LINK: rgba(white, .5)
-      ACTIVE: white
+      LINK: white
+      HOVER: '%s' % rgba(white, .7)
     }
     Cover: {
       BACKGROUND: '%s' % rgba(Color.DARK_GREY, .8)
@@ -142,8 +142,8 @@ Themes = {
     Controls: {
       BACKGROUND: '%s' % rgba(Color.OFF_WHITE, .85)
       BORDER: '%s' % rgba(Color.DARK_GREY, .3)
-      LINK: '%s' % rgba(Color.DARK_GREY, .5)
-      ACTIVE: '%s' % Color.DARK_GREY
+      LINK: '%s' % Color.DARK_GREY
+      HOVER: '%s' % rgba(Color.DARK_GREY, .7)
     }
     Cover: {
       BACKGROUND: rgba(white, .8)
@@ -233,11 +233,8 @@ for name, theme in Themes
     .prev-next__link:visited .arrow-icon__path
       stroke '%s' % theme.Controls.LINK
 
-    .prev-next__link:active .arrow-icon__path
-      stroke '%s' % theme.Controls.ACTIVE
-
     &[no-touch] .prev-next__link:hover .arrow-icon__path
-      stroke '%s' % theme.Controls.ACTIVE
+      stroke '%s' % theme.Controls.HOVER
 
     .publication__link
       link(theme.Button.LINK, theme.Button.LINK, theme.Button.ACTIVE, theme.Button.ACTIVE)
