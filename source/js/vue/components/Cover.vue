@@ -56,21 +56,21 @@ export default {
   text-align center
 
 .cover__heading
-  font-size '%s' % FontSizes.Base.H1
+  font-size '%s' % FontSize.Base.H1
   heading_font()
   margin 0 0 .25em
   padding 0
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.H1
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.H1
 
 .cover__summary
-  font-size '%s' % FontSizes.Base.H3
+  font-size '%s' % FontSize.Base.H3
   margin 0
   padding 0
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.H3
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.H3
 
 .cover__link
   align-items center
@@ -83,11 +83,11 @@ export default {
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     margin px_to_rem(24) 0 0
 
 [no-touch] .cover__link
-  transition 'background %s, color %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT Transitions.DEFAULT)
+  transition 'background %s, color %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT Transition.DEFAULT)
 
 [no-touch] .cover__link:active
   transform scale(.9)

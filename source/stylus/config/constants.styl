@@ -1,21 +1,21 @@
 @import 'functions'
 
 // @type Hash
-Breakpoints = {
+Breakpoint = {
   SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
   MEDIUM: 'screen and (min-width: %s)' % px_to_rem(720)
   LARGE: 'screen and (min-width: %s)' % px_to_rem(960)
 }
 
 // @type Hash
-Colors = {
+Color = {
   DARK_GREY: #222
   LIGHT_GREY: #ddd
   OFF_WHITE: #fafafa
 }
 
 // @type Hash
-FontSizes = {
+FontSize = {
   Base: {
     CAPTION: px_to_em(13)
     HEADING: px_to_em(16)
@@ -74,7 +74,7 @@ Layout = {
 }
 
 // @type Hash
-Transitions = {
+Transition = {
   DEFAULT: .3s
   IMAGE: .5s
   SLIDE: .2s

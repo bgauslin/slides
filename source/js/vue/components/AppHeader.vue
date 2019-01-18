@@ -122,18 +122,18 @@ export default {
 .header__link
   align-items center
   display inline-flex
-  font-size '%s' % FontSizes.Base.HEADING
+  font-size '%s' % FontSize.Base.HEADING
   font-weight normal
   heading_font()
   height '%s' % Layout.HeaderHeights.BASE
   padding '0 %s 0 %s' % (Layout.HeaderHeights.BASE px_to_rem(16))
   width 100%
 
-  @media Breakpoints.SMALL
+  @media Breakpoint.SMALL
     width auto
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.HEADING
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.HEADING
     height '%s' % Layout.HeaderHeights.MEDIUM
     max-width 100vw
     padding '0 %s 0 %s' % (Layout.HeaderHeights.MEDIUM COLUMN_GAP)
@@ -147,7 +147,7 @@ export default {
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition 'color %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT)
+  transition 'color %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT)
   white-space nowrap
 
 .header__link:active .header__link__label
@@ -157,17 +157,17 @@ export default {
   transform none
 
 .header__link--back .header__link__label
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     margin-left px_to_rem(-12)
 
 // NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back .header__link__label::before
-  css_triangle(Colors.DARK_GREY, Layout.IconSizes.BACK_ARROW, 'left')
+  css_triangle(Color.DARK_GREY, Layout.IconSizes.BACK_ARROW, 'left')
   margin-right px_to_rem(6)
 
 // back arrow hover/active styles
 [no-touch] .header__link__label::before
-  transition 'opacity %s' % Transitions.DEFAULT
+  transition 'opacity %s' % Transition.DEFAULT
 
 [no-touch] .header__link--back:hover .header__link__label::before
   opacity .7

@@ -45,7 +45,7 @@ export default {
   margin '-%s auto 0' % Layout.ImageGaps.BASE
   width 50%
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     display flex
     margin '-%s 0 0 -%s' % (Layout.ImageGaps.MEDIUM Layout.ImageGaps.MEDIUM)
     width auto

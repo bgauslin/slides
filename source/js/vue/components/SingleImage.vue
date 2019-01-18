@@ -123,7 +123,7 @@ export default {
 
 .image__hi-res
   opacity 0
-  transition 'opacity %s' % Transitions.IMAGE
+  transition 'opacity %s' % Transition.IMAGE
 
 .image__hi-res[ready]
   opacity 1
@@ -131,7 +131,7 @@ export default {
 .image--multiple
   padding '%s 0 0' % Layout.ImageGaps.BASE
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     flex 0 0 50%
     padding '%s 0 0 %s' % (Layout.ImageGaps.MEDIUM Layout.ImageGaps.MEDIUM)
 

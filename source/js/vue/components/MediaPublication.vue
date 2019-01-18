@@ -37,54 +37,54 @@ export default {
 .publication
   padding 0 px_to_rem(16)
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     align-items center
     display flex
     margin 0 px_to_rem(32)
     padding 0
   
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     margin 0
 
 .publication__image
   margin 0
   width 50%
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     flex 0 0 33.33%
     width auto
   
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     margin 0
 
 .publication__details
   padding 1rem 0 0
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     padding 2rem
 
 .publication__title
-  font-size '%s' % FontSizes.Base.H2
+  font-size '%s' % FontSize.Base.H2
   heading_font()
   margin 0 0 px_to_rem(4)
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.H2
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.H2
 
 .publication__publisher
-  font-size '%s' % FontSizes.Base.H3
+  font-size '%s' % FontSize.Base.H3
   font-weight normal
   margin 0 0 px_to_rem(6)
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.H3
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.H3
 
 .publication__date
-  font-size '%s' % FontSizes.Base.CAPTION
+  font-size '%s' % FontSize.Base.CAPTION
   margin 0
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.CAPTION
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.CAPTION
 
 .publication__link
   align-items center
@@ -97,7 +97,7 @@ export default {
   padding 0 px_to_rem(16)
 
 [no-touch] .publication__link
-  transition 'background %s, color %s' % (Transitions.DEFAULT Transitions.DEFAULT)
+  transition 'background %s, color %s' % (Transition.DEFAULT Transition.DEFAULT)
 
 [href$="pdf"]::after
   bottom -.1em

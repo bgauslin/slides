@@ -19,14 +19,14 @@ export default {
 @import '../../../stylus/config/'
 
 .error-404__message
-  color '%s' % Colors.LIGHT_GREY
+  color '%s' % Color.LIGHT_GREY
   font-size 750%
   line-height 1
   margin 2rem 0
   padding 0 2rem
   text-align center
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     font-size 1500%
     padding-bottom 4rem
 

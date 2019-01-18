@@ -158,7 +158,7 @@ export default {
   width 100vw
   z-index 1
   
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     height '%s' % Layout.ControlsHeights.MEDIUM
 
 .controls__frame
@@ -170,7 +170,7 @@ export default {
   display flex
   justify-content space-between
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     margin 0 0 0 COLUMN_GAP
     width SIDEBAR_WIDTH
 
@@ -182,20 +182,20 @@ export default {
   justify-content center
   overflow hidden
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     height '%s' % Layout.ControlsHeights.MEDIUM
 
 .prev-next--prev
 .prev-next--next
   padding 0 px_to_rem(8)
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     padding 0 px_to_rem(12)
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     padding 0
 
-@media Breakpoints.LARGE
+@media Breakpoint.LARGE
   .prev-next--prev
     margin-left px_to_rem(-8)
 
@@ -205,7 +205,7 @@ export default {
 .arrow-icon
   height auto
   width '%s' % Layout.IconSizes.CONTROLS
-  transition 'transform %s' % Transitions.DEFAULT
+  transition 'transform %s' % Transition.DEFAULT
 
 .prev-next__link:active .arrow-icon
   transform scale(.8)
@@ -219,6 +219,6 @@ export default {
 .arrow-icon__path
   fill none
   stroke-width 4
-  transition 'stroke %s' % Transitions.DEFAULT
+  transition 'stroke %s' % Transition.DEFAULT
 
 </style>

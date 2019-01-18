@@ -29,7 +29,7 @@ export default {
   padding '%s 0 0' % Layout.HeaderHeights.BASE
   width 100%
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     grid-row 2
     margin 0 auto
     max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGaps.MEDIUM * 2) - (COLUMN_GAP * 2))
@@ -39,11 +39,11 @@ export default {
   margin '0 %s' % Layout.ThumbGaps.BASE
   padding '0 0 %s' % Layout.ThumbGaps.BASE
 
-  @media Breakpoints.SMALL
+  @media Breakpoint.SMALL
     margin '0 %s' % Layout.ThumbGaps.SMALL
     padding '0 0 %s' % Layout.ThumbGaps.SMALL
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     margin '0 %s' % Layout.ThumbGaps.MEDIUM
     padding '0 0 %s' % Layout.ThumbGaps.MEDIUM
 
@@ -52,15 +52,15 @@ export default {
   grid-gap '%s' % Layout.ThumbGaps.BASE
   grid-template-columns repeat(4, 1fr)
   
-  @media Breakpoints.SMALL
+  @media Breakpoint.SMALL
     grid-gap '%s' % Layout.ThumbGaps.SMALL
     grid-template-columns repeat(5, 1fr)
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     grid-gap '%s' % Layout.ThumbGaps.MEDIUM
     grid-template-columns repeat(6, 1fr)
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     grid-template-columns repeat(7, 1fr)
 
 </style>

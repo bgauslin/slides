@@ -57,12 +57,12 @@ export default {
   padding '%s 0 %s' % (Layout.HeaderHeights.BASE Layout.ControlsHeights.BASE)
   width 100vw
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     align-self center
     grid-row 2
     padding 0
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     display grid
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
@@ -71,10 +71,10 @@ export default {
     width 100%
 
 .slide__media
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     grid-row 2
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     align-self center
     grid-column 3
     grid-row 1
@@ -82,25 +82,25 @@ export default {
     overflow hidden
 
 .slide__media--multiple
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     margin 0 px_to_rem(24)
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     margin 0
 
 .slide__caption
   box-sizing border-box
-  font-size '%s' % FontSizes.Base.CAPTION
+  font-size '%s' % FontSize.Base.CAPTION
   margin 0 auto
   padding '%s %s %s' % (px_to_rem(16) px_to_rem(16) Layout.ControlsHeights.BASE)
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.CAPTION
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.CAPTION
     grid-row 3
     max-width '%s' % Layout.MaxWidths.CAPTION
     padding '%s 0 %s' % (px_to_rem(32) Layout.ControlsHeights.MEDIUM)
 
-  @media Breakpoints.LARGE
+  @media Breakpoint.LARGE
     align-self center
     grid-column 2
     grid-row 1

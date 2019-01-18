@@ -66,15 +66,15 @@ export default {
   position fixed
   right 0
   top 0
-  transition 'transform %s' % Transitions.DEFAULT
+  transition 'transform %s' % Transition.DEFAULT
   width '%s' % Layout.HeaderHeights.BASE
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     height '%s' % Layout.HeaderHeights.MEDIUM
     width '%s' % Layout.HeaderHeights.MEDIUM
 
 [no-touch] .theme
-  transition 'opacity %s, transform %s' % (Transitions.DEFAULT Transitions.DEFAULT)
+  transition 'opacity %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT)
 
 [no-touch] .theme:hover
   opacity .7
@@ -88,37 +88,37 @@ export default {
 .theme-icon
   width '%s' % Layout.IconSizes.Theme.BASE
 
-  @media Breakpoints.MEDIUM
+  @media Breakpoint.MEDIUM
     width '%s' % Layout.IconSizes.Theme.MEDIUM
 
 // @type Hash
 Themes = {
   dark: {
     App: {
-      BACKGROUND: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % Color.DARK_GREY
       TEXT: white
     }
     Button: {
       LINK: white
-      ACTIVE: '%s' % Colors.DARK_GREY
+      ACTIVE: '%s' % Color.DARK_GREY
       BACKGROUND: rgba(white, .1)
       BACKGROUND_ACTIVE: white
     }
     Controls: {
-      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .9)
+      BACKGROUND: '%s' % rgba(Color.DARK_GREY, .9)
       BORDER: rgba(white, .2)
       LINK: rgba(white, .5)
       ACTIVE: white
     }
     Cover: {
-      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .8)
-      LINK: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % rgba(Color.DARK_GREY, .8)
+      LINK: '%s' % Color.DARK_GREY
       ACTIVE: white
       LINK_BACKGROUND: white
       LINK_BACKGROUND_ACTIVE: transparent
     }
     Header: {
-      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .9)
+      BACKGROUND: '%s' % rgba(Color.DARK_GREY, .9)
       LINK: white
       HOVER: rgba(white, .7)
       ACTIVE: white
@@ -130,37 +130,37 @@ Themes = {
   }
   light: {
     App: {
-      BACKGROUND: '%s' % Colors.OFF_WHITE
-      TEXT: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % Color.OFF_WHITE
+      TEXT: '%s' % Color.DARK_GREY
     }
     Button: {
-      LINK: '%s' % Colors.DARK_GREY
+      LINK: '%s' % Color.DARK_GREY
       ACTIVE: white
-      BACKGROUND: '%s' % rgba(Colors.DARK_GREY, .1)
-      BACKGROUND_ACTIVE: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % rgba(Color.DARK_GREY, .1)
+      BACKGROUND_ACTIVE: '%s' % Color.DARK_GREY
     } 
     Controls: {
-      BACKGROUND: '%s' % rgba(Colors.OFF_WHITE, .85)
-      BORDER: '%s' % rgba(Colors.DARK_GREY, .3)
-      LINK: '%s' % rgba(Colors.DARK_GREY, .5)
-      ACTIVE: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % rgba(Color.OFF_WHITE, .85)
+      BORDER: '%s' % rgba(Color.DARK_GREY, .3)
+      LINK: '%s' % rgba(Color.DARK_GREY, .5)
+      ACTIVE: '%s' % Color.DARK_GREY
     }
     Cover: {
       BACKGROUND: rgba(white, .8)
       LINK: white
-      ACTIVE: '%s' % Colors.DARK_GREY
-      LINK_BACKGROUND: '%s' % Colors.DARK_GREY
+      ACTIVE: '%s' % Color.DARK_GREY
+      LINK_BACKGROUND: '%s' % Color.DARK_GREY
       LINK_BACKGROUND_ACTIVE: transparent
     }
     Header: {
-      BACKGROUND: '%s' % rgba(Colors.OFF_WHITE, .95)
-      LINK: '%s' % Colors.DARK_GREY
-      HOVER: '%s' % rgba(Colors.DARK_GREY, .7)
-      ACTIVE: '%s' % Colors.DARK_GREY
+      BACKGROUND: '%s' % rgba(Color.OFF_WHITE, .95)
+      LINK: '%s' % Color.DARK_GREY
+      HOVER: '%s' % rgba(Color.DARK_GREY, .7)
+      ACTIVE: '%s' % Color.DARK_GREY
     }
     Link: {
-      BASE: '%s' % Colors.DARK_GREY
-      ACTIVE: '%s' % rgba(Colors.DARK_GREY, .7)
+      BASE: '%s' % Color.DARK_GREY
+      ACTIVE: '%s' % rgba(Color.DARK_GREY, .7)
     }
   }
 }
@@ -176,7 +176,7 @@ for name, theme in Themes
       background '%s' % theme.Controls.BACKGROUND
       border-top .5px solid '%s' % theme.Controls.BORDER
 
-      @media Breakpoints.LARGE
+      @media Breakpoint.LARGE
         background 0
         border 0
 
@@ -184,14 +184,14 @@ for name, theme in Themes
     .header
       background '%s' % theme.Header.BACKGROUND
 
-      @media Breakpoints.LARGE
+      @media Breakpoint.LARGE
         background 0
 
     .header--cover
       background 0
 
     .header--thumbs
-      @media Breakpoints.LARGE
+      @media Breakpoint.LARGE
         background '%s' % theme.Header.BACKGROUND
 
     .header__link

@@ -33,17 +33,17 @@ export default {
 .counter__link
   align-items center
   display inline-flex
-  font-size '%s' % FontSizes.Base.CAPTION
+  font-size '%s' % FontSize.Base.CAPTION
   heading_font()
   height '%s' % Layout.ControlsHeights.BASE
   justify-content center
   overflow hidden
   padding 0 px_to_rem(16)
-  transition 'transform %s' % Transitions.DEFAULT
+  transition 'transform %s' % Transition.DEFAULT
   white-space nowrap
 
-  @media Breakpoints.MEDIUM
-    font-size '%s' % FontSizes.Medium.CAPTION
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.CAPTION
     height '%s' % Layout.ControlsHeights.MEDIUM
 
 .counter__link:active
