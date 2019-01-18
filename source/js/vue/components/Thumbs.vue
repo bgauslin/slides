@@ -26,38 +26,38 @@ export default {
 // TODO: Update layout so that top row of thumbs aren't cut off by header
 // (if possible - it may not be).
 .thumbs
-  padding '%s 0 0' % Layout.HeaderHeights.BASE
+  padding '%s 0 0' % Layout.HeaderHeight.BASE
   width 100%
 
   @media Breakpoint.MEDIUM
     grid-row 2
     margin 0 auto
-    max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGaps.MEDIUM * 2) - (COLUMN_GAP * 2))
+    max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGap.MEDIUM * 2) - (COLUMN_GAP * 2))
     padding 0
 
 .thumbs__frame
-  margin '0 %s' % Layout.ThumbGaps.BASE
-  padding '0 0 %s' % Layout.ThumbGaps.BASE
+  margin '0 %s' % Layout.ThumbGap.BASE
+  padding '0 0 %s' % Layout.ThumbGap.BASE
 
   @media Breakpoint.SMALL
-    margin '0 %s' % Layout.ThumbGaps.SMALL
-    padding '0 0 %s' % Layout.ThumbGaps.SMALL
+    margin '0 %s' % Layout.ThumbGap.SMALL
+    padding '0 0 %s' % Layout.ThumbGap.SMALL
 
   @media Breakpoint.MEDIUM
-    margin '0 %s' % Layout.ThumbGaps.MEDIUM
-    padding '0 0 %s' % Layout.ThumbGaps.MEDIUM
+    margin '0 %s' % Layout.ThumbGap.MEDIUM
+    padding '0 0 %s' % Layout.ThumbGap.MEDIUM
 
 .thumbs__group
   display grid
-  grid-gap '%s' % Layout.ThumbGaps.BASE
+  grid-gap '%s' % Layout.ThumbGap.BASE
   grid-template-columns repeat(4, 1fr)
   
   @media Breakpoint.SMALL
-    grid-gap '%s' % Layout.ThumbGaps.SMALL
+    grid-gap '%s' % Layout.ThumbGap.SMALL
     grid-template-columns repeat(5, 1fr)
 
   @media Breakpoint.MEDIUM
-    grid-gap '%s' % Layout.ThumbGaps.MEDIUM
+    grid-gap '%s' % Layout.ThumbGap.MEDIUM
     grid-template-columns repeat(6, 1fr)
 
   @media Breakpoint.LARGE

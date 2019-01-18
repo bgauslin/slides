@@ -30,7 +30,7 @@ export default {
 @import '../../../stylus/config/'
 
 .slideshows
-  padding '%s 0 0' % Layout.HeaderHeights.BASE
+  padding '%s 0 0' % Layout.HeaderHeight.BASE
   width 100%
 
   @media Breakpoint.MEDIUM
@@ -42,25 +42,25 @@ export default {
     max-width CONTENT_MAX_WIDTH
 
 .slideshows__frame
-  margin '0 %s %s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
+  margin '0 %s %s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
 
   @media Breakpoint.MEDIUM
-    margin '0 %s %s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
+    margin '0 %s %s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
 
 .slideshows__group
   display flex
   flex-wrap wrap
-  margin '-%s 0 0 -%s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
+  margin '-%s 0 0 -%s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
 
   @media Breakpoint.MEDIUM
-    margin '-%s 0 0 -%s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
+    margin '-%s 0 0 -%s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
 
 .slideshow
-  padding '%s 0 0 %s' % (Layout.SlideshowGaps.BASE Layout.SlideshowGaps.BASE)
+  padding '%s 0 0 %s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
   flex 0 0 100%
 
   @media Breakpoint.MEDIUM
-    padding '%s 0 0 %s' % (Layout.SlideshowGaps.MEDIUM Layout.SlideshowGaps.MEDIUM)
+    padding '%s 0 0 %s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
     flex 0 0 50%
 
   @media Breakpoint.LARGE

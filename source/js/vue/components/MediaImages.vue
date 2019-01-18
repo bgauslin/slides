@@ -42,12 +42,12 @@ export default {
 @import '../../../stylus/config/'
 
 .images--multiple
-  margin '-%s auto 0' % Layout.ImageGaps.BASE
+  margin '-%s auto 0' % Layout.ImageGap.BASE
   width 50%
 
   @media Breakpoint.MEDIUM
     display flex
-    margin '-%s 0 0 -%s' % (Layout.ImageGaps.MEDIUM Layout.ImageGaps.MEDIUM)
+    margin '-%s 0 0 -%s' % (Layout.ImageGap.MEDIUM Layout.ImageGap.MEDIUM)
     width auto
 
 </style>

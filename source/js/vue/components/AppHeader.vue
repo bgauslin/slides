@@ -125,8 +125,8 @@ export default {
   font-size '%s' % FontSize.Base.HEADING
   font-weight normal
   heading_font()
-  height '%s' % Layout.HeaderHeights.BASE
-  padding '0 %s 0 %s' % (Layout.HeaderHeights.BASE px_to_rem(16))
+  height '%s' % Layout.HeaderHeight.BASE
+  padding '0 %s 0 %s' % (Layout.HeaderHeight.BASE px_to_rem(16))
   width 100%
 
   @media Breakpoint.SMALL
@@ -134,9 +134,9 @@ export default {
 
   @media Breakpoint.MEDIUM
     font-size '%s' % FontSize.Medium.HEADING
-    height '%s' % Layout.HeaderHeights.MEDIUM
+    height '%s' % Layout.HeaderHeight.MEDIUM
     max-width 100vw
-    padding '0 %s 0 %s' % (Layout.HeaderHeights.MEDIUM COLUMN_GAP)
+    padding '0 %s 0 %s' % (Layout.HeaderHeight.MEDIUM COLUMN_GAP)
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
@@ -162,7 +162,7 @@ export default {
 
 // NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back .header__link__label::before
-  css_triangle(Color.DARK_GREY, Layout.IconSizes.BACK_ARROW, 'left')
+  css_triangle(Color.DARK_GREY, Layout.IconSize.BACK_ARROW, 'left')
   margin-right px_to_rem(6)
 
 // back arrow hover/active styles

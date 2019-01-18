@@ -54,7 +54,7 @@ export default {
   height 100%
   margin 0 auto
   max-width CONTENT_MAX_WIDTH
-  padding '%s 0 %s' % (Layout.HeaderHeights.BASE Layout.ControlsHeights.BASE)
+  padding '%s 0 %s' % (Layout.HeaderHeight.BASE Layout.ControlsHeight.BASE)
   width 100vw
 
   @media Breakpoint.MEDIUM
@@ -92,20 +92,20 @@ export default {
   box-sizing border-box
   font-size '%s' % FontSize.Base.CAPTION
   margin 0 auto
-  padding '%s %s %s' % (px_to_rem(16) px_to_rem(16) Layout.ControlsHeights.BASE)
+  padding '%s %s %s' % (px_to_rem(16) px_to_rem(16) Layout.ControlsHeight.BASE)
 
   @media Breakpoint.MEDIUM
     font-size '%s' % FontSize.Medium.CAPTION
     grid-row 3
-    max-width '%s' % Layout.MaxWidths.CAPTION
-    padding '%s 0 %s' % (px_to_rem(32) Layout.ControlsHeights.MEDIUM)
+    max-width '%s' % Layout.MaxWidth.CAPTION
+    padding '%s 0 %s' % (px_to_rem(32) Layout.ControlsHeight.MEDIUM)
 
   @media Breakpoint.LARGE
     align-self center
     grid-column 2
     grid-row 1
     margin 0
-    max-height 'calc(100% - %s)' % (Layout.HeaderHeights.MEDIUM + Layout.ControlsHeights.MEDIUM)
+    max-height 'calc(100% - %s)' % (Layout.HeaderHeight.MEDIUM + Layout.ControlsHeight.MEDIUM)
     overflow auto
     padding 0
 

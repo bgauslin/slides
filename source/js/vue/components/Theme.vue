@@ -59,7 +59,7 @@ export default {
   background 0
   border 0
   display inline-flex
-  height '%s' % Layout.HeaderHeights.BASE
+  height '%s' % Layout.HeaderHeight.BASE
   justify-content center
   overflow hidden
   outline none
@@ -67,11 +67,11 @@ export default {
   right 0
   top 0
   transition 'transform %s' % Transition.DEFAULT
-  width '%s' % Layout.HeaderHeights.BASE
+  width '%s' % Layout.HeaderHeight.BASE
 
   @media Breakpoint.MEDIUM
-    height '%s' % Layout.HeaderHeights.MEDIUM
-    width '%s' % Layout.HeaderHeights.MEDIUM
+    height '%s' % Layout.HeaderHeight.MEDIUM
+    width '%s' % Layout.HeaderHeight.MEDIUM
 
 [no-touch] .theme
   transition 'opacity %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT)
@@ -86,10 +86,10 @@ export default {
   transform scale(.8)
 
 .theme-icon
-  width '%s' % Layout.IconSizes.Theme.BASE
+  width '%s' % Layout.IconSize.Theme.BASE
 
   @media Breakpoint.MEDIUM
-    width '%s' % Layout.IconSizes.Theme.MEDIUM
+    width '%s' % Layout.IconSize.Theme.MEDIUM
 
 // @type Hash
 Themes = {

@@ -129,10 +129,10 @@ export default {
   opacity 1
 
 .image--multiple
-  padding '%s 0 0' % Layout.ImageGaps.BASE
+  padding '%s 0 0' % Layout.ImageGap.BASE
 
   @media Breakpoint.MEDIUM
     flex 0 0 50%
-    padding '%s 0 0 %s' % (Layout.ImageGaps.MEDIUM Layout.ImageGaps.MEDIUM)
+    padding '%s 0 0 %s' % (Layout.ImageGap.MEDIUM Layout.ImageGap.MEDIUM)
 
 </style>

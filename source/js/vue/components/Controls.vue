@@ -152,14 +152,14 @@ export default {
 
 .controls
   bottom 0
-  height '%s' % Layout.ControlsHeights.BASE
+  height '%s' % Layout.ControlsHeight.BASE
   left 0
   position fixed
   width 100vw
   z-index 1
   
   @media Breakpoint.MEDIUM
-    height '%s' % Layout.ControlsHeights.MEDIUM
+    height '%s' % Layout.ControlsHeight.MEDIUM
 
 .controls__frame
   margin 0 auto
@@ -178,12 +178,12 @@ export default {
   align-items center
   display inline-flex
   flex 1
-  height '%s' % Layout.ControlsHeights.BASE
+  height '%s' % Layout.ControlsHeight.BASE
   justify-content center
   overflow hidden
 
   @media Breakpoint.MEDIUM
-    height '%s' % Layout.ControlsHeights.MEDIUM
+    height '%s' % Layout.ControlsHeight.MEDIUM
 
 .prev-next--prev
 .prev-next--next
@@ -204,7 +204,7 @@ export default {
 
 .arrow-icon
   height auto
-  width '%s' % Layout.IconSizes.CONTROLS
+  width '%s' % Layout.IconSize.CONTROLS
   transition 'transform %s' % Transition.DEFAULT
 
 .prev-next__link:active .arrow-icon
