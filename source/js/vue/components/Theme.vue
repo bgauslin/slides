@@ -86,10 +86,7 @@ export default {
   transform scale(.8)
 
 .theme-icon
-  width '%s' % Layout.IconSize.Theme.BASE
-
-  @media Breakpoint.MEDIUM
-    width '%s' % Layout.IconSize.Theme.MEDIUM
+  width '%s' % Layout.IconSize.THEME
 
 // @type Hash
 Themes = {
