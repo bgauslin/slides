@@ -135,6 +135,7 @@ export default {
   @media Breakpoints.MEDIUM
     font-size '%s' % FontSizes.Medium.HEADING
     height '%s' % Layout.HeaderHeights.MEDIUM
+    max-width 100vw
     padding '0 %s 0 %s' % (Layout.HeaderHeights.MEDIUM COLUMN_GAP)
 
 // NOTE: 'current' class is auto-generated for 'exact' router-links
