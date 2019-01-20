@@ -4,7 +4,7 @@ const theme = {
     },
   
     mutations: {
-      updateTheme (state, payload) {
+      updateTheme(state, payload) {
         localStorage.setItem('theme', JSON.stringify(payload));
         state.theme = payload;
       },

@@ -37,5 +37,6 @@ export default () => {
       component: NotFound,
     },
   ];
+
   return routes;
 }

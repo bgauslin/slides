@@ -4,7 +4,7 @@ const direction = {
     },
   
     mutations: {
-      updateDirection (state, payload) {
+      updateDirection(state, payload) {
         state.direction = payload;
       },
     },

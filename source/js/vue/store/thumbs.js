@@ -4,13 +4,13 @@ const thumbs = {
     },
   
     mutations: {
-      updateThumbs (state, payload) {
+      updateThumbs(state, payload) {
         state.thumbs = payload;
       },
     },
   
     actions: {
-      updateThumbs (context, value) {
+      updateThumbs(context, value) {
         context.commit('updateThumbs', value);
       },
     },

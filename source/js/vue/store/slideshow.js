@@ -5,27 +5,27 @@ const slideshow = {
   },
 
   mutations: {
-    updateSlide (state, payload) {
+    updateSlide(state, payload) {
       const mySlide = state.slideshow.slides.find(slide => payload.slug === slide.slug);
       const slideIndex = state.slideshow.slides.indexOf(mySlide);
       state.slideshow.slides[slideIndex] = payload;
     },
 
-    updateSlideshow (state, payload) {
+    updateSlideshow(state, payload) {
       state.slideshow = payload;
     },
 
-    updateSlug (state, payload) {
+    updateSlug(state, payload) {
       state.slug = payload;
     },
   },
 
   actions: {
-    updateSlide (context, value) {
+    updateSlide(context, value) {
       context.commit('updateSlide', value);
     },
 
-    updateSlideshow (context, value) {
+    updateSlideshow(context, value) {
       context.commit('updateSlideshow', value);
     },
   },
@@ -44,7 +44,7 @@ const slideshow = {
 
     slide: (state, getters) => {
       if (getters.hasSlideshow) {
-        return state.slideshow.slides.find(slide => slide.slug == state.slug);
+        return state.slideshow.slides.find(slide => slide.slug === state.slug);
       }
     },
 
