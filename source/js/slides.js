@@ -1,4 +1,4 @@
-import attachFastClick from 'fastclick';
+import setup from './setup';
 import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
@@ -10,12 +10,11 @@ import theme from './vue/store/theme';
 import thumbs from './vue/store/thumbs';
 import transitions from './vue/transitions';
 
+/** Set up Vue and global utilities. */
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
-
-/** Initialize FastClick. */
-attachFastClick(document.body);
+setup.init();
 
 // TODO: Fix scrollBehavior.
 /**
@@ -62,6 +61,9 @@ transitions(router);
  */
 const app = new Vue({
   components: { App },
+  data: {
+    apiBaseURL: setup.apiBaseURL(),
+  },
   store,
   router,
 }).$mount('#app');

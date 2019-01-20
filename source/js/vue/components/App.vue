@@ -25,32 +25,22 @@
     controls(
       v-if="app.showControls",
     )
-    utilities(
-      :analytics="analytics",
-    )
 </template>
 
 <script>
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
-import Utilities from './Utilities.vue';
 
 export default {
   components: {
     AppHeader,
     Controls,
     Preloader,
-    Utilities,
   },
 
   data() {
     return {
-      analytics: {
-        domain: 'slides.gauslin.com',
-        id: 'UA-626192-17',
-      },
-      apiBaseUrl: '',
       app: {
         content: null,
         dataLoaded: false,
@@ -105,10 +95,6 @@ export default {
     }
   },
 
-  created() {
-    this.apiBaseUrl = this.getApiUrl();
-  },
-
   mounted() {
     this.getContent();
   },
@@ -157,7 +143,7 @@ export default {
      * @return {string}
      */
     docTitle() {
-      switch(this.$route.name) {
+      switch (this.$route.name) {
         case 'cover':
           return `${this.app.content.title}`;
         case 'slide':
@@ -177,13 +163,13 @@ export default {
     endpoint(view) {
       switch (view) {
         case 'home':
-          return `${this.apiBaseUrl}/slideshows`;
+          return `${this.$root.apiBaseURL}/slideshows`;
         case 'slide':
-          return `${this.apiBaseUrl}/slide/${this.currentSlide.id}`;
+          return `${this.$root.apiBaseURL}/slide/${this.currentSlide.id}`;
         case 'slideshow':
-          return `${this.apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
+          return `${this.$root.apiBaseURL}/slideshow/${this.$route.params.slideshow}`;
         case 'thumbs':
-          return `${this.apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
+          return `${this.$root.apiBaseURL}/slideshow/thumbs/${this.$route.params.slideshow}`;
       }
     },
 
@@ -219,18 +205,6 @@ export default {
           this.ready(data);
           break;
       }
-    },
-
-    /**
-     * Gets JSON API's base URL depending on server environment.
-     * @return {string}
-     */
-    getApiUrl() {
-      const hostnameParts = window.location.hostname.split('.');
-      const tld = hostnameParts[hostnameParts.length - 1];
-      const apiDomain = (tld === 'test') ? 'http://gauslin.test' : 'https://gauslin.com';
-      
-      return `${apiDomain}/api/v2`;
     },
 
     /**
@@ -349,7 +323,7 @@ export default {
       const ga = window.ga;
       if (ga) {
         ga('set', 'page', this.$route.path);
-        ga('set', 'title', this.docTitle());
+        ga('set', 'title', document.title);
         ga('send', 'pageview');
       }
     },
