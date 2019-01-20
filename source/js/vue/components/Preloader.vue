@@ -54,16 +54,3 @@ export default {
   },
 }
 </script>
-
-<style lang="stylus">
-.preloader
-  height 100%
-  left 0
-  right 0
-  top 0
-
-.spinner
-  left 50%
-  top 50%
-
-</style>

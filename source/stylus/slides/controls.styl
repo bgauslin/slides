@@ -1,0 +1,70 @@
+.controls
+  bottom 0
+  height '%s' % Layout.ControlsHeight.BASE
+  left 0
+  position fixed
+  width 100vw
+  z-index 1
+  
+  @media Breakpoint.MEDIUM
+    height '%s' % Layout.ControlsHeight.MEDIUM
+
+.controls__frame
+  margin 0 auto
+  max-width CONTENT_MAX_WIDTH
+
+.controls__content
+  align-items center
+  display flex
+  justify-content space-between
+
+  @media Breakpoint.LARGE
+    margin 0 0 0 COLUMN_GAP
+    width SIDEBAR_WIDTH
+
+.prev-next__link
+  align-items center
+  display inline-flex
+  flex 1
+  height '%s' % Layout.ControlsHeight.BASE
+  justify-content center
+  overflow hidden
+
+  @media Breakpoint.MEDIUM
+    height '%s' % Layout.ControlsHeight.MEDIUM
+
+.prev-next--prev
+.prev-next--next
+  padding 0 px_to_rem(8)
+
+  @media Breakpoint.MEDIUM
+    padding 0 px_to_rem(12)
+
+  @media Breakpoint.LARGE
+    padding 0
+
+@media Breakpoint.LARGE
+  .prev-next--prev
+    margin-left px_to_rem(-8)
+
+  .prev-next--next
+    margin-right px_to_rem(-8)
+
+.arrow-icon
+  height auto
+  width '%s' % Layout.IconSize.CONTROLS
+  transition 'transform %s' % Transition.DEFAULT
+
+.prev-next__link:active .arrow-icon
+  transform scale(.8)
+
+.prev-next--prev .arrow-icon
+  margin-right auto
+
+.prev-next--next .arrow-icon
+  margin-left auto
+
+.arrow-icon__path
+  fill none
+  stroke-width 4
+  transition 'stroke %s' % Transition.DEFAULT

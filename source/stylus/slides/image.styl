@@ -1,0 +1,29 @@
+.image--portrait
+  width 50%
+  margin 0 auto
+
+.image__frame
+  overflow hidden
+  position relative
+
+.image__placeholder
+.image__hi-res
+  position absolute
+
+.image__placeholder
+  filter blur(5px)
+  z-index -1
+
+.image__hi-res
+  opacity 0
+  transition 'opacity %s' % Transition.IMAGE
+
+.image__hi-res[ready]
+  opacity 1
+
+.image--multiple
+  padding '%s 0 0' % Layout.ImageGap.BASE
+
+  @media Breakpoint.MEDIUM
+    flex 0 0 50%
+    padding '%s 0 0 %s' % (Layout.ImageGap.MEDIUM Layout.ImageGap.MEDIUM)

@@ -26,27 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-@import '../../../stylus/config/'
-
-.counter__link
-  align-items center
-  display inline-flex
-  font-size '%s' % FontSize.Base.CAPTION
-  heading_font()
-  height '%s' % Layout.ControlsHeight.BASE
-  justify-content center
-  overflow hidden
-  padding 0 px_to_rem(16)
-  transition 'transform %s' % Transition.DEFAULT
-  white-space nowrap
-
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.CAPTION
-    height '%s' % Layout.ControlsHeight.MEDIUM
-
-.counter__link:active
-  transform scale(.8)
-
-</style>

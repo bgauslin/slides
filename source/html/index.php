@@ -39,7 +39,7 @@ if ($tld == 'com') {
     <link rel="apple-touch-icon" href="/ui/icons/touch-icon.png?t=<?php echo date('U') ?>">
     <link rel="icon" type="image/png" href="/ui/icons/favicon.png?t=<?php echo date('U') ?>">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400">
-    <style><?php include('.' . $css_path) ?>"></style>
+    <link rel="stylesheet" href="<?php echo $css_path; ?>">
   </head>
 
   <body ontouchstart no-touch>
