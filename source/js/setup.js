@@ -26,7 +26,7 @@ export default class {
    */
   static noTouch_() {
     if ('ontouchstart' in window || navigator.msMaxTouchPoints > 0) {
-      document.body.classList.remove('no-touch');
+      document.body.removeAttribute('no-touch');
     }
   }
 
