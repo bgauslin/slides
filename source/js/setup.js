@@ -21,7 +21,7 @@ export default class {
   }
 
   /**
-   * Removes 'no-touch' class if device isn't touch-enabled.
+   * Removes 'no-touch' attribute if device isn't touch-enabled.
    * @private
    */
   static noTouch_() {
