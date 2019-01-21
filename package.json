@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/bgauslin/slides"
+    "url": "https://github.com/bgauslin/slides"
   },
   "private": true,
   "devServer": "slides.gauslin.test",
