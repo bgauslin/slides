@@ -1,6 +1,6 @@
 <template lang="pug">
-  div.cover(
-    data-full-height="",
+  div(
+    class="cover",
     :style="coverImage(content.image)",
   )
     div.cover__frame

@@ -1,7 +1,11 @@
-@media Breakpoint.MEDIUM
-  .view
-    display grid
-    grid-template-columns minmax(auto, 1fr)
+.app
+  display grid
+  grid-template-columns 1fr
+  grid-template-rows '%s 1fr %s' % (Layout.HeaderHeight.BASE Layout.ControlsHeight.BASE)
+  min-height 100vh // fallback
+  min-height calc(var(--viewport-unit, 1vh) * 100)
+
+  @media Breakpoint.MEDIUM
     grid-template-rows '%s 1fr %s' % (Layout.HeaderHeight.MEDIUM Layout.ControlsHeight.MEDIUM)
 
 .first-run

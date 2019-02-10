@@ -44,8 +44,6 @@ if ($tld == 'com') {
 
   <body ontouchstart no-touch>
     <div id="app">
-      <app></app>
-
       <noscript>
         <div class="no-js">
           <p class="no-js__message">Please <a href="http://enable-javascript.com" title="How to enable JavaScript in your browser" class="no-js__link">enable JavaScript</a> to view this website. Thanks!</p>

@@ -66,4 +66,5 @@ const app = new Vue({
   },
   store,
   router,
+  template: '<app></app>',
 }).$mount('#app');

@@ -1,7 +1,5 @@
 <template lang="pug">
-  div.view(
-    data-full-height="",
-  )
+  div.app
     app-header(
       :view="view",
     )

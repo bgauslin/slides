@@ -1,9 +1,8 @@
 .slideshows
-  padding '%s 0 0' % Layout.HeaderHeight.BASE
+  grid-row 2 / span 2
   width 100%
 
   @media Breakpoint.MEDIUM
-    grid-row 2
     padding 0
 
   @media Breakpoint.LARGE
@@ -16,6 +15,7 @@
   @media Breakpoint.MEDIUM
     margin '0 %s %s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
 
+// TODO: Refactor with grid layout instead of flexbox.
 .slideshows__group
   display flex
   flex-wrap wrap
