@@ -23,9 +23,7 @@
     controls(
       v-if="app.showControls",
     )
-    app-footer(
-      v-if="app.dataLoaded",
-    )
+    app-footer
 </template>
 
 <script>

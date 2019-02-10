@@ -1,27 +1,24 @@
-// FIXME: Refactor HTML/JS/CSS for .footer location.
 .footer
-  display none !important // TODO: remove after refactor
   align-items center
+  bottom 0
   display flex
-  grid-row 3
   height '%s' % Layout.ControlsHeight.BASE
   justify-content center
+  left 0
+  position fixed
+  right 0
   text-align center
+  z-index 1
 
   @media Breakpoint.MEDIUM
     height '%s' % Layout.ControlsHeight.MEDIUM
 
-// Make footer fixed on 'cover' view.
-.cover + .footer
-  bottom 0
-  left 0
-  position fixed
-  right 0
-  z-index 1
-
-// Hide footer on views with controls.
-.controls + .footer
+.controls ~ .footer
   display none
+
+.thumbs ~ .footer
+  grid-row 3
+  position relative
 
 .copyright
   font-size '%s' % FontSize.Base.FINEPRINT
