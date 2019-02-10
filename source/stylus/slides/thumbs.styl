@@ -6,30 +6,24 @@
     margin 0 auto
     max-width '%s' % (CONTENT_MAX_WIDTH + (Layout.ThumbGap.MEDIUM * 2) - (COLUMN_GAP * 2))
 
-.thumbs__frame
-  margin '0 %s' % Layout.ThumbGap.BASE
-  padding '0 0 %s' % Layout.ThumbGap.BASE
-
-  @media Breakpoint.SMALL
-    margin '0 %s' % Layout.ThumbGap.SMALL
-    padding '0 0 %s' % Layout.ThumbGap.SMALL
-
-  @media Breakpoint.MEDIUM
-    margin '0 %s' % Layout.ThumbGap.MEDIUM
-    padding '0 0 %s' % Layout.ThumbGap.MEDIUM
-
 .thumbs__group
   display grid
   grid-gap '%s' % Layout.ThumbGap.BASE
   grid-template-columns repeat(4, 1fr)
+  margin '0 %s' % Layout.ThumbGap.BASE
+  padding '0 0 %s' % Layout.ThumbGap.BASE
   
   @media Breakpoint.SMALL
     grid-gap '%s' % Layout.ThumbGap.SMALL
     grid-template-columns repeat(5, 1fr)
+    margin '0 %s' % Layout.ThumbGap.SMALL
+    padding '0 0 %s' % Layout.ThumbGap.SMALL
 
   @media Breakpoint.MEDIUM
     grid-gap '%s' % Layout.ThumbGap.MEDIUM
     grid-template-columns repeat(6, 1fr)
+    margin '0 %s' % Layout.ThumbGap.MEDIUM
+    padding '0 0 %s' % Layout.ThumbGap.MEDIUM
 
   @media Breakpoint.LARGE
     grid-template-columns repeat(7, 1fr)
