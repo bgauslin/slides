@@ -29,6 +29,10 @@
       "bundleSrc": "slides.js",
       "bundleDest": "public/ui"
     },
+    "json": {
+      "src": "source/json/**/*",
+      "dest": "public/ui"
+    },
     "stylus": {
       "src": "source/stylus/slides.styl",
       "dest": "public/ui"
@@ -51,6 +55,7 @@
       "apache",
       "html",
       "js",
+      "json",
       "icons",
       "stylus",
       "webfonts"

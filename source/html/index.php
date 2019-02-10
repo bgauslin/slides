@@ -2,26 +2,16 @@
 $site_name = 'Slideshows';
 $meta_description = 'Ben Gauslin’s Slideshows';
 
-// Sets default paths.
-$site = 'slides';
+$prod_server = 'slides.gauslin.com';
 
-$css = $site . '.css';
-$js = $site . '.js';
+$css = 'slides.css';
+$js = 'slides.js';
 
-// Gets TLD for dev vs. production.
-$host = $_SERVER['HTTP_HOST'];
-$parts = explode('.', $host);
-$tld_parts = array_slice($parts, -1);
-$tld = array_pop($tld_parts);
-
-// Uses manifest and updates paths if production.
-if ($tld == 'com') {
-  $file = file_get_contents('./build/manifest.json');
-  $json = json_decode($file, true);
-  $css_v = $json[$css];
-  $js_v = $json[$js];
-  $css_path = '/build/ui/' . $css_v;
-  $js_path = '/build/ui/' . $js_v;
+if ($_SERVER['SERVER_NAME'] == $prod_server) {
+  $manifest = file_get_contents('build/manifest.json');
+  $json = json_decode($manifest, true);
+  $css_path = '/build/ui/' . $json[$css];
+  $js_path = '/build/ui/' . $json[$js];
 } else {
   $css_path = '/ui/' . $css;
   $js_path = '/ui/' . $js;
@@ -52,6 +42,10 @@ if ($tld == 'com') {
     </div>
 
     <script src="<?php echo $js_path ?>"></script>
+  <?php if ($_SERVER['SERVER_NAME'] != $prod_server) { ?>
+    <div id="css-debugger" src="/ui/breakpoints.json" theme="light"></div>
+    <script src="https://css.gauslin.com/js/debugger.js"></script>
+  <?php } ?>
   </body>
 
 </html>

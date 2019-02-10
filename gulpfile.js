@@ -40,7 +40,6 @@ gulp.task('icons', () => {
 });
 
 // Compile and uglify JavaScript.
-// https://gist.github.com/alkrauss48/a3581391f120ec1c3e03
 gulp.task('js', () => {
   return browserify({ entries: pkg.paths.js.src, debug: true })
     .transform('babelify', { presets: ['@babel/preset-env'] })
@@ -50,6 +49,12 @@ gulp.task('js', () => {
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest(pkg.paths.js.bundleDest));
+});
+
+// Copy json.
+gulp.task('json', () => {
+  gulp.src(pkg.paths.json.src)
+    .pipe(gulp.dest(pkg.paths.json.dest));
 });
 
 // Compile and minify stylus.
