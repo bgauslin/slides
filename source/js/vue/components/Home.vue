@@ -6,6 +6,7 @@
       )
         router-link(
           class="slideshow__link",
+          :title="linkTitle(slideshow)",
           :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
         )
           single-image(
@@ -21,6 +22,17 @@ import SingleImage from './SingleImage.vue';
 
 export default {
   props: ['content'],
+
   components: { SingleImage },
+
+  methods: {
+    /**
+     * @param {!string} slideshow
+     * @return {string}
+     */
+    linkTitle(slideshow) {
+      return `View the ${slideshow.title} slideshow`;
+    }
+  }
 }
 </script>

@@ -9,6 +9,7 @@
         p.cover__summary {{ content.summary }}
         router-link(
           class="cover__link",
+          :title="content.title",
           :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
         ) Start slideshow
 </template>
