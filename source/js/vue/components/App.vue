@@ -23,15 +23,20 @@
     controls(
       v-if="app.showControls",
     )
+    app-footer(
+      v-if="app.dataLoaded",
+    )
 </template>
 
 <script>
+import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Preloader from './Preloader.vue';
 
 export default {
   components: {
+    AppFooter,
     AppHeader,
     Controls,
     Preloader,

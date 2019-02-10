@@ -108,13 +108,14 @@ Themes = {
 }
 
 for name, theme in Themes
-  body[data-theme=\"{name}\"]
+  body[data-theme={name}]
     background '%s' % theme.App.BACKGROUND
     color '%s' % theme.App.TEXT
 
-  [data-theme=\"{name}\"]
-    // footer navigation
+  [data-theme={name}]
+    // footer and prev-next navigation
     .controls
+    .footer
       background '%s' % theme.Controls.BACKGROUND
       border-top .5px solid '%s' % theme.Controls.BORDER
 
@@ -164,6 +165,7 @@ for name, theme in Themes
     // links
     .slideshow__link
     .counter__link
+    .copyright__link
       link(theme.Link.BASE, theme.Link.BASE, theme.Link.ACTIVE, theme.Link.ACTIVE)
 
     .cover__link

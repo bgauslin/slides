@@ -1,0 +1,33 @@
+.footer
+  align-items center
+  display flex
+  grid-row 3
+  height '%s' % Layout.ControlsHeight.BASE
+  justify-content center
+  text-align center
+
+  @media Breakpoint.MEDIUM
+    height '%s' % Layout.ControlsHeight.MEDIUM
+
+.cover + .footer
+  background 0 !important
+  border 0 !important
+  bottom 0
+  left 0
+  position fixed
+  right 0
+  z-index 1
+
+// FIXME: Hide footer on views with controls.
+.controls + .footer
+  display none
+
+.copyright
+  font-size '%s' % FontSize.Base.CAPTION
+  margin 0
+
+  @media Breakpoint.MEDIUM
+    font-size '%s' % FontSize.Medium.CAPTION
+
+.copyright__bug
+  margin-right px_to_em(4)
