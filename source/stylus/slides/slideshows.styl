@@ -3,37 +3,23 @@
   width 100%
 
   @media Breakpoint.MEDIUM
-    padding 0
-
-  @media Breakpoint.LARGE
     margin 0 auto
     max-width CONTENT_MAX_WIDTH
 
-.slideshows__frame
-  margin '0 %s %s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
-
-  @media Breakpoint.MEDIUM
-    margin '0 %s %s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
-
-// TODO: Refactor with grid layout instead of flexbox.
 .slideshows__group
-  display flex
-  flex-wrap wrap
-  margin '-%s 0 0 -%s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
+  margin '0 %s' % Layout.SlideshowGap.BASE
 
   @media Breakpoint.MEDIUM
-    margin '-%s 0 0 -%s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
+    display grid
+    grid-gap '%s' % Layout.SlideshowGap.MEDIUM
+    grid-template-columns repeat(2, 1fr)
+    margin '0 %s' % Layout.SlideshowGap.MEDIUM
 
-.slideshow
-  padding '%s 0 0 %s' % (Layout.SlideshowGap.BASE Layout.SlideshowGap.BASE)
-  flex 0 0 100%
+.slideshow:not(:last-child)
+  margin '0 0 %s' % Layout.SlideshowGap.BASE
 
   @media Breakpoint.MEDIUM
-    padding '%s 0 0 %s' % (Layout.SlideshowGap.MEDIUM Layout.SlideshowGap.MEDIUM)
-    flex 0 0 50%
-
-  @media Breakpoint.LARGE
-    flex 0 0 33.33%
+    margin 0
 
 .slideshow__link
   display block
