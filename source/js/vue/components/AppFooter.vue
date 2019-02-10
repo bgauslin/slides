@@ -4,6 +4,8 @@
       span.copyright__bug {{ copyrightYear }}
       a(
         class="copyright__link",
+        target="_blank",
+        rel="noopener",
         :href="linkURL",
         :title="linkTitle",
       ) {{ owner }}
@@ -27,7 +29,7 @@ export default {
 
     /** @return {string} */
     linkTitle() {
-      return `Visit ${this.domain}`;
+      return `Visit ${this.domain} (opens in new window)`;
     },
 
     /** @return {string} */

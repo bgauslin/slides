@@ -15,15 +15,20 @@
             :image="slideshow.image",
           )
           h2.slideshow__heading {{ slideshow.title }}
+    app-footer
 </template>
 
 <script>
+import AppFooter from './AppFooter.vue';
 import SingleImage from './SingleImage.vue';
 
 export default {
   props: ['content'],
 
-  components: { SingleImage },
+  components: {
+    AppFooter,
+    SingleImage,
+  },
 
   methods: {
     /**
