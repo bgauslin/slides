@@ -9,6 +9,7 @@
   @media Breakpoint.MEDIUM
     height '%s' % Layout.ControlsHeight.MEDIUM
 
+// Make footer fixed on 'cover' view.
 .cover + .footer
   bottom 0
   left 0
@@ -16,16 +17,21 @@
   right 0
   z-index 1
 
-// FIXME: Hide footer on views with controls.
+// Hide footer on views with controls.
 .controls + .footer
   display none
 
 .copyright
-  font-size '%s' % FontSize.Base.CAPTION
+  font-size '%s' % FontSize.Base.FINEPRINT
+  heading_font()
   margin 0
 
   @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.CAPTION
+    font-size '%s' % FontSize.Medium.FINEPRINT
 
 .copyright__bug
-  margin-right px_to_em(4)
+  margin-right .5em
+
+.copyright__link
+  font_weight(600)
+  transition color '%s' % Transition.DEFAULT

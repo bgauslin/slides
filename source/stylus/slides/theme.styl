@@ -65,6 +65,10 @@ Themes = {
       HOVER: rgba(white, .7)
       ACTIVE: white
     }
+    Footer: {
+      TEXT: rgba(white, .7)
+      LINK: white
+    }
     Link: {
       BASE: white
       ACTIVE: rgba(white, .7)
@@ -93,6 +97,10 @@ Themes = {
       ACTIVE: '%s' % Color.DARK_GREY
       LINK_BACKGROUND: '%s' % Color.DARK_GREY
       LINK_BACKGROUND_ACTIVE: transparent
+    }
+    Footer: {
+      TEXT: '%s' % rgba(Color.DARK_GREY, .7)
+      LINK: '%s' % Color.DARK_GREY
     }
     Header: {
       BACKGROUND: '%s' % rgba(Color.OFF_WHITE, .95)
@@ -161,10 +169,15 @@ for name, theme in Themes
     .cover__frame
       background-color '%s' % theme.Cover.BACKGROUND
 
+    .footer
+      color '%s' % theme.Footer.TEXT
+
     // links
+    .copyright__link
+      link(theme.Footer.TEXT, theme.Footer.TEXT, theme.Footer.LINK, theme.Footer.LINK)
+
     .slideshow__link
     .counter__link
-    .copyright__link
       link(theme.Link.BASE, theme.Link.BASE, theme.Link.ACTIVE, theme.Link.ACTIVE)
 
     .cover__link
