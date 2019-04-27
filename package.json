@@ -7,7 +7,6 @@
     "type": "git",
     "url": "https://github.com/bgauslin/slides"
   },
-  "private": true,
   "devServer": "slides.gauslin.test",
   "paths": {
     "apache": {
