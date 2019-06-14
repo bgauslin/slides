@@ -181,30 +181,33 @@ export default {
      * @param {!string} view - Which route/view.
      */
     fetchJson: async function(endpoint, view) {
-      const response = await fetch(endpoint);
-      const data = await response.json();
-
-      // NOTE: All store actions are async via 'dispatch' (instead of 'commit')
-      // since we usually need to hit more than one endpoint on first run.
-      switch (view) {
-        case 'cover':
-          this.$store.dispatch('updateSlideshow', data);
-          this.ready(data);
-          break;
-        case 'home':
-          this.ready(data.data);
-          break;
-        case 'slide':          
-          this.$store.dispatch('updateSlide', data);
-          this.ready(data);
-          break;
-        case 'slideshow':
-          this.$store.dispatch('updateSlideshow', data);
-          break;
-        case 'thumbs':
-          this.$store.dispatch('updateThumbs', data);
-          this.ready(data);
-          break;
+      try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+        // NOTE: All store actions are async via 'dispatch' (instead of 'commit')
+        // since we usually need to hit more than one endpoint on first run.
+        switch (view) {
+          case 'cover':
+            this.$store.dispatch('updateSlideshow', data);
+            this.ready(data);
+            break;
+          case 'home':
+            this.ready(data.data);
+            break;
+          case 'slide':          
+            this.$store.dispatch('updateSlide', data);
+            this.ready(data);
+            break;
+          case 'slideshow':
+            this.$store.dispatch('updateSlideshow', data);
+            break;
+          case 'thumbs':
+            this.$store.dispatch('updateThumbs', data);
+            this.ready(data);
+            break;
+        }
+      } catch (e) {
+        alert('Currently unable to fetch data. :(');
       }
     },
 
