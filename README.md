@@ -1,6 +1,6 @@
 # Slideshows
 
-[slides.gauslin.com][url]
+[slides.gauslin.com](https://slides.gauslin.com)
 
 I wanted to tell the story of my New Orleans shotgun house renovation through words, photos, and drawings, and since Google Slides wasn't quite cutting it, I decided to build this web app.
 
@@ -46,9 +46,3 @@ Each route loads its own component and is passed data from its related endpoint 
 Light and dark modes are set via a [`Theme` component][theme_component] and is saved to `localStorage` for future visits.
 
 [theme_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Theme.vue
-
-[url]: https://slides.gauslin.com
-
-[slide_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Slide.vue
-[transitions]: https://github.com/bgauslin/slides/blob/2139a336b4802adf81dd1d4519964c712bf60d93/source/js/vue/transitions.js#L6-L30
-[controls_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Controls.vue
