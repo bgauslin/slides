@@ -21,12 +21,11 @@ All text, images, and PDF files are managed via Craft CMS, and [JSON endpoints][
   - [`thumbs` transformer][transformer_thumbs]
   - [`thumbs` endpoint][endpoint_thumbs]
 
-The UI is made entirely with Vue, and uses `vue-router` for URL routing, `Vuex` for state management, and all components are individual `.vue` files containing HTML, JavaScript, and CSS written in Pug, ES6, and Stylus.
+The frontend uses `vue-router` for URL [routing][routes] and `Vuex` for [state management][store_slideshow], and is composed of entirely of [single file `.vue` components][all_components] written in Pug, ES6, and Stylus.
 
-- App controller...
-- All state management is handled via small modules for extensibility and maintainability.
-- To achieve a more app-like feel when moving between pages, all view transitions are handled by CSS and a `direction` module.
-- Dark and light mode
+An [`App` component][app_component] watches for route changes, determines what endpoint to fetch data from and [what component][slide_component] to populate with that data, and sets a CSS [transition][transitions] depending on what views the user is [navigating to and from][controls_component].
+
+Light and dark modes are set via a [`Theme` component][theme_component] and is saved to `localStorage` for future visits.
 
 
 [url]: https://slides.gauslin.com
@@ -42,3 +41,14 @@ The UI is made entirely with Vue, and uses `vue-router` for URL routing, `Vuex` 
 [endpoint_slideshow]: https://gauslin.com/api/v2/slideshow/shotgun
 [endpoint_slide]: https://gauslin.com/api/v2/slide/1615
 [endpoint_thumbs]: https://gauslin.com/api/v2/slideshow/thumbs/shotgun
+
+[routes]: https://github.com/bgauslin/slides/blob/2139a336b4802adf81dd1d4519964c712bf60d93/source/js/vue/routes.js#L8-L39
+[store_slideshow]: https://github.com/bgauslin/slides/blob/2139a336b4802adf81dd1d4519964c712bf60d93/source/js/vue/store/slideshow.js#L1-L101
+[all_components]: https://github.com/bgauslin/slides/tree/master/source/js/vue/components
+
+[app_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/App.vue
+[slide_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Slide.vue
+[transitions]: https://github.com/bgauslin/slides/blob/2139a336b4802adf81dd1d4519964c712bf60d93/source/js/vue/transitions.js#L6-L30
+[controls_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Controls.vue
+
+[theme_component]: https://github.com/bgauslin/slides/blob/master/source/js/vue/components/Theme.vue
