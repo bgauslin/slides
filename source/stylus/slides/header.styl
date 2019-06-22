@@ -41,7 +41,7 @@
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition 'color %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT)
+  transition color var(--transition), transform var(--transition)
   white-space nowrap
 
 .header__link:active .header__link__label
@@ -61,7 +61,7 @@
 
 // back arrow hover/active styles
 [no-touch] .header__link__label::before
-  transition 'opacity %s' % Transition.DEFAULT
+  transition opacity var(--transition)
 
 [no-touch] .header__link--back:hover .header__link__label::before
   opacity .7

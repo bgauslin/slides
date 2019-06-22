@@ -1,26 +1,10 @@
 @import 'functions'
 
 // @type Hash
-Breakpoint = {
-  SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
-  MEDIUM: 'screen and (min-width: %s)' % px_to_rem(720)
-  LARGE: 'screen and (min-width: %s)' % px_to_rem(960)
-}
-
-// @type Hash
 Color = {
   DARK_GREY: #222
   LIGHT_GREY: #ddd
   OFF_WHITE: #fafafa
-}
-
-// @type Hash
-Transition = {
-  DEFAULT: .3s
-  IMAGE: .5s
-  SLIDE: .2s
-  SLIDE_LARGE: .3s
-  THUMB: .2s
 }
 
 // @type String
@@ -55,3 +39,13 @@ THUMB_GAP_MEDIUM = px_to_rem(8)
 
 // @type String
 CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
+
+// -----------------------------------------------------------------------------
+// Breakpoints.
+
+// @type Hash
+Breakpoint = {
+  SMALL: 'screen and (min-width: %s)' % px_to_rem(480)
+  MEDIUM: 'screen and (min-width: %s)' % px_to_rem(720)
+  LARGE: 'screen and (min-width: %s)' % px_to_rem(960)
+}

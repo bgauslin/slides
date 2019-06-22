@@ -41,7 +41,7 @@
     margin px_to_rem(24) 0 0
 
 [no-touch] .cover__link
-  transition 'background %s, color %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT Transition.DEFAULT)
+  transition background var(--transition), color var(--transition), transform var(--transition)
 
 [no-touch] .cover__link:active
   transform scale(.9)

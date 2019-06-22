@@ -1,7 +1,7 @@
 .thumb__link
   display block
   shadow(0)
-  transition 'box-shadow %s, transform %s' % (Transition.THUMB Transition.THUMB)
+  transition box-shadow var(--transition), transform var(--transition)
 
 [no-touch] .thumb__link:hover
   shadow(2)

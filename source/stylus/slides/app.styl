@@ -25,8 +25,5 @@
 .slide-in-right
 .slide-out-left
 .slide-out-right
-  animation-duration '%s' % Transition.SLIDE
+  animation-duration var(--transition-view)
   animation-timing-function ease-out
-
-  @media Breakpoint.LARGE
-    animation-duration '%s' % Transition.SLIDE_LARGE

@@ -48,7 +48,7 @@
 .arrow-icon
   height auto
   width px_to_rem(28)
-  transition 'transform %s' % Transition.DEFAULT
+  transition transform var(--transition)
 
 .prev-next__link:active .arrow-icon
   transform scale(.8)
@@ -62,4 +62,4 @@
 .arrow-icon__path
   fill none
   stroke-width 4
-  transition 'stroke %s' % Transition.DEFAULT
+  transition stroke var(--transition)
