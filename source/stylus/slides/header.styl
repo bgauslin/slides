@@ -1,5 +1,6 @@
 .header
   align-items center
+  background var(--header-background)
   display flex
   grid-row 1
   justify-content center
@@ -7,6 +8,16 @@
   position fixed
   width 100vw
   z-index 1
+
+  @media Breakpoint.LARGE
+    background 0
+
+.header--cover
+  background 0
+
+@media Breakpoint.LARGE
+  .header--thumbs
+    background var(--header-background)
 
 .header__content
   display flex
@@ -20,6 +31,7 @@
   display inline-flex
   font-size var(--heading)
   font-weight normal
+  link(var(--header-link), var(--header-link), var(--header-hover), var(--header-active))
   heading_font()
   height var(--header-height)
   padding 0 var(--header-height) 0 px_to_rem(16)
@@ -35,6 +47,18 @@
 // NOTE: 'current' class is auto-generated for 'exact' router-links
 .header__link--home.current
   cursor default
+
+.header__link--home.current
+.header__link--home.current:hover
+  color var(--header-link)
+
+.header__link--back:link .header__link__label::before
+.header__link--back:visited .header__link__label::before
+  border-right-color var(--header-link)
+
+.header__link--back:active .header__link__label::before
+[no-touch] .header__link--back:hover .header__link__label::before
+  border-right-color var(--header-active)
 
 .header__link__label
   font-size 1em
@@ -56,7 +80,7 @@
 
 // NOTE: css_triangle() color gets overridden by Theme component.
 .header__link--back .header__link__label::before
-  css_triangle(Color.DARK_GREY, px_to_rem(6), 'left')
+  css_triangle(DARK_GREY, px_to_rem(6), 'left')
   margin-right px_to_rem(6)
 
 // back arrow hover/active styles

@@ -1,7 +1,9 @@
 font_face()
 
 body
+  background var(--app-background)
   body_font()
+  color var(--app-text)
   margin 0
   padding 0
   -webkit-tap-highlight-color transparent
@@ -44,7 +46,7 @@ input
 
 .no-js__message
   background white
-  border 1px solid '%s' % Color.LIGHT_GREY
+  border 1px solid LIGHT_GREY
   border-radius 4px
   margin 0 auto
   padding 1rem

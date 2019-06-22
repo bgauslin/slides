@@ -79,8 +79,9 @@ link(link, visited, hover, active)
   &:focus
     color active
 
-  [no-touch]&:hover
-    color hover
+  [no-touch] &
+    &:hover
+      color hover
 
 // @mixin
 // @param Color link
@@ -98,8 +99,9 @@ link_background(link, visited, hover, active)
   &:focus
     background active
 
-  [no-touch]&:hover
-    background hover
+  [no-touch] &
+    &:hover
+      background hover
 
 // @mixin
 // @param Color link

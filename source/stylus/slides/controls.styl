@@ -1,4 +1,6 @@
 .controls
+  background var(--controls-background)
+  border-top .5px solid var(--controls-border)
   bottom 0
   grid-row 3
   height var(--controls-height)
@@ -6,6 +8,10 @@
   position fixed
   width 100vw
   z-index 1
+
+  @media Breakpoint.LARGE
+    background 0
+    border 0
 
 .controls__frame
   margin 0 auto
@@ -63,3 +69,10 @@
   fill none
   stroke-width 4
   transition stroke var(--transition)
+
+.prev-next__link:link .arrow-icon__path
+.prev-next__link:visited .arrow-icon__path
+  stroke var(--controls-link)
+
+[no-touch] .prev-next__link:hover .arrow-icon__path
+  stroke var(--controls-hover)

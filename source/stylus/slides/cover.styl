@@ -9,6 +9,7 @@
   width 100%
 
 .cover__frame
+  background-color var(--cover-background)
   height 100%
 
 .cover__header
@@ -28,12 +29,13 @@
 
 .cover__link
   align-items center
+  border 2px solid var(--cover-active)
   border-radius (LINK_HEIGHT_COVER / 2)
-  border-style solid 
-  border-width 2px
   display inline-flex
   heading_font(600)
   height LINK_HEIGHT_COVER
+  link(var(--cover-link), var(--cover-link), var(--cover-active), var(--cover-active))
+  link_background(var(--cover-link-background), var(--cover-link-background), var(--cover-link-background-active), var(--cover-link-background-active))
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
 
