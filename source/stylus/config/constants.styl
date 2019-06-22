@@ -15,18 +15,6 @@ Color = {
 }
 
 // @type Hash
-Layout = {
-  ImageGap: {
-    BASE: px_to_rem(16)
-    MEDIUM: px_to_rem(24)
-  }
-  MaxWidth: {
-    CAPTION: px_to_rem(400)
-    SLIDE: px_to_rem(960)
-  }
-}
-
-// @type Hash
 Transition = {
   DEFAULT: .3s
   IMAGE: .5s
@@ -36,19 +24,34 @@ Transition = {
 }
 
 // @type String
+CAPTION_MAX_WIDTH = px_to_rem(400)
+
+// @type String
+COLUMN_GAP = px_to_rem(32)
+
+// @type String
+IMAGE_GAP_BASE = px_to_rem(16)
+
+// @type String
+IMAGE_GAP_MEDIUM = px_to_rem(24)
+
+// @type String
 LINK_HEIGHT_COVER = px_to_rem(40)
 
 // @type String
 LINK_HEIGHT_PUBLICATION = px_to_rem(32)
 
 // @type String
-COLUMN_GAP = px_to_rem(32)
+SIDEBAR_WIDTH = px_to_rem(256)
 
 // @type String
-SIDEBAR_WIDTH = px_to_rem(256)
+SLIDE_MAX_WIDTH = px_to_rem(960)
 
 // @type String
 THUMB_GAP_MEDIUM = px_to_rem(8)
 
+// -----------------------------------------------------------------------------
+// Calculated constants.
+
 // @type String
-CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + Layout.MaxWidth.SLIDE
+CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH

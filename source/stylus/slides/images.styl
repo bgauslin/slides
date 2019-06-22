@@ -1,8 +1,8 @@
 .images--multiple
-  margin '-%s auto 0' % Layout.ImageGap.BASE
+  margin (- IMAGE_GAP_BASE) auto 0
   width 50%
 
   @media Breakpoint.MEDIUM
     display flex
-    margin '-%s 0 0 -%s' % (Layout.ImageGap.MEDIUM Layout.ImageGap.MEDIUM)
+    margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
     width auto
