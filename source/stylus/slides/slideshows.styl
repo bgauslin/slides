@@ -7,16 +7,15 @@
     max-width CONTENT_MAX_WIDTH
 
 .slideshows__group
-  margin '0 %s' % Layout.SlideshowGap.BASE
+  margin 0 var(--slideshow-gap)
 
   @media Breakpoint.MEDIUM
     display grid
-    grid-gap '%s' % Layout.SlideshowGap.MEDIUM
+    grid-gap var(--slideshow-gap)
     grid-template-columns repeat(2, 1fr)
-    margin '0 %s' % Layout.SlideshowGap.MEDIUM
 
 .slideshow:not(:last-child)
-  margin '0 0 %s' % Layout.SlideshowGap.BASE
+  margin 0 0 var(--slideshow-gap)
 
   @media Breakpoint.MEDIUM
     margin 0
