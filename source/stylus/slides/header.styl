@@ -18,7 +18,7 @@
 .header__link
   align-items center
   display inline-flex
-  font-size '%s' % FontSize.Base.HEADING
+  font-size var(--heading)
   font-weight normal
   heading_font()
   height '%s' % Layout.HeaderHeight.BASE
@@ -29,7 +29,6 @@
     width auto
 
   @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.HEADING
     height '%s' % Layout.HeaderHeight.MEDIUM
     max-width 100vw
     padding '0 %s 0 %s' % (Layout.HeaderHeight.MEDIUM COLUMN_GAP)

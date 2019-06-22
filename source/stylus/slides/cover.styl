@@ -16,21 +16,15 @@
   text-align center
 
 .cover__heading
-  font-size '%s' % FontSize.Base.H1
+  font-size var(--h1)
   heading_font()
   margin 0 0 .25em
   padding 0
 
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.H1
-
 .cover__summary
-  font-size '%s' % FontSize.Base.H3
+  font-size var(--h3)
   margin 0
   padding 0
-
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.H3
 
 .cover__link
   align-items center

@@ -28,27 +28,18 @@
     padding 2rem
 
 .publication__title
-  font-size '%s' % FontSize.Base.H2
+  font-size var(--h2)
   heading_font()
   margin 0 0 px_to_rem(4)
 
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.H2
-
 .publication__publisher
-  font-size '%s' % FontSize.Base.H3
+  font-size var(--h3)
   font-weight normal
   margin 0 0 px_to_rem(6)
 
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.H3
-
 .publication__date
-  font-size '%s' % FontSize.Base.CAPTION
+  font-size var(--caption)
   margin 0
-
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.CAPTION
 
 .publication__link
   align-items center

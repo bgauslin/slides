@@ -26,10 +26,7 @@
   transition 'color %s' % Transition.DEFAULT
 
 .slideshow__heading
-  font-size '%s' % FontSize.Base.H3
+  font-size var(--h3)
   heading_font()
   margin px_to_em(12) 0
   padding 0
-
-  @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.H3

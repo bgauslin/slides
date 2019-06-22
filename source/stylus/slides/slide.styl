@@ -36,12 +36,11 @@
 
 .slide__caption
   box-sizing border-box
-  font-size '%s' % FontSize.Base.CAPTION
+  font-size var(--caption)
   margin 0 auto
   padding px_to_rem(16) px_to_rem(16) 0
 
   @media Breakpoint.MEDIUM
-    font-size '%s' % FontSize.Medium.CAPTION
     grid-row 3
     max-width '%s' % Layout.MaxWidth.CAPTION
     padding px_to_rem(32) 0
