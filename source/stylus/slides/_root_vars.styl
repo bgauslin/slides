@@ -8,6 +8,12 @@
 
   --controls-height px_to_rem(44)
   --header-height px_to_rem(44)
+  --thumb-gap px_to_rem(4)
+  --thumb-columns 4
+
+  @media Breakpoint.SMALL
+    --thumb-gap px_to_rem(6)
+    --thumb-columns 5
 
   @media Breakpoint.MEDIUM
     --caption px_to_em(15)
@@ -19,3 +25,8 @@
 
     --controls-height px_to_rem(60)
     --header-height px_to_rem(60)
+    --thumb-gap THUMB_GAP_MEDIUM
+    --thumb-columns 6
+
+  @media Breakpoint.LARGE
+    --thumb-columns 7
