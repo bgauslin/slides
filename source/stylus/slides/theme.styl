@@ -4,7 +4,7 @@
   background 0
   border 0
   display inline-flex
-  height '%s' % Layout.HeaderHeight.BASE
+  height var(--header-height)
   justify-content center
   overflow hidden
   outline none
@@ -12,11 +12,7 @@
   right 0
   top 0
   transition 'transform %s' % Transition.DEFAULT
-  width '%s' % Layout.HeaderHeight.BASE
-
-  @media Breakpoint.MEDIUM
-    height '%s' % Layout.HeaderHeight.MEDIUM
-    width '%s' % Layout.HeaderHeight.MEDIUM
+  width var(--header-height)
 
 [no-touch] .theme
   transition 'opacity %s, transform %s' % (Transition.DEFAULT Transition.DEFAULT)

@@ -1,14 +1,11 @@
 .controls
   bottom 0
   grid-row 3
-  height '%s' % Layout.ControlsHeight.BASE
+  height var(--controls-height)
   left 0
   position fixed
   width 100vw
   z-index 1
-  
-  @media Breakpoint.MEDIUM
-    height '%s' % Layout.ControlsHeight.MEDIUM
 
 .controls__frame
   margin 0 auto
@@ -27,12 +24,9 @@
   align-items center
   display inline-flex
   flex 1
-  height '%s' % Layout.ControlsHeight.BASE
+  height var(--controls-height)
   justify-content center
   overflow hidden
-
-  @media Breakpoint.MEDIUM
-    height '%s' % Layout.ControlsHeight.MEDIUM
 
 .prev-next--prev
 .prev-next--next
