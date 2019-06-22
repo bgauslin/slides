@@ -1,6 +1,6 @@
 .header
   align-items center
-  background var(--header-background)
+  background var(--overlay-background)
   display flex
   grid-row 1
   justify-content center
@@ -17,7 +17,7 @@
 
 @media Breakpoint.LARGE
   .header--thumbs
-    background var(--header-background)
+    background var(--overlay-background)
 
 .header__content
   display flex
@@ -31,7 +31,6 @@
   display inline-flex
   font-size var(--heading)
   font-weight normal
-  link(var(--header-link), var(--header-link), var(--header-hover), var(--header-active))
   heading_font()
   height var(--header-height)
   padding 0 var(--header-height) 0 px_to_rem(16)
@@ -50,15 +49,15 @@
 
 .header__link--home.current
 .header__link--home.current:hover
-  color var(--header-link)
+  color var(--text)
 
 .header__link--back:link .header__link__label::before
 .header__link--back:visited .header__link__label::before
-  border-right-color var(--header-link)
+  border-right-color var(--link)
 
 .header__link--back:active .header__link__label::before
 [no-touch] .header__link--back:hover .header__link__label::before
-  border-right-color var(--header-active)
+  border-right-color var(--link-active)
 
 .header__link__label
   font-size 1em

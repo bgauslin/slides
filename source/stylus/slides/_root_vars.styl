@@ -37,63 +37,24 @@
     --thumb-columns 7
     --transition-view .3s
 
-  // TODO: Refactor/simplify theming. Color values are very repetitive,
-  // and rgba could potentially be replaced with opacity on the element.
   [data-theme=dark]
-    --app-background DARK_GREY
-    --button-active DARK_GREY
-    --cover-link DARK_GREY
-
-    --app-text white
-    --button-link white
-    --button-background-active white
-    --controls-link white
-    --cover-active white
-    --cover-link-background white
-    --footer-link white
-    --header-link white
-    --header-active white
-    --link-base white
-    
-    --button-background rgba(white, .1)
-    --controls-border rgba(white, .2)
-
-    --controls-background rgba(DARK_GREY, .9)
-    --header-background rgba(DARK_GREY, .9)
-
-    --cover-background rgba(DARK_GREY, .8)
-    
-    --controls-hover rgba(white, .7)
-    --footer-text rgba(white, .7)
-    --header-hover rgba(white, .7)
+    --background DARK_GREY
+    --text white
+    --text-alpha rgba(white, .7)
+    --link white
     --link-active rgba(white, .7)
+    --button-background rgba(white, .1)
+    --cover-background rgba(DARK_GREY, .8)
+    --overlay-background rgba(DARK_GREY, .9)
+    --overlay-border rgba(white, .2)
 
-  [data-theme=light]    
-    --app-background OFF_WHITE
-
-    --app-text DARK_GREY
-    --button-link DARK_GREY
-    --button-background-active DARK_GREY
-    --controls-link DARK_GREY
-    --cover-active DARK_GREY
-    --cover-link-background DARK_GREY
-    --footer-link DARK_GREY
-    --header-link DARK_GREY
-    --header-active DARK_GREY
-    --link-base DARK_GREY
-
-    --button-active white
-    --cover-link white
-
-    --button-background rgba(DARK_GREY, .1)
-    --controls-border rgba(DARK_GREY, .3)
-
-    --controls-background rgba(OFF_WHITE, .85)
-    --header-background rgba(OFF_WHITE, .95)
-
-    --cover-background rgba(white, .8)
-    
-    --controls-hover rgba(DARK_GREY, .7)
-    --footer-text rgba(DARK_GREY, .7)
-    --header-hover rgba(DARK_GREY, .7)
+  [data-theme=light]
+    --background OFF_WHITE
+    --text DARK_GREY
+    --text-alpha rgba(DARK_GREY, .7)
+    --link DARK_GREY
     --link-active rgba(DARK_GREY, .7)
+    --button-background rgba(DARK_GREY, .1)
+    --cover-background rgba(white, .8)
+    --overlay-background rgba(OFF_WHITE, .85)
+    --overlay-border rgba(DARK_GREY, .3)

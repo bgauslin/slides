@@ -1,9 +1,9 @@
 font_face()
 
 body
-  background var(--app-background)
+  background var(--background)
   body_font()
-  color var(--app-text)
+  color var(--text)
   margin 0
   padding 0
   -webkit-tap-highlight-color transparent
@@ -22,13 +22,16 @@ svg
   vertical-align middle
   width 100%
 
-// TODO: currentColor for SVG
+svg
+  path currentColor
+  pointer-events none
 
 p
   line-height 1.5
   margin 0 0 1em
 
 a
+  link(var(--link), var(--link), var(--link-active), var(--link-active))
   text-decoration none
 
 a

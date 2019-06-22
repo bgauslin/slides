@@ -1,6 +1,6 @@
 .controls
-  background var(--controls-background)
-  border-top .5px solid var(--controls-border)
+  background var(--overlay-background)
+  border-top .5px solid var(--overlay-border)
   bottom 0
   grid-row 3
   height var(--controls-height)
@@ -70,10 +70,9 @@
   stroke-width 4
   transition stroke var(--transition)
 
-// TODO: Refactor/simplify SVG styles.
 .prev-next__link:link .arrow-icon__path
 .prev-next__link:visited .arrow-icon__path
-  stroke var(--controls-link)
+  stroke var(--link)
 
 [no-touch] .prev-next__link:hover .arrow-icon__path
-  stroke var(--controls-hover)
+  stroke var(--link-active)
