@@ -212,8 +212,8 @@ export default {
     },
 
     /**
-     * @description Sets the loaded flag to false and calls a method based
-     * on the current route.
+     * Sets the loaded flag to false and calls a method based on the current
+     * route.
      */
     getContent() {
       this.app.dataLoaded = false;
@@ -235,7 +235,7 @@ export default {
     },
 
     /**
-     * @description Fetches API data for the 'cover' route/view.
+     * Fetches API data for the 'cover' route/view.
      */
     getDataCover() {
       this.app.showControls = false;
@@ -247,7 +247,7 @@ export default {
     },
 
     /**
-     * @description Fetches API data for the 'home' route/view.
+     * Fetches API data for the 'home' route/view.
      */
     getDataHome() {
       this.app.showControls = false;
@@ -255,8 +255,8 @@ export default {
     },
 
     /**
-     * @description Fetches API data for the 'slide' route/view and fetches
-     * full 'slideshow' data if it hasn't been fetched and stored yet.
+     * Fetches API data for the 'slide' route/view and fetches full 'slideshow'
+     * data if it hasn't been fetched and stored yet.
      * @async
      */
     getDataSlide() {
@@ -286,8 +286,8 @@ export default {
     },
 
     /**
-     * @description Fetches API data for the 'thumbs' route/view and fetches
-     * full 'slideshow' data if it hasn't been fetched and stored yet.
+     * Fetches API data for the 'thumbs' route/view and fetches full
+     * 'slideshow' data if it hasn't been fetched and stored yet.
      * @async
      */
     getDataThumbs() {

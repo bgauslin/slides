@@ -35,12 +35,16 @@ export default {
   },
 
   methods: {
-    /** @description Sets 'theme' attribute on the 'body' element. */
+    /**
+     * Sets 'theme' attribute on the 'body' element.
+     */
     setTheme() {
       document.body.setAttribute('data-theme', this.theme);
     },
 
-    /** @description Toggles the theme. */
+    /**
+     * Toggles the theme.
+     */
     toggleTheme() {
       const theme = (this.theme === 'light') ? 'dark' : 'light';
       this.$store.commit('updateTheme', theme);

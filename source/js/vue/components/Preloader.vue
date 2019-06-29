@@ -29,7 +29,9 @@ export default {
   },
 
   methods: {
-    /**  @description Attaches a loading spinner to an element. */
+    /** 
+     * Attaches a loading spinner to an element.
+     */
     attachSpinner() {
       window.setTimeout(() => {
         const spinner = new Spinner(this.options).spin();
@@ -37,7 +39,9 @@ export default {
       }, this.delay);
     },
 
-    /** @description Sets loading spinner color based on current theme. */
+    /** 
+     * Sets loading spinner color based on current theme.
+     */
     setOptions() {
       const theme = this.$store.getters.theme;
       this.options.color = (theme === 'light') ? '#000' : '#fff';

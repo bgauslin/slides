@@ -62,8 +62,7 @@ export default {
     },
 
     /**
-     * @description Sets 'ready' attribute on the image after it has fully
-     *     downloaded.
+     * Sets 'ready' attribute on the image after it has fully downloaded.
      */
     loadImage() {
       const fullImage = this.$el.querySelector('.image__hi-res');
