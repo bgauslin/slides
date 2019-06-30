@@ -24,7 +24,7 @@ if ($_SERVER['SERVER_NAME'] == $prod_server) {
     <meta charset="utf-8">
     <title><?php echo $site_name?></title>
     <meta name="description" content="<?php echo $meta_description?>">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400">
     <link rel="stylesheet" href="<?php echo $css_path; ?>">
