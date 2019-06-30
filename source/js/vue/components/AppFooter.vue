@@ -1,7 +1,7 @@
 <template lang="pug">
   footer.footer
     p.copyright
-      span.copyright__bug {{ copyrightYear }}
+      span.copyright__bug © 2018–{{ currentYear }}
       a(
         class="copyright__link",
         :href="linkURL",
@@ -20,9 +20,8 @@ export default {
 
   computed: {
     /** @return {string} */
-    copyrightYear() {
-      const now = new Date();
-      return `© ${now.getFullYear()}`;
+    currentYear() {
+      return new Date().getFullYear().toString().substr(-2);
     },
 
     /** @return {string} */
