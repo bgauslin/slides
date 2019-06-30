@@ -39,7 +39,7 @@ export default {
      * Sets 'theme' attribute on the 'body' element.
      */
     setTheme() {
-      document.body.setAttribute('data-theme', this.theme);
+      document.body.setAttribute('theme', this.theme);
     },
 
     /**

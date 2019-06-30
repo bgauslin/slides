@@ -14,9 +14,9 @@
       )
       p.publication__date {{ publication.date }}
       a.publication__link(
-        :data-url-type="publication.urlType",
         :href="publication.url",
         :title="'Read the ' + publication.publisher + ' article'",
+        :url-type="publication.urlType",
         rel="noopener",
         target="_blank",
       ) Read the article
