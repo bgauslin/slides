@@ -1,3 +1,4 @@
+import fastclick from 'fastclick';
 import setup from './setup';
 import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
@@ -9,6 +10,9 @@ import slideshow from './vue/store/slideshow';
 import theme from './vue/store/theme';
 import thumbs from './vue/store/thumbs';
 import transitions from './vue/transitions';
+
+/** Initialize FastClick. */
+fastclick(document.body);
 
 /** Set up Vue and global utilities. */
 Vue.use(Vuex);
