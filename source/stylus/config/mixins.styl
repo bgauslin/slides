@@ -1,8 +1,10 @@
 // @mixin
-// @param Number weight [400]
-body_font(weight = 400)
-  font-family 'Source Sans Pro', sans-serif
-  font-weight weight
+all_webfonts()
+  @font-face
+    font-display block
+    font-family 'Avenir Variable'
+    font-weight 1 999
+    src url('/ui/webfonts/AvenirNext-Variable.woff2') format('woff2')
 
 // @mixin
 // @param Color color
@@ -29,39 +31,6 @@ css_triangle(color, size, direction)
   display inline-block
   height 0
   width 0
-
-// @mixin
-font_face()
-  @font-face
-    font-display block
-    font-family 'Avenir Variable'
-    src url('/ui/webfonts/AvenirNext-Variable.woff2') format('woff2')
-    font-weight 1 999
-
-  @font-face
-    font-display block
-    font-family 'Avenir Medium'
-    src url('/ui/webfonts/AvenirLTStd-Medium.woff2') format('woff2'),
-        url('/ui/webfonts/AvenirLTStd-Medium.woff') format('woff')
-    font-weight 500
-
-// @mixin
-// @param Number weight
-font_weight(weight)
-  font-weight weight
-
-  @supports (font-variation-settings: normal)
-    font-variation-settings 'wght' weight
-
-// @mixin
-// @param Number weight [500]
-heading_font(weight = 500)
-  font-family 'Avenir Medium' sans-serif // fallback
-  font-weight weight
-
-  @supports (font-variation-settings: normal) // variable
-    font-family 'Avenir Variable', sans-serif
-    font-variation-settings 'wght' weight
 
 // @mixin
 // @param Color link
@@ -133,3 +102,15 @@ shadow(elevation)
     box-shadow 0 1px 3px rgba(black, .12), 0 1px 2px rgba(black, .24)
   if elevation == 3
     box-shadow 0 3px 6px rgba(black, .16), 0 3px 6px rgba(black, .23)
+
+// @mixin
+// @param String type ['body']
+// @param Number weight [400]
+webfont(type = 'body', weight = 400)
+  if type == 'body'
+    font-family 'Source Sans Pro', sans-serif
+    font-weight weight
+
+  if type == 'heading'
+    font-family 'Avenir Variable', sans-serif
+    font-variation-settings 'wght' weight

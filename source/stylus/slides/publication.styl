@@ -29,12 +29,11 @@
 
 .publication__title
   font-size var(--heading-2)
-  heading_font()
   margin 0 0 px_to_rem(4)
+  webfont('heading', 500)
 
 .publication__publisher
   font-size var(--heading-3)
-  font-weight normal
   margin 0 0 px_to_rem(6)
 
 .publication__date
@@ -45,13 +44,13 @@
   align-items center
   border-radius (LINK_HEIGHT_PUBLICATION / 2)
   display inline-flex
-  heading_font(600)
   font-size px_to_em(14)
   height LINK_HEIGHT_PUBLICATION
   link(var(--link), var(--link), var(--background), var(--background))
   link_background(var(--button-background), var(--button-background), var(--text), var(--text))
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(16)
+  webfont('heading', 600)
 
 [no-touch] .publication__link
   transition background var(--transition), color var(--transition)

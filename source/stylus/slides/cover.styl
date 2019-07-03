@@ -18,9 +18,9 @@
 
 .cover__heading
   font-size var(--heading-1)
-  heading_font()
   margin 0 0 .25em
   padding 0
+  webfont('heading', 500)
 
 .cover__summary
   font-size var(--heading-3)
@@ -32,12 +32,12 @@
   border 2px solid var(--text)
   border-radius (LINK_HEIGHT_COVER / 2)
   display inline-flex
-  heading_font(600)
   height LINK_HEIGHT_COVER
   link(var(--background), var(--background), var(--text), var(--text))
   link_background(var(--text), var(--text), transparent, transparent)
   margin px_to_rem(16) 0 0
   padding 0 px_to_rem(24)
+  webfont('heading', 600)
 
   @media Breakpoint.MEDIUM
     margin px_to_rem(24) 0 0
