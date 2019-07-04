@@ -8,11 +8,10 @@
 import Spinner from 'spin'
 
 export default {
-
-  props: [
-    'options',
-    'position',
-  ],
+  props: {
+    options: Object,
+    position: String,
+  },
 
   data() {
     return {

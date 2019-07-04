@@ -18,7 +18,9 @@ import SingleImage from './SingleImage.vue';
 export default {
   components: { SingleImage },
 
-  props: ['images'],
+  props: {
+    images: Array,
+  },
   
   computed: {
     /** @return {string} CSS class for multiple images. */

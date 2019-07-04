@@ -21,9 +21,11 @@
 import SingleImage from './SingleImage.vue';
 
 export default {
-  props: ['content'],
-
   components: { SingleImage },
+
+  props: {
+    content: Array,
+  },
 
   methods: {
     /**

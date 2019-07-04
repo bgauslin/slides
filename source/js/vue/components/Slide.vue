@@ -34,7 +34,16 @@ export default {
     MediaPublication,
   },
 
-  props: ['content'],
+  props: {
+    content: {
+      caption: String,
+      media: {
+        images: Array,
+        publication: String,
+        text: String,
+      }
+    }
+  },
 
   computed: {
     /** @return {string} */

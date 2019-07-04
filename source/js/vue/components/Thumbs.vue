@@ -15,6 +15,12 @@ import Thumb from './Thumb.vue';
 
 export default {
   components: { Thumb },
-  props: ['content'],
+
+  props: {
+    content: {
+      slug: String,
+      thumbs: Array,
+    }
+  }
 }
 </script>

@@ -29,10 +29,16 @@ import Preloader from './Preloader.vue';
 export default {
   components: { Preloader },
 
-  props: [
-    'className',
-    'image',
-  ],
+  props: {
+    className: String,
+    image: {
+      alt: String,
+      medium: {
+        src: String,
+      },
+      placeholder: String,
+    },
+  },
 
   data() {
     return {

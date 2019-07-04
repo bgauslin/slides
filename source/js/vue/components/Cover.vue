@@ -16,7 +16,14 @@
 
 <script>
 export default {
-  props: ['content'],
+  props: {
+    content: {
+      image: Object,
+      slug: String,
+      summary: String,
+      title: String,
+    }
+  },
 
   computed: {
     /**

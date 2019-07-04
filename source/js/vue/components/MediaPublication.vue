@@ -27,6 +27,15 @@ import SingleImage from './SingleImage.vue';
 
 export default {
   components: { SingleImage },
-  props: ['publication'],
+  props: {
+    publication: {
+      date: String,
+      image: Object,
+      publisher: String,
+      title: String,
+      url: String,
+      urlType: String,
+    }
+  }
 }
 </script>

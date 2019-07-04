@@ -16,7 +16,9 @@
 import Theme from './Theme.vue';
 
 export default {
-  props: ['view'],
+  props: {
+    view: String,
+  },
 
   components: { Theme },
 

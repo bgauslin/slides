@@ -16,12 +16,17 @@
 
 <script>
 export default {
-  props: [
-    'index',
-    'thumb',
-    'slideshow',
-    'slug',
-  ],
+  props: {
+    index: Number,
+    slideshow: String,
+    slug: String,
+    thumb: {
+      alt: String,
+      height: Number,
+      src: String,
+      width: Number,
+    },
+  },
 
   computed: {
     /** @return {number} */
