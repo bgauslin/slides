@@ -34,8 +34,8 @@
   justify-content center
   overflow hidden
 
-.prev-next--prev
-.prev-next--next
+.prev-next__link--prev
+.prev-next__link--next
   padding 0 px_to_rem(8)
 
   @media Breakpoint.MEDIUM
@@ -45,10 +45,10 @@
     padding 0
 
 @media Breakpoint.LARGE
-  .prev-next--prev
+  .prev-next__link--prev
     margin-left px_to_rem(-8)
 
-  .prev-next--next
+  .prev-next__link--next
     margin-right px_to_rem(-8)
 
 .arrow-icon
@@ -59,10 +59,10 @@
 .prev-next__link:active .arrow-icon
   transform scale(.8)
 
-.prev-next--prev .arrow-icon
+.prev-next__link--prev .arrow-icon
   margin-right auto
 
-.prev-next--next .arrow-icon
+.prev-next__link--next .arrow-icon
   margin-left auto
 
 .arrow-icon__path

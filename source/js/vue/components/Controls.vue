@@ -5,7 +5,7 @@
     div.controls__frame
       div.controls__content
         router-link(
-          class="prev-next__link prev-next--prev",
+          class="prev-next__link prev-next__link--prev",
           :to="prevRoute",
           :title="prevLabel",
         )
@@ -16,7 +16,7 @@
           )
         counter
         router-link(
-          class="prev-next__link prev-next--next",
+          class="prev-next__link prev-next__link--next",
           :to="nextRoute",
           :title="nextLabel",
         )
