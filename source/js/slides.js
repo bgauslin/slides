@@ -68,7 +68,7 @@ const app = new Vue({
   data: {
     apiBaseURL: setup.apiBaseURL(),
   },
-  store,
   router,
+  store,
   template: '<app></app>',
 }).$mount('#app');
