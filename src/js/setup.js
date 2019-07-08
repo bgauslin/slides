@@ -1,5 +1,3 @@
-import attachFastClick from 'fastclick';
-
 /** @enum {string} */
 const Config = {
   API_DEV: 'http://gauslin.test/api',
@@ -13,7 +11,6 @@ const Config = {
 export default class {
   /** Intializes site-wide widgets, utilities, etc. */
   static init() {
-    attachFastClick(document.body);
     this.noTouch_();
     this.viewportHeight_();
     this.resize_();
@@ -21,12 +18,14 @@ export default class {
   }
 
   /**
-   * Removes 'no-touch' attribute if device isn't touch-enabled.
+   * Adds 'no-touch' attribute if not a touch-enabled device.
    * @private
    */
   static noTouch_() {
-    if ('ontouchstart' in window || navigator.msMaxTouchPoints > 0) {
-      document.body.removeAttribute('no-touch');
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+      return;
+    } else {
+      document.body.setAttribute('no-touch', '');
     }
   }
 

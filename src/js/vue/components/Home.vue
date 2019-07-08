@@ -11,7 +11,6 @@
         )
           single-image(
             v-if="slideshow.image",
-            :className="imageClass",
             :image="slideshow.image",
           )
           h2.slideshow__heading {{ slideshow.title }}
