@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
@@ -65,30 +66,13 @@ export default {
   },
 
   computed: {
-    /** @return {Object} */
-    currentSlide() {
-      return this.$store.getters.slide;
-    },
-    
-    /** @return {string} */
-    direction() {
-      return this.$store.getters.direction;
-    },
-
-    /** @return {boolean} */
-    hasSlideMedia() {
-      return this.$store.getters.hasSlideMedia;
-    },
-
-    /** @return {Object} */
-    slideshow() {
-      return this.$store.getters.slideshow;
-    },
-
-    /** @return {Object}  */
-    thumbs() {
-      return this.$store.getters.thumbs;
-    },
+    ...mapGetters([
+      'direction',
+      'hasSlideMedia',
+      'slide',
+      'slideshow',
+      'thumbs',
+    ]),
 
     /** @return {string} */
     view() {
@@ -166,7 +150,7 @@ export default {
         case 'home':
           return `${this.$root.apiBaseURL}/slideshows`;
         case 'slide':
-          return `${this.$root.apiBaseURL}/slide/${this.currentSlide.id}`;
+          return `${this.$root.apiBaseURL}/slide/${this.slide.id}`;
         case 'slideshow':
           return `${this.$root.apiBaseURL}/slideshow/${this.$route.params.slideshow}`;
         case 'thumbs':
@@ -279,7 +263,7 @@ export default {
       }
 
       if (this.hasSlideMedia) {
-        this.ready(this.currentSlide);
+        this.ready(this.slide);
       } else {
         fetchData();
       }

@@ -7,12 +7,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   mounted() {
     this.setTheme();
   },
 
   computed: {
+    ...mapGetters([
+      'theme',
+    ]),
+
     /** @return {string} */
     svgIcon() {
       return `
@@ -21,11 +26,6 @@ export default {
           <path class="theme-icon__path" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" d="m16.000002,0c8.773518,0 15.880063,7.106548 15.880063,15.880063c0,8.773515 -7.106545,15.880063 -15.880063,15.880063l0,-31.760127z"/>
         </svg>
       `;
-    },
-
-    /** @return {string} */
-    theme() {
-      return this.$store.getters.theme;
     },
 
     /** @return {string} */

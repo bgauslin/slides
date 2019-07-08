@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Spinner from 'spin'
 
 export default {
@@ -28,6 +29,10 @@ export default {
   },
 
   methods: {
+    ...mapGetters([
+      'theme',
+    ]),
+
     /** 
      * Attaches a loading spinner to an element.
      */
@@ -42,7 +47,7 @@ export default {
      * Sets loading spinner color based on current theme.
      */
     setOptions() {
-      const theme = this.$store.getters.theme;
+      const theme = this.theme;
       this.options.color = (theme === 'light') ? '#000' : '#fff';
     },
 

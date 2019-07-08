@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   props: {
     content: {
@@ -26,12 +28,9 @@ export default {
   },
 
   computed: {
-    /**
-     * @return {Object} The first slide in a slideshow.
-     */
-    slideFirst() {
-      return this.$store.getters.slideFirst;
-    }
+    ...mapGetters([
+      'slideFirst',
+    ])
   },
 
   methods: {

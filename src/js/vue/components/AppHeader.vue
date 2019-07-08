@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Theme from './Theme.vue';
 
 export default {
@@ -23,6 +24,11 @@ export default {
   components: { Theme },
 
   computed: {
+    ...mapGetters({
+      lastVisitedSlug: 'slug',
+      slideshowTitle: 'slideshowTitle',
+    }),
+
     /**
      * @return {string|null} CSS class for the header link based on the current route.
      */
@@ -79,24 +85,10 @@ export default {
     },
 
     /**
-     * @return {string} The 'slug' URL param of the last visited route.
-     */
-    lastVisitedSlug() {
-      return this.$store.getters.slug;
-    },
-
-    /**
      * @return {string} The 'slideshow' URL param.
      */
     slideshowRoute() {
       return this.$route.params.slideshow;
-    },
-
-    /**
-     * @return {string} The slideshow's title.
-     */
-    slideshowTitle() {
-      return this.$store.getters.slideshowTitle;
     },
   }
 }

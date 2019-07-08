@@ -1,6 +1,6 @@
 <template lang="pug">
   div.controls(
-    v-if="prevSlide || nextSlide",
+    v-if="slidePrev || slideNext",
   )
     div.controls__frame
       div.controls__content
@@ -28,24 +28,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Counter from './Counter.vue';
 
 export default {
   components: { Counter },
 
   computed: {
+    ...mapGetters([
+      'slideNext',
+      'slidePrev',
+      'slideIndex',
+      'totalSlideCount',
+    ]),
+
     /**
      * @return {boolean} Whether the current route is for the first slide.
      */
     isFirstSlide() {
-      return this.$store.getters.slideIndex === 0;
+      return this.slideIndex === 0;
     },
 
     /**
      * @return {boolean} Whether the current route is for the last slide.
      */
     isLastSlide() {
-      return this.$store.getters.slideIndex === this.$store.getters.totalSlideCount - 1;
+      return this.slideIndex === this.totalSlideCount - 1;
     },
 
     /**
@@ -53,7 +61,7 @@ export default {
      * current route is for the last slide.
      */
     nextLabel() {
-      return this.isLastSlide ? 'Thumbnails' : this.nextSlide.title;
+      return this.isLastSlide ? 'Thumbnails' : this.slideNext.title;
     },
 
     /**
@@ -73,17 +81,10 @@ export default {
           name: 'slide',
           params: {
             slideshow: this.slideshowRoute,
-            slug: this.nextSlide.slug
+            slug: this.slideNext.slug
           }
         };
       }
-    },
-
-    /**
-     * @return {Object} The next slide.
-     */
-    nextSlide() {
-      return this.$store.getters.slideNext;
     },
 
     /**
@@ -91,7 +92,7 @@ export default {
      * current route is for the first slide.
      */
     prevLabel() {
-      return this.isFirstSlide ? 'Cover' : this.prevSlide.title;
+      return this.isFirstSlide ? 'Cover' : this.slidePrev.title;
     },
 
     /**
@@ -110,17 +111,10 @@ export default {
           name: 'slide',
           params: {
             slideshow: this.slideshowRoute,
-            slug: this.prevSlide.slug
+            slug: this.slidePrev.slug
           }
         };
       }
-    },
-
-    /**
-     * @return {Object} The previous slide.
-     */
-    prevSlide() {
-      return this.$store.getters.slidePrev;
     },
 
     /**
