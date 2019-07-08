@@ -4,6 +4,7 @@
       thumb(
         v-for="(thumb, index) in content.thumbs",
         :index="index",
+        :key="thumb.slug",
         :slideshow="content.slug",
         :slug="thumb.slug",
         :thumb="thumb.thumb",

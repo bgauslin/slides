@@ -11,8 +11,11 @@ import theme from './vue/store/theme';
 import thumbs from './vue/store/thumbs';
 import transitions from './vue/transitions';
 
+/** Import CSS for injection via JS. */
+import '../stylus/slides.styl';
+
 /** Initialize FastClick. */
-fastclick(document.body);
+fastclick.attach(document.body);
 
 /** Set up Vue and global utilities. */
 Vue.use(Vuex);
