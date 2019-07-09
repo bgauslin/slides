@@ -146,15 +146,17 @@ export default {
      * @return {string}
      */
     endpoint(view) {
+      const apiBaseUrl = (process.env.NODE_ENV === 'production') ? process.env.API_PROD : process.env.API_DEV;
+
       switch (view) {
         case 'home':
-          return `${this.$root.apiBaseURL}/slideshows`;
+          return `${apiBaseUrl}/slideshows`;
         case 'slide':
-          return `${this.$root.apiBaseURL}/slide/${this.slide.id}`;
+          return `${apiBaseUrl}/slide/${this.slide.id}`;
         case 'slideshow':
-          return `${this.$root.apiBaseURL}/slideshow/${this.$route.params.slideshow}`;
+          return `${apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
         case 'thumbs':
-          return `${this.$root.apiBaseURL}/slideshow/thumbs/${this.$route.params.slideshow}`;
+          return `${apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
       }
     },
 

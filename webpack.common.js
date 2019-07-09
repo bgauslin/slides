@@ -1,7 +1,8 @@
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const DotenvWebpack = require('dotenv-webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: ['@babel/polyfill/noConflict', './src/js/slides.js'],
@@ -14,8 +15,12 @@ module.exports = {
     new CopyPlugin([
       { from: 'src/root' },
     ]),
+    new DotenvWebpack(),
     new VueLoaderPlugin(),
   ],
+  node: {
+    fs: 'empty',
+  },
   module: {
     rules: [
       {

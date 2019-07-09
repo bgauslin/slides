@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import fastclick from 'fastclick';
 import setup from './setup';
 import Vue from 'vue/dist/vue.js';
@@ -68,9 +70,6 @@ transitions(router);
  */
 const app = new Vue({
   components: { App },
-  data: {
-    apiBaseURL: setup.apiBaseURL(),
-  },
   router,
   store,
   template: '<app></app>',
