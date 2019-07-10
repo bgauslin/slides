@@ -34,7 +34,7 @@ const slideshow = {
     hasSlideMedia: (state, getters) => {
       if (getters.hasSlideshow && state.slug) {
         const slide = state.slideshow.slides.find(slide => slide.slug === state.slug);
-        return (slide.media !== undefined) ? true : false;
+        return (slide.media !== undefined);
       }
     },
 

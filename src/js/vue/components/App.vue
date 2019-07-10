@@ -151,11 +151,11 @@ export default {
       switch (view) {
         case 'home':
           return `${apiBaseUrl}/slideshows`;
-        case 'slide':
-          return `${apiBaseUrl}/slide/${this.slide.id}`;
         case 'cover':
         case 'slideshow':
           return `${apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
+        case 'slide':
+          return `${apiBaseUrl}/slide/${this.slide.id}`;
         case 'thumbs':
           return `${apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
         default:
@@ -207,13 +207,14 @@ export default {
      */
     getContent() {
       this.app.dataLoaded = false;
+      this.app.showControls = (this.$route.name === 'slide');
 
       switch (this.$route.name) {
+        case 'home':
+          this.fetchJson('home');
+          break;
         case 'cover':
           this.getDataCover();
-          break;
-        case 'home':
-          this.getDataHome();
           break;
         case 'slide':
           this.getDataSlide();
@@ -228,7 +229,6 @@ export default {
      * Fetches API data for the 'cover' route/view.
      */
     getDataCover() {
-      this.app.showControls = false;
       if (this.slideshow) {
         this.ready(this.slideshow);
       } else {
@@ -237,21 +237,11 @@ export default {
     },
 
     /**
-     * Fetches API data for the 'home' route/view.
-     */
-    getDataHome() {
-      this.app.showControls = false;
-      this.fetchJson('home');
-    },
-
-    /**
      * Fetches API data for the 'slide' route/view and fetches full 'slideshow'
      * data if it hasn't been fetched and stored yet.
      * @async
      */
     getDataSlide() {
-      this.app.showControls = true;
-
        // Set slug for slide id lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
@@ -281,11 +271,8 @@ export default {
      * @async
      */
     getDataThumbs() {
-      this.app.showControls = false;
-
       const fetchData = async () => {
         await this.fetchJson('thumbs');
-
         if (!this.slideshow) {
           await this.fetchJson('slideshow');
         }
