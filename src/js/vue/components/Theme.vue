@@ -8,15 +8,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
   mounted() {
     this.setTheme();
   },
 
   computed: {
-    ...mapGetters([
-      'theme',
-    ]),
+    ...mapGetters(['theme']),
 
     /** @return {string} */
     svgIcon() {

@@ -28,9 +28,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters([
-      'slideFirst',
-    ])
+    ...mapGetters(['slideFirst'])
   },
 
   methods: {
