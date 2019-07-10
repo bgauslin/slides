@@ -23,7 +23,10 @@ export default {
   },
   
   methods: {
-    /** @return {string} CSS classes for multiple images. */
+    /**
+     * @param {!string} name - Base classname for the element.
+     * @return {string} CSS classes for multiple images.
+     */
     className(name) {
       return (this.images.length > 1) ? `${name} ${name}--multiple` : name;
     },
