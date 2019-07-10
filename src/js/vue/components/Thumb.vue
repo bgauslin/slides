@@ -27,12 +27,5 @@ export default {
       width: Number,
     },
   },
-
-  computed: {
-    /** @return {number} */
-    count() {
-      return this.index + 1;
-    }
-  },
 }
 </script>
