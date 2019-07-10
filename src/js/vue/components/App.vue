@@ -85,7 +85,7 @@ export default {
   },
 
   watch: {
-    '$route' (to, from) {      
+    '$route' (to, from) {
       this.getContent();
     }
   },
@@ -153,20 +153,24 @@ export default {
           return `${apiBaseUrl}/slideshows`;
         case 'slide':
           return `${apiBaseUrl}/slide/${this.slide.id}`;
+        case 'cover':
         case 'slideshow':
           return `${apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
         case 'thumbs':
           return `${apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
+        default:
+          return;
       }
     },
 
     /**
      * Fetches API data from an endpoint (which is based on the view/route),
      * then stores that data to avoid further (redundant) API calls.
-     * @param {!string} endpoint - API endpoint.
      * @param {!string} view - Which route/view.
      */
-    fetchJson: async function(endpoint, view) {
+    fetchJson: async function(view) {
+      const endpoint = this.endpoint(view);
+
       try {
         const response = await fetch(endpoint);
         const data = await response.json();
@@ -228,7 +232,7 @@ export default {
       if (this.slideshow) {
         this.ready(this.slideshow);
       } else {
-        this.fetchJson(this.endpoint('slideshow'), 'cover');
+        this.fetchJson('cover');
       }
     },
 
@@ -237,7 +241,7 @@ export default {
      */
     getDataHome() {
       this.app.showControls = false;
-      this.fetchJson(this.endpoint('home'), 'home');
+      this.fetchJson('home');
     },
 
     /**
@@ -255,12 +259,12 @@ export default {
         // Get the slideshow first, then the slide (or the slide won't have
         // a slot to get stored in).
         if (!this.slideshow) {
-          await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
+          await this.fetchJson('slideshow');
         }
         // Wait until we've confirmed that the slide doesn't have media before
         // fetching the full slide and storing its media.
         if (!this.hasSlideMedia) {
-          await this.fetchJson(this.endpoint('slide'), 'slide');
+          await this.fetchJson('slide');
         }
       }
 
@@ -280,10 +284,10 @@ export default {
       this.app.showControls = false;
 
       const fetchData = async () => {
-        await this.fetchJson(this.endpoint('thumbs'), 'thumbs');
+        await this.fetchJson('thumbs');
 
         if (!this.slideshow) {
-          await this.fetchJson(this.endpoint('slideshow'), 'slideshow');
+          await this.fetchJson('slideshow');
         }
       }
 
