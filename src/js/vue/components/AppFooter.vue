@@ -2,8 +2,7 @@
   footer.footer
     p.copyright
       span.copyright__bug © 2018–{{ currentYear }}
-      a(
-        class="copyright__link",
+      a.copyright__link(
         :href="linkURL",
         :title="linkTitle",
       ) {{ owner }}

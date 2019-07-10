@@ -1,6 +1,5 @@
 <template lang="pug">
-  div(
-    class="cover",
+  div.cover(
     :style="coverImage(content.image)",
   )
     div.cover__frame

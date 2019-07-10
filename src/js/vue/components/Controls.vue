@@ -9,8 +9,7 @@
           :to="prevRoute",
           :title="prevLabel",
         )
-          svg(
-            class="arrow-icon",
+          svg.arrow-icon(
             viewBox="0 0 32 32",
             v-html="svgArrowPath('left')",
           )
@@ -20,8 +19,7 @@
           :to="nextRoute",
           :title="nextLabel",
         )
-          svg(
-            class="arrow-icon",
+          svg.arrow-icon(
             viewBox="0 0 32 32",
             v-html="svgArrowPath('right')",
           )
