@@ -40,9 +40,7 @@ export default class {
    * @private
    */
   static resize_() {
-    window.addEventListener('resize', () => {
-      this.viewportHeight_();
-    });
+    window.addEventListener('resize', () => this.viewportHeight_());
   }
 
   /**
