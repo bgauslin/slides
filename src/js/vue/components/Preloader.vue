@@ -20,6 +20,10 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters(['theme']),
+  },
+
   created() {
     this.setOptions();
   },
@@ -29,12 +33,8 @@ export default {
   },
 
   methods: {
-    ...mapGetters([
-      'theme',
-    ]),
-
     /** 
-     * Attaches a loading spinner to an element.
+     * Attaches a loading spinner to an element after a brief delay.
      */
     attachSpinner() {
       window.setTimeout(() => {
@@ -47,8 +47,7 @@ export default {
      * Sets loading spinner color based on current theme.
      */
     setOptions() {
-      const theme = this.theme;
-      this.options.color = (theme === 'light') ? '#000' : '#fff';
+      this.options.color = (this.theme === 'light') ? '#000' : '#fff';
     },
 
     /**
