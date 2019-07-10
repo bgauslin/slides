@@ -169,33 +169,31 @@ export default {
      * @param {!string} view - Which route/view.
      */
     fetchJson: async function(view) {
-      const endpoint = this.endpoint(view);
-
       try {
-        const response = await fetch(endpoint);
+        const response = await fetch(this.endpoint(view));
         const data = await response.json();
-        // NOTE: All store actions are async via 'dispatch' (instead of 'commit')
-        // since we usually need to hit more than one endpoint on first run.
+
+        let action = null;
+        let payload = data;
         switch (view) {
-          case 'cover':
-            this.$store.dispatch('updateSlideshow', data);
-            this.ready(data);
-            break;
           case 'home':
-            this.ready(data.data);
+            payload = data.data;
+            break;
+          case 'cover':
+          case 'slideshow':
+            action = 'updateSlideshow';
             break;
           case 'slide':          
-            this.$store.dispatch('updateSlide', data);
-            this.ready(data);
-            break;
-          case 'slideshow':
-            this.$store.dispatch('updateSlideshow', data);
+            action = 'updateSlide';
             break;
           case 'thumbs':
-            this.$store.dispatch('updateThumbs', data);
-            this.ready(data);
+            action = 'updateThumbs';
             break;
         }
+        if (action) {
+          this.$store.dispatch(action, payload);
+        }
+        this.ready(payload);
       } catch (e) {
         alert('Currently unable to fetch data. :(');
       }
