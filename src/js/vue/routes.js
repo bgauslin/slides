@@ -1,8 +1,8 @@
-import Home from './components/Home.vue';
-import Slide from './components/Slide.vue';
 import Cover from './components/Cover.vue';
-import Thumbs from './components/Thumbs.vue';
+import Home from './components/Home.vue';
 import NotFound from './components/NotFound.vue';
+import Slide from './components/Slide.vue';
+import Thumbs from './components/Thumbs.vue';
 
 export default () => {
   const routes = [
@@ -31,10 +31,15 @@ export default () => {
       name: 'redirect',
       redirect: '/',
     },
+    // https://stackoverflow.com/questions/45619407/how-to-create-a-404-component-in-vuejs-using-vue-router?rq=1
     {
-      path: '*',
+      path: '/404',
       name: 'notFound',
       component: NotFound,
+    },  
+    {
+      path: '*',
+      redirect: '/404',
     },
   ];
 
