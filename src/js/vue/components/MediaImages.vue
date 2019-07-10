@@ -1,13 +1,13 @@
 <template lang="pug">
   div(
     v-if="images",
-    :class="['images', imagesClass]",
+    :class="className('images')",
   )
     template(
       v-for="image in images",
     )
       single-image(
-        :className="imageClass",
+        :className="className('image')",
         :image="image",
       )
 </template>
@@ -22,19 +22,10 @@ export default {
     images: Array,
   },
   
-  computed: {
-    /** @return {string} CSS class for multiple images. */
-    imagesClass() {
-      if (this.images.length > 1) {
-       return 'images--multiple';
-      }
-    },
-
-    /** @return {string} CSS class for a single image. */
-    imageClass() {
-      if (this.images.length > 1) {
-       return 'image--multiple';
-      }
+  methods: {
+    /** @return {string} CSS classes for multiple images. */
+    className(name) {
+      return (this.images.length > 1) ? `${name} ${name}--multiple` : name;
     },
   }
 }

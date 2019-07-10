@@ -1,6 +1,6 @@
 <template lang="pug">
   div(
-    :class="['image', 'image--' + orientation(image), className]",
+    :class="[className, 'image--' + orientation(image)]",
   )
     figure.image__frame(
       :style="aspectRatio(image)",
