@@ -1,6 +1,4 @@
 require('dotenv').config();
-
-import fastclick from 'fastclick';
 import setup from './setup';
 import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
@@ -15,9 +13,6 @@ import transitions from './vue/transitions';
 
 /** Import CSS for injection via JS. */
 import '../stylus/slides.styl';
-
-/** Initialize FastClick. */
-fastclick.attach(document.body);
 
 /** Set up Vue and global utilities. */
 Vue.use(Vuex);
