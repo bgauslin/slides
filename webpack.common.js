@@ -40,23 +40,15 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
+      // TODO: Debug empty <style> element being written into <head>.
       {
-        test: /\.styl(us)?$/,
+        test: /\.styl$/,
+        exclude: /node_modules/, 
         use: [
-          'vue-style-loader',
+          'style-loader',
           'css-loader',
-          'stylus-loader'
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          {
-            loader: 'css-loader',
-            options: { importLoaders: 1 },
-          },
           'postcss-loader',
+          'stylus-loader',
         ]
       },
       {
