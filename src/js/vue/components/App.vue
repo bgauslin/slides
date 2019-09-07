@@ -28,6 +28,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { Query } from '../../queries/index';
 import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
@@ -164,14 +165,37 @@ export default {
     },
 
     /**
+     * Sets the Graph QL query depending on the route/view.
+     * @param {!string} view - Route name.
+     * @return {string}
+     */
+    gqlQuery(view) {
+      switch (view) {
+        case 'home':
+          return Query.allSlideshows;
+        case 'cover':
+        case 'slideshow':
+          return Query.slideshow;
+        case 'slide':
+          return Query.slide;
+        case 'thumbs':
+          return Query.thumbs;
+      }
+    },
+
+    /**
      * Fetches API data from an endpoint (which is based on the view/route),
      * then stores that data to avoid further (redundant) API calls.
      * @param {!string} view - Which route/view.
      */
     fetchJson: async function(view) {
+      const query = this.gqlQuery(view);
+
       try {
-        const response = await fetch(this.endpoint(view));
-        const data = await response.json();
+        // TODO: Update fetch for GraphQL here...
+
+        // const response = await fetch(this.endpoint(view));
+        // const data = await response.json();
 
         let action = null;
         let payload = data;
