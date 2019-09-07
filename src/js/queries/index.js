@@ -1,13 +1,13 @@
-import allSlideshows from '../../queries/allSlideshows';
-import slide from '../../queries/slide';
-import slideshow from '../../queries/slideshow';
-import thumbs from '../../queries/thumbs';
+import allSlideshows from './allSlideshows';
+// import slide from './slide';
+// import slideshow from './slideshow';
+// import thumbs from './thumbs';
 
 const Query = {
   allSlideshows,
-  slide,
-  slideshow,
-  thumbs,
+  // slide,
+  // slideshow,
+  // thumbs,
 }
 
 export { Query };

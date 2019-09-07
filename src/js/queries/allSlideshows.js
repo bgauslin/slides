@@ -3,8 +3,8 @@
 const allSlideshows = `{
   slideshows: entries(section: "slides", type: "slideDeck") {
     ...on slides_slideDeck_Entry {
-    	title
-    	summary
+      title
+      summary
       id
       slug
       image: slideshowCover {

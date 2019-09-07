@@ -142,30 +142,7 @@ export default {
     },
 
     /**
-     * Sets the API endpoint depending on the route/view.
-     * @param {!string} view - Route name.
-     * @return {string}
-     */
-    endpoint(view) {
-      const apiBaseUrl = (process.env.NODE_ENV === 'production') ? process.env.API_PROD : process.env.API_DEV;
-
-      switch (view) {
-        case 'home':
-          return `${apiBaseUrl}/slideshows`;
-        case 'cover':
-        case 'slideshow':
-          return `${apiBaseUrl}/slideshow/${this.$route.params.slideshow}`;
-        case 'slide':
-          return `${apiBaseUrl}/slide/${this.slide.id}`;
-        case 'thumbs':
-          return `${apiBaseUrl}/slideshow/thumbs/${this.$route.params.slideshow}`;
-        default:
-          return;
-      }
-    },
-
-    /**
-     * Sets the Graph QL query depending on the route/view.
+     * Sets Graph QL query depending on the route/view.
      * @param {!string} view - Route name.
      * @return {string}
      */
@@ -189,19 +166,28 @@ export default {
      * @param {!string} view - Which route/view.
      */
     fetchJson: async function(view) {
+      const endpoint = (process.env.NODE_ENV === 'production') ?
+          process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
       const query = this.gqlQuery(view);
 
-      try {
-        // TODO: Update fetch for GraphQL here...
+      console.log('query', query);
 
-        // const response = await fetch(this.endpoint(view));
-        // const data = await response.json();
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({query: query}),
+        });
+
+        const data = await response.json();
 
         let action = null;
-        let payload = data;
+        const payload = data.data;
         switch (view) {
           case 'home':
-            payload = data.data;
             break;
           case 'cover':
           case 'slideshow':
@@ -214,10 +200,13 @@ export default {
             action = 'updateThumbs';
             break;
         }
+
         if (action) {
           this.$store.dispatch(action, payload);
         }
+
         this.ready(payload);
+
       } catch (e) {
         alert('Currently unable to fetch data. :(');
       }
@@ -313,6 +302,8 @@ export default {
      * @param {Object} data
      */
     ready(data) {
+      console.log('ready.data', data);
+      // return;
       this.app.content = data;
       this.app.dataLoaded = true;
       document.title = this.docTitle();

@@ -17,7 +17,7 @@
       img.image__hi-res(
         :ready="!loading",
         :alt="image.alt",
-        :src="image.medium.src",
+        :src="image.medium",
         :srcset="srcset(image)",
         sizes="100vw",
       )
@@ -33,9 +33,9 @@ export default {
     className: String,
     image: {
       alt: String,
-      medium: {
-        src: String,
-      },
+      small: String,
+      medium: String,
+      large: String,
       placeholder: String,
     },
   },
@@ -63,8 +63,10 @@ export default {
      *     bottom padding of an inline 'style' element.
      */
     aspectRatio(image) {
-      const ratio = image.large.height / image.large.width * 100;
-      return `padding: 0 0 ${ratio}%;`;
+      // TODO: Add width and height to query.
+      return 'padding: 0 0 75%;';
+      // const ratio = image.large.height / image.large.width * 100;
+      // return `padding: 0 0 ${ratio}%;`;
     },
 
     /**
@@ -85,7 +87,9 @@ export default {
      * @return {string}
      */
     orientation(image) {
-      return (image.large.height > image.large.width) ? 'portrait' : 'landscape';
+      // TODO: Add width and height to query.
+      return 'landscape';
+      // return (image.large.height > image.large.width) ? 'portrait' : 'landscape';
     },
 
     /**
@@ -101,7 +105,9 @@ export default {
      * @return {string}
      */
     srcset(image) {
-      return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
+      // TODO: Add width and height to query.
+      return image.medium.src;
+      // return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
     },
   },
 }
