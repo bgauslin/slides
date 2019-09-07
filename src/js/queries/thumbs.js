@@ -1,6 +1,6 @@
 // http://gauslin.test/api/v2/slideshow/thumbs/<slug:{slug}>
 
-const thumbs = `{
+const thumbs = (slug) => `{
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: "${slug}") {
     ...on slides_slideDeck_Entry {
     	title

@@ -17,9 +17,7 @@
       img.image__hi-res(
         :ready="!loading",
         :alt="image.alt",
-        :src="image.medium",
-        :srcset="srcset(image)",
-        sizes="100vw",
+        :src="image.src",
       )
 </template>
 
@@ -33,9 +31,9 @@ export default {
     className: String,
     image: {
       alt: String,
-      small: String,
-      medium: String,
-      large: String,
+      src: String,
+      height: String,
+      width: String,
       placeholder: String,
     },
   },
@@ -63,10 +61,8 @@ export default {
      *     bottom padding of an inline 'style' element.
      */
     aspectRatio(image) {
-      // TODO: Add width and height to query.
-      return 'padding: 0 0 75%;';
-      // const ratio = image.large.height / image.large.width * 100;
-      // return `padding: 0 0 ${ratio}%;`;
+      const ratio = image.height / image.width * 100;
+      return `padding: 0 0 ${ratio}%;`;
     },
 
     /**
@@ -87,9 +83,7 @@ export default {
      * @return {string}
      */
     orientation(image) {
-      // TODO: Add width and height to query.
-      return 'landscape';
-      // return (image.large.height > image.large.width) ? 'portrait' : 'landscape';
+      return (image.height > image.width) ? 'portrait' : 'landscape';
     },
 
     /**
@@ -100,14 +94,14 @@ export default {
       return `background: url(${image.placeholder}) center / contain no-repeat;`;
     },
 
+    // TODO: Restore srcset and sizes after getting/setting width and height
+    // in GQL query.
     /**
      * @param {!Object} image
      * @return {string}
      */
     srcset(image) {
-      // TODO: Add width and height to query.
-      return image.medium.src;
-      // return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
+      return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
     },
   },
 }

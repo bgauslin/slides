@@ -1,7 +1,7 @@
 // http://gauslin.test/api/v2/slide/<entryId:\d+>
 
 // TODO: publication
-const slide = `{
+const slide = (id) => `{
   slide: entries(section: "slides", type: "slide", id: ${id}) {
     ...on slides_slide_Entry {
     	title
@@ -11,12 +11,12 @@ const slide = `{
       media: slideshowMedia {
         ...on slideshowMedia_images_BlockType {
           images {
-            alt: title
             ...on slides_Asset {
-      		    small: url @transform(height: 400, immediately: true)
-          		medium: url @transform(height: 600, immediately: true)
-          		large: url @transform(height: 800, immediately: true)
-          		placeholder: url @transform(height: 40, immediately: true)
+              alt: title
+              src: url @transform(height: 800, immediately: true)
+              placeholder: url @transform(height: 40, immediately: true)
+              height
+              width
             }
           }
         }

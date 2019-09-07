@@ -152,7 +152,7 @@ export default {
           return Query.allSlideshows;
         case 'cover':
         case 'slideshow':
-          return Query.slideshow;
+          return Query.slideshow(this.$route.params.slug);
         case 'slide':
           return Query.slide;
         case 'thumbs':
@@ -168,6 +168,7 @@ export default {
     fetchJson: async function(view) {
       const endpoint = (process.env.NODE_ENV === 'production') ?
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
+
       const query = this.gqlQuery(view);
 
       console.log('query', query);

@@ -9,10 +9,10 @@
           :title="linkTitle(slideshow)",
           :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
         )
-          single-image(
-            v-if="slideshow.image[0]",
-            :image="slideshow.image[0]",
-          )
+          template(v-for="image in slideshow.image")
+            single-image(
+              :image="image",
+            )
           h2.slideshow__heading {{ slideshow.title }}
 </template>
 
