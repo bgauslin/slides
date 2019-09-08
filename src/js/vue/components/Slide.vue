@@ -39,7 +39,7 @@ export default {
       caption: String,
       media: {
         images: Array,
-        publication: String,
+        publication: Object,
         text: String,
       }
     }
@@ -51,7 +51,8 @@ export default {
      * @return {string}
      */
     className(name) {
-      return (this.content.media.images.length > 1) ? `${name} ${name}--multiple` : name;
+      return (this.content.media.images && this.content.media.images.length > 1)
+          ? `${name} ${name}--multiple` : name;
     },
   }
 }
