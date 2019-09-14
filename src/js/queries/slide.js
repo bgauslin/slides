@@ -1,4 +1,5 @@
 // TODO: publication
+// TODO: parent slideshow
 const slide = `query ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug, ) {
     ...on slides_slide_Entry {

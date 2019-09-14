@@ -19,6 +19,7 @@
 </template>
 
 <script>
+// TODO(Slide): Update content.caption with JS Markdown.
 import MediaImages from './MediaImages.vue';
 import MediaPublication from './MediaPublication.vue';
 
