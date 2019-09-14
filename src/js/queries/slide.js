@@ -1,12 +1,10 @@
-// http://gauslin.test/api/v2/slide/<entryId:\d+>
-
 // TODO: publication
-const slide = (id) => `{
-  slide: entries(section: "slides", type: "slide", id: ${id}) {
+const slide = `query ($slug: [String!]) {
+  slide: entries(section: "slides", type: "slide", slug: $slug, ) {
     ...on slides_slide_Entry {
     	title
       id
-    	caption: copy
+      caption: copy
       slug
       media: slideshowMedia {
         ...on slideshowMedia_images_BlockType {

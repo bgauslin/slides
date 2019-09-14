@@ -149,20 +149,31 @@ export default {
     gqlQuery(view) {
       switch (view) {
         case 'home':
-          return Query.allSlideshows;
+          return {
+            name: Query.allSlideshows
+          };
         case 'cover':
         case 'slideshow':
-          return Query.slideshow(this.$route.params.slug);
+          return {
+            name: Query.slideshow,
+            slideshow: this.$route.params.slideshow,
+          };
         case 'slide':
-          return Query.slide;
+          return {
+            name: Query.slide,
+            slug: this.$route.params.slug,
+          };
         case 'thumbs':
-          return Query.thumbs;
+          return {
+            name: Query.thumbs,
+            slug: this.$route.params.slug, // TODO: rename this variable(?)
+          };
       }
     },
 
     /**
-     * Fetches API data from an endpoint (which is based on the view/route),
-     * then stores that data to avoid further (redundant) API calls.
+     * Fetches API data from an endpoint based on the view/route, then stores
+     * it to avoid redundant API calls.
      * @param {!string} view - Which route/view.
      */
     fetchJson: async function(view) {
@@ -170,8 +181,8 @@ export default {
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
       const query = this.gqlQuery(view);
-
-      console.log('query', query);
+      const slideshow = query.slideshow ? query.slideshow : null;
+      const slug = query.slug ? query.slug : null;
 
       try {
         const response = await fetch(endpoint, {
@@ -180,33 +191,44 @@ export default {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
-          body: JSON.stringify({query: query}),
+          body: JSON.stringify({
+            query: query.name,
+            variables: { slideshow, slug },
+          }),
         });
 
-        const data = await response.json();
+        const resp = await response.json();
+        // console.log('resp', resp);
 
         let action = null;
-        const payload = data.data;
+        let content = null;
         switch (view) {
           case 'home':
+            content = resp.data;
             break;
           case 'cover':
           case 'slideshow':
             action = 'updateSlideshow';
+            content = resp.data.slideshow[0];
             break;
           case 'slide':          
             action = 'updateSlide';
+            content = resp.data.slide[0];
             break;
           case 'thumbs':
             action = 'updateThumbs';
+            content = resp.data.thumbs;
             break;
         }
 
-        if (action) {
-          this.$store.dispatch(action, payload);
+        // Save data to the store to prevent over-fetching on subsequent route
+        // changes.
+        if (action && content) {
+          this.$store.dispatch(action, content);
         }
 
-        this.ready(payload);
+        // Pass content into the component tree for rendering.
+        this.ready(content);
 
       } catch (e) {
         alert('Currently unable to fetch data. :(');
@@ -300,12 +322,10 @@ export default {
     /**
      * Passes API data as a prop, sets loaded flag to true, and updates the
      * document title.
-     * @param {Object} data
+     * @param {Object} content
      */
-    ready(data) {
-      console.log('ready.data', data);
-      // return;
-      this.app.content = data;
+    ready(content) {
+      this.app.content = content;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
       this.sendPageview();

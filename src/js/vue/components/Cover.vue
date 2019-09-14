@@ -1,15 +1,15 @@
 <template lang="pug">
   div.cover(
-    :style="coverImage(content.slideshow[0].image[0])",
+    :style="coverImage(content.image[0])",
   )
     div.cover__frame
       header.cover__header
-        h2.cover__heading {{ content.slideshow[0].title }}
-        p.cover__summary {{ content.slideshow[0].summary }}
+        h2.cover__heading {{ content.title }}
+        p.cover__summary {{ content.summary }}
         router-link(
           class="cover__link",
-          :title="content.slideshow[0].title",
-          :to="{ name: 'slide', params: { slideshow: content.slideshow[0].slug, slug: slideFirst.slug } }",
+          :title="content.title",
+          :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
         ) Start slideshow
 </template>
 

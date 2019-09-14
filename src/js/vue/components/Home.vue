@@ -12,6 +12,8 @@
           template(v-for="image in slideshow.image")
             single-image(
               :image="image",
+              width="900",
+              height="600",
             )
           h2.slideshow__heading {{ slideshow.title }}
 </template>

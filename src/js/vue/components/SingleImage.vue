@@ -1,6 +1,6 @@
 <template lang="pug">
   div(
-    :class="[className, 'image--' + orientation(image)]",
+    :class="[className, orientation(image)]",
   )
     figure.image__frame(
       :style="aspectRatio(image)",
@@ -30,12 +30,14 @@ export default {
   props: {
     className: String,
     image: {
-      alt: String,
       src: String,
-      height: String,
-      width: String,
+      alt: String,
       placeholder: String,
+      width: String,
+      height: String,
     },
+    width: String,
+    height: String, // optional
   },
 
   data() {
@@ -61,7 +63,12 @@ export default {
      *     bottom padding of an inline 'style' element.
      */
     aspectRatio(image) {
-      const ratio = image.height / image.width * 100;
+      // If height and width are passed in as props, use those values.
+      // Otherwise, get the values from the image object.
+      const height = this.height ? this.height : image.height;
+      const width = this.width ? this.width : image.height;
+
+      const ratio = parseInt(height) / parseInt(width) * 100;
       return `padding: 0 0 ${ratio}%;`;
     },
 
@@ -83,7 +90,9 @@ export default {
      * @return {string}
      */
     orientation(image) {
-      return (image.height > image.width) ? 'portrait' : 'landscape';
+      if (image.height && image.width) {
+        return (image.height > image.width) ? 'image--portrait' : 'image--landscape';
+      }
     },
 
     /**
@@ -94,8 +103,7 @@ export default {
       return `background: url(${image.placeholder}) center / contain no-repeat;`;
     },
 
-    // TODO: Restore srcset and sizes after getting/setting width and height
-    // in GQL query.
+    // TODO(SingleImage): Restore srcset, sizes after initial GraphQL refactor.
     /**
      * @param {!Object} image
      * @return {string}
