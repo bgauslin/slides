@@ -66,7 +66,7 @@ export default {
       // If height and width are passed in as props, use those values.
       // Otherwise, get the values from the image object.
       const height = this.height ? this.height : image.height;
-      const width = this.width ? this.width : image.height;
+      const width = this.width ? this.width : image.width;
 
       const ratio = parseInt(height) / parseInt(width) * 100;
       return `padding: 0 0 ${ratio}%;`;

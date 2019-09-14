@@ -6,12 +6,12 @@
       :class="className('slide__media')"
     )
       media-images(
-        v-if="content.media.images",
-        :images="content.media.images",
+        v-if="content.media[0].images",
+        :images="content.media[0].images",
       )
       media-publication(
-        v-if="content.media.publication",
-        :publication="content.media.publication",
+        v-if="content.media[0].publication",
+        :publication="content.media[0].publication",
       )
     div.slide__caption(
       v-html="content.caption",
@@ -31,10 +31,7 @@ export default {
   props: {
     content: {
       caption: String,
-      media: {
-        images: Array,
-        publication: Object,
-      }
+      media: Array,
     }
   },
 
@@ -44,7 +41,7 @@ export default {
      * @return {string}
      */
     className(name) {
-      return (this.content.media.images && this.content.media.images.length > 1)
+      return (this.content.media[0].images && this.content.media[0].images.length > 1)
           ? `${name} ${name}--multiple` : name;
     },
   }

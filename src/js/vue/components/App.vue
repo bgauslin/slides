@@ -133,7 +133,8 @@ export default {
         case 'cover':
           return `${this.app.content.title}`;
         case 'slide':
-          return `${this.app.content.title} · ${this.app.content.slideshow.title}`;
+          return `${this.app.content.title}`;
+          // return `${this.app.content.title} · ${this.app.content.slideshow[0].title}`;
         case 'thumbs':
           return `Thumbnails · ${this.app.content.title}`;
         default:
@@ -161,12 +162,12 @@ export default {
         case 'slide':
           return {
             name: Query.slide,
-            slug: this.$route.params.slug,
+            slug: this.$route.params.slug, // TODO: add 'slideshow' here as well(?)
           };
         case 'thumbs':
           return {
             name: Query.thumbs,
-            slug: this.$route.params.slug, // TODO: rename this variable(?)
+            slideshow: this.$route.params.slideshow,
           };
       }
     },
@@ -176,7 +177,7 @@ export default {
      * it to avoid redundant API calls.
      * @param {!string} view - Which route/view.
      */
-    fetchJson: async function(view) {
+    async fetchJson(view) {
       const endpoint = (process.env.NODE_ENV === 'production') ?
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
@@ -198,7 +199,6 @@ export default {
         });
 
         const resp = await response.json();
-        // console.log('resp', resp);
 
         let action = null;
         let content = null;
@@ -227,8 +227,7 @@ export default {
           this.$store.dispatch(action, content);
         }
 
-        // Pass content into the component tree for rendering.
-        this.ready(content);
+        return content;
 
       } catch (e) {
         alert('Currently unable to fetch data. :(');
@@ -245,7 +244,7 @@ export default {
 
       switch (this.$route.name) {
         case 'home':
-          this.fetchJson('home');
+          this.getDataHome();
           break;
         case 'cover':
           this.getDataCover();
@@ -260,13 +259,22 @@ export default {
     },
 
     /**
+     * Fetches API data for the 'home' route/view.
+     */
+    async getDataHome() {
+      const content = await this.fetchJson('home');
+      this.ready(content);
+    },
+
+    /**
      * Fetches API data for the 'cover' route/view.
      */
-    getDataCover() {
+    async getDataCover() {
       if (this.slideshow) {
         this.ready(this.slideshow);
       } else {
-        this.fetchJson('cover');
+        const content = await this.fetchJson('cover');
+        this.ready(content);
       }
     },
 
@@ -275,8 +283,8 @@ export default {
      * data if it hasn't been fetched and stored yet.
      * @async
      */
-    getDataSlide() {
-       // Set slug for slide id lookup.
+    async getDataSlide() {
+       // Set slug for slide lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
       const fetchData = async () => {
@@ -285,10 +293,12 @@ export default {
         if (!this.slideshow) {
           await this.fetchJson('slideshow');
         }
+
         // Wait until we've confirmed that the slide doesn't have media before
         // fetching the full slide and storing its media.
         if (!this.hasSlideMedia) {
-          await this.fetchJson('slide');
+          const content = await this.fetchJson('slide');
+          this.ready(content);
         }
       }
 
@@ -304,12 +314,13 @@ export default {
      * 'slideshow' data if it hasn't been fetched and stored yet.
      * @async
      */
-    getDataThumbs() {
+    async getDataThumbs() {
       const fetchData = async () => {
-        await this.fetchJson('thumbs');
         if (!this.slideshow) {
           await this.fetchJson('slideshow');
         }
+        const content = await this.fetchJson('thumbs');
+        this.ready(content);
       }
 
       if (this.thumbs) {
