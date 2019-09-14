@@ -13,10 +13,6 @@
         v-if="content.media.publication",
         :publication="content.media.publication",
       )
-      media-text(
-        v-if="content.media.text",
-        :text="content.media.text",
-      )
     div.slide__caption(
       v-html="content.caption",
     )
@@ -24,13 +20,11 @@
 
 <script>
 import MediaImages from './MediaImages.vue';
-import MediaText from './MediaText.vue';
 import MediaPublication from './MediaPublication.vue';
 
 export default {
   components: {
     MediaImages,
-    MediaText,
     MediaPublication,
   },
 
@@ -39,8 +33,7 @@ export default {
       caption: String,
       media: {
         images: Array,
-        publication: String,
-        text: String,
+        publication: Object,
       }
     }
   },
@@ -51,7 +44,8 @@ export default {
      * @return {string}
      */
     className(name) {
-      return (this.content.media.images.length > 1) ? `${name} ${name}--multiple` : name;
+      return (this.content.media.images && this.content.media.images.length > 1)
+          ? `${name} ${name}--multiple` : name;
     },
   }
 }
