@@ -17,6 +17,7 @@
       )
       p.publication__date {{ publication.date }}
       a.publication__link(
+        v-if="publicationUrl",
         :href="publicationUrl",
         :title="'Read the ' + publication.publisher + ' article'",
         :url-type="publicationUrlType",
@@ -41,15 +42,20 @@ export default {
     }
   },
 
+  
   computed: {
     /**
      * Returns a PDF link if there's a file; typical link otherwise.
      * @return {string}
      */
     publicationUrl() {
-      return this.publication.link[0].file
-          ? this.publication.link[0].file[0].url
-          : this.publication.link[0].url;
+      // TODO(publication.externalUrl): Remove/update this temporary quickfix
+      // which doesn't check for an external link since that throws a console
+      // error.
+      const link = this.publication.link[0];
+      if (link && link.file) {
+        return link.file[0].url;
+      }
     },
 
     /**
@@ -58,7 +64,8 @@ export default {
      * @return {string}
      */
     publicationUrlType() {
-      return this.publication.link[0].file ? 'download' : 'link';
+      const link = this.publication.link[0];
+      return link.file ? 'download' : 'link';
     },
   }
 }
