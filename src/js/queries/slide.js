@@ -3,39 +3,19 @@
 // TODO(graphql): Include parent slideshow info in query.
 
 /** @enum {number} */
-const ImageSmall = {
-  HEIGHT: 400,
+const ImageHeight = {
+  SMALL: 400,
+  MEDIUM: 600,
+  LARGE: 800,
+  PLACEHOLDER: 40,
 };
 
 /** @enum {number} */
-const ImageMedium = {
-  HEIGHT: 600,
-};
-
-/** @enum {number} */
-const ImageLarge = {
-  HEIGHT: 800,
-};
-
-/** @enum {number} */
-const PublicationSmall = {
-  WIDTH: 320,
-};
-
-/** @enum {number} */
-const PublicationMedium = {
-  WIDTH: 480,
-};
-
-/** @enum {number} */
-const PublicationLarge = {
-  WIDTH: 640,
-};
-
-/** @enum {number} */
-const ImagePlaceholder = {
-  HEIGHT: 40,
-  WIDTH: 60,
+const PublicationWidth = {
+  SMALL: 320,
+  MEIDUM: 480,
+  LARGE: 640,
+  PLACEHOLDER: 60,
 };
 
 // TODO: Fix console error for /shotgun/homes-lifestyles:
@@ -53,8 +33,8 @@ const slide = `query ($slug: [String!]) {
           images {
             ...on slides_Asset {
               alt: title
-              src: url @transform(height: ${ImageLarge.HEIGHT}, immediately: true)
-              placeholder: url @transform(height: ${ImagePlaceholder.HEIGHT}, immediately: true)
+              src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
+              placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
               height
               width
             }
@@ -69,8 +49,8 @@ const slide = `query ($slug: [String!]) {
               images: publicationPhoto {
                 ...on publications_Asset {
                   alt: title
-              		src: url @transform(width: ${PublicationLarge.WIDTH}, immediately: true)
-                  placeholder: url @transform(width: ${ImagePlaceholder.WIDTH}, immediately: true)
+              		src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
+                  placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
                   height
                   width
                 }

@@ -1,26 +1,20 @@
 // TODO(graphql): Add srcset images to query.
 
 /** @enum {number} */
-const ImageSmall = {
-  HEIGHT: 400,
+const ImageHeight = {
+  SMALL: 400,
+  MEDIUM: 600,
+  LARGE: 800,
+  PLACEHOLDER: 40,
 };
 
 /** @enum {number} */
-const ImageMedium = {
-  HEIGHT: 600,
-  WIDTH: 900,
-};
-
-/** @enum {number} */
-const ImageLarge = {
-  HEIGHT: 800,
-};
-
-/** @enum {number} */
-const ImagePlaceholder = {
-  HEIGHT: 40,
-  WIDTH: 60,
-};
+const ImageWidth = {
+  SMALL: 600,
+  MEDIUM: 900,
+  LARGE: 1200,
+  PLACEHOLDER: 60,
+}
 
 /** @const {string} */
 const slideshow = `query ($slideshow: [String!]) {
@@ -33,8 +27,8 @@ const slideshow = `query ($slideshow: [String!]) {
       image: slideshowCover {
         ...on slides_Asset {
           alt: title
-          src: url @transform(width: ${ImageMedium.WIDTH}, height: ${ImageMedium.HEIGHT}, immediately: true)
-          placeholder: url @transform(width: ${ImagePlaceholder.WIDTH}, height: ${ImagePlaceholder.HEIGHT}, immediately: true)
+          src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
+          placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
         }
       }
     }
