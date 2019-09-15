@@ -1,5 +1,5 @@
 /** @const {number} */
-const imageSize = 160;
+const thumbSize = 160;
 
 /** @const {string} */
 const thumbs = `query ($slideshow: [String!]) {
@@ -19,7 +19,7 @@ const thumbs = `query ($slideshow: [String!]) {
             images {
               ...on slides_Asset {
                 alt: title
-                src: url @transform(width: ${imageSize}, height: ${imageSize}, immediately: true)
+                src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
               }
             }
           }
@@ -29,7 +29,7 @@ const thumbs = `query ($slideshow: [String!]) {
                 images: publicationPhoto {
                   ...on publications_Asset {
                     alt: title
-                    src: url @transform(width: ${imageSize}, height: ${imageSize}, immediately: true)
+                    src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
                   }
                 }
               }

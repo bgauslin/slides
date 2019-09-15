@@ -2,22 +2,44 @@
 // TODO(graphql): Use 'id' instead of 'slug' for query.
 // TODO(graphql): Include parent slideshow info in query.
 
-// Image transforms for media images:
-// small.height: 400
-// medium.height: 600
-// large.height: 800 ✅
-
-// Image transforms for publication images:
-// small.width: 320
-// medium.width: 480
-// large.width: 640 ✅
-
 /** @enum {number} */
-const imagePlaceholder = {
-  height: 40,
-  width: 60,
+const ImageSmall = {
+  HEIGHT: 400,
 };
 
+/** @enum {number} */
+const ImageMedium = {
+  HEIGHT: 600,
+};
+
+/** @enum {number} */
+const ImageLarge = {
+  HEIGHT: 800,
+};
+
+/** @enum {number} */
+const PublicationSmall = {
+  WIDTH: 320,
+};
+
+/** @enum {number} */
+const PublicationMedium = {
+  WIDTH: 480,
+};
+
+/** @enum {number} */
+const PublicationLarge = {
+  WIDTH: 640,
+};
+
+/** @enum {number} */
+const ImagePlaceholder = {
+  HEIGHT: 40,
+  WIDTH: 60,
+};
+
+// TODO: Fix console error for /shotgun/homes-lifestyles:
+// external link instead of file download
 /** @const {string} */
 const slide = `query ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
@@ -31,8 +53,8 @@ const slide = `query ($slug: [String!]) {
           images {
             ...on slides_Asset {
               alt: title
-              src: url @transform(height: 800, immediately: true)
-              placeholder: url @transform(height: ${imagePlaceholder.height}, immediately: true)
+              src: url @transform(height: ${ImageLarge.HEIGHT}, immediately: true)
+              placeholder: url @transform(height: ${ImagePlaceholder.HEIGHT}, immediately: true)
               height
               width
             }
@@ -47,8 +69,8 @@ const slide = `query ($slug: [String!]) {
               images: publicationPhoto {
                 ...on publications_Asset {
                   alt: title
-              		src: url @transform(width: 640, immediately: true)
-                  placeholder: url @transform(width: ${imagePlaceholder.width}, immediately: true)
+              		src: url @transform(width: ${PublicationLarge.WIDTH}, immediately: true)
+                  placeholder: url @transform(width: ${ImagePlaceholder.WIDTH}, immediately: true)
                   height
                   width
                 }
