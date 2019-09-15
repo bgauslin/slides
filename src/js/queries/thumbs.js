@@ -5,7 +5,7 @@ const thumbSize = 160;
 const thumbs = `query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {
-    	title
+      title
       id
       slug
     }
