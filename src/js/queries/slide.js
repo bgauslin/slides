@@ -24,7 +24,7 @@ const PublicationWidth = {
 const slide = `query ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
     ...on slides_slide_Entry {
-    	title
+      title
       id
       caption: copy
       slug
@@ -49,7 +49,7 @@ const slide = `query ($slug: [String!]) {
               images: publicationPhoto {
                 ...on publications_Asset {
                   alt: title
-              		src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
+                  src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
                   placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
                   height
                   width
