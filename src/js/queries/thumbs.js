@@ -1,4 +1,7 @@
-// TODO(graphql): publication image
+/** @const {number} */
+const imageSize = 60;
+
+/** @const {string} */
 const thumbs = `query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {
@@ -16,7 +19,19 @@ const thumbs = `query ($slideshow: [String!]) {
             images {
               ...on slides_Asset {
                 alt: title
-                src: url @transform(width: 160, height: 160, immediately: true)
+                src: url @transform(width: ${imageSize}, height: ${imageSize}, immediately: true)
+              }
+            }
+          }
+          ...on slideshowMedia_publication_BlockType {
+            publication {
+              ...on publications_publication_Entry {
+                images: publicationPhoto {
+                  ...on publications_Asset {
+                    alt: title
+                    src: url @transform(width: ${imageSize}, height: ${imageSize}, immediately: true)
+                  }
+                }
               }
             }
           }

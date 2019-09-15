@@ -159,10 +159,11 @@ export default {
             name: Query.slideshow,
             slideshow: this.$route.params.slideshow,
           };
+        // TODO(graphql): Use 'id' instead of 'slug' in 'slide' query.
         case 'slide':
           return {
             name: Query.slide,
-            slug: this.$route.params.slug, // TODO: add 'slideshow' here as well(?)
+            slug: this.$route.params.slug,
           };
         case 'thumbs':
           return {
@@ -173,8 +174,8 @@ export default {
     },
 
     /**
-     * Fetches API data from an endpoint based on the view/route, then stores
-     * it to avoid redundant API calls.
+     * Fetches API data from an endpoint based on the route, then stores it to
+     * avoid redundant API calls.
      * @param {!string} view - Which route/view.
      */
     async fetchJson(view) {
@@ -235,8 +236,8 @@ export default {
     },
 
     /**
-     * Sets the loaded flag to false and calls a method based on the current
-     * route.
+     * Sets the loaded flag to false and calls a data-fetching method based on
+     * the current route.
      */
     getContent() {
       this.app.dataLoaded = false;

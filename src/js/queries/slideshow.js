@@ -1,8 +1,28 @@
-// TODO(srcset): Image transforms for cover image:
-// small.height: 400
-// medium.height: 600
-// large.height: 800
-// placeholder.height: 40
+// TODO(graphql): Add srcset images to query.
+
+/** @enum {number} */
+const imageSmall = {
+  height: 400,
+};
+
+/** @enum {number} */
+const imageMedium = {
+  height: 600,
+  width: 900,
+};
+
+/** @enum {number} */
+const imageLarge = {
+  height: 800,
+};
+
+/** @enum {number} */
+const imagePlaceholder = {
+  height: 40,
+  width: 60,
+};
+
+/** @const {string} */
 const slideshow = `query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {
@@ -13,8 +33,8 @@ const slideshow = `query ($slideshow: [String!]) {
       image: slideshowCover {
         ...on slides_Asset {
           alt: title
-          src: url @transform(width: 900, height: 600, immediately: true)
-          placeholder: url @transform(width: 60, height: 40, immediately: true)
+          src: url @transform(width: ${imageMedium.width}, height: ${imageMedium.height}, immediately: true)
+          placeholder: url @transform(width: ${imagePlaceholder.width}, height: ${imagePlaceholder.height}, immediately: true)
         }
       }
     }

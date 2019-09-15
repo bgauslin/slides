@@ -23,6 +23,7 @@ export default {
   },
 
   computed: {
+    // TODO(Thumb): Update for publication image.
     thumb() {
       return this.media.images[0];
     }

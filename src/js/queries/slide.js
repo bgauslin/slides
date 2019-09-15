@@ -1,17 +1,24 @@
-// TODO(graphql): parent slideshow
+// TODO(graphql): Add srcset images to query.
+// TODO(graphql): Use 'id' instead of 'slug' for query.
+// TODO(graphql): Include parent slideshow info in query.
 
-// TODO(srcset): Image transforms for media images:
+// Image transforms for media images:
 // small.height: 400
 // medium.height: 600
 // large.height: 800 ✅
-// placeholder.height: 40 ✅
 
-// TODO(srcset) Image transforms for publication images:
+// Image transforms for publication images:
 // small.width: 320
 // medium.width: 480
 // large.width: 640 ✅
-// placeholder.width: 60 ✅
 
+/** @enum {number} */
+const imagePlaceholder = {
+  height: 40,
+  width: 60,
+};
+
+/** @const {string} */
 const slide = `query ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
     ...on slides_slide_Entry {
@@ -25,7 +32,7 @@ const slide = `query ($slug: [String!]) {
             ...on slides_Asset {
               alt: title
               src: url @transform(height: 800, immediately: true)
-              placeholder: url @transform(height: 40, immediately: true)
+              placeholder: url @transform(height: ${imagePlaceholder.height}, immediately: true)
               height
               width
             }
@@ -41,7 +48,7 @@ const slide = `query ($slug: [String!]) {
                 ...on publications_Asset {
                   alt: title
               		src: url @transform(width: 640, immediately: true)
-                  placeholder: url @transform(width: 60, immediately: true)
+                  placeholder: url @transform(width: ${imagePlaceholder.width}, immediately: true)
                   height
                   width
                 }
