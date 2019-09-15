@@ -21,8 +21,10 @@
     "not dead"
   ],
   "dependencies": {
+    "@types/marked": "^0.6.5",
     "fastclick": "^1.0.6",
     "imagesloaded": "^4.1.1",
+    "marked": "^0.7.0",
     "spin": "0.0.1",
     "stylus": "^0.54.5",
     "vue": "^2.2.0",

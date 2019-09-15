@@ -14,12 +14,12 @@
         :publication="content.media[0].publication[0]",
       )
     div.slide__caption(
-      v-html="content.caption",
+      v-html="caption",
     )
 </template>
 
 <script>
-// TODO(Slide): Update content.caption with JS Markdown.
+import marked from 'marked';
 import MediaImages from './MediaImages.vue';
 import MediaPublication from './MediaPublication.vue';
 
@@ -33,6 +33,16 @@ export default {
     content: {
       caption: String,
       media: Array,
+    }
+  },
+
+  computed: {
+    /**
+     * Returns caption text with Markdown formatting applied.
+     * @return {string}
+     */
+    caption() {
+      return marked(this.content.caption);
     }
   },
 
