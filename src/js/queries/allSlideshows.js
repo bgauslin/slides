@@ -1,3 +1,8 @@
+// TODO(srcset): Image transforms for slideshows index images:
+// small.height: 400
+// medium.height: 600
+// large.height: 800
+// placeholder.height: 40
 const allSlideshows = `query {
   slideshows: entries(section: "slides", type: "slideDeck") {
     ...on slides_slideDeck_Entry {

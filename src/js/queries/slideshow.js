@@ -1,3 +1,8 @@
+// TODO(srcset): Image transforms for cover image:
+// small.height: 400
+// medium.height: 600
+// large.height: 800
+// placeholder.height: 40
 const slideshow = `query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {

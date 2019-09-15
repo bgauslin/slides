@@ -1,7 +1,7 @@
-// http://gauslin.test/api/v2/slideshow/thumbs/<slug:{slug}>
+// TODO(graphql): /api/v2/slideshow/thumbs/<slug:{slug}>
 
-const thumbs = (slug) => `{
-  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: "${slug}") {
+const thumbs = `query ($slideshow: [String!]) {
+  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: "$slideshow") {
     ...on slides_slideDeck_Entry {
     	title
       id
