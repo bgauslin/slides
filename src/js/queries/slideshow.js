@@ -17,7 +17,14 @@ const ImageWidth = {
 }
 
 /** @const {string} */
-const slideshow = `query ($slideshow: [String!]) {
+const slideshow = `
+fragment Cover on slides_Asset {
+  alt: title
+  src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
+  placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
+}
+
+query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {
       title
@@ -25,11 +32,7 @@ const slideshow = `query ($slideshow: [String!]) {
       slug
       summary
       image: slideshowCover {
-        ...on slides_Asset {
-          alt: title
-          src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
-          placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
-        }
+        ...Cover
       }
     }
     slides: children {
