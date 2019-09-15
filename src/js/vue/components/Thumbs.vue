@@ -6,7 +6,7 @@
         :key="slide.id",
         :slideshow="content.slug",
         :slug="slide.slug",
-        :media="slide.media[0]",
+        :media="slide.media",
       )
 </template>
 
@@ -23,6 +23,6 @@ export default {
       slug: String,
       title: String,
     }
-  }
+  },
 }
 </script>

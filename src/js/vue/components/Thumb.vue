@@ -17,15 +17,13 @@ export default {
   props: {
     slideshow: String,
     slug: String,
-    media: {
-      images: Array,
-    }
+    media: Array,
   },
 
   computed: {
-    // TODO(Thumb): Update for publication image.
     thumb() {
-      return this.media.images[0];
+      const media = this.media[0];
+      return media.images ? media.images[0] : media.publication[0].images[0];
     }
   },
 }

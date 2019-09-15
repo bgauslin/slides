@@ -1,5 +1,5 @@
 /** @const {number} */
-const imageSize = 60;
+const imageSize = 160;
 
 /** @const {string} */
 const thumbs = `query ($slideshow: [String!]) {
