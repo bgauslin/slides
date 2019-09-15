@@ -1,7 +1,6 @@
-// TODO(graphql): /api/v2/slideshow/thumbs/<slug:{slug}>
-
+// TODO(graphql): publication image
 const thumbs = `query ($slideshow: [String!]) {
-  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: "$slideshow") {
+  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...on slides_slideDeck_Entry {
     	title
       id
@@ -14,7 +13,7 @@ const thumbs = `query ($slideshow: [String!]) {
         slug
         media: slideshowMedia {
           ...on slideshowMedia_images_BlockType {
-            thumbs: images {
+            images {
               ...on slides_Asset {
                 alt: title
                 src: url @transform(width: 160, height: 160, immediately: true)

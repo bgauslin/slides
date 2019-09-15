@@ -2,12 +2,11 @@
   div.thumbs
     div.thumbs__group
       thumb(
-        v-for="(thumb, index) in content.thumbs",
-        :index="index",
-        :key="thumb.slug",
+        v-for="slide in content.slides",
+        :key="slide.id",
         :slideshow="content.slug",
-        :slug="thumb.slug",
-        :thumb="thumb.thumb",
+        :slug="slide.slug",
+        :media="slide.media[0]",
       )
 </template>
 
@@ -19,8 +18,10 @@ export default {
 
   props: {
     content: {
+      id: String,
+      slides: Array,
       slug: String,
-      thumbs: Array,
+      title: String,
     }
   }
 }

@@ -8,24 +8,24 @@
       figure.thumb__frame
         img.thumb__image(
           :alt="thumb.alt",
-          :height="thumb.height",
           :src="thumb.src",
-          :width="thumb.width",
         )
 </template>
 
 <script>
 export default {
   props: {
-    index: Number,
     slideshow: String,
     slug: String,
-    thumb: {
-      alt: String,
-      height: Number,
-      src: String,
-      width: Number,
-    },
+    media: {
+      images: Array,
+    }
+  },
+
+  computed: {
+    thumb() {
+      return this.media.images[0];
+    }
   },
 }
 </script>

@@ -217,7 +217,7 @@ export default {
             break;
           case 'thumbs':
             action = 'updateThumbs';
-            content = resp.data.thumbs;
+            content = resp.data.slideshow[0];
             break;
         }
 
