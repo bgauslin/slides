@@ -37,11 +37,13 @@ const slide = `query ($slug: [String!]) {
               title
               publisher
               date: publicationDate
-              image: publicationPhoto {
+              images: publicationPhoto {
                 ...on publications_Asset {
                   alt: title
               		src: url @transform(width: 640, immediately: true)
-              		placeholder: url @transform(width: 60, immediately: true)
+                  placeholder: url @transform(width: 60, immediately: true)
+                  height
+                  width
                 }
               }
               link: publicationLink {
