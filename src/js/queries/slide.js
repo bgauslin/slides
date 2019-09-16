@@ -22,46 +22,38 @@ const PublicationWidth = {
 const slide = `
 query ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
-    ...Slide
+    ...SlideFull
   }
 }
 
-fragment Slide on slides_slide_Entry {
+fragment SlideFull on slides_slide_Entry {
   title
   id
   caption: copy
   slug
   media: slideshowMedia {
-    ...on slideshowMedia_images_BlockType {
-      images {
-        ...Images
-      }
-    }
+    ...SlideImages
     ...on slideshowMedia_publication_BlockType {
       publication {
-        ...Publication
+        ...SlidePublication
       }
     }
   }
 }
 
-fragment Images on slides_Asset {
-  alt: title
-  src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
-  placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
-  height
-  width
+fragment SlideImages on slideshowMedia_images_BlockType {
+  images {
+    ...on slides_Asset {
+      alt: title
+      src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
+      placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
+      height
+      width   
+    }
+  }
 }
 
-fragment MagazineCover on publications_Asset {
-  alt: title
-  src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
-  placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
-  height
-  width
-}
-
-fragment Publication on publications_publication_Entry {
+fragment SlidePublication on publications_publication_Entry {
   title
   publisher
   date: publicationDate
@@ -72,6 +64,14 @@ fragment Publication on publications_publication_Entry {
     ...Download
     ...ExternalLink
   }
+}
+
+fragment MagazineCover on publications_Asset {
+  alt: title
+  src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
+  placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
+  height
+  width
 }
 
 fragment Download on publicationLink_download_BlockType {
