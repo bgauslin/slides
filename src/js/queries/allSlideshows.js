@@ -18,24 +18,27 @@ const ImageWidth = {
 
 /** @const {string} */
 const allSlideshows = `
+query {
+  slideshows: entries(section: "slides", type: "slideDeck") {
+    ...SlideDeck
+  }
+}
+
+fragment SlideDeck on slides_slideDeck_Entry {
+  title
+  summary
+  id
+  slug
+  image: slideshowCover {
+    ...Cover
+  }
+}
+
 fragment Cover on slides_Asset {
   alt: title
   src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
 }
-
-query {
-  slideshows: entries(section: "slides", type: "slideDeck") {
-    ...on slides_slideDeck_Entry {
-      title
-      summary
-      id
-      slug
-      image: slideshowCover {
-        ...Cover
-      }
-    }
-  }
-}`;
+`;
 
 export default allSlideshows;
