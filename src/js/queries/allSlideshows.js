@@ -27,7 +27,6 @@ query AllSlideshows {
 fragment SlideDeck on slides_slideDeck_Entry {
   title
   summary
-  id
   slug
   image: slideshowCover {
     ...SlideshowCover
@@ -35,7 +34,6 @@ fragment SlideDeck on slides_slideDeck_Entry {
 }
 
 fragment SlideshowCover on slides_Asset {
-  alt: title
   src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
 }
