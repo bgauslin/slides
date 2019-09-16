@@ -20,7 +20,7 @@ const PublicationWidth = {
 
 /** @const {string} */
 const slide = `
-query ($slug: [String!]) {
+query Slide ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
     ...SlideFull
   }

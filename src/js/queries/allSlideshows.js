@@ -18,7 +18,7 @@ const ImageWidth = {
 
 /** @const {string} */
 const allSlideshows = `
-query {
+query AllSlideshows {
   slideshows: entries(section: "slides", type: "slideDeck") {
     ...SlideDeck
   }

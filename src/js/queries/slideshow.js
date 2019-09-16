@@ -18,7 +18,7 @@ const ImageWidth = {
 
 /** @const {string} */
 const slideshow = `
-query ($slideshow: [String!]) {
+query Slideshow ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {

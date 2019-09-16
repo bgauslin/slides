@@ -3,7 +3,7 @@ const thumbSize = 160;
 
 /** @const {string} */
 const thumbs = `
-query ($slideshow: [String!]) {
+query SlideshowThumbs ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
