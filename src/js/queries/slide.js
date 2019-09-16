@@ -1,22 +1,8 @@
+import { ImageHeight, PublicationWidth } from './imageSizing';
+
 // TODO(graphql): Add srcset images to query.
 // TODO(graphql): Use 'id' instead of 'slug' for query.
 // TODO(graphql): Include parent slideshow info in query.
-
-/** @enum {number} */
-const ImageHeight = {
-  SMALL: 400,
-  MEDIUM: 600,
-  LARGE: 800,
-  PLACEHOLDER: 40,
-};
-
-/** @enum {number} */
-const PublicationWidth = {
-  SMALL: 320,
-  MEIDUM: 480,
-  LARGE: 640,
-  PLACEHOLDER: 60,
-};
 
 /** @const {string} */
 const slide = `

@@ -1,5 +1,4 @@
-/** @const {number} */
-const thumbSize = 160;
+import { THUMB_SIZE } from './imageSizing';
 
 /** @const {string} */
 const thumbs = `
@@ -36,7 +35,7 @@ fragment SlideThumbs on slideshowMedia_images_BlockType {
   images {
     ...on slides_Asset {
       alt: title
-      src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
+      src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
     }
   }
 }
@@ -45,7 +44,7 @@ fragment PublicationThumbs on publications_publication_Entry {
   images: publicationPhoto {
     ...on publications_Asset {
       alt: title
-      src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
+      src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
     }
   }
 }
