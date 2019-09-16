@@ -30,11 +30,11 @@ fragment SlideDeck on slides_slideDeck_Entry {
   id
   slug
   image: slideshowCover {
-    ...Cover
+    ...SlideshowCover
   }
 }
 
-fragment Cover on slides_Asset {
+fragment SlideshowCover on slides_Asset {
   alt: title
   src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)

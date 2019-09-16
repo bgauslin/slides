@@ -7,7 +7,7 @@ query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
-      ...Slide
+      ...SlidePartial
     }
   }
 }
@@ -18,21 +18,21 @@ fragment SlideDeck on slides_slideDeck_Entry {
   slug
 }
 
-fragment Slide on slides_slide_Entry {
+fragment SlidePartial on slides_slide_Entry {
   title
   id
   slug
   media: slideshowMedia {
-    ...Images
+    ...SlideThumbs
     ...on slideshowMedia_publication_BlockType {
       publication {
-        ...Publication
+        ...PublicationThumbs
       }
     }
   }
 }
 
-fragment Images on slideshowMedia_images_BlockType {
+fragment SlideThumbs on slideshowMedia_images_BlockType {
   images {
     ...on slides_Asset {
       alt: title
@@ -41,7 +41,7 @@ fragment Images on slideshowMedia_images_BlockType {
   }
 }
 
-fragment Publication on publications_publication_Entry {
+fragment PublicationThumbs on publications_publication_Entry {
   images: publicationPhoto {
     ...on publications_Asset {
       alt: title

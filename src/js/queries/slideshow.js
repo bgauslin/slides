@@ -22,7 +22,7 @@ query ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
-      ...Slide
+      ...SlideSnapshot
     }
   }
 }
@@ -33,17 +33,17 @@ fragment SlideDeck on slides_slideDeck_Entry {
   slug
   summary
   image: slideshowCover {
-    ...Cover
+    ...SlideshowCover
   }
 }
 
-fragment Cover on slides_Asset {
+fragment SlideshowCover on slides_Asset {
   alt: title
   src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
 }
 
-fragment Slide on slides_slide_Entry {
+fragment SlideSnapshot on slides_slide_Entry {
   title
   id
   slug
