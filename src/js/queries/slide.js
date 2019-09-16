@@ -20,6 +20,31 @@ const PublicationWidth = {
 
 /** @const {string} */
 const slide = `
+query ($slug: [String!]) {
+  slide: entries(section: "slides", type: "slide", slug: $slug) {
+    ...Slide
+  }
+}
+
+fragment Slide on slides_slide_Entry {
+  title
+  id
+  caption: copy
+  slug
+  media: slideshowMedia {
+    ...on slideshowMedia_images_BlockType {
+      images {
+        ...Images
+      }
+    }
+    ...on slideshowMedia_publication_BlockType {
+      publication {
+        ...Publication
+      }
+    }
+  }
+}
+
 fragment Images on slides_Asset {
   alt: title
   src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
@@ -60,28 +85,6 @@ fragment Download on publicationLink_download_BlockType {
 fragment ExternalLink on publicationLink_link_BlockType {
   url: externalUrl
 }
-
-query ($slug: [String!]) {
-  slide: entries(section: "slides", type: "slide", slug: $slug) {
-    ...on slides_slide_Entry {
-      title
-      id
-      caption: copy
-      slug
-      media: slideshowMedia {
-        ...on slideshowMedia_images_BlockType {
-          images {
-            ...Images
-          }
-        }
-        ...on slideshowMedia_publication_BlockType {
-          publication {
-            ...Publication
-          }
-        }
-      }
-    }
-  }
-}`;
+`;
 
 export default slide;
