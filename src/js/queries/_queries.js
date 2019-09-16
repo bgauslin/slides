@@ -1,32 +1,7 @@
+import { ImageHeight, ImageWidth, PublicationWidth, THUMB_SIZE } from './imageSizing';
+
 // TODO(graphql): Use 'id' instead of 'slug' for 'Slide' query variable.
 // TODO(graphql): Add srcset images to query.
-
-/** @const {number} */
-const thumbSize = 160;
-
-/** @enum {number} */
-const ImageHeight = {
-  SMALL: 400,
-  MEDIUM: 600,
-  LARGE: 800,
-  PLACEHOLDER: 40,
-}
-
-/** @enum {number} */
-const ImageWidth = {
-  SMALL: 600,
-  MEDIUM: 900,
-  LARGE: 1200,
-  PLACEHOLDER: 60,
-}
-
-/** @enum {number} */
-const PublicationWidth = {
-  SMALL: 320,
-  MEIDUM: 480,
-  LARGE: 640,
-  PLACEHOLDER: 60,
-};
 
 /** @const {string} */
 const queries = `
@@ -86,7 +61,7 @@ fragment SlideFull on slides_slide_Entry {
   slug
   media: slideshowMedia {
     ...SlideImages
-    ...on slideshowMedia_publication_BlockType {
+    ... on slideshowMedia_publication_BlockType {
       publication {
         ...SlidePublication
       }
@@ -101,7 +76,7 @@ fragment SlidePartial on slides_slide_Entry {
   slug
   media: slideshowMedia {
     ...SlideThumbs
-    ...on slideshowMedia_publication_BlockType {
+    ... on slideshowMedia_publication_BlockType {
       publication {
         ...PublicationThumbs
       }
@@ -117,7 +92,7 @@ fragment SlideshowCover on slides_Asset {
 
 fragment SlideImages on slideshowMedia_images_BlockType {
   images {
-    ...on slides_Asset {
+    ... on slides_Asset {
       alt: title
       src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
       placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
@@ -150,7 +125,7 @@ fragment MagazineCover on publications_Asset {
 
 fragment Download on publicationLink_download_BlockType {
   file {
-    ...on pdf_Asset {
+    ... on pdf_Asset {
       url
     }
   }
@@ -162,7 +137,7 @@ fragment ExternalLink on publicationLink_link_BlockType {
 
 fragment SlideThumbs on slideshowMedia_images_BlockType {
   images {
-    ...on slides_Asset {
+    ... on slides_Asset {
       alt: title
       src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
     }
@@ -171,7 +146,7 @@ fragment SlideThumbs on slideshowMedia_images_BlockType {
 
 fragment PublicationThumbs on publications_publication_Entry {
   images: publicationPhoto {
-    ...on publications_Asset {
+    ... on publications_Asset {
       alt: title
       src: url @transform(width: ${thumbSize}, height: ${thumbSize}, immediately: true)
     }
