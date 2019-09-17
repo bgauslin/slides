@@ -49,13 +49,15 @@ export default {
      * @return {string}
      */
     publicationUrl() {
-      // TODO(publication.externalUrl): Remove/update this temporary quickfix
-      // which doesn't check for an external link since that throws a console
-      // error.
       const link = this.publication.link[0];
-      if (link && link.file) {
-        return link.file[0].url;
+      if (link) {
+        if (link.file && link.file[0].url) {
+          return link.file[0].url;
+        } else  if (link.url) {
+          return link.url;
+        }
       }
+      return;
     },
 
     /**
