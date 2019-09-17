@@ -6,7 +6,7 @@ query SlideshowThumbs ($slideshow: [String!]) {
   slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
-      ...SlidePartial
+      ...Slide
     }
   }
 }
@@ -17,7 +17,7 @@ fragment SlideDeck on slides_slideDeck_Entry {
   slug
 }
 
-fragment SlidePartial on slides_slide_Entry {
+fragment Slide on slides_slide_Entry {
   title
   id
   slug
@@ -33,20 +33,24 @@ fragment SlidePartial on slides_slide_Entry {
 
 fragment SlideThumbs on slideshowMedia_images_BlockType {
   images {
-    ...on slides_Asset {
-      alt: title
-      src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
-    }
+    ...SlideImage
   }
+}
+
+fragment SlideImage on slides_Asset {
+  alt: title
+  src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
 }
 
 fragment PublicationThumbs on publications_publication_Entry {
   images: publicationPhoto {
-    ...on publications_Asset {
-      alt: title
-      src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
-    }
+    ...PublicationImage
   }
+}
+
+fragment PublicationImage on publications_Asset {
+  alt: title
+  src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, immediately: true)
 }
 `;
 

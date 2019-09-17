@@ -8,26 +8,26 @@ import { ImageHeight, PublicationWidth } from './imageSizing';
 const slide = `
 query Slide ($slug: [String!]) {
   slide: entries(section: "slides", type: "slide", slug: $slug) {
-    ...SlideFull
+    ...Slide
   }
 }
 
-fragment SlideFull on slides_slide_Entry {
+fragment Slide on slides_slide_Entry {
   title
   id
   caption: copy
   slug
   media: slideshowMedia {
-    ...SlideImages
+    ...Images
     ...on slideshowMedia_publication_BlockType {
       publication {
-        ...SlidePublication
+        ...Publication
       }
     }
   }
 }
 
-fragment SlideImages on slideshowMedia_images_BlockType {
+fragment Images on slideshowMedia_images_BlockType {
   images {
     ...on slides_Asset {
       alt: title
@@ -39,7 +39,7 @@ fragment SlideImages on slideshowMedia_images_BlockType {
   }
 }
 
-fragment SlidePublication on publications_publication_Entry {
+fragment Publication on publications_publication_Entry {
   title
   publisher
   date: publicationDate
