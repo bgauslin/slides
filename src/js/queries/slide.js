@@ -1,13 +1,12 @@
 import { ImageHeight, PublicationWidth } from './imageSizing';
 
 // TODO(graphql): Add srcset images to query.
-// TODO(graphql): Use 'id' instead of 'slug' for query.
-// TODO(graphql): Include parent slideshow info in query.
+// TODO(graphql): Include parent slideshow info in query. (?)
 
 /** @const {string} */
 const slide = `
-query Slide ($slug: [String!]) {
-  slide: entries(section: "slides", type: "slide", slug: $slug) {
+query Slide ($id: [Int!]) {
+  slide: entries(section: "slides", type: "slide", id: $id) {
     ...Slide
   }
 }

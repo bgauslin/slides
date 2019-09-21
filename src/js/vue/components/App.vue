@@ -159,11 +159,10 @@ export default {
             name: Query.slideshow,
             slideshow: this.$route.params.slideshow,
           };
-        // TODO(graphql): Use 'id' instead of 'slug' in 'slide' query.
         case 'slide':
           return {
             name: Query.slide,
-            slug: this.$route.params.slug,
+            id: this.slide.id,
           };
         case 'thumbs':
           return {
@@ -183,6 +182,9 @@ export default {
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
       const query = this.gqlQuery(view);
+      
+      // Set all GraphQL query variables.
+      const id = query.id ? query.id : null;
       const slideshow = query.slideshow ? query.slideshow : null;
       const slug = query.slug ? query.slug : null;
 
@@ -195,7 +197,7 @@ export default {
           },
           body: JSON.stringify({
             query: query.name,
-            variables: { slideshow, slug },
+            variables: { id, slideshow, slug },
           }),
         });
 
