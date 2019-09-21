@@ -12,6 +12,8 @@
           template(v-for="image in slideshow.image")
             single-image(
               :image="image",
+              :srcset="srcset",
+              :sizes="sizes",
               width="900",
               height="600",
             )
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import { ImageWidth } from '../../queries/imageSizing';
 import SingleImage from './SingleImage.vue';
 
 export default {
@@ -26,6 +29,17 @@ export default {
 
   props: {
     content: Object,
+  },
+
+  data() {
+    return {
+      srcset: {
+        small: ImageWidth.SMALL,
+        medium: ImageWidth.MEDIUM,
+        large: ImageWidth.LARGE,
+      },
+      sizes: '(min-width: 45rem) 50vw, 100vw',
+    }
   },
 
   methods: {

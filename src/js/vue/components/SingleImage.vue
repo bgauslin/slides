@@ -1,9 +1,9 @@
 <template lang="pug">
   div(
-    :class="[className, orientation(image)]",
+    :class="[className, orientation()]",
   )
     figure.image__frame(
-      :style="aspectRatio(image)",
+      :style="aspectRatio()",
     )
       preloader(
         v-if="loading",
@@ -18,6 +18,8 @@
         :ready="!loading",
         :alt="image.alt",
         :src="image.src_medium",
+        :srcset="srcsetValues()",
+        :sizes="sizes",
       )
 </template>
 
@@ -39,7 +41,9 @@ export default {
       height: String,
     },
     width: String,
-    height: String, // optional
+    height: String,
+    srcset: Object,
+    sizes: String,
   },
 
   data() {
@@ -60,15 +64,14 @@ export default {
 
   methods: {
     /**
-     * @param {!Object} image
      * @return {string} The image's aspect ratio as a percentage applied to
      *     bottom padding of an inline 'style' element.
      */
-    aspectRatio(image) {
+    aspectRatio() {
       // If height and width are passed in as props, use those values.
       // Otherwise, get the values from the image object.
-      const height = this.height ? this.height : image.height;
-      const width = this.width ? this.width : image.width;
+      const height = this.height ? this.height : this.image.height;
+      const width = this.width ? this.width : this.image.width;
 
       const ratio = parseInt(height) / parseInt(width) * 100;
       return `padding: 0 0 ${ratio}%;`;
@@ -88,30 +91,26 @@ export default {
     },
 
     /**
-     * @param {!Object} image
      * @return {string}
      */
-    orientation(image) {
-      if (image.height && image.width) {
-        return (image.height > image.width) ? 'image--portrait' : 'image--landscape';
+    orientation() {
+      if (this.image.height && this.image.width) {
+        return (this.image.height > this.image.width) ? 'image--portrait' : 'image--landscape';
       }
     },
 
     /**
-     * @param {!Object} image
      * @return {string}
      */
-    placeholder(image) {
-      return `background: url(${image.placeholder}) center / contain no-repeat;`;
+    placeholder() {
+      return `background: url(${this.image.placeholder}) center / contain no-repeat;`;
     },
 
-    // TODO(srcset): Restore 'srcset' and 'sizes' attributes.
     /**
-     * @param {!Object} image
      * @return {string}
      */
-    srcset(image) {
-      return `${image.src_small} ${size.small}w,${image.src_large} ${size.large}w`;
+    srcsetValues() {
+      return `${this.image.src_small} ${this.srcset.small}w,${this.image.src_medium} ${this.srcset.medium}w,${this.image.src_large} ${this.srcset.large}w`;
     },
   },
 }
