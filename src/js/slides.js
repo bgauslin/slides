@@ -20,7 +20,7 @@ Vue.use(VueRouter);
 Vue.config.productionTip = false;
 setup.init();
 
-// TODO: Fix scrollBehavior.
+// TODO(vue-router): Fix scrollBehavior.
 /**
  * Resets scroll position when route changes.
  * @const
