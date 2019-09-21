@@ -25,6 +25,7 @@ export default {
     images: Array,
   },
 
+  // TODO(srcset-sizes): fine-tune all values
   data() {
     return {
       srcset: {

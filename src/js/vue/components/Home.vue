@@ -31,6 +31,7 @@ export default {
     content: Object,
   },
 
+  // TODO(srcset-sizes): fine-tune all values
   data() {
     return {
       srcset: {

@@ -65,7 +65,7 @@ export default {
   methods: {
     /**
      * @return {string} The image's aspect ratio as a percentage applied to
-     *     bottom padding of an inline 'style' element.
+     * vertical padding via inline 'style' on an element.
      */
     aspectRatio() {
       // If height and width are passed in as props, use those values.
