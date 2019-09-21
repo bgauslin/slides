@@ -133,8 +133,7 @@ export default {
         case 'cover':
           return `${this.app.content.title}`;
         case 'slide':
-          return `${this.app.content.title}`;
-          // return `${this.app.content.title} · ${this.app.content.slideshow[0].title}`;
+          return `${this.app.content.title} · ${this.slideshow.title}`;
         case 'thumbs':
           return `Thumbnails · ${this.app.content.title}`;
         default:
