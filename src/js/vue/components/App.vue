@@ -183,10 +183,9 @@ export default {
 
       const query = this.gqlQuery(view);
       
-      // Set all GraphQL query variables.
+      // Set GraphQL query variables.
       const id = query.id ? query.id : null;
       const slideshow = query.slideshow ? query.slideshow : null;
-      const slug = query.slug ? query.slug : null;
 
       try {
         const response = await fetch(endpoint, {
@@ -197,7 +196,7 @@ export default {
           },
           body: JSON.stringify({
             query: query.name,
-            variables: { id, slideshow, slug },
+            variables: { id, slideshow },
           }),
         });
 
