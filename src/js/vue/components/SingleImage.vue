@@ -17,7 +17,7 @@
       img.image__hi-res(
         :ready="!loading",
         :alt="image.alt",
-        :src="image.src",
+        :src="image.src_medium",
       )
 </template>
 
@@ -30,7 +30,9 @@ export default {
   props: {
     className: String,
     image: {
-      src: String,
+      src_small: String,
+      src_medium: String,
+      src_large: String,
       alt: String,
       placeholder: String,
       width: String,
@@ -103,13 +105,13 @@ export default {
       return `background: url(${image.placeholder}) center / contain no-repeat;`;
     },
 
-    // TODO(SingleImage): Restore srcset, sizes after initial GraphQL refactor.
+    // TODO(srcset): Restore 'srcset' and 'sizes' attributes.
     /**
      * @param {!Object} image
      * @return {string}
      */
     srcset(image) {
-      return `${image.medium.src} ${image.medium.width}w,${image.large.src} ${image.large.width}w`;
+      return `${image.src_small} ${size.small}w,${image.src_large} ${size.large}w`;
     },
   },
 }

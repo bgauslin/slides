@@ -1,8 +1,5 @@
 import { ImageHeight, PublicationWidth } from './imageSizing';
 
-// TODO(graphql): Add srcset images to query.
-// TODO(graphql): Include parent slideshow info in query. (?)
-
 /** @const {string} */
 const slide = `
 query Slide ($id: [Int!]) {
@@ -30,7 +27,9 @@ fragment Images on slideshowMedia_images_BlockType {
   images {
     ...on slides_Asset {
       alt: title
-      src: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
+      src_small: url @transform(height: ${ImageHeight.SMALL}, immediately: true)
+      src_medium: url @transform(height: ${ImageHeight.MEDIUM}, immediately: true)
+      src_large: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
       placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
       height
       width   

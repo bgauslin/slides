@@ -1,7 +1,5 @@
 import { ImageHeight, ImageWidth } from './imageSizing';
 
-// TODO(graphql): Add srcset images to query.
-
 /** @const {string} */
 const allSlideshows = `
 query AllSlideshows {
@@ -21,7 +19,9 @@ fragment SlideDeck on slides_slideDeck_Entry {
 
 fragment SlideshowCover on slides_Asset {
   alt: title
-  src: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
+  src_small: url @transform(width: ${ImageWidth.SMALL}, height: ${ImageHeight.SMALL}, immediately: true)
+  src_medium: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, immediately: true)
+  src_large: url @transform(width: ${ImageWidth.LARGE}, height: ${ImageHeight.LARGE}, immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
 }
 `;
