@@ -81,12 +81,10 @@ export default {
      * Sets 'ready' attribute on the image after it has fully downloaded.
      */
     loadImage() {
-      const fullImage = this.$el.querySelector('.image__hi-res');
-      let img = new Image();
-      img = fullImage;
-      img.onload = () => {
+      const image = this.$el.querySelector('.image__hi-res');
+      image.onload = () => {
         this.loading = false;
-        fullImage.setAttribute('ready', '');
+        image.setAttribute('ready', '');
       };
     },
 
