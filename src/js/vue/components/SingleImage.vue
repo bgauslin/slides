@@ -25,6 +25,7 @@
 
 <script>
 import Preloader from './Preloader.vue';
+import imagesLoaded from 'imagesloaded';
 
 export default {
   components: { Preloader },
@@ -82,12 +83,10 @@ export default {
      */
     loadImage() {
       const img = this.$el.querySelector('.image__hi-res');
-      const image = new Image();
-      image.onload = () => {
-        this.loading = false;
-        image.setAttribute('ready', '');
-      };
-      image.src = img.src;
+      const that = this;
+      imagesLoaded(img, that, instance => {
+        that.loading = false;
+      });
     },
 
     /**
