@@ -73,7 +73,7 @@ export default {
       const height = this.height ? this.height : this.image.height;
       const width = this.width ? this.width : this.image.width;
 
-      const ratio = parseInt(height) / parseInt(width) * 100;
+      const ratio = parseInt(height, 10) / parseInt(width, 10) * 100;
       return `padding: 0 0 ${ratio}%;`;
     },
 
@@ -81,11 +81,13 @@ export default {
      * Sets 'ready' attribute on the image after it has fully downloaded.
      */
     loadImage() {
-      const image = this.$el.querySelector('.image__hi-res');
+      const img = this.$el.querySelector('.image__hi-res');
+      const image = new Image();
       image.onload = () => {
         this.loading = false;
         image.setAttribute('ready', '');
       };
+      image.src = img.src;
     },
 
     /**
