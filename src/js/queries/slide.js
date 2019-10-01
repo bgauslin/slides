@@ -52,7 +52,9 @@ fragment Publication on publications_publication_Entry {
 
 fragment MagazineCover on publications_Asset {
   alt: title
-  src: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
+  src_small: url @transform(width: ${PublicationWidth.SMALL}, immediately: true)
+  src_medium: url @transform(width: ${PublicationWidth.MEDIUM}, immediately: true)
+  src_large: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
   placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
   height
   width

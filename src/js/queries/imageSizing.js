@@ -17,7 +17,7 @@ const ImageWidth = {
 /** @enum {number} */
 const PublicationWidth = {
   SMALL: 320,
-  MEIDUM: 480,
+  MEDIUM: 480,
   LARGE: 640,
   PLACEHOLDER: 60,
 };

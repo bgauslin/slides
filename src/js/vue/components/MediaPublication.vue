@@ -7,6 +7,8 @@
       single-image(
         class="publication__image",
         :image="image",
+        :srcset="srcset",
+        :sizes="sizes",
       )
     div.publication__details
       h2.publication__title(
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import { PublicationWidth } from '../../queries/imageSizing';
 import SingleImage from './SingleImage.vue';
 
 export default {
@@ -42,7 +45,17 @@ export default {
     }
   },
 
-  
+  data() {
+    return {
+      srcset: {
+        small: PublicationWidth.SMALL,
+        medium: PublicationWidth.MEDIUM,
+        large: PublicationWidth.LARGE,
+      },
+      sizes: '100vw',
+    }
+  },
+
   computed: {
     /**
      * Returns a PDF link if there's a file; typical link otherwise.
