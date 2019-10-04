@@ -11,7 +11,7 @@ query Slide ($id: [Int!]) {
 fragment Slide on slides_slide_Entry {
   title
   id
-  caption: copy
+  caption: copy @markdown
   slug
   media: slideshowMedia {
     ...Images
