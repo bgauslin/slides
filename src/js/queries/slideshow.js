@@ -23,8 +23,8 @@ fragment SlideDeck on slides_slideDeck_Entry {
 
 fragment Cover on slides_Asset {
   alt: title
-  src: url @transform(width: ${ImageWidth.LARGE}, height: ${ImageHeight.LARGE}, immediately: true)
-  placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, immediately: true)
+  src: url @transform(width: ${ImageWidth.LARGE}, height: ${ImageHeight.LARGE}, interlace: "partition", immediately: true)
+  placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, interlace: "partition", immediately: true)
 }
 
 fragment Slide on slides_slide_Entry {

@@ -27,10 +27,10 @@ fragment Images on slideshowMedia_images_BlockType {
   images {
     ...on slides_Asset {
       alt: title
-      src_small: url @transform(height: ${ImageHeight.SMALL}, immediately: true)
-      src_medium: url @transform(height: ${ImageHeight.MEDIUM}, immediately: true)
-      src_large: url @transform(height: ${ImageHeight.LARGE}, immediately: true)
-      placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, immediately: true)
+      src_small: url @transform(height: ${ImageHeight.SMALL}, interlace: "partition", immediately: true)
+      src_medium: url @transform(height: ${ImageHeight.MEDIUM}, interlace: "partition", immediately: true)
+      src_large: url @transform(height: ${ImageHeight.LARGE}, interlace: "partition", immediately: true)
+      placeholder: url @transform(height: ${ImageHeight.PLACEHOLDER}, interlace: "partition", immediately: true)
       height
       width   
     }
@@ -52,10 +52,10 @@ fragment Publication on publications_publication_Entry {
 
 fragment MagazineCover on publications_Asset {
   alt: title
-  src_small: url @transform(width: ${PublicationWidth.SMALL}, immediately: true)
-  src_medium: url @transform(width: ${PublicationWidth.MEDIUM}, immediately: true)
-  src_large: url @transform(width: ${PublicationWidth.LARGE}, immediately: true)
-  placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, immediately: true)
+  src_small: url @transform(width: ${PublicationWidth.SMALL}, interlace: "partition", immediately: true)
+  src_medium: url @transform(width: ${PublicationWidth.MEDIUM}, interlace: "partition", immediately: true)
+  src_large: url @transform(width: ${PublicationWidth.LARGE}, interlace: "partition", immediately: true)
+  placeholder: url @transform(width: ${PublicationWidth.PLACEHOLDER}, interlace: "partition", immediately: true)
   height
   width
 }
