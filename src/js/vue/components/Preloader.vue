@@ -20,10 +20,6 @@ export default {
     }
   },
 
-  computed: {
-    ...mapGetters(['theme']),
-  },
-
   created() {
     this.setOptions();
   },
@@ -33,6 +29,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['theme']),
+
     /**
      * Renders inline style with 'position' property depending on what element
      * the loading spinner is attached to.
