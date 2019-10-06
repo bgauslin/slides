@@ -175,6 +175,7 @@ export default {
      * Fetches API data from an endpoint based on the route, then stores it to
      * avoid redundant API calls.
      * @param {!string} view - Which route/view.
+     * @async
      */
     async fetchJson(view) {
       const endpoint = (process.env.NODE_ENV === 'production') ?
@@ -260,7 +261,8 @@ export default {
     },
 
     /**
-     * Fetches API data for the 'home' route/view.
+     * Fetches data for the 'home' route/view.
+     * @async
      */
     async getDataHome() {
       const content = await this.fetchJson('home');
@@ -268,7 +270,8 @@ export default {
     },
 
     /**
-     * Fetches API data for the 'cover' route/view.
+     * Fetches data for the 'cover' route/view.
+     * @async
      */
     async getDataCover() {
       if (this.slideshow) {
@@ -280,7 +283,7 @@ export default {
     },
 
     /**
-     * Fetches API data for the 'slide' route/view and fetches full 'slideshow'
+     * Fetches data for the 'slide' route/view and fetches full 'slideshow'
      * data if it hasn't been fetched and stored yet.
      * @async
      */
@@ -289,8 +292,8 @@ export default {
       this.$store.commit('updateSlug', this.$route.params.slug);
 
       const fetchData = async () => {
-        // Get the slideshow first, then the slide (or the slide won't have
-        // a slot to get stored in).
+        // Get the slideshow first, then the slide. Otherwise, the slide won't
+        // have a slot to be stored in.
         if (!this.slideshow) {
           await this.fetchJson('slideshow');
         }
@@ -311,8 +314,8 @@ export default {
     },
 
     /**
-     * Fetches API data for the 'thumbs' route/view and fetches full
-     * 'slideshow' data if it hasn't been fetched and stored yet.
+     * Fetches data for the 'thumbs' route/view and fetches full 'slideshow'
+     * data if it hasn't been fetched and stored yet.
      * @async
      */
     async getDataThumbs() {
@@ -332,8 +335,8 @@ export default {
     },
 
     /**
-     * Passes API data as a prop, sets loaded flag to true, and updates the
-     * document title.
+     * Passes fetched data as a prop, sets 'loaded' flag to true, and updates
+     * the document title.
      * @param {Object} content
      */
     ready(content) {
@@ -356,8 +359,9 @@ export default {
     },
 
     /**
-     * @return {string} The CSS class to apply on transition's 'enter' tick
-     * based on the current 'direction'.
+     * The CSS class to apply on transition's 'enter' tick based on current
+     * 'direction' value.
+     * @return {string} 
      */
     transitionEnterClass() {
       switch (this.direction) {
@@ -371,8 +375,9 @@ export default {
     },
 
     /**
-     * @return {string} The CSS class to apply on transition's 'leave' tick
-     * based on the current 'direction'.
+     * The CSS class to apply on transition's 'leave' tick based on current
+     * 'direction' value.
+     * @return {string} 
      */
     transitionLeaveClass() {
       switch (this.direction) {

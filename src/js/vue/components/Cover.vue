@@ -1,6 +1,6 @@
 <template lang="pug">
   div.cover(
-    :style="coverImage(content.image[0])",
+    :style="coverImage",
   )
     div.cover__frame
       header.cover__header
@@ -19,26 +19,24 @@ import { mapGetters } from 'vuex';
 export default {
   props: {
     content: {
-      slideshow: {
-        image: Object,
-        slug: String,
-        summary: String,
-        title: String,
-      }
+      id: String,
+      image: Array[Object],
+      slides: Array[Object],
+      slug: String,
+      summary: String,
+      title: String,
     }
   },
 
   computed: {
-    ...mapGetters(['slideFirst'])
-  },
+    ...mapGetters(['slideFirst']),
 
-  methods: {
     /** 
-     * @param {!Object} image
-     * @return {string} An inline 'style' attribute for a background image.
+     * Inline 'style' attribute value for a background image.
+     * @return {string} 
      */
-    coverImage(image) {
-      return `background: url(${image.src}) center / cover no-repeat;`;
+    coverImage() {
+      return `background: url(${this.content.image[0].src}) center / cover no-repeat;`;
     },
   }
 }

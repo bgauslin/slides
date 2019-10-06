@@ -1,6 +1,6 @@
 <template lang="pug">
   div.preloader(
-    :style="setPosition()",
+    :style="styles",
   )
 </template>
 
@@ -32,6 +32,17 @@ export default {
     this.attachSpinner();
   },
 
+  computed: {
+    /**
+     * Renders inline style with 'position' property depending on what element
+     * the loading spinner is attached to.
+     * @return {string}
+     */
+    styles() {
+      return `position: ${this.position}`;
+    },
+  },
+
   methods: {
     /** 
      * Attaches a loading spinner to an element after a brief delay.
@@ -48,15 +59,6 @@ export default {
      */
     setOptions() {
       this.options.color = (this.theme === 'light') ? '#000' : '#fff';
-    },
-
-    /**
-     * Renders inline style with 'position' property depending on what element
-     * the loading spinner is attached to.
-     * @return {string}
-     */
-    setPosition() {
-      return `position: ${this.position}`;
     },
   },
 }

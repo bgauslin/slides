@@ -3,7 +3,7 @@
     v-if="content",
   )
     div(
-      :class="className('slide__media')"
+      :class="className"
     )
       media-images(
         v-if="content.media[0].images",
@@ -35,14 +35,17 @@ export default {
     }
   },
 
-  methods: {
-    /**
-     * @param {!string} name - Base classname for the element.
-     * @return {string}
-     */
-    className(name) {
+  data() {
+    return {
+      baseClass: 'slide__media',
+    }
+  },
+
+  computed: {
+    /** @return {string} */
+    className() {
       return (this.content.media[0].images && this.content.media[0].images.length > 1)
-          ? `${name} ${name}--multiple` : name;
+          ? `${this.baseClass} ${this.baseClass}--multiple` : this.baseClass;
     },
   }
 }

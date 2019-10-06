@@ -21,6 +21,7 @@ export default {
   },
 
   computed: {
+    /** @return {Object} */
     thumb() {
       const media = this.media[0];
       return media.images ? media.images[0] : media.publication[0].images[0];

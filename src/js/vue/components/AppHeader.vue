@@ -30,7 +30,8 @@ export default {
     }),
 
     /**
-     * @return {string|null} CSS class for the header link based on the current route.
+     * CSS class for the header link based on the current route.
+     * @return {string|null}
      */
     headerLinkClass() {
       const route = this.$route.name;
@@ -44,7 +45,8 @@ export default {
     },
 
     /**
-     * @return {string} The header link's text label based on the current route.
+     * The header link's text label based on the current route.
+     * @return {string}
      */
     headerLinkLabel() {
       const route = this.$route.name;
@@ -59,7 +61,8 @@ export default {
     },
 
     /**
-     * @return {Object} The route to go to when header link is clicked.
+     * The route to go to when header link is clicked.
+     * @return {Object}
      */
     headerLinkRoute() {
       const route = this.$route.name;
@@ -85,7 +88,8 @@ export default {
     },
 
     /**
-     * @return {string} The 'slideshow' URL param.
+     * The 'slideshow' URL param.
+     * @return {string}
      */
     slideshowRoute() {
       return this.$route.params.slideshow;
