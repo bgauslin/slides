@@ -8,7 +8,7 @@
         class="publication__image",
         :image="image",
         :srcset="srcset",
-        :sizes="sizes",
+        type="cover",
       )
     div.publication__details
       h2.publication__title(
@@ -52,13 +52,12 @@ export default {
         medium: PublicationWidth.MEDIUM,
         large: PublicationWidth.LARGE,
       },
-      sizes: '100vw',
     }
   },
 
   computed: {
     /**
-     * Returns a PDF link if there's a file; typical link otherwise.
+     * PDF link if there's a file; typical link otherwise.
      * @return {string}
      */
     publicationUrl() {
@@ -74,8 +73,8 @@ export default {
     },
 
     /**
-     * Returns url-type attribute's value depending on whether it's a file
-     * or a typical link.
+     * Value for 'url-type' attribute depending on whether it's a file or a 
+     * typical link.
      * @return {string}
      */
     publicationUrlType() {
