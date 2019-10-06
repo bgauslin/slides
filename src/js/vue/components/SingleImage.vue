@@ -81,6 +81,7 @@ export default {
 
       return `padding-bottom: ${ratio}%;`;
     },
+
     /** @return {string} */
     orientation() {
       const height = this.height ? this.height : this.image.height;
