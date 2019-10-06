@@ -13,7 +13,7 @@
             single-image(
               :image="image",
               :srcset="srcset",
-              :sizes="sizes",
+              type="preview",
               width="900",
               height="600",
             )
@@ -31,7 +31,6 @@ export default {
     content: Object,
   },
 
-  // TODO(srcset-sizes): fine-tune all values
   data() {
     return {
       srcset: {
@@ -39,7 +38,6 @@ export default {
         medium: ImageWidth.MEDIUM,
         large: ImageWidth.LARGE,
       },
-      sizes: '(min-width: 45rem) 50vw, 100vw',
     }
   },
 

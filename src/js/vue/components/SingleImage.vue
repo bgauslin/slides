@@ -1,14 +1,14 @@
 <template lang="pug">
   div(
-    :class="[className, orientation()]",
+    :class="classNames",
   )
     figure.image__frame(
-      :style="aspectRatio()",
+      :style="aspectRatio",
     )
       preloader(
         v-if="loading",
-        position="absolute",
         :options="preloaderOptions",
+        position="absolute",
       )
       img.image__placeholder(
         :src="image.placeholder",
@@ -18,7 +18,7 @@
         :ready="!loading",
         :alt="image.alt",
         :src="image.src_medium",
-        :srcset="srcsetValues()",
+        :srcset="srcsetValues",
         :sizes="sizes",
       )
 </template>
@@ -31,7 +31,6 @@ export default {
   components: { Preloader },
 
   props: {
-    className: String,
     image: {
       src_small: String,
       src_medium: String,
@@ -44,11 +43,12 @@ export default {
     width: String,
     height: String,
     srcset: Object,
-    sizes: String,
+    type: String,
   },
 
   data() {
     return {
+      className: 'image',
       loading: true,
       preloaderOptions: {
         length: 5,
@@ -63,53 +63,72 @@ export default {
     this.loadImage();
   },
 
-  methods: {
+  computed: {
+    /** @return {string} */
+    classNames() {
+      return `${this.className} ${this.className}--${this.orientation} ${this.className}--${this.type}`;
+    },
+
     /**
-     * @return {string} The image's aspect ratio as a percentage applied to
-     * vertical padding via inline 'style' on an element.
+     * The image's aspect ratio as a percentage applied to vertical padding
+     * via inline 'style' on a container element.
+     * @return {string}
      */
     aspectRatio() {
-      // If height and width are passed in as props, use those values.
-      // Otherwise, get the values from the image object.
       const height = this.height ? this.height : this.image.height;
       const width = this.width ? this.width : this.image.width;
-
       const ratio = parseInt(height, 10) / parseInt(width, 10) * 100;
-      return `padding: 0 0 ${ratio}%;`;
-    },
 
-    /**
-     * Sets 'ready' attribute on the image after it has fully downloaded.
-     */
-    loadImage() {
-      const img = this.$el.querySelector('.image__hi-res');
-      const that = this;
-      imagesLoaded(img, that, instance => {
-        that.loading = false;
-      });
+      return `padding-bottom: ${ratio}%;`;
     },
-
-    /**
-     * @return {string}
-     */
+    /** @return {string} */
     orientation() {
-      if (this.image.height && this.image.width) {
-        return (this.image.height > this.image.width) ? 'image--portrait' : 'image--landscape';
-      }
+      const height = this.height ? this.height : this.image.height;
+      const width = this.width ? this.width : this.image.width;
+      
+      return (height > width) ? 'portrait' : 'landscape';
     },
 
-    /**
-     * @return {string}
-     */
+    /** @return {string} */
     placeholder() {
       return `background: url(${this.image.placeholder}) center / contain no-repeat;`;
     },
 
-    /**
-     * @return {string}
-     */
+    /** @return {string} */
+    sizes() {
+      switch (this.type) {
+        case 'preview':
+          return '(min-width: 45rem) 45vw, (min-width: 60rem) 576px, 90vw';
+        case 'multiple':
+          return '(min-width: 60rem) 436px, 50vw';
+        case 'single':
+          switch (this.orientation) {
+            case 'landscape':
+              return '(min-width: 60rem) 896px, 100vw';
+            case 'portrait':
+              return '(min-width: 60rem) 448px, 50vw';
+          }
+        default:
+          return '100vw';
+      }
+    },
+
+    /** @return {string} */
     srcsetValues() {
       return `${this.image.src_small} ${this.srcset.small}w,${this.image.src_medium} ${this.srcset.medium}w,${this.image.src_large} ${this.srcset.large}w`;
+    },
+  },
+
+  methods: {
+    /**
+     * Sets 'ready' attribute on the image after it has fully downloaded.
+     */
+    loadImage() {
+      const img = this.$el.querySelector(`.${this.className}__hi-res`);
+      const that = this;
+      imagesLoaded(img, that, instance => {
+        that.loading = false;
+      });
     },
   },
 }

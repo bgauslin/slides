@@ -1,16 +1,15 @@
 <template lang="pug">
   div(
     v-if="images",
-    :class="className('images')",
+    :class="className",
   )
     template(
       v-for="image in images",
     )
       single-image(
-        :className="className('image')",
+        :type="type",
         :image="image",
         :srcset="srcset",
-        :sizes="sizes",
       )
 </template>
 
@@ -25,7 +24,6 @@ export default {
     images: Array,
   },
 
-  // TODO(srcset-sizes): fine-tune all values
   data() {
     return {
       srcset: {
@@ -33,18 +31,19 @@ export default {
         medium: ImageWidth.MEDIUM,
         large: ImageWidth.LARGE,
       },
-      sizes: '100vw',
     }
   },
 
-  methods: {
-    /**
-     * @param {!string} name - Base classname for the element.
-     * @return {string} CSS classes for multiple images.
-     */
-    className(name) {
-      return (this.images.length > 1) ? `${name} ${name}--multiple` : name;
+  computed: {
+    /** @return {string} */
+    className() {
+      return `images images--${this.type}`;
     },
+
+    /** @return {string} */
+    type() {
+      return (this.images.length > 1) ? 'multiple' : 'single';
+    }
   }
 }
 </script>
