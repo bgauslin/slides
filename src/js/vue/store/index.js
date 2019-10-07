@@ -10,9 +10,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    direction: direction,
-    slideshow: slideshow,
-    theme: theme,
-    thumbs: thumbs,
+    direction,
+    slideshow,
+    theme,
+    thumbs,
   }
 });

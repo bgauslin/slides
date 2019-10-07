@@ -1,4 +1,3 @@
-// https://medium.com/@mannyyang/vue-router-code-splitting-via-webpack-48ed4476e52e
 import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router';
 

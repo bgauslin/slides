@@ -23,8 +23,9 @@ export default (router) => {
       direction = (toIndex - fromIndex == 1) ? 'forward' : 'back';
     }
 
-    // TODO: Get this working again...
-    // router.app.$store.commit('updateDirection', direction);
+    if (router.app.$store) {
+      router.app.$store.commit('updateDirection', direction);
+    }
     next();
   });
 }
