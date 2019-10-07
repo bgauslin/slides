@@ -1,11 +1,27 @@
-import Cover from './components/Cover.vue';
-import Home from './components/Home.vue';
-import NotFound from './components/NotFound.vue';
-import Slide from './components/Slide.vue';
-import Thumbs from './components/Thumbs.vue';
+// https://medium.com/@mannyyang/vue-router-code-splitting-via-webpack-48ed4476e52e
+import Vue from 'vue/dist/vue.js';
+import VueRouter from 'vue-router';
 
-export default () => {
-  const routes = [
+const Cover = () => import('./components/Cover.vue');
+const Home = () => import('./components/Home.vue');
+const NotFound = () => import( './components/NotFound.vue');
+const Slide = () => import( './components/Slide.vue');
+const Thumbs = () => import( './components/Thumbs.vue');
+
+Vue.use(VueRouter);
+
+const scrollBehavior = (to, from, savedPosition) => {
+  return {
+    x: 0,
+    y: 0,
+  }
+};
+
+export default new VueRouter({
+  mode: 'history',
+  linkActiveClass: 'current',
+  scrollBehavior,
+  routes: [
     {
       path: '/',
       name: 'home',
@@ -41,7 +57,5 @@ export default () => {
       path: '*',
       redirect: '/404',
     },
-  ];
-
-  return routes;
-}
+  ],
+});
