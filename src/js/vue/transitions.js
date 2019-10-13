@@ -7,10 +7,10 @@ export default (router) => {
     // 'direction' accordingly.
     if (from.name === 'slide' && to.name === 'slide') {
       const slides = router.app.$store.getters.slideshow.slides;
-      const toSlide = slides.find(slide => slide.slug == to.params.slug);
+      const toSlide = slides.find(slide => slide.slug === to.params.slug);
       const toIndex = slides.indexOf(toSlide);
       const fromIndex = router.app.$store.getters.slideIndex;
-      direction = (toIndex - fromIndex == 1) ? 'forward' : 'back';
+      direction = (toIndex - fromIndex === 1) ? 'forward' : 'back';
 
     // Otherwise, set direction based on other to/from route combination.
     } else {
@@ -37,7 +37,7 @@ export default (router) => {
       transitions.forEach((transition) => {
         transition.toFrom.forEach((route) => {
           const [to_, from_] = route;
-          if (to.name === to_ && from.name == from_) {
+          if (to_ === to.name && from_ === from.name) {
             direction = transition.direction;
           }
         });
