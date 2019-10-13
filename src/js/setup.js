@@ -1,8 +1,10 @@
 import fastclick from 'fastclick';
 
-/** @class */
 export default class {
-  /** Intializes site-wide widgets, utilities, etc. */
+  /**
+   * Intializes site-wide widgets, utilities, etc.
+   * @public
+   */
   static init() {
     this.noTouch_();
     this.viewportHeight_();
