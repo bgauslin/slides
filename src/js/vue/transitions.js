@@ -14,7 +14,7 @@ export default (router) => {
 
     // Otherwise, set direction based on other to/from route combination.
     } else {
-      const transition = [
+      const transitions = [
         {
           direction: 'forward',
           toFrom: [
@@ -34,19 +34,14 @@ export default (router) => {
         }
       ];
 
-      let i = 0;
-      while (i < transition.length) {
-        const group = transition[i];
-        let j = 0;
-        while (j < group.toFrom.length) {
-          const [to_, from_] = group.toFrom[j];
+      transitions.forEach((transition) => {
+        transition.toFrom.forEach((route) => {
+          const [to_, from_] = route;
           if (to.name === to_ && from.name == from_) {
-            direction = group.direction;
+            direction = transition.direction;
           }
-          j++;
-        }
-        i++;
-      }
+        });
+      });
     }
 
     if (router.app.$store) {
