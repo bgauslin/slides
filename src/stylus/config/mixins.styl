@@ -6,6 +6,12 @@ all_webfonts()
     font-weight 1 999
     src url('../webfonts/AvenirNext-Variable.woff2') format('woff2')
 
+  @font-face
+    font-display block
+    font-family 'Source Sans Variable'
+    src url('../webfonts/SourceSans-Variable-Roman.woff2') format('woff2')
+    font-weight 1 999
+
 // @mixin
 // @param Color color
 // @param Number size
@@ -108,8 +114,8 @@ elevation(level)
 // @param Number weight [400]
 webfont(type = 'body', weight = 400)
   if type == 'body'
-    font-family 'Source Sans Pro', sans-serif
-    font-weight weight
+    font-family 'Source Sans Variable', sans-serif
+    font-variation-settings 'wght' weight
 
   if type == 'heading'
     font-family 'Avenir Variable', sans-serif
