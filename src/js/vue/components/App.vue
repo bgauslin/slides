@@ -158,6 +158,12 @@ export default {
      * @return {string}
      */
     getQuery(view) {
+      // GraphQL returns the first slide if there's no ID, so return nothing
+      // instead.
+      if (view === 'slide' && !this.slide) {
+        return;
+      }
+
       switch (view) {
         case 'home':
           return {
@@ -170,10 +176,9 @@ export default {
             slideshow: this.$route.params.slideshow,
           };
         case 'slide':
-          const id = this.slide ? this.slide.id : null;
           return {
             name: Query.slide,
-            id
+            id: this.slide.id
           };
         case 'thumbs':
           return {
@@ -194,6 +199,13 @@ export default {
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
       const query = this.getQuery(view);
+
+      // Bail if there's no query and jump out of the method to show the
+      // 404 message.
+      if (!query) {
+        this.ready(null);
+        return;
+      }
       
       // Set GraphQL query variables.
       const id = query.id ? query.id : null;
@@ -348,8 +360,9 @@ export default {
 
     /**
      * Passes fetched data as a prop, sets 'loaded' flag to true, and updates
-     * the document title.
-     * @param {Object} content
+     * the document title if there's valid content. Otherwise displays the
+     * 404 page.
+     * @param {?Object} content
      */
     ready(content) {
       // Show 404 page if there's no content in the API response.
@@ -357,15 +370,15 @@ export default {
         this.app.content = null;
         this.app.showControls = false;
         this.app.notFound = true;
-        this.app.dataLoaded = true;
-        return;
+
+      // Otherwise, proceed as usual.
+      } else {
+        this.app.content = content;
+        this.app.key = content.id;
+        document.title = this.docTitle();
       }
 
-      // Otherwise, show the view.
-      this.app.content = content;
-      this.app.key = content.id;
       this.app.dataLoaded = true;
-      document.title = this.docTitle();
       this.sendPageview();
     },
 
