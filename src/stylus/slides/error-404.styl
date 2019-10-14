@@ -1,12 +1,16 @@
 .error-404
   align-self center
-  color LIGHT_GREY
   grid-row 2
   padding 2rem
   text-align center
+  webfont('heading')
 
 .error-404__heading
   font-size 500%
-  font-weight normal
+  font-variation-settings 'wght' 500
   line-height 1
   margin 0 0 1rem
+  
+.error-404__message a
+  font-variation-settings 'wght' 600
+  transition color var(--transition)
