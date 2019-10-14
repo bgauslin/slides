@@ -34,12 +34,12 @@ const slideshow = {
     hasSlideMedia: (state, getters) => {
       if (getters.hasSlideshow && state.slug) {
         const slide = state.slideshow.slides.find(slide => slide.slug === state.slug);
-        return (slide.media !== undefined);
+        return slide && slide.media && slide.media.length > 0;
       }
     },
 
     hasSlideshow: (state) => {
-      return (state.slideshow.slides !== undefined);
+      return state.slideshow.slides !== undefined;
     },
 
     slide: (state, getters) => {

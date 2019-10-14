@@ -1,5 +1,6 @@
 <template lang="pug">
   div.cover(
+    v-if="content",
     :style="coverImage",
   )
     div.cover__frame
@@ -19,9 +20,7 @@ import { mapGetters } from 'vuex';
 export default {
   props: {
     content: {
-      id: String,
       image: Array[Object],
-      slides: Array[Object],
       slug: String,
       summary: String,
       title: String,

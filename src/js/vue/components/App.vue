@@ -9,6 +9,7 @@
       :options="preloaderOptions",
     )
     transition(
+      v-if="app.content",
       @before-enter="beforeEnter",
       @after-enter="afterEnter",
       @before-leave="beforeLeave",
@@ -18,10 +19,13 @@
       router-view(
         v-if="app.dataLoaded",
         :content="app.content",
-        :key="app.content.id",
+        :key="app.key",
       )
+    not-found(
+      v-if="!app.content && app.showError"
+    )
     controls(
-      v-if="app.showControls",
+      v-if="app.content && app.showControls",
     )
     app-footer
 </template>
@@ -32,6 +36,7 @@ import { Query } from '../../queries/index';
 import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
+import NotFound from'./NotFound.vue';
 import Preloader from './Preloader.vue';
 
 export default {
@@ -39,6 +44,7 @@ export default {
     AppFooter,
     AppHeader,
     Controls,
+    NotFound,
     Preloader,
   },
 
@@ -47,7 +53,9 @@ export default {
       app: {
         content: null,
         dataLoaded: false,
+        key: null,
         showControls: false,
+        showError: false,
       },
       meta: {
         description: null,
@@ -93,32 +101,32 @@ export default {
 
   methods: {
     /**
-     * @param {!Element} element - DOM element to remove a CSS class from after
-     * entering a new route.
+     * Removes CSS class from an element after entering a new route.
+     * @param {!Element} element
      */
     afterEnter(element) {
       element.classList.remove(this.transition.enter);
     },
 
     /**
-     * @param {!Element} element - DOM element to remove a CSS class from after
-     * leaving the current route.
+     * Removes CSS class from an element after leaving the current route.
+     * @param {!Element} element
      */
     afterLeave(element) {
       element.classList.remove(this.transition.leave);
     },
 
     /**
-     * @param {!Element} element - DOM element to add a CSS class to before
-     * entering a new route.
+     * Adds CSS class to an element before entering a new route.
+     * @param {!Element} element
      */
     beforeEnter(element) {
       element.classList.add(this.transitionEnterClass());
     },
 
     /**
-     * @param {!Element} element - DOM element to remove a CSS class from before
-     * leaving the current route.
+     * Removes CSS class from an element before leaving the current route.
+     * @param {!Element} element
      */
     beforeLeave(element) {
       element.classList.add(this.transitionLeaveClass());
@@ -146,7 +154,7 @@ export default {
      * @param {!string} view - Route name.
      * @return {string}
      */
-    gqlQuery(view) {
+    getQuery(view) {
       switch (view) {
         case 'home':
           return {
@@ -159,9 +167,10 @@ export default {
             slideshow: this.$route.params.slideshow,
           };
         case 'slide':
+          const id = this.slide ? this.slide.id : null;
           return {
             name: Query.slide,
-            id: this.slide.id,
+            id
           };
         case 'thumbs':
           return {
@@ -181,7 +190,7 @@ export default {
       const endpoint = (process.env.NODE_ENV === 'production') ?
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
-      const query = this.gqlQuery(view);
+      const query = this.getQuery(view);
       
       // Set GraphQL query variables.
       const id = query.id ? query.id : null;
@@ -340,7 +349,18 @@ export default {
      * @param {Object} content
      */
     ready(content) {
+      // Show 404 page if there's no content in the API response.
+      if (!content) {
+        this.app.content = null;
+        this.app.showControls = false;
+        this.app.showError = true;
+        this.app.dataLoaded = true;
+        return;
+      }
+
+      // Otherwise, show the view.
       this.app.content = content;
+      this.app.key = content.id;
       this.app.dataLoaded = true;
       document.title = this.docTitle();
       this.sendPageview();

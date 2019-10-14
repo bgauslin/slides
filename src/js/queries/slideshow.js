@@ -13,9 +13,8 @@ query Slideshow ($slideshow: [String!]) {
 
 fragment SlideDeck on slides_slideDeck_Entry {
   title
-  id
-  slug
   summary
+  slug
   image: slideshowCover {
     ...Cover
   }
