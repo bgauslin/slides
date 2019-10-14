@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 const Cover = () => import('./components/Cover.vue');
 const Home = () => import('./components/Home.vue');
+const NotFound = () => import('./components/NotFound.vue');
 const Slide = () => import( './components/Slide.vue');
 const Thumbs = () => import( './components/Thumbs.vue');
 
@@ -44,6 +45,13 @@ export default new VueRouter({
       path: '/slide',
       name: 'redirect',
       redirect: '/',
+    },
+    {
+      // Catch-all 404 route for URLs with more than two segments. Otherwise,
+      // App.vue handles when to show a 404 page.
+      path: '*',
+      name: '404',
+      component: NotFound,
     },
   ],
 });

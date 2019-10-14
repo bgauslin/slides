@@ -281,6 +281,9 @@ export default {
         case 'thumbs':
           this.getDataThumbs();
           break;
+        case '404':
+          this.ready(null);
+          break;
       }
     },
 
