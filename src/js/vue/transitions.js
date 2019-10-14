@@ -31,7 +31,7 @@ export default (router) => {
             ['home', 'cover'],
             ['slide', 'thumbs'],
           ]
-        }
+        },
       ];
 
       transitions.forEach((transition) => {
