@@ -1,6 +1,7 @@
 <template lang="pug">
   div.app
     app-header(
+      v-if="!app.notFound",
       :view="view",
     )
     preloader(
@@ -9,7 +10,7 @@
       :options="preloaderOptions",
     )
     transition(
-      v-if="app.content",
+      v-if="app.content && !app.notFound",
       @before-enter="beforeEnter",
       @after-enter="afterEnter",
       @before-leave="beforeLeave",
@@ -22,12 +23,14 @@
         :key="app.key",
       )
     not-found(
-      v-if="!app.content && app.showError"
+      v-if="app.notFound"
     )
     controls(
-      v-if="app.content && app.showControls",
+      v-if="app.content && app.showControls && !app.notFound",
     )
-    app-footer
+    app-footer(
+      v-if="!app.notFound",
+    )
 </template>
 
 <script>
@@ -55,7 +58,7 @@ export default {
         dataLoaded: false,
         key: null,
         showControls: false,
-        showError: false,
+        notFound: false,
       },
       meta: {
         description: null,
@@ -353,7 +356,7 @@ export default {
       if (!content) {
         this.app.content = null;
         this.app.showControls = false;
-        this.app.showError = true;
+        this.app.notFound = true;
         this.app.dataLoaded = true;
         return;
       }
