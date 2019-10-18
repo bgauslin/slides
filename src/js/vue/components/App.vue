@@ -60,10 +60,6 @@ export default {
         showControls: false,
         notFound: false,
       },
-      meta: {
-        description: null,
-        title: document.title,
-      },
       preloaderOptions: {
         length: 8,
         lines: 12,
@@ -345,7 +341,7 @@ export default {
         case 'thumbs':
           return `Thumbnails · ${this.app.content.title}`;
         default:
-          return this.meta.title;
+          return document.title;
       }
     },
 
