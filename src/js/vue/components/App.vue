@@ -1,16 +1,16 @@
 <template lang="pug">
   div.app
     app-header(
-      v-if="!app.notFound",
+      v-if="!notFound",
       :view="view",
     )
     preloader(
-      v-if="!app.dataLoaded",
+      v-if="!dataLoaded",
       position="fixed",
       :options="preloaderOptions",
     )
     transition(
-      v-if="app.content && !app.notFound",
+      v-if="content && !notFound",
       @before-enter="beforeEnter",
       @after-enter="afterEnter",
       @before-leave="beforeLeave",
@@ -18,18 +18,18 @@
       mode="out-in",
     )
       router-view(
-        v-if="app.dataLoaded",
-        :content="app.content",
-        :key="app.key",
+        v-if="dataLoaded",
+        :content="content",
+        :key="key",
       )
     not-found(
-      v-if="app.notFound"
+      v-if="notFound"
     )
     controls(
-      v-if="app.content && app.showControls && !app.notFound",
+      v-if="content && showControls && !notFound",
     )
     app-footer(
-      v-if="!app.notFound",
+      v-if="!notFound",
     )
 </template>
 
@@ -53,13 +53,11 @@ export default {
 
   data() {
     return {
-      app: {
-        content: null,
-        dataLoaded: false,
-        key: null,
-        showControls: false,
-        notFound: false,
-      },
+      content: null,
+      dataLoaded: false,
+      key: null,
+      notFound: false,
+      showControls: false,
       preloaderOptions: {
         length: 8,
         lines: 12,
@@ -100,8 +98,8 @@ export default {
      * the current route.
      */
     getContent() {
-      this.app.dataLoaded = false;
-      this.app.showControls = (this.$route.name === 'slide');
+      this.dataLoaded = false;
+      this.showControls = (this.$route.name === 'slide');
 
       switch (this.$route.name) {
         case 'home':
@@ -313,18 +311,18 @@ export default {
     ready(content) {
       // Show 404 page if there's no content in the API response.
       if (!content) {
-        this.app.content = null;
-        this.app.showControls = false;
-        this.app.notFound = true;
+        this.content = null;
+        this.showControls = false;
+        this.notFound = true;
 
       // Otherwise, proceed as usual.
       } else {
-        this.app.content = content;
-        this.app.key = content.id;
+        this.content = content;
+        this.key = content.id;
         document.title = this.docTitle();
       }
 
-      this.app.dataLoaded = true;
+      this.dataLoaded = true;
       this.sendPageview();
     },
 
@@ -335,11 +333,11 @@ export default {
     docTitle() {
       switch (this.$route.name) {
         case 'cover':
-          return `${this.app.content.title}`;
+          return `${this.content.title}`;
         case 'slide':
-          return `${this.app.content.title} · ${this.slideshow.title}`;
+          return `${this.content.title} · ${this.slideshow.title}`;
         case 'thumbs':
-          return `Thumbnails · ${this.app.content.title}`;
+          return `Thumbnails · ${this.content.title}`;
         default:
           return document.title;
       }
