@@ -75,7 +75,7 @@ export default {
           name: 'thumbs',
           params: {
             slideshow: this.slideshowRoute,
-            slug: 'thumbs'
+            slug: 'thumbs',
           }
         };
       } else {
@@ -83,7 +83,7 @@ export default {
           name: 'slide',
           params: {
             slideshow: this.slideshowRoute,
-            slug: this.slideNext.slug
+            slug: this.slideNext.slug,
           }
         };
       }
@@ -107,7 +107,7 @@ export default {
         return {
           name: 'cover',
           params: {
-            slideshow: this.slideshowRoute
+            slideshow: this.slideshowRoute,
           }
         };
       } else {
@@ -115,7 +115,7 @@ export default {
           name: 'slide',
           params: {
             slideshow: this.slideshowRoute,
-            slug: this.slidePrev.slug
+            slug: this.slidePrev.slug,
           }
         };
       }
@@ -137,10 +137,11 @@ export default {
      * @return {string}
      */
     svgArrowPath(direction) {
+      const className = 'arrow-icon__path';
       if (direction === 'left') {
-        return '<path class="arrow-icon__path" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>';
+        return `<path class="${className}" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>`;
       } else {
-        return '<path class="arrow-icon__path" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>';
+        return `<path class="${className}" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>`;
       }
     },
   }

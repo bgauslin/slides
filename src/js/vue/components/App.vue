@@ -26,7 +26,7 @@
       v-if="notFound"
     )
     controls(
-      v-if="content && showControls && !notFound",
+      v-if="showControls",
     )
     app-footer(
       v-if="!notFound",
@@ -57,7 +57,6 @@ export default {
       dataLoaded: false,
       key: null,
       notFound: false,
-      showControls: false,
       preloaderOptions: {
         length: 8,
         lines: 12,
@@ -76,10 +75,15 @@ export default {
       'thumbs',
     ]),
 
+    /** @return {boolean} */
+    showControls() {
+      return this.view === 'slide' && this.content && !this.notFound;
+    },
+
     /** @return {string} */
     view() {
       return this.$route.name;
-    }
+    },
   },
 
   mounted() {
@@ -99,7 +103,6 @@ export default {
      */
     getContent() {
       this.dataLoaded = false;
-      this.showControls = (this.view === 'slide');
 
       switch (this.view) {
         case 'home':
