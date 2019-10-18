@@ -103,16 +103,16 @@ export default {
 
       switch (this.$route.name) {
         case 'home':
-          this.getDataHome();
+          this.getHome();
           break;
         case 'cover':
-          this.getDataCover();
+          this.getCover();
           break;
         case 'slide':
-          this.getDataSlide();
+          this.getSlide();
           break;
         case 'thumbs':
-          this.getDataThumbs();
+          this.getThumbs();
           break;
         case '404':
           this.ready(null);
@@ -124,8 +124,8 @@ export default {
      * Fetches data for the 'home' route/view.
      * @async
      */
-    async getDataHome() {
-      const content = await this.fetchJson('home');
+    async getHome() {
+      const content = await this.fetchData('home');
       this.ready(content);
     },
 
@@ -133,11 +133,11 @@ export default {
      * Fetches data for the 'cover' route/view.
      * @async
      */
-    async getDataCover() {
+    async getCover() {
       if (this.slideshow) {
         this.ready(this.slideshow);
       } else {
-        const content = await this.fetchJson('cover');
+        const content = await this.fetchData('cover');
         this.ready(content);
       }
     },
@@ -147,21 +147,21 @@ export default {
      * data if it hasn't been fetched and stored yet.
      * @async
      */
-    async getDataSlide() {
+    async getSlide() {
        // Set slug for slide lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
-      const fetchData = async () => {
+      const fetchSlideshow_ = async () => {
         // Get the slideshow first, then the slide. Otherwise, the slide won't
         // have a slot to be stored in.
         if (!this.slideshow) {
-          await this.fetchJson('slideshow');
+          await this.fetchData('slideshow');
         }
 
         // Wait until we've confirmed that the slide doesn't have media before
         // fetching the full slide and storing its media.
         if (!this.hasSlideMedia) {
-          const content = await this.fetchJson('slide');
+          const content = await this.fetchData('slide');
           this.ready(content);
         }
       }
@@ -169,7 +169,7 @@ export default {
       if (this.hasSlideMedia) {
         this.ready(this.slide);
       } else {
-        fetchData();
+        fetchSlideshow_();
       }
     },
 
@@ -178,19 +178,19 @@ export default {
      * data if it hasn't been fetched and stored yet.
      * @async
      */
-    async getDataThumbs() {
-      const fetchData = async () => {
+    async getThumbs() {
+      const fetchSlideshow_ = async () => {
         if (!this.slideshow) {
-          await this.fetchJson('slideshow');
+          await this.fetchData('slideshow');
         }
-        const content = await this.fetchJson('thumbs');
+        const content = await this.fetchData('thumbs');
         this.ready(content);
       }
 
       if (this.thumbs) {
         this.ready(this.thumbs);
       } else {
-        fetchData();
+        fetchSlideshow_();
       }
     },
 
@@ -236,7 +236,7 @@ export default {
      * @param {!string} view - Which route/view.
      * @async
      */
-    async fetchJson(view) {
+    async fetchData(view) {
       const endpoint = (process.env.NODE_ENV === 'production') ?
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
@@ -319,7 +319,7 @@ export default {
       } else {
         this.content = content;
         this.key = content.id;
-        document.title = this.docTitle();
+        document.title = this.setDocumentTitle();
       }
 
       this.dataLoaded = true;
@@ -330,7 +330,7 @@ export default {
      * Formats and updates document title based on the current route.
      * @return {string}
      */
-    docTitle() {
+    setDocumentTitle() {
       switch (this.$route.name) {
         case 'cover':
           return `${this.content.title}`;
@@ -360,7 +360,7 @@ export default {
      * @param {!Element} element
      */
     afterEnter(element) {
-      element.classList.remove(this.transitionEnterClass());
+      element.classList.remove(this.enterCssClass());
     },
 
     /**
@@ -368,7 +368,7 @@ export default {
      * @param {!Element} element
      */
     afterLeave(element) {
-      element.classList.remove(this.transitionLeaveClass());
+      element.classList.remove(this.leaveCssClass());
     },
 
     /**
@@ -376,7 +376,7 @@ export default {
      * @param {!Element} element
      */
     beforeEnter(element) {
-      element.classList.add(this.transitionEnterClass());
+      element.classList.add(this.enterCssClass());
     },
 
     /**
@@ -384,7 +384,7 @@ export default {
      * @param {!Element} element
      */
     beforeLeave(element) {
-      element.classList.add(this.transitionLeaveClass());
+      element.classList.add(this.leaveCssClass());
     },
 
     /**
@@ -392,7 +392,7 @@ export default {
      * 'direction' value.
      * @return {string} 
      */
-    transitionEnterClass() {
+    enterCssClass() {
       switch (this.direction) {
         case 'forward':
           return 'slide-in-right';
@@ -408,7 +408,7 @@ export default {
      * 'direction' value.
      * @return {string} 
      */
-    transitionLeaveClass() {
+    leaveCssClass() {
       switch (this.direction) {
         case 'forward':
           return 'slide-out-left';
