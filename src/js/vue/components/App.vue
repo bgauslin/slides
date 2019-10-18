@@ -100,19 +100,103 @@ export default {
 
   methods: {
     /**
-     * Formats and updates document title based on the current route.
-     * @return {string}
+     * Sets the loaded flag to false and calls a data-fetching method based on
+     * the current route.
      */
-    docTitle() {
+    getContent() {
+      this.app.dataLoaded = false;
+      this.app.showControls = (this.$route.name === 'slide');
+
       switch (this.$route.name) {
+        case 'home':
+          this.getDataHome();
+          break;
         case 'cover':
-          return `${this.app.content.title}`;
+          this.getDataCover();
+          break;
         case 'slide':
-          return `${this.app.content.title} · ${this.slideshow.title}`;
+          this.getDataSlide();
+          break;
         case 'thumbs':
-          return `Thumbnails · ${this.app.content.title}`;
-        default:
-          return this.meta.title;
+          this.getDataThumbs();
+          break;
+        case '404':
+          this.ready(null);
+          break;
+      }
+    },
+
+    /**
+     * Fetches data for the 'home' route/view.
+     * @async
+     */
+    async getDataHome() {
+      const content = await this.fetchJson('home');
+      this.ready(content);
+    },
+
+    /**
+     * Fetches data for the 'cover' route/view.
+     * @async
+     */
+    async getDataCover() {
+      if (this.slideshow) {
+        this.ready(this.slideshow);
+      } else {
+        const content = await this.fetchJson('cover');
+        this.ready(content);
+      }
+    },
+
+    /**
+     * Fetches data for the 'slide' route/view and fetches full 'slideshow'
+     * data if it hasn't been fetched and stored yet.
+     * @async
+     */
+    async getDataSlide() {
+       // Set slug for slide lookup.
+      this.$store.commit('updateSlug', this.$route.params.slug);
+
+      const fetchData = async () => {
+        // Get the slideshow first, then the slide. Otherwise, the slide won't
+        // have a slot to be stored in.
+        if (!this.slideshow) {
+          await this.fetchJson('slideshow');
+        }
+
+        // Wait until we've confirmed that the slide doesn't have media before
+        // fetching the full slide and storing its media.
+        if (!this.hasSlideMedia) {
+          const content = await this.fetchJson('slide');
+          this.ready(content);
+        }
+      }
+
+      if (this.hasSlideMedia) {
+        this.ready(this.slide);
+      } else {
+        fetchData();
+      }
+    },
+
+    /**
+     * Fetches data for the 'thumbs' route/view and fetches full 'slideshow'
+     * data if it hasn't been fetched and stored yet.
+     * @async
+     */
+    async getDataThumbs() {
+      const fetchData = async () => {
+        if (!this.slideshow) {
+          await this.fetchJson('slideshow');
+        }
+        const content = await this.fetchJson('thumbs');
+        this.ready(content);
+      }
+
+      if (this.thumbs) {
+        this.ready(this.thumbs);
+      } else {
+        fetchData();
       }
     },
 
@@ -225,107 +309,6 @@ export default {
     },
 
     /**
-     * Sets the loaded flag to false and calls a data-fetching method based on
-     * the current route.
-     */
-    getContent() {
-      this.app.dataLoaded = false;
-      this.app.showControls = (this.$route.name === 'slide');
-
-      switch (this.$route.name) {
-        case 'home':
-          this.getDataHome();
-          break;
-        case 'cover':
-          this.getDataCover();
-          break;
-        case 'slide':
-          this.getDataSlide();
-          break;
-        case 'thumbs':
-          this.getDataThumbs();
-          break;
-        case '404':
-          this.ready(null);
-          break;
-      }
-    },
-
-    /**
-     * Fetches data for the 'home' route/view.
-     * @async
-     */
-    async getDataHome() {
-      const content = await this.fetchJson('home');
-      this.ready(content);
-    },
-
-    /**
-     * Fetches data for the 'cover' route/view.
-     * @async
-     */
-    async getDataCover() {
-      if (this.slideshow) {
-        this.ready(this.slideshow);
-      } else {
-        const content = await this.fetchJson('cover');
-        this.ready(content);
-      }
-    },
-
-    /**
-     * Fetches data for the 'slide' route/view and fetches full 'slideshow'
-     * data if it hasn't been fetched and stored yet.
-     * @async
-     */
-    async getDataSlide() {
-       // Set slug for slide lookup.
-      this.$store.commit('updateSlug', this.$route.params.slug);
-
-      const fetchData = async () => {
-        // Get the slideshow first, then the slide. Otherwise, the slide won't
-        // have a slot to be stored in.
-        if (!this.slideshow) {
-          await this.fetchJson('slideshow');
-        }
-
-        // Wait until we've confirmed that the slide doesn't have media before
-        // fetching the full slide and storing its media.
-        if (!this.hasSlideMedia) {
-          const content = await this.fetchJson('slide');
-          this.ready(content);
-        }
-      }
-
-      if (this.hasSlideMedia) {
-        this.ready(this.slide);
-      } else {
-        fetchData();
-      }
-    },
-
-    /**
-     * Fetches data for the 'thumbs' route/view and fetches full 'slideshow'
-     * data if it hasn't been fetched and stored yet.
-     * @async
-     */
-    async getDataThumbs() {
-      const fetchData = async () => {
-        if (!this.slideshow) {
-          await this.fetchJson('slideshow');
-        }
-        const content = await this.fetchJson('thumbs');
-        this.ready(content);
-      }
-
-      if (this.thumbs) {
-        this.ready(this.thumbs);
-      } else {
-        fetchData();
-      }
-    },
-
-    /**
      * Passes fetched data as a prop, sets 'loaded' flag to true, and updates
      * the document title if there's valid content. Otherwise displays the
      * 404 page.
@@ -347,6 +330,23 @@ export default {
 
       this.app.dataLoaded = true;
       this.sendPageview();
+    },
+
+    /**
+     * Formats and updates document title based on the current route.
+     * @return {string}
+     */
+    docTitle() {
+      switch (this.$route.name) {
+        case 'cover':
+          return `${this.app.content.title}`;
+        case 'slide':
+          return `${this.app.content.title} · ${this.slideshow.title}`;
+        case 'thumbs':
+          return `Thumbnails · ${this.app.content.title}`;
+        default:
+          return this.meta.title;
+      }
     },
 
     /**
