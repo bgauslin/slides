@@ -70,10 +70,6 @@ export default {
         radius: 8,
         width: 3,
       },
-      transition: {
-        enter: null,
-        leave: null,
-      },
     }
   },
 
@@ -103,38 +99,6 @@ export default {
   },
 
   methods: {
-    /**
-     * Removes CSS class from an element after entering a new route.
-     * @param {!Element} element
-     */
-    afterEnter(element) {
-      element.classList.remove(this.transition.enter);
-    },
-
-    /**
-     * Removes CSS class from an element after leaving the current route.
-     * @param {!Element} element
-     */
-    afterLeave(element) {
-      element.classList.remove(this.transition.leave);
-    },
-
-    /**
-     * Adds CSS class to an element before entering a new route.
-     * @param {!Element} element
-     */
-    beforeEnter(element) {
-      element.classList.add(this.transitionEnterClass());
-    },
-
-    /**
-     * Removes CSS class from an element before leaving the current route.
-     * @param {!Element} element
-     */
-    beforeLeave(element) {
-      element.classList.add(this.transitionLeaveClass());
-    },
-
     /**
      * Formats and updates document title based on the current route.
      * @return {string}
@@ -395,6 +359,38 @@ export default {
         ga('set', 'title', document.title);
         ga('send', 'pageview');
       }
+    },
+
+    /**
+     * Removes CSS class from an element after entering a new route.
+     * @param {!Element} element
+     */
+    afterEnter(element) {
+      element.classList.remove(this.transitionEnterClass());
+    },
+
+    /**
+     * Removes CSS class from an element after leaving the current route.
+     * @param {!Element} element
+     */
+    afterLeave(element) {
+      element.classList.remove(this.transitionLeaveClass());
+    },
+
+    /**
+     * Adds CSS class to an element before entering a new route.
+     * @param {!Element} element
+     */
+    beforeEnter(element) {
+      element.classList.add(this.transitionEnterClass());
+    },
+
+    /**
+     * Removes CSS class from an element before leaving the current route.
+     * @param {!Element} element
+     */
+    beforeLeave(element) {
+      element.classList.add(this.transitionLeaveClass());
     },
 
     /**
