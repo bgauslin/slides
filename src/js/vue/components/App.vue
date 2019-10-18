@@ -99,9 +99,9 @@ export default {
      */
     getContent() {
       this.dataLoaded = false;
-      this.showControls = (this.$route.name === 'slide');
+      this.showControls = (this.view === 'slide');
 
-      switch (this.$route.name) {
+      switch (this.view) {
         case 'home':
           this.getHome();
           break;
@@ -331,7 +331,7 @@ export default {
      * @return {string}
      */
     setDocumentTitle() {
-      switch (this.$route.name) {
+      switch (this.view) {
         case 'cover':
           return `${this.content.title}`;
         case 'slide':
@@ -357,34 +357,34 @@ export default {
 
     /**
      * Removes CSS class from an element after entering a new route.
-     * @param {!Element} element
+     * @param {!Element} el
      */
-    afterEnter(element) {
-      element.classList.remove(this.enterCssClass());
+    afterEnter(el) {
+      el.classList.remove(this.enterCssClass());
     },
 
     /**
      * Removes CSS class from an element after leaving the current route.
-     * @param {!Element} element
+     * @param {!Element} el
      */
-    afterLeave(element) {
-      element.classList.remove(this.leaveCssClass());
+    afterLeave(el) {
+      el.classList.remove(this.leaveCssClass());
     },
 
     /**
      * Adds CSS class to an element before entering a new route.
-     * @param {!Element} element
+     * @param {!Element} el
      */
-    beforeEnter(element) {
-      element.classList.add(this.enterCssClass());
+    beforeEnter(el) {
+      el.classList.add(this.enterCssClass());
     },
 
     /**
      * Removes CSS class from an element before leaving the current route.
-     * @param {!Element} element
+     * @param {!Element} el
      */
-    beforeLeave(element) {
-      element.classList.add(this.leaveCssClass());
+    beforeLeave(el) {
+      el.classList.add(this.leaveCssClass());
     },
 
     /**
