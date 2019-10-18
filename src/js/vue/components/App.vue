@@ -154,7 +154,9 @@ export default {
        // Set slug for slide lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
-      const fetchSlideshow_ = async () => {
+      if (this.hasSlideMedia) {
+        this.ready(this.slide);
+      } else {
         // Get the slideshow first, then the slide. Otherwise, the slide won't
         // have a slot to be stored in.
         if (!this.slideshow) {
@@ -168,12 +170,6 @@ export default {
           this.ready(content);
         }
       }
-
-      if (this.hasSlideMedia) {
-        this.ready(this.slide);
-      } else {
-        fetchSlideshow_();
-      }
     },
 
     /**
@@ -182,18 +178,14 @@ export default {
      * @async
      */
     async getThumbs() {
-      const fetchSlideshow_ = async () => {
+      if (this.thumbs) {
+        this.ready(this.thumbs);
+      } else {
         if (!this.slideshow) {
           await this.fetchData('slideshow');
         }
         const content = await this.fetchData('thumbs');
         this.ready(content);
-      }
-
-      if (this.thumbs) {
-        this.ready(this.thumbs);
-      } else {
-        fetchSlideshow_();
       }
     },
 
