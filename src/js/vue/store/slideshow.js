@@ -54,6 +54,8 @@ const slideshow = {
       }
     },
 
+    // TODO: Debug slideIndex so that Controls don't throw an error when
+    // starting on an individual slide.
     slideIndex: (state, getters) => {
       if (getters.hasSlideshow) {
         const slide = getters.slide;
