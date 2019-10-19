@@ -98,8 +98,8 @@ export default {
 
   methods: {
     /**
-     * Sets the loaded flag to false and calls a data-fetching method based on
-     * the current route.
+     * Sets the loaded flag to false and calls a data-fetching method based
+     * on the current view.
      */
     getContent() {
       this.dataLoaded = false;
@@ -124,7 +124,7 @@ export default {
     },
 
     /**
-     * Fetches data for the 'home' route/view.
+     * Fetches data for the 'home' view.
      * @async
      */
     async getHome() {
@@ -133,7 +133,7 @@ export default {
     },
 
     /**
-     * Fetches data for the 'cover' route/view.
+     * Fetches data for the 'cover' view.
      * @async
      */
     async getCover() {
@@ -146,35 +146,29 @@ export default {
     },
 
     /**
-     * Fetches data for the 'slide' route/view and fetches full 'slideshow'
-     * data if it hasn't been fetched and stored yet.
+     * Fetches data for the 'slide' view and fetches full 'slideshow' data
+     * if it hasn't been fetched and stored yet.
      * @async
      */
     async getSlide() {
        // Set slug for slide lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
-      if (this.hasSlideMedia) {
-        this.ready(this.slide);
+      // [1] If there's no slideshow, fetch that first so the slide has a slot
+      // to be stored in.
+      if (this.slideshow) {
+        const content = await this.fetchData('slide');
+        this.ready(content);
       } else {
-        // Get the slideshow first, then the slide. Otherwise, the slide won't
-        // have a slot to be stored in.
-        if (!this.slideshow) {
-          await this.fetchData('slideshow');
-        }
-
-        // Wait until we've confirmed that the slide doesn't have media before
-        // fetching the full slide and storing its media.
-        if (!this.hasSlideMedia) {
-          const content = await this.fetchData('slide');
-          this.ready(content);
-        }
+        await this.fetchData('slideshow'); // [1]
+        const content = await this.fetchData('slide');
+        this.ready(content); 
       }
     },
 
     /**
-     * Fetches data for the 'thumbs' route/view and fetches full 'slideshow'
-     * data if it hasn't been fetched and stored yet.
+     * Fetches data for the 'thumbs' view and fetches full 'slideshow' data
+     * if it hasn't been fetched and stored yet.
      * @async
      */
     async getThumbs() {
@@ -190,7 +184,7 @@ export default {
     },
 
     /**
-     * Sets Graph QL query depending on the route/view.
+     * Sets Graph QL query depending on the view.
      * @param {!string} view - Route name.
      * @return {string}
      */
@@ -228,7 +222,7 @@ export default {
     /**
      * Fetches API data from an endpoint based on the route, then stores it to
      * avoid redundant API calls.
-     * @param {!string} view - Which route/view.
+     * @param {!string} view - Which view.
      * @async
      */
     async fetchData(view) {
