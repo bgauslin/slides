@@ -150,18 +150,24 @@ export default {
      * @async
      */
     async getSlide() {
-       // Set slug for slide lookup.
+       // Set the slug first for slide lookup in the slideshow.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
-      // If there's no slideshow yet, fetch that first so the slide has a slot
-      // to be stored in.
-      if (!this.slideshow) {
-        await this.fetchData('slideshow');
-        const content = await this.fetchData('slide');
-        this.ready(content);
+      // If the slide has media, then it's already been fetched and stored.
+      if (this.slide && this.slide.media !== undefined) {
+        this.ready(this.slide);
       } else {
-        const content = await this.fetchData('slide');
-        this.ready(content); 
+        // If the slideshow hasn't been fetched and stored yet, fetch it first,
+        // then fetch the slide so it has a slot to be stored in. Otherwise,
+        // only fetch the slide.
+        if (!this.slideshow) {
+          await this.fetchData('slideshow');
+          const content = await this.fetchData('slide');
+          this.ready(content);
+        } else {
+          const content = await this.fetchData('slide');
+          this.ready(content);
+        }
       }
     },
 
