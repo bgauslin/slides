@@ -31,13 +31,6 @@ const slideshow = {
   },
 
   getters: {
-    hasSlideMedia: (state, getters) => {
-      if (getters.hasSlideshow && state.slug) {
-        const slide = state.slideshow.slides.find(slide => slide.slug === state.slug);
-        return slide && slide.media && slide.media.length > 0;
-      }
-    },
-
     hasSlideshow: (state) => {
       return state.slideshow.slides !== undefined;
     },
