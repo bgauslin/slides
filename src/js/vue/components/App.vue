@@ -302,7 +302,6 @@ export default {
       // Show 404 page if there's no content in the API response.
       if (!content) {
         this.content = null;
-        this.showControls = false;
         this.notFound = true;
 
       // Otherwise, proceed as usual.
