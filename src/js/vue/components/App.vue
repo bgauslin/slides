@@ -76,7 +76,7 @@ export default {
 
     /** @return {boolean} */
     showControls() {
-      return this.view === 'slide' && this.content && !this.notFound;
+      return this.view === 'slide' && !this.notFound;
     },
 
     /** @return {string} */
@@ -153,13 +153,13 @@ export default {
        // Set slug for slide lookup.
       this.$store.commit('updateSlug', this.$route.params.slug);
 
-      // [1] If there's no slideshow, fetch that first so the slide has a slot
+      // If there's no slideshow yet, fetch that first so the slide has a slot
       // to be stored in.
-      if (this.slideshow) {
+      if (!this.slideshow) {
+        await this.fetchData('slideshow');
         const content = await this.fetchData('slide');
         this.ready(content);
       } else {
-        await this.fetchData('slideshow'); // [1]
         const content = await this.fetchData('slide');
         this.ready(content); 
       }
