@@ -5,6 +5,7 @@
     div.controls__frame
       div.controls__content
         router-link(
+          v-if="prevRoute",
           class="prev-next__link prev-next__link--prev",
           :to="prevRoute",
           :title="prevLabel",
@@ -15,6 +16,7 @@
           )
         counter
         router-link(
+          v-if="nextRoute",
           class="prev-next__link prev-next__link--next",
           :to="nextRoute",
           :title="nextLabel",
@@ -78,7 +80,7 @@ export default {
             slug: 'thumbs',
           }
         };
-      } else {
+      } else if (this.slideNext) {
         return {
           name: 'slide',
           params: {
@@ -110,7 +112,7 @@ export default {
             slideshow: this.slideshowRoute,
           }
         };
-      } else {
+      } else if (this.slidePrev) {
         return {
           name: 'slide',
           params: {
