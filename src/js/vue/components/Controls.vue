@@ -42,35 +42,47 @@ export default {
       'totalSlideCount',
     ]),
 
-    /**
-     * Whether the current route is for the first slide.
-     * @return {boolean}
-     */
+    /** @return {boolean} */
     isFirstSlide() {
       return this.slideIndex === 0;
     },
 
-    /**
-     * Whether the current route is for the last slide.
-     * @return {boolean}
-     */
+    /** @return {boolean} */
     isLastSlide() {
       return this.slideIndex === this.totalSlideCount - 1;
     },
 
-    /**
-     * Label for next route based on whether or not the current route is for
-     * the last slide.
-     * @return {string}
-     */
+    /** @return {string} */
+    prevLabel() {
+      return this.isFirstSlide ? 'Cover' : this.slidePrev.title;
+    },
+
+    /** @return {string} */
     nextLabel() {
       return this.isLastSlide ? 'Thumbnails' : this.slideNext.title;
     },
 
-    /**
-     * The next route.
-     * @return {Object} 
-     */
+    /** @return {Object} */
+    prevRoute() {
+      if (this.isFirstSlide) {
+        return {
+          name: 'cover',
+          params: {
+            slideshow: this.slideshowRoute,
+          }
+        };
+      } else if (this.slidePrev) {
+        return {
+          name: 'slide',
+          params: {
+            slideshow: this.slideshowRoute,
+            slug: this.slidePrev.slug,
+          }
+        };
+      }
+    },
+
+    /** @return {Object} */
     nextRoute() {
       if (this.isLastSlide) {
         return {
@@ -86,38 +98,6 @@ export default {
           params: {
             slideshow: this.slideshowRoute,
             slug: this.slideNext.slug,
-          }
-        };
-      }
-    },
-
-    /**
-     * Label for previous route based on whether or not the current route is
-     * for the first slide.
-     * @return {string}
-     */
-    prevLabel() {
-      return this.isFirstSlide ? 'Cover' : this.slidePrev.title;
-    },
-
-    /**
-     * The previous route.
-     * @return {Object}
-     */
-    prevRoute() {
-      if (this.isFirstSlide) {
-        return {
-          name: 'cover',
-          params: {
-            slideshow: this.slideshowRoute,
-          }
-        };
-      } else if (this.slidePrev) {
-        return {
-          name: 'slide',
-          params: {
-            slideshow: this.slideshowRoute,
-            slug: this.slidePrev.slug,
           }
         };
       }
