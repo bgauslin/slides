@@ -29,7 +29,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['theme']),
+    ...mapGetters([
+      'theme',
+    ]),
 
     /**
      * Renders inline style with 'position' property depending on what element

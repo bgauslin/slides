@@ -28,7 +28,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['slideFirst']),
+    ...mapGetters([
+      'slideFirst',
+    ]),
 
     /** 
      * Inline 'style' attribute value for a background image.

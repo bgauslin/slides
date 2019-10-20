@@ -15,7 +15,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['theme']),
+    ...mapGetters([
+      'theme',
+    ]),
 
     /** @return {string} */
     svgIcon() {
