@@ -1,18 +1,18 @@
 const direction = {
-    state: {
-      direction: null,
-    },
+  state: {
+    direction: '',
+  },
   
-    mutations: {
-      updateDirection(state, payload) {
-        state.direction = payload;
-      },
+  mutations: {
+    updateDirection(state, payload) {
+      state.direction = payload;
     },
+  },
   
-    getters: {
-      direction: (state) => state.direction,
-    },
-  }
+  getters: {
+    direction: (state) => state.direction,
+  },
+}
   
-  export default direction;
+export default direction;
   
