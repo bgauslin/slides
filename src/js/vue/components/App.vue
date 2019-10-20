@@ -1,16 +1,16 @@
 <template lang="pug">
   div.app
     app-header(
-      v-if="!notFound",
+      v-if="!is404",
       :view="view",
     )
     preloader(
-      v-if="!dataLoaded",
+      v-if="isLoading",
       position="fixed",
       :options="preloaderOptions",
     )
     transition(
-      v-if="content && !notFound",
+      v-if="content && !is404",
       @before-enter="beforeEnter",
       @after-enter="afterEnter",
       @before-leave="beforeLeave",
@@ -18,18 +18,18 @@
       mode="out-in",
     )
       router-view(
-        v-if="dataLoaded",
+        v-if="!isLoading",
         :content="content",
         :key="key",
       )
     not-found(
-      v-if="notFound"
+      v-if="is404"
     )
     controls(
-      v-if="showControls",
+      v-if="hasControls",
     )
     app-footer(
-      v-if="!notFound",
+      v-if="!is404",
     )
 </template>
 
@@ -54,9 +54,9 @@ export default {
   data() {
     return {
       content: null,
-      dataLoaded: false,
+      is404: false,
+      isLoading: false,
       key: null,
-      notFound: false,
       preloaderOptions: {
         length: 8,
         lines: 12,
@@ -75,8 +75,8 @@ export default {
     ]),
 
     /** @return {boolean} */
-    showControls() {
-      return this.view === 'slide' && !this.notFound;
+    hasControls() {
+      return this.view === 'slide' && !this.is404;
     },
 
     /** @return {string} */
@@ -101,7 +101,7 @@ export default {
      * on the current view.
      */
     getContent() {
-      this.dataLoaded = false;
+      this.isLoading = true;
 
       switch (this.view) {
         case 'home':
@@ -302,7 +302,7 @@ export default {
       // Show 404 page if there's no content in the API response.
       if (!content) {
         this.content = null;
-        this.notFound = true;
+        this.is404 = true;
 
       // Otherwise, proceed as usual.
       } else {
@@ -311,7 +311,7 @@ export default {
         document.title = this.setDocumentTitle();
       }
 
-      this.dataLoaded = true;
+      this.isLoading = false;
       this.sendPageview();
     },
 
