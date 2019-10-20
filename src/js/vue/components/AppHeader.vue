@@ -1,10 +1,10 @@
 <template lang="pug">
   header(
-    :class="['header', 'header--' + view]",
+    :class="headerClass",
   )
     div.header__content
       router-link(
-        :class="['header__link', headerLinkClass]",
+        :class="headerLinkClass",
         :to="headerLinkRoute",
         :title="headerLinkLabel",
       ) 
@@ -30,17 +30,27 @@ export default {
     }),
 
     /**
-     * CSS class for the header link based on the current route.
-     * @return {string|null}
+     * CSS classes for the header based on the current view/route.
+     * @return {string}
+     */
+    headerClass() {
+      return `header header--${this.view}`;
+    },
+
+    /**
+     * CSS class(es) for the header link based on the current route.
+     * @return {string}
      */
     headerLinkClass() {
-      const route = this.$route.name;
-      if (route === 'home') {
-        return 'header__link--home';
-      } else if (route === 'thumbs') {
-        return 'header__link--back';
-      } else {
-        return;
+      const className = 'header__link';
+
+      switch (this.route) {
+        case 'home':
+          return `${className} ${className}--home`;
+        case 'thumbs':
+          return `${className} ${className}--back`;
+        default:
+          return className;
       }
     },
 
@@ -49,11 +59,9 @@ export default {
      * @return {string}
      */
     headerLinkLabel() {
-      const route = this.$route.name;
-
-      if (route === 'thumbs' && this.lastVisitedSlug) {
+      if (this.route === 'thumbs' && this.lastVisitedSlug) {
         return 'Back';
-      } else if (route === 'thumbs' || route === 'slide') {
+      } else if (this.route === 'thumbs' || this.route === 'slide') {
         return this.slideshowTitle;
       } else {
         return 'Slideshows';
@@ -65,9 +73,7 @@ export default {
      * @return {Object}
      */
     headerLinkRoute() {
-      const route = this.$route.name;
-
-      if (route === 'thumbs' && this.lastVisitedSlug) {
+      if (this.route === 'thumbs' && this.lastVisitedSlug) {
         return {
           name: 'slide',
           params: {
@@ -75,7 +81,7 @@ export default {
             slug: this.lastVisitedSlug
           }
         };
-      } else if (route === 'thumbs' || route === 'slide') {
+      } else if (this.route === 'thumbs' || this.route === 'slide') {
         return {
           name: 'cover',
           params: {
@@ -85,6 +91,11 @@ export default {
       } else {
         return { name: 'home' };
       }
+    },
+
+    /** @return {string} */
+    route() {
+      return this.$route.name;
     },
 
     /**
