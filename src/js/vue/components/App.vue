@@ -97,7 +97,7 @@ export default {
 
   methods: {
     /**
-     * Sets the loaded flag to false and calls a data-fetching method based
+     * Enables the loading spinner and calls a data-fetching method based
      * on the current view.
      */
     getContent() {
@@ -123,7 +123,7 @@ export default {
     },
 
     /**
-     * Fetches data for the 'home' view.
+     * Fetches and renders data for the 'home' view.
      * @async
      */
     async getHome() {
@@ -132,7 +132,7 @@ export default {
     },
 
     /**
-     * Fetches data for the 'cover' view.
+     * Fetches and renders data for the 'cover' view.
      * @async
      */
     async getCover() {
@@ -145,8 +145,8 @@ export default {
     },
 
     /**
-     * Fetches data for the 'slide' view and fetches full 'slideshow' data
-     * if it hasn't been fetched and stored yet.
+     * Fetches and renders data for the 'slide' view and fetches full
+     * 'slideshow' data if it hasn't been fetched and stored yet.
      * @async
      */
     async getSlide() {
@@ -168,8 +168,8 @@ export default {
     },
 
     /**
-     * Fetches data for the 'thumbs' view and fetches full 'slideshow' data
-     * if it hasn't been fetched and stored yet.
+     * Fetches and renders data for the 'thumbs' view and fetches full
+     * 'slideshow' data if it hasn't been fetched and stored yet.
      * @async
      */
     async getThumbs() {
@@ -221,8 +221,8 @@ export default {
     },
 
     /**
-     * Fetches API data from an endpoint based on the route, then stores it to
-     * avoid redundant API calls.
+     * Fetches API data from a GraphQL endpoint, then stores the data to avoid
+     * redundant API calls on subsequent route changes.
      * @param {!string} view - Which view.
      * @async
      */
@@ -293,9 +293,9 @@ export default {
     },
 
     /**
-     * Passes fetched data as a prop, sets 'loaded' flag to true, and updates
-     * the document title if there's valid content. Otherwise displays the
-     * 404 page.
+     * Passes fetched data as a prop, stops displaying the loading spinner, and
+     * updates the document title if there's valid content. Otherwise displays
+     * the 404 page.
      * @param {?Object} content
      */
     ready(content) {
