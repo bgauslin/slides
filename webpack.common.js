@@ -19,6 +19,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyPlugin([
       { from: 'src/root' },
+      { from: 'src/webfonts' },
     ]),
     new DotenvWebpack(),
     new VueLoaderPlugin(),
@@ -70,10 +71,6 @@ module.exports = {
             ]
           }
         ]
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
       }
     ]
   }
