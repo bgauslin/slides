@@ -5,7 +5,7 @@ const DotenvWebpack = require('dotenv-webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  entry: ['@babel/polyfill/noConflict', './src/js/slides.js'],
+  entry: ['./src/js/slides.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -37,8 +37,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['transform-regenerator'],
+            plugins: [
+              '@babel/plugin-syntax-dynamic-import',
+              'babel-plugin-transform-es2015-modules-commonjs',
+            ],
           }
         }
       },
