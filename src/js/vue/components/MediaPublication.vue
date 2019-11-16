@@ -8,7 +8,7 @@
         class="publication__image",
         :image="image",
         :srcset="srcset",
-        type="cover",
+        type="publication",
       )
     div.publication__details
       h2.publication__title(

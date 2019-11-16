@@ -100,7 +100,7 @@ export default {
       switch (this.type) {
         case 'preview':
           return '(min-width: 45rem) 45vw, (min-width: 60rem) 576px, 90vw';
-        case 'cover':
+        case 'publication':
           return '(min-width: 45rem) 33vw, (min-width: 60rem) 300px, 50vw';
         case 'multiple':
           return '(min-width: 60rem) 436px, 50vw';
