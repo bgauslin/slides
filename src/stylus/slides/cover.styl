@@ -1,5 +1,6 @@
 .cover
   grid-row 1 / span 3
+  position relative
 
 .cover
 .cover__frame
@@ -11,6 +12,20 @@
 .cover__frame
   background-color var(--cover-background)
   height 100%
+
+.image--cover
+  height 100vh
+  position absolute
+  width 100vw
+  z-index -1
+
+.image--cover figure 
+  height 100%
+  width 100%
+
+.image--cover img
+  height 100%
+  object-fit cover
 
 .cover__header
   padding 1rem

@@ -1,8 +1,12 @@
 <template lang="pug">
   div.cover(
     v-if="content",
-    :style="coverImage",
   )
+    single-image(
+      :image="content.image[0]",
+      :srcset="srcset",
+      type="cover",
+    )
     div.cover__frame
       header.cover__header
         h2.cover__heading {{ content.title }}
@@ -15,9 +19,13 @@
 </template>
 
 <script>
+import { ImageWidth } from '../../queries/imageSizing';
 import { mapGetters } from 'vuex';
+import SingleImage from './SingleImage.vue';
 
 export default {
+  components: { SingleImage },
+
   props: {
     content: {
       image: Array[Object],
@@ -27,18 +35,20 @@ export default {
     }
   },
 
+  data() {
+    return {
+      srcset: {
+        small: ImageWidth.SMALL,
+        medium: ImageWidth.MEDIUM,
+        large: ImageWidth.LARGE,
+      },
+    }
+  },
+
   computed: {
     ...mapGetters([
       'slideFirst',
     ]),
-
-    /** 
-     * Inline 'style' attribute value for a background image.
-     * @return {string} 
-     */
-    coverImage() {
-      return `background: url(${this.content.image[0].src}) center / cover no-repeat;`;
-    },
   }
 }
 </script>

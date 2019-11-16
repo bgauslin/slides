@@ -16,13 +16,15 @@ fragment SlideDeck on slides_slideDeck_Entry {
   summary
   slug
   image: slideshowCover {
-    ...Cover
+    ...SlideshowCover
   }
 }
 
-fragment Cover on slides_Asset {
+fragment SlideshowCover on slides_Asset {
   alt: title
-  src: url @transform(width: ${ImageWidth.LARGE}, height: ${ImageHeight.LARGE}, interlace: "partition", immediately: true)
+  src_small: url @transform(width: ${ImageWidth.SMALL}, height: ${ImageHeight.SMALL}, interlace: "partition", immediately: true)
+  src_medium: url @transform(width: ${ImageWidth.MEDIUM}, height: ${ImageHeight.MEDIUM}, interlace: "partition", immediately: true)
+  src_large: url @transform(width: ${ImageWidth.LARGE}, height: ${ImageHeight.LARGE}, interlace: "partition", immediately: true)
   placeholder: url @transform(width: ${ImageWidth.PLACEHOLDER}, height: ${ImageHeight.PLACEHOLDER}, interlace: "partition", immediately: true)
 }
 
