@@ -12,7 +12,9 @@
     transition(
       v-if="content && !is404",
       @before-enter="beforeEnter",
+      @after-enter="afterEnter",
       @before-leave="beforeLeave",
+      @after-leave="afterLeave",
       mode="out-in",
     )
       router-view(
@@ -343,6 +345,22 @@ export default {
     },
 
     /**
+     * Removes CSS class from an element after entering a new route.
+     * @param {!Element} el
+     */
+    afterEnter(el) {
+      el.classList.remove(this.enterCssClass());
+    },
+
+    /**
+     * Removes CSS class from an element after leaving the current route.
+     * @param {!Element} el
+     */
+    afterLeave(el) {
+      el.classList.remove(this.leaveCssClass());
+    },
+
+    /**
      * Adds CSS class to an element before entering a new route.
      * @param {!Element} el
      */
@@ -351,7 +369,7 @@ export default {
     },
 
     /**
-     * Adds CSS class to an element before leaving the current route.
+     * Removes CSS class from an element before leaving the current route.
      * @param {!Element} el
      */
     beforeLeave(el) {
