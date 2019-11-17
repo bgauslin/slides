@@ -10,15 +10,14 @@
       :options="preloaderOptions",
     )
     transition(
-      v-if="content && !is404",
+      mode="out-in",
       @before-enter="beforeEnter",
       @after-enter="afterEnter",
       @before-leave="beforeLeave",
       @after-leave="afterLeave",
-      mode="out-in",
     )
       router-view(
-        v-if="!isLoading",
+        v-if="content && !is404 && !isLoading",
         :content="content",
         :key="key",
       )
