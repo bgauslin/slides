@@ -1,6 +1,6 @@
 <template lang="pug">
   div.slide(
-    v-if="content",
+    v-if="content && content.media",
   )
     div(
       :class="className"

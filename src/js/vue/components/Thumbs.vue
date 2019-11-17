@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.thumbs
+  div.thumbs(
+    v-if="content",
+  )
     div.thumbs__group
       thumb(
         v-for="slide in content.slides",

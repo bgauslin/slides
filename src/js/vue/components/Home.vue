@@ -1,5 +1,7 @@
 <template lang="pug">
-  div.slideshows
+  div.slideshows(
+    v-if="content",
+  )
     div.slideshows__group
       div.slideshow(
         v-for="slideshow in content.slideshows",

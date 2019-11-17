@@ -17,7 +17,7 @@
       @after-leave="afterLeave",
     )
       router-view(
-        v-if="content && !is404 && !isLoading",
+        v-if="!is404",
         :content="content",
         :key="key",
       )
