@@ -386,6 +386,8 @@ export default {
           return 'slide-in-right';
         case 'back':
           return 'slide-in-left';
+        case 'up-down':
+          return 'slide-in-up';
         default:
           return 'first-run';
       }
@@ -402,6 +404,8 @@ export default {
           return 'slide-out-left';
         case 'back':
           return 'slide-out-right';
+        case 'up-down':
+          return 'slide-out-down';
         default:
           return 'first-run';
       }
