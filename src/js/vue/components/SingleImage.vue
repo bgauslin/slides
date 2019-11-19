@@ -25,7 +25,6 @@
 
 <script>
 import Preloader from './Preloader.vue';
-import imagesLoaded from 'imagesloaded';
 
 export default {
   components: { Preloader },
@@ -51,10 +50,10 @@ export default {
       className: 'image',
       loading: true,
       preloaderOptions: {
-        length: 5,
-        lines: 8,
-        radius: 5,
-        width: 2,
+        length: 8,
+        lines: 12,
+        radius: 8,
+        width: 3,
       },
     }
   },
@@ -124,14 +123,20 @@ export default {
 
   methods: {
     /**
-     * Sets 'ready' attribute on the image after it has fully downloaded.
+     * Disables 'loading' flag and removes placeholder image after hi-res image
+     * has downloaded.
      */
     loadImage() {
       const img = this.$el.querySelector(`.${this.className}__hi-res`);
-      const that = this;
-      imagesLoaded(img, that, instance => {
-        that.loading = false;
-      });
+      const placeholder = this.$el.querySelector(`.${this.className}__placeholder`);
+      img.onload = () => {
+        this.loading = false;
+        img.addEventListener('transitionend', () => {
+          if (placeholder) {
+            placeholder.parentNode.removeChild(placeholder);
+          }
+        }, { once: true });
+      };
     },
   },
 }
