@@ -5,7 +5,7 @@
     figure.image__frame(
       :style="aspectRatio",
     )
-      preloader(
+      preload-spinner(
         v-if="loading",
       )
       img.image__placeholder(
@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import Preloader from './Preloader.vue';
+import PreloadSpinner from './PreloadSpinner.vue';
 
 export default {
-  components: { Preloader },
+  components: { PreloadSpinner },
 
   props: {
     image: {

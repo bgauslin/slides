@@ -1,15 +1,11 @@
 <template lang="pug">
-  div.preloader
+  div.preload-spinner
 </template>
 
 <script>
-import Spinner from 'spin'
+import Spinner from 'spin';
 
 export default {
-  props: {
-    position: String,
-  },
-
   data() {
     return {
       delay: 500,
@@ -28,9 +24,7 @@ export default {
   },
 
   methods: {
-    /** 
-     * Attaches loading spinner after a brief delay.
-     */
+    // Attaches loading spinner after a brief delay.
     attachSpinner() {
       window.setTimeout(() => {
         const spinner = new Spinner(this.options).spin();
