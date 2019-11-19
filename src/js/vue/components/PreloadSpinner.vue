@@ -8,7 +8,7 @@ import Spinner from 'spin';
 export default {
   data() {
     return {
-      delay: 500,
+      delay: 1000,
       options: {
         color: '#000',
         length: 8,
