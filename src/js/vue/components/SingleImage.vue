@@ -7,8 +7,6 @@
     )
       preloader(
         v-if="loading",
-        :options="preloaderOptions",
-        position="absolute",
       )
       img.image__placeholder(
         :src="image.placeholder",
@@ -49,12 +47,6 @@ export default {
     return {
       className: 'image',
       loading: true,
-      preloaderOptions: {
-        length: 8,
-        lines: 12,
-        radius: 8,
-        width: 3,
-      },
     }
   },
 

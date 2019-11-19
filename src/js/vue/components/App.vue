@@ -1,13 +1,11 @@
 <template lang="pug">
   div.app
+    progress-bar(
+      v-if="isLoading",
+    )
     app-header(
       v-if="!is404",
       :view="view",
-    )
-    preloader(
-      v-if="isLoading",
-      position="fixed",
-      :options="preloaderOptions",
     )
     transition(
       mode="out-in",
@@ -39,7 +37,7 @@ import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import NotFound from'./NotFound.vue';
-import Preloader from './Preloader.vue';
+import ProgressBar from './ProgressBar.vue';
 
 export default {
   components: {
@@ -47,7 +45,7 @@ export default {
     AppHeader,
     Controls,
     NotFound,
-    Preloader,
+    ProgressBar,
   },
 
   data() {
@@ -56,12 +54,6 @@ export default {
       is404: false,
       isLoading: false,
       key: null,
-      preloaderOptions: {
-        length: 8,
-        lines: 12,
-        radius: 8,
-        width: 3,
-      },
     }
   },
 
