@@ -15,7 +15,8 @@
 
 .cover__frame
   background-color var(--cover-background)
-  height 100%
+  min-height 100vh // fallback
+  min-height calc(var(--viewport-unit, 1vh) * 100)
 
 .image--cover
   height 100vh
