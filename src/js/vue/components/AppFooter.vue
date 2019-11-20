@@ -1,8 +1,8 @@
 <template lang="pug">
   footer.footer
     p.copyright
-      span.copyright__bug © 2018–{{ currentYear }}
-      a.copyright__link(
+      span.copyright__years © 2018–{{ currentYear }}
+      a.copyright__owner(
         :href="linkURL",
         :title="linkTitle",
       ) {{ owner }}
