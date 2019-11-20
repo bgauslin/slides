@@ -1,6 +1,6 @@
 <template lang="pug">
   div.cover(
-    v-if="content",
+    v-if="content && content.image",
   )
     single-image(
       :image="content.image[0]",
