@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       content: null,
+      hasAllSlides: false,
       is404: false,
       isLoading: false,
       key: null,
@@ -100,16 +101,37 @@ export default {
           break;
         case 'cover':
           this.getCover();
+          this.backgroundFetch();
           break;
         case 'slide':
           this.getSlide();
+          this.backgroundFetch();
           break;
         case 'thumbs':
           this.getThumbs();
+          this.backgroundFetch();
           break;
         case '404':
           this.ready(null);
           break;
+      }
+    },
+
+    /**
+     * Fetches all of the slides in the background to speed up subsequent page
+     * views after initial page load.
+     * @async
+     */
+    async backgroundFetch() {
+      if (this.slideshow && !this.hasAllSlides) {
+        const ids = this.slideshow.slides.map(slide => slide.id)
+        for (let i = 0; i < ids.length; i++) {
+          const slide = this.slideshow.slides.find(slide => slide.id === ids[i]);
+          if (slide.media === undefined) {
+            await this.fetchData('slide', ids[i]);
+          }
+        }
+        this.hasAllSlides = true;
       }
     },
 
@@ -153,7 +175,7 @@ export default {
         if (!this.slideshow) {
           await this.fetchData('slideshow');
         }
-        const content = await this.fetchData('slide');
+        const content = await this.fetchData('slide', this.slide.id);
         this.ready(content);
       }
     },
@@ -178,9 +200,10 @@ export default {
     /**
      * Sets Graph QL query depending on the view.
      * @param {!string} view - Route name.
+     * @param {?string} slideId - Slide ID when the view is 'slide'.
      * @return {string}
      */
-    getQuery(view) {
+    getQuery(view, slideId = null) {
       // GraphQL returns the first slide if there's no ID, so return nothing
       // instead.
       if (view === 'slide' && !this.slide) {
@@ -201,7 +224,7 @@ export default {
         case 'slide':
           return {
             name: Query.slide,
-            id: this.slide.id
+            id: slideId,
           };
         case 'thumbs':
           return {
@@ -215,13 +238,14 @@ export default {
      * Fetches API data from a GraphQL endpoint, then stores the data to avoid
      * redundant API calls on subsequent route changes.
      * @param {!string} view - Which view.
+     * @param {?string} slideId - Slide ID when the view is 'slide'.
      * @async
      */
-    async fetchData(view) {
+    async fetchData(view, slideId = null) {
       const endpoint = (process.env.NODE_ENV === 'production') ?
           process.env.GRAPHQL_PROD : process.env.GRAPHQL_DEV;
 
-      const query = this.getQuery(view);
+      const query = this.getQuery(view, slideId);
 
       // Bail if there's no query and jump out of the method to show the
       // 404 message.
@@ -229,9 +253,9 @@ export default {
         this.ready(null);
         return;
       }
-      
+
       // Set GraphQL query variables.
-      const id = query.id ? query.id : null;
+      const id = slideId ? slideId : null;
       const slideshow = query.slideshow ? query.slideshow : null;
 
       try {
