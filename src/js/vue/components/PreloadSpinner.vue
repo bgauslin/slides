@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Spinner from 'spin';
 
 export default {
@@ -10,7 +11,7 @@ export default {
     return {
       delay: 1000,
       options: {
-        color: '#000',
+        color: '',
         length: 6,
         lines: 12,
         radius: 7,
@@ -19,7 +20,14 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters([
+      'theme',
+    ]),
+  },
+
   mounted() {
+    this.setColor();
     this.attachSpinner();
   },
 
@@ -30,6 +38,11 @@ export default {
         const spinner = new Spinner(this.options).spin();
         this.$el.appendChild(spinner.el);
       }, this.delay);
+    },
+  
+    // Sets spinner color relative to the current theme.
+    setColor() {
+      this.options.color = (this.theme === 'light') ? '#000' : '#fff';
     },
   },
 }
