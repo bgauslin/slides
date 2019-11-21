@@ -11,9 +11,9 @@ export default {
       delay: 1000,
       options: {
         color: '#000',
-        length: 8,
+        length: 6,
         lines: 12,
-        radius: 8,
+        radius: 7,
         width: 3,
       }
     }
