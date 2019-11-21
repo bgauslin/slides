@@ -20,6 +20,7 @@ export default (router) => {
           toFrom: [
             ['cover', 'home'],
             ['slide', 'cover'],
+            ['thumbs', 'slide'],
           ]
         },
         {
@@ -28,12 +29,6 @@ export default (router) => {
             ['cover', 'slide'],
             ['cover', 'thumbs'],
             ['home', 'cover'],
-          ]
-        },
-        {
-          direction: 'up-down',
-          toFrom: [
-            ['thumbs', 'slide'],
             ['slide', 'thumbs'],
           ]
         },
