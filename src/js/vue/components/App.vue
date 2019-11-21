@@ -101,15 +101,13 @@ export default {
           break;
         case 'cover':
           this.getCover();
-          this.backgroundFetch();
           break;
         case 'slide':
           this.getSlide();
-          this.backgroundFetch();
+          this.backgroundFetchSlides();
           break;
         case 'thumbs':
           this.getThumbs();
-          this.backgroundFetch();
           break;
         case '404':
           this.ready(null);
@@ -122,7 +120,7 @@ export default {
      * views after initial page load.
      * @async
      */
-    async backgroundFetch() {
+    async backgroundFetchSlides() {
       if (this.slideshow && !this.hasAllSlides) {
         const ids = this.slideshow.slides.map(slide => slide.id)
         for (let i = 0; i < ids.length; i++) {
