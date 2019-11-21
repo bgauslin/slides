@@ -40,6 +40,7 @@ fragment SlideThumbs on slideshowMedia_images_BlockType {
 fragment SlideImage on slides_Asset {
   alt: title
   src: url @transform(width: ${THUMB_SIZE}, height: ${THUMB_SIZE}, interlace: "partition", immediately: true)
+  placeholder: url @transform(width: 16, height: 16, interlace: "partition", immediately: true)
 }
 
 fragment PublicationThumbs on publications_publication_Entry {
