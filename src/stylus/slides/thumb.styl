@@ -1,25 +1,15 @@
 .thumb__frame
   background var(--thumb-background)
-
-.thumb__frame[loading]
-  overflow hidden
   padding 0 0 100%
   position relative
 
-.thumb__frame[loading] .thumb__image
-  position absolute
-  
-.thumb__image--hi-res
+.thumb__image
   opacity 1
+  position absolute
   transition opacity var(--transition)
 
-.thumb__image--hi-res[loading]
+.thumb__image[loading]
   opacity 0
-  z-index 2
-
-.thumb__image--placeholder
-  filter blur(5px)
-  z-index 1
 
 .thumb__link
   elevation(0)

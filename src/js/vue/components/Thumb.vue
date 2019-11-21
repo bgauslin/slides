@@ -5,18 +5,11 @@
       :title="thumb.alt",
       :to="{ name: 'slide', params: { slideshow: slideshow, slug: slug } }",
     )
-      figure.thumb__frame(
-        loading,
-      )
-        img(
-          :class="['thumb__image', 'thumb__image--hi-res']",
+      figure.thumb__frame
+        img.thumb__image(
           :alt="thumb.alt",
           :src="thumb.src",
           loading,
-        )
-        img(
-          :class="['thumb__image', 'thumb__image--placeholder']",
-          :src="thumb.placeholder",
         )
 </template>
 
@@ -45,17 +38,8 @@ export default {
      * Removes 'loading' attribute from the image after it has fully downloaded.
      */
     loadImage() {
-      const frame = this.$el.querySelector('.thumb__frame');
-      const img = this.$el.querySelector('.thumb__image--hi-res');
-      const placeholder = this.$el.querySelector('.thumb__image--placeholder');
-
-      img.onload = () => {
-        img.removeAttribute('loading');
-        img.addEventListener('transitionend', () => {
-          placeholder.parentNode.removeChild(placeholder);
-          frame.removeAttribute('loading');
-        }, { once: true });
-      }
+      const img = this.$el.querySelector('.thumb__image');
+      img.onload = () => img.removeAttribute('loading');
     },
   },
 }
