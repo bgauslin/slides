@@ -10,10 +10,9 @@ module.exports = merge(common, {
     historyApiFallback: {
       index: '/index.html',
     },
-    port: 3000,
   },
   output: {
-    filename: 'slides.js',
+    filename: '[name].js',
   },
   plugins: [
     new CopyPlugin([

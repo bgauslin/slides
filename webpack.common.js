@@ -5,7 +5,9 @@ const DotenvWebpack = require('dotenv-webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  entry: ['./src/js/slides.js'],
+  entry: {
+    app: './src/js/slides.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
