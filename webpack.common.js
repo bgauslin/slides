@@ -4,10 +4,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 const DotenvWebpack = require('dotenv-webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    app: './src/js/slides.js',
+    slides: './src/js/slides.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -22,6 +23,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyPlugin([
       { from: 'src/root' },
+      { from: 'src/json' },
     ]),
     new DotenvWebpack(),
     new VueLoaderPlugin(),
@@ -54,16 +56,20 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
-      // TODO: Debug empty <style> element being written into <head>.
       {
         test: /\.styl$/,
-        exclude: /node_modules/, 
         use: [
-          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+              reloadAll: true,
+            },
+          },
           'css-loader',
           'postcss-loader',
           'stylus-loader',
-        ]
+        ],
       },
       {
         test: /\.pug$/,

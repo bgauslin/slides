@@ -6,6 +6,7 @@ import App from './vue/components/App.vue';
 import router from './vue/router.js';
 import store from './vue/store/index.js';
 import transitions from './vue/transitions';
+
 import '../stylus/slides.styl';
 
 Vue.config.productionTip = false;
