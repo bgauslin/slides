@@ -25,6 +25,11 @@ const slideshow = {
     updateSlideshowSlug(state, payload) {
       state.slideshowSlug = payload;
     },
+
+    updateThumbs(state, payload) {
+      const mySlideshow = state.allSlideshows.find(slideshow => slideshow.slug === state.slideshowSlug);
+      mySlideshow.thumbs = payload;
+    },
   },
 
   actions: {
@@ -38,6 +43,10 @@ const slideshow = {
 
     updateSlideshowSlug(context, value) {
       context.commit('updateSlideshowSlug', value);
+    },
+
+    updateThumbs(context, value) {
+      context.commit('updateThumbs', value);
     },
   },
 
@@ -100,6 +109,12 @@ const slideshow = {
     slideSlug: (state) => state.slideSlug,
 
     slideshowSlug: (state) => state.slideshowSlug,
+
+    thumbs: (state, getters) => {
+      if (getters.hasSlideshow) {
+        return getters.slideshow.thumbs;
+      }
+    },
 
     totalSlideCount: (state, getters) => {
       if (getters.hasSlideshow) {

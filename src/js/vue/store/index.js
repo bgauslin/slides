@@ -4,7 +4,6 @@ import Vuex from 'vuex';
 import direction from './direction';
 import slideshow from './slideshow';
 import theme from './theme';
-import thumbs from './thumbs';
 
 Vue.use(Vuex);
 
@@ -13,6 +12,5 @@ export default new Vuex.Store({
     direction,
     slideshow,
     theme,
-    thumbs,
   }
 });
