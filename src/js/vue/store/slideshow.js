@@ -1,7 +1,8 @@
+// TODO(multiple): Update to accommodate multiple slideshows.
 const slideshow = {
   state: {
     slideshow: {},
-    slug: null,
+    slideSlug: null,
   },
 
   mutations: {
@@ -15,8 +16,8 @@ const slideshow = {
       state.slideshow = payload;
     },
 
-    updateSlug(state, payload) {
-      state.slug = payload;
+    updateSlideSlug(state, payload) {
+      state.slideSlug = payload;
     },
   },
 
@@ -37,7 +38,7 @@ const slideshow = {
 
     slide: (state, getters) => {
       if (getters.hasSlideshow) {
-        return state.slideshow.slides.find(slide => slide.slug === state.slug);
+        return state.slideshow.slides.find(slide => slide.slug === state.slideSlug);
       }
     },
 
@@ -83,7 +84,7 @@ const slideshow = {
       }
     },
     
-    slug: (state) => state.slug,
+    slug: (state) => state.slideSlug,
 
     totalSlideCount: (state, getters) => {
       if (getters.hasSlideshow) {

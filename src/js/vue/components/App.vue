@@ -162,7 +162,7 @@ export default {
      */
     async getSlide() {
        // Set the slug first for slide lookup in the slideshow.
-      this.$store.commit('updateSlug', this.$route.params.slug);
+      this.$store.commit('updateSlideSlug', this.$route.params.slug);
 
       // If the slide has media, then it's already been fetched and stored.
       if (this.slide && this.slide.media !== undefined) {

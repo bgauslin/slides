@@ -1,3 +1,4 @@
+// TODO(multiple): Move thumbs into slideshows and delete this file.
 const thumbs = {
   state: {
     thumbs: null,
