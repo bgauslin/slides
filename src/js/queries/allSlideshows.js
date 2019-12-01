@@ -3,7 +3,7 @@ import { ImageHeight, ImageWidth } from './imageSizing';
 /** @const {string} */
 const allSlideshows = `
 query AllSlideshows {
-  slideshows: entries(section: "slides", type: "slideDeck") {
+  slideshows: entries(site: ["slideshows"], type: "slideDeck") {
     ...SlideDeck
   }
 }

@@ -3,7 +3,7 @@ import { ImageHeight, ImageWidth } from './imageSizing';
 /** @const {string} */
 const slideshow = `
 query Slideshow ($slideshow: [String!]) {
-  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
+  slideshow: entries(site: ["slideshows"], type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
       ...Slide

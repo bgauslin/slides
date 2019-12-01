@@ -3,7 +3,7 @@ import { ImageHeight, PublicationWidth } from './imageSizing';
 /** @const {string} */
 const slide = `
 query Slide ($id: [QueryParameter!]) {
-  slide: entries(section: "slides", type: "slide", id: $id) {
+  slide: entries(site: ["slideshows"], type: "slide", id: $id) {
     ...Slide
   }
 }

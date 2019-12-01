@@ -3,7 +3,7 @@ import { THUMB_SIZE } from './imageSizing';
 /** @const {string} */
 const thumbs = `
 query SlideshowThumbs ($slideshow: [String!]) {
-  slideshow: entries(section: "slides", type: ["slide", "slideDeck"], slug: $slideshow) {
+  slideshow: entries(site: ["slideshows"], type: ["slide", "slideDeck"], slug: $slideshow) {
     ...SlideDeck
     slides: children {
       ...Slide
