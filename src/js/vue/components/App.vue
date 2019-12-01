@@ -95,6 +95,11 @@ export default {
     getContent() {
       this.isLoading = true;
 
+      // Set slideshowSlug if it exists for slideshow lookup.
+      if (this.$route.params.slideshow) {
+        this.$store.commit('updateSlideshowSlug', this.$route.params.slideshow);
+      }
+
       switch (this.view) {
         case 'home':
           this.getHome();
@@ -161,7 +166,7 @@ export default {
      * @async
      */
     async getSlide() {
-       // Set the slug first for slide lookup in the slideshow.
+      // Set slideSlug first for slide lookup in the slideshow.
       this.$store.commit('updateSlideSlug', this.$route.params.slug);
 
       // If the slide has media, then it's already been fetched and stored.

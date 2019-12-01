@@ -25,7 +25,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      lastVisitedSlug: 'slug',
+      lastVisitedSlug: 'slideSlug',
       slideshowTitle: 'slideshowTitle',
     }),
 
