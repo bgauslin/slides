@@ -3,6 +3,7 @@
     :class="classNames",
   )
     figure.image__frame(
+      :ready="!loading",
       :style="aspectRatio",
     )
       preload-spinner(
@@ -13,7 +14,6 @@
         :alt="image.alt",
       )
       img.image__hi-res(
-        :ready="!loading",
         :alt="image.alt",
         :src="image.src_medium",
         :srcset="srcsetValues",

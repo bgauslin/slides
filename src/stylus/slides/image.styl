@@ -7,6 +7,9 @@
   overflow hidden
   position relative
 
+.image__frame[ready]
+  background 0
+
 .image__placeholder
 .image__hi-res
   position absolute
@@ -20,7 +23,7 @@
   transition opacity .5s
   z-index 2
 
-.image__hi-res[ready]
+.image__frame[ready] .image__hi-res
   opacity 1
 
 .image--multiple
