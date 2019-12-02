@@ -100,7 +100,7 @@ export default {
             case 'landscape':
               return '(min-width: 60rem) 896px, 100vw';
             case 'portrait':
-              return '(min-width: 60rem) 448px, 50vw';
+              return '(min-width: 60rem) 600px, 67vw';
           }
         default:
           return '100vw';
