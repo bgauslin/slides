@@ -1,14 +1,19 @@
+.image
+  max-height 100vh
+
 .image--portrait
   width 67%
   margin 0 auto
 
+// TODO(layout): Resolve why image__frame dimensions are taller/wider than
+// the image it contains. Then re-enable background styles.
 .image__frame
-  background var(--image-background)
+  // background var(--image-background)
   overflow hidden
   position relative
 
-.image__frame[ready]
-  background 0
+// .image__frame[ready]
+//   background 0
 
 .image__placeholder
 .image__hi-res
