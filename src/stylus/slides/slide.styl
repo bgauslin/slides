@@ -14,7 +14,7 @@
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
-    grid-template-rows 1fr
+    grid-template-rows var(--header-height) 1fr var(--controls-height)
     width 100%
 
 .slide__media
@@ -24,7 +24,7 @@
   @media Breakpoint.LARGE
     align-self center
     grid-column 3
-    grid-row 1
+    grid-row 1 / span 3
     max-height 100%
     overflow hidden
 
@@ -49,7 +49,8 @@
   @media Breakpoint.LARGE
     align-self center
     grid-column 2
-    grid-row 1
+    grid-row 2
     margin 0
+    max-height 100%
     overflow auto
     padding 0
