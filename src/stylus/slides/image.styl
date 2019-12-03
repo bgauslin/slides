@@ -8,16 +8,25 @@
 // TODO(layout): Resolve why image__frame dimensions are taller/wider than
 // the image it contains. Then re-enable background styles.
 .image__frame
-  // background var(--image-background)
+  max-height 100vh
   overflow hidden
   position relative
 
-// .image__frame[ready]
-//   background 0
+// Invert the height and width values for responsive images (and add a
+// max-height) so that slide images are never taller than the viewport.
+.slide .image__placeholder
+.slide .image__hi-res
+  height 100%
+  max-height 100vh
+  width auto
 
+// Use translateX and left positioning to center-justify the images in
+// their container.
 .image__placeholder
 .image__hi-res
+  left 50%
   position absolute
+  transform translateX(-50%)
 
 .image__placeholder
   filter blur(5px)
