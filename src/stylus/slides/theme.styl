@@ -4,15 +4,14 @@
   background 0
   border 0
   display inline-flex
-  height var(--header-height)
   justify-content center
   overflow hidden
   outline none
-  position fixed
-  right 0
-  top 0
   transition transform var(--transition)
   width var(--header-height)
+
+  @media Breakpoint.MEDIUM
+    margin-right .75rem
 
 [no-touch] .theme
   transition opacity var(--transition), transform var(--transition)
