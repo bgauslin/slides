@@ -120,12 +120,15 @@ export default {
      */
     loadImage() {
       const img = this.$el.querySelector(`.${this.className}__hi-res`);
-      const placeholder = this.$el.querySelector(`.${this.className}__placeholder`);
       img.onload = () => {
         this.loading = false;
         img.addEventListener('transitionend', () => {
+          const placeholder = this.$el.querySelector(`.${this.className}__placeholder`);
           if (placeholder) {
-            placeholder.parentNode.removeChild(placeholder);
+            placeholder.setAttribute('done', '');
+            placeholder.addEventListener('transitionend', () => {
+              placeholder.parentNode.removeChild(placeholder);
+            }, { once: true });
           }
         }, { once: true });
       };
