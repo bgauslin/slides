@@ -1,24 +1,24 @@
 .footer
   align-items center
-  bottom 0
   color var(--text-alpha)
   display flex
+  grid-row 3
   height var(--controls-height)
   justify-content center
-  left 0
   padding 0 0 env(safe-area-inset-bottom)
+  text-align center
+
+// Anchor footer to the bottom of the viewport on the 'cover' view.
+.cover ~ .footer
+  bottom 0
+  left 0
   position fixed
   right 0
-  text-align center
   z-index 2
 
+// Hide footer on the 'slide' view.
 .controls ~ .footer
   display none
-
-.slideshows ~ .footer
-.thumbs ~ .footer
-  grid-row 3
-  position relative
 
 .copyright
   webfont('heading', 500)
