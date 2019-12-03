@@ -39,12 +39,12 @@
   box-sizing border-box
   font-size var(--caption)
   margin 0 auto
-  padding px_to_rem(16) px_to_rem(16) 0
+  padding 1rem 1rem 0
 
   @media Breakpoint.MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
-    padding px_to_rem(32) 0
+    padding 2rem 0 var(--controls-height)
 
   @media Breakpoint.LARGE
     align-self center
