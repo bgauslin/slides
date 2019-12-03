@@ -14,14 +14,14 @@
     border 0
 
 .controls__frame
-  height var(--controls-height)
   margin 0 auto
   max-width CONTENT_MAX_WIDTH
 
 .controls__content
-  align-items center
+  align-items stretch
   display flex
   justify-content space-between
+  height var(--controls-height)
 
   @media Breakpoint.LARGE
     margin 0 0 0 COLUMN_GAP
@@ -31,7 +31,6 @@
   align-items center
   display inline-flex
   flex 1
-  height var(--controls-height)
   justify-content center
   overflow hidden
 
