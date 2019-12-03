@@ -1,5 +1,7 @@
 <template lang="pug">
-  footer.footer
+  footer(
+    :class="['footer', 'footer--' + view]",
+  )
     p.copyright
       span.copyright__years © 2018–{{ currentYear }}
       a.copyright__owner(
@@ -32,6 +34,11 @@ export default {
     linkURL() {
       return `https://${this.domain.toLowerCase()}`;
     },
+
+    /** @return {string} */
+    view() {
+      return this.$route.name;
+    }
   },
 }
 </script>
