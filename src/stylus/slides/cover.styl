@@ -1,28 +1,32 @@
 .cover
+  grid-column 1
   grid-row 1 / span 3
-  position relative
 
 // Hide the spinner since it collides with the overlay text.
 .cover .preload-spinner
   display none
 
 .cover
-.cover__frame
   align-items center
   display flex
   justify-content center
-  width 100vw
-
-.cover__frame
-  background-color var(--cover-background)
-  min-height 100vh // fallback
-  min-height calc(var(--viewport-unit, 1vh) * 100)
 
 .image--cover
-  height 100vh
+.image--cover::after
+  bottom 0
+  left 0
   position absolute
-  width 100vw
+  right 0
+  top 0
+
+.image--cover
   z-index -1
+
+.image--cover::after
+  content ''
+  display block
+  background-color var(--cover-background)
+  z-index 2
 
 .image--cover figure 
   height 100%

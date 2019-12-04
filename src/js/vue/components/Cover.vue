@@ -6,16 +6,15 @@
       :image="content.image[0]",
       :srcset="srcset",
       type="cover",
-    )
-    div.cover__frame
-      header.cover__header
-        h2.cover__heading {{ content.title }}
-        p.cover__summary {{ content.summary }}
-        router-link(
-          class="cover__link",
-          :title="content.title",
-          :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
-        ) Start slideshow
+    )    
+    header.cover__header
+      h2.cover__heading {{ content.title }}
+      p.cover__summary {{ content.summary }}
+      router-link(
+        class="cover__link",
+        :title="content.title",
+        :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
+      ) Start slideshow
 </template>
 
 <script>
