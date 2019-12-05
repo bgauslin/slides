@@ -13,7 +13,6 @@ const slideshow = {
       mySlideshow.slides[slideIndex] = payload;
     },
 
-    // TODO(multiple): Only add the slideshow if it doesn't already exist.
     updateSlideshow(state, payload) {
       state.allSlideshows.push(payload);
     },
