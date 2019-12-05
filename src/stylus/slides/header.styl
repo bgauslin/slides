@@ -66,9 +66,13 @@
 
 .header__link__icon
   height px_to_rem(32)
-  margin-left px_to_rem(-12)
-  transform scale(.7)
+  margin 0 px_to_rem(-4) 0 px_to_rem(-12)
+  transform scale(.6)
   width px_to_rem(32)
+
+  @media Breakpoint.MEDIUM
+    margin-right 0
+    transform 'scale(.7) translateY(%s)' % px_to_rem(2)
 
 .header__link__icon > path
   fill none
