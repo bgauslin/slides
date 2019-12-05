@@ -8,6 +8,11 @@
         :to="headerLinkRoute",
         :title="headerLinkLabel",
       ) 
+        svg.header__link__icon(
+          v-if="hasIcon",
+          viewbox="0 0 32 32",
+        )
+          path(d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822")
         h1.header__link__label {{ headerLinkLabel }}
       theme
 </template>
@@ -28,6 +33,13 @@ export default {
       lastVisitedSlug: 'slideSlug',
       slideshowTitle: 'slideshowTitle',
     }),
+
+    /**
+     * @return {boolean}
+     */
+    hasIcon() {
+      return this.route === 'thumbs';
+    },
 
     /**
      * CSS classes for the header based on the current view/route.
