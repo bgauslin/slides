@@ -39,11 +39,12 @@
   font-size var(--caption)
   grid-template-rows 1fr auto
   margin 0 auto
+  max-width CAPTION_MAX_WIDTH
   padding px_to_rem(16)
+  width 100%
 
   @media Breakpoint.MEDIUM
-    max-width CAPTION_MAX_WIDTH
-    padding px_to_rem(32) 0
+    padding px_to_rem(48) 0 px_to_rem(16)
 
   @media Breakpoint.LARGE
     grid-column 2
@@ -51,9 +52,9 @@
     margin 0
     max-height 100%
     overflow auto
-    padding 0
+    padding 0 0 px_to_rem(16)
 
-.slide__caption
+.slide__copy__caption
   flex 1
   padding-bottom px_to_rem(16)
 

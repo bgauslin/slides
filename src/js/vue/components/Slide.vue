@@ -14,7 +14,7 @@
         :publication="content.media[0].publication[0]",
       )
     div.slide__copy
-      div.slide__caption(
+      div.slide__copy__caption(
         v-html="content.caption",
       )
       copyright
