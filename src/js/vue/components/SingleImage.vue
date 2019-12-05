@@ -125,6 +125,7 @@ export default {
         img.addEventListener('transitionend', () => {
           const placeholder = this.$el.querySelector(`.${this.className}__placeholder`);
           if (placeholder) {
+            // TODO(#34): Remove 'transitionend' listener and 'done' attribute.
             placeholder.setAttribute('done', '');
             placeholder.addEventListener('transitionend', () => {
               placeholder.parentNode.removeChild(placeholder);
