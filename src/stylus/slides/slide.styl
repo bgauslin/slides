@@ -14,7 +14,7 @@
     grid-column-gap COLUMN_GAP
     grid-row 1 / span 3
     grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
-    grid-template-rows var(--header-height) 1fr var(--controls-height)
+    grid-template-rows var(--header-height) 1fr CONTROLS_HEIGHT
     width 100%
 
 .slide__media
@@ -39,12 +39,12 @@
   box-sizing border-box
   font-size var(--caption)
   margin 0 auto
-  padding 1rem 1rem 0
+  padding px_to_rem(16) px_to_rem(16) 0
 
   @media Breakpoint.MEDIUM
     grid-row 3
     max-width CAPTION_MAX_WIDTH
-    padding 2rem 0 var(--controls-height)
+    padding px_to_rem(32) 0 CONTROLS_HEIGHT
 
   @media Breakpoint.LARGE
     align-self center
