@@ -1,13 +1,10 @@
 <template lang="pug">
-  footer(
-    :class="['footer', 'footer--' + view]",
-  )
-    p.copyright
-      span.copyright__years © 2018–{{ currentYear }}
-      a.copyright__owner(
-        :href="linkURL",
-        :title="linkTitle",
-      ) {{ owner }}
+  p.copyright
+    span.copyright__years © 2018–{{ currentYear }}
+    a.copyright__owner(
+      :href="linkURL",
+      :title="linkTitle",
+    ) {{ owner }}
 </template>
 
 <script>
@@ -34,11 +31,6 @@ export default {
     linkURL() {
       return `https://${this.domain.toLowerCase()}`;
     },
-
-    /** @return {string} */
-    view() {
-      return this.$route.name;
-    }
   },
 }
 </script>

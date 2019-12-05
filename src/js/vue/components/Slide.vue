@@ -13,17 +13,21 @@
         v-if="content.media[0].publication",
         :publication="content.media[0].publication[0]",
       )
-    div.slide__caption(
-      v-html="content.caption",
-    )
+    div.slide__copy
+      div.slide__caption(
+        v-html="content.caption",
+      )
+      copyright
 </template>
 
 <script>
+import Copyright from './Copyright.vue';
 import MediaImages from './MediaImages.vue';
 import MediaPublication from './MediaPublication.vue';
 
 export default {
   components: {
+    Copyright,
     MediaImages,
     MediaPublication,
   },

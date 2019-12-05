@@ -25,25 +25,26 @@
     controls(
       v-if="hasControls",
     )
-    app-footer(
-      v-if="!is404",
+    footer.footer(
+      v-if="hasFooter",
     )
+      copyright
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { Query } from '../../queries/index';
-import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
+import Copyright from './Copyright.vue';
 import NotFound from'./NotFound.vue';
 import ProgressBar from './ProgressBar.vue';
 
 export default {
   components: {
-    AppFooter,
     AppHeader,
     Controls,
+    Copyright,
     NotFound,
     ProgressBar,
   },
@@ -69,6 +70,11 @@ export default {
     /** @return {boolean} */
     hasControls() {
       return this.view === 'slide' && !this.is404;
+    },
+
+    /** @return {boolean} */
+    hasFooter() {
+      return this.view !== 'slide' && !this.is404;
     },
 
     /** @return {string} */

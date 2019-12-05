@@ -1,13 +1,12 @@
 .slide
+  display flex
+  flex-direction column
   grid-row 2
   height 100%
   margin 0 auto
   max-height 100vh
   max-width CONTENT_MAX_WIDTH
   width 100vw
-
-  @media Breakpoint.MEDIUM
-    align-self center
 
   @media Breakpoint.LARGE
     display grid
@@ -18,9 +17,6 @@
     width 100%
 
 .slide__media
-  @media Breakpoint.MEDIUM
-    grid-row 2
-
   @media Breakpoint.LARGE
     align-self center
     grid-column 3
@@ -35,22 +31,32 @@
   @media Breakpoint.LARGE
     margin 0
 
-.slide__caption
+.slide__copy
   box-sizing border-box
+  display flex
+  flex 1
+  flex-direction column
   font-size var(--caption)
+  grid-template-rows 1fr auto
   margin 0 auto
-  padding px_to_rem(16) px_to_rem(16) 0
+  padding px_to_rem(16)
 
   @media Breakpoint.MEDIUM
-    grid-row 3
     max-width CAPTION_MAX_WIDTH
-    padding px_to_rem(32) 0 CONTROLS_HEIGHT
+    padding px_to_rem(32) 0
 
   @media Breakpoint.LARGE
-    align-self center
     grid-column 2
     grid-row 2
     margin 0
     max-height 100%
     overflow auto
     padding 0
+
+.slide__caption
+  flex 1
+  padding-bottom px_to_rem(16)
+
+  @media Breakpoint.LARGE
+    flex 0
+    margin auto 0
