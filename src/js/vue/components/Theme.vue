@@ -1,5 +1,6 @@
 <template lang="pug">
-  button.theme(
+  button(
+    :class="['theme', 'theme--' + view]"
     @click="toggleTheme",
     v-html="svgIcon",
     :aria-label="'Switch to ' + themeLabel + ' theme'",
@@ -33,6 +34,11 @@ export default {
     themeLabel() {
       return (this.theme === 'dark') ? 'light' : 'dark';
     },
+
+    /** @return {string} */
+    view() {
+      return this.$route.name;
+    }
   },
 
   methods: {
