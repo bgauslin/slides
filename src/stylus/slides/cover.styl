@@ -20,13 +20,13 @@
   top 0
 
 .image--cover
-  z-index -1
+  z-index '%s' % Stacking.Cover.IMAGE
 
 .image--cover::after
   content ''
   display block
   background-color var(--cover-background)
-  z-index 2
+  z-index '%s' % Stacking.Cover.OVERLAY
 
 // TODO: BEM-ify this selector.
 .image--cover figure 
