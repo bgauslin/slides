@@ -2,7 +2,8 @@
   div(
     :class="classNames",
   )
-    figure.image__frame(
+    figure(
+      :class="['image__frame', 'image__frame--' + view]",
       :ready="!loading",
       :style="aspectRatio",
     )
