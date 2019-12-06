@@ -5,23 +5,17 @@ BAR_WIDTH = 20vw
   height BAR_HEIGHT
   width 100vw
   position fixed
-  z-index 4
+  z-index '%s' % Stacking.Image.PROGRESS_BAR
 
 .progress-bar::before
   animation loading 2s .3s linear infinite
-  
+  background var(--progress-bar)
   content ''
   display block
   height BAR_HEIGHT
   left (- BAR_WIDTH)
   position absolute
   width BAR_WIDTH
-
-.progress-bar[theme=light]::before
-  background black
-
-.progress-bar[theme=dark]::before
-  background white
 
 @keyframes loading 
   0
