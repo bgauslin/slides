@@ -9,15 +9,15 @@
       preload-spinner(
         v-if="loading",
       )
-      img.image__placeholder(
-        :src="image.placeholder",
-        :alt="image.alt",
-      )
-      img.image__hi-res(
+      img.img.img--hi-res(
         :alt="image.alt",
         :src="image.src_medium",
         :srcset="srcsetValues",
         :sizes="sizes",
+      )
+      img.img.img--placeholder(
+        :src="image.placeholder",
+        alt="",
       )
 </template>
 
@@ -29,13 +29,13 @@ export default {
 
   props: {
     image: {
+      alt: String,
+      width: String,
+      height: String,
       src_small: String,
       src_medium: String,
       src_large: String,
-      alt: String,
       placeholder: String,
-      width: String,
-      height: String,
     },
     width: String,
     height: String,
@@ -47,6 +47,8 @@ export default {
     return {
       className: 'image',
       loading: true,
+      selectorHiRes: '.img--hi-res',
+      selectorPlaceholder: '.img--placeholder',
     }
   },
 
@@ -82,11 +84,6 @@ export default {
     },
 
     /** @return {string} */
-    placeholder() {
-      return `background: url(${this.image.placeholder}) center / contain no-repeat;`;
-    },
-
-    /** @return {string} */
     sizes() {
       switch (this.type) {
         case 'preview':
@@ -119,11 +116,11 @@ export default {
      * has downloaded.
      */
     loadImage() {
-      const img = this.$el.querySelector(`.${this.className}__hi-res`);
+      const img = this.$el.querySelector(this.selectorHiRes);
       img.onload = () => {
         this.loading = false;
         img.addEventListener('transitionend', () => {
-          const placeholder = this.$el.querySelector(`.${this.className}__placeholder`);
+          const placeholder = this.$el.querySelector(this.selectorPlaceholder);
           if (placeholder) {
             // TODO(#34): Remove 'transitionend' listener and 'done' attribute.
             placeholder.setAttribute('done', '');
