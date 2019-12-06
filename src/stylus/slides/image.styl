@@ -1,29 +1,44 @@
+// Apply max-height equal to viewport height so that slide images are never
+// taller than the viewport.
 .image
 .image__frame
-.slide .img
+.img--slide
   max-height 100vh
 
 .image--portrait
   width 67%
   margin 0 auto
 
+.image--multiple
+  padding IMAGE_GAP_BASE 0 0
+
+  @media Breakpoint.MEDIUM
+    flex 0 0 50%
+    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
+
 // TODO(#34): Resolve .image__frame canvas dimensions being taller/wider than
-// the image it contains, then restore overflow and background styles.
+// the image it contains, then restore background property.
 .image__frame
+  // background var(--image-background)
+  margin 0 auto
   overflow hidden
   position relative
 
+.image__frame[ready]
+  background 0
+
 // Use translateX and left positioning to center-justify the images in
 // their container.
+// TODO(#34): Relocate transition property to hi-res only.
 .img
   left 50%
   position absolute
   transform translateX(-50%)
-  transition opacity .5s // TODO(#34): Relocate transition to hi-res only.
+  transition opacity .5s
 
-// Invert the height and width values for responsive images (and add a
-// max-height) so that slide images are never taller than the viewport.
-.slide .img
+// Swap height and width values for responsive images to accommodate slide
+// images with portrait orientation.
+.img--slide
   height 100%
   width auto
 
@@ -32,20 +47,13 @@
   opacity 1
   z-index 1
 
+// TODO(#34): Remove 'placeholder ready' rule.
+.img--placeholder[ready]
+  opacity 0
+
 .img--hi-res
   opacity 0
   z-index 2
 
-.image__frame[ready] .img--hi-res
+.img--hi-res[ready]
   opacity 1
-
-// TODO(#34): Remove 'placeholder done' styles.
-.img--placeholder[done]
-  opacity 0
-
-.image--multiple
-  padding IMAGE_GAP_BASE 0 0
-
-  @media Breakpoint.MEDIUM
-    flex 0 0 50%
-    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM

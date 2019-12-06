@@ -9,13 +9,14 @@
       preload-spinner(
         v-if="loading",
       )
-      img.img.img--hi-res(
+      img.img.img--slide.img--hi-res(
         :alt="image.alt",
         :src="image.src_medium",
         :srcset="srcsetValues",
         :sizes="sizes",
+        :ready="!loading",
       )
-      img.img.img--placeholder(
+      img.img.img--slide.img--placeholder(
         :src="image.placeholder",
         alt="",
       )
@@ -122,8 +123,8 @@ export default {
         img.addEventListener('transitionend', () => {
           const placeholder = this.$el.querySelector(this.selectorPlaceholder);
           if (placeholder) {
-            // TODO(#34): Remove 'transitionend' listener and 'done' attribute.
-            placeholder.setAttribute('done', '');
+            // TODO(#34): Remove 'transitionend' listener and 'ready' attribute.
+            placeholder.setAttribute('ready', '');
             placeholder.addEventListener('transitionend', () => {
               placeholder.parentNode.removeChild(placeholder);
             }, { once: true });
