@@ -9,14 +9,16 @@
       preload-spinner(
         v-if="loading",
       )
-      img.img.img--slide.img--hi-res(
+      img(
+        :class="['img', 'img--hi-res', 'img--' + view]",
         :alt="image.alt",
         :src="image.src_medium",
         :srcset="srcsetValues",
         :sizes="sizes",
         :ready="!loading",
       )
-      img.img.img--slide.img--placeholder(
+      img(
+        :class="['img', 'img--placeholder', 'img--' + view]",
         :src="image.placeholder",
         alt="",
       )
@@ -109,6 +111,11 @@ export default {
     srcsetValues() {
       return `${this.image.src_small} ${this.srcset.small}w,${this.image.src_medium} ${this.srcset.medium}w,${this.image.src_large} ${this.srcset.large}w`;
     },
+
+    /** @return {string} */
+    view() {
+      return this.$route.name;
+    }
   },
 
   methods: {
