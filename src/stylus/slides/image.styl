@@ -9,12 +9,11 @@
   width 67%
   margin 0 auto
 
-.image--multiple
-  padding IMAGE_GAP_BASE 0 0
+.image--multiple:not(:first-child)
+  margin IMAGE_GAP_BASE 0 0
 
   @media Breakpoint.MEDIUM
-    flex 0 0 50%
-    padding IMAGE_GAP_MEDIUM 0 0 IMAGE_GAP_MEDIUM
+    margin 0
 
 // TODO(#34): Resolve .image__frame canvas dimensions being taller/wider than
 // the image it contains, then restore background property.

@@ -2,10 +2,11 @@
   max-height 100vh
 
 .images--multiple
-  margin (- IMAGE_GAP_BASE) auto 0
+  margin 0 auto
   width 50%
 
   @media Breakpoint.MEDIUM
-    display flex
-    margin (- IMAGE_GAP_MEDIUM) 0 0 (- IMAGE_GAP_MEDIUM)
+    display grid
+    grid-gap IMAGE_GAP_MEDIUM
+    grid-template-columns repeat(2, 1fr)
     width auto
