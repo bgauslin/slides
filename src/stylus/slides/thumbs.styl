@@ -1,11 +1,9 @@
 .thumbs
   grid-row 2
   padding 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
+  margin 0 auto
+  max-width (CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2))
   width 100%
-
-  @media Breakpoint.MEDIUM
-    margin 0 auto
-    max-width (CONTENT_MAX_WIDTH + (THUMB_GAP_MEDIUM * 2) - (COLUMN_GAP * 2))
 
 .thumbs__group
   display grid
