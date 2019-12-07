@@ -48,22 +48,16 @@
   .prev-next__link--next
     margin-right px_to_rem(-8)
 
-.arrow-icon
+.icon--prev-next
   height auto
   width px_to_rem(28)
   transition transform var(--transition)
 
-.prev-next__link:active .arrow-icon
+.prev-next__link:active .icon--prev-next
   transform scale(.8)
 
-.prev-next__link--prev .arrow-icon
+.prev-next__link--prev .icon--prev-next
   margin-right auto
 
-.prev-next__link--next .arrow-icon
+.prev-next__link--next .icon--prev-next
   margin-left auto
-
-.arrow-icon__path
-  fill none
-  stroke currentColor
-  stroke-width 4
-  transition stroke var(--transition)

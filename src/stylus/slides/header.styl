@@ -66,7 +66,7 @@
 .header__link--home.current:active
   transform none
 
-.header__link__icon
+.icon--back
   height px_to_rem(32)
   margin 0 px_to_rem(-4) 0 px_to_rem(-12)
   transform scale(.6)
@@ -75,9 +75,3 @@
   @media Breakpoint.MEDIUM
     margin-right 0
     transform 'scale(.7) translateY(%s)' % px_to_rem(2)
-
-.header__link__icon > path
-  fill none
-  stroke currentColor
-  stroke-width 4
-  transition stroke var(--transition)

@@ -10,7 +10,7 @@
           :to="prevRoute",
           :title="prevLabel",
         )
-          svg.arrow-icon(
+          svg.icon.icon--prev-next(
             viewBox="0 0 32 32",
             v-html="svgArrowPath('left')",
           )
@@ -21,7 +21,7 @@
           :to="nextRoute",
           :title="nextLabel",
         )
-          svg.arrow-icon(
+          svg.icon.icon--prev-next(
             viewBox="0 0 32 32",
             v-html="svgArrowPath('right')",
           )
@@ -119,7 +119,7 @@ export default {
      * @return {string}
      */
     svgArrowPath(direction) {
-      const className = 'arrow-icon__path';
+      const className = 'icon__path';
       if (direction === 'left') {
         return `<path class="${className}" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>`;
       } else {

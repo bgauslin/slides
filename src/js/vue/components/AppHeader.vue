@@ -8,11 +8,13 @@
         :to="headerLinkRoute",
         :title="headerLinkLabel",
       ) 
-        svg.header__link__icon(
+        svg.icon.icon--back(
           v-if="hasIcon",
           viewbox="0 0 32 32",
         )
-          path(d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822")
+          path.icon__path(
+            d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822",
+          )
         h1.header__link__label {{ headerLinkLabel }}
       theme
 </template>
