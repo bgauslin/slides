@@ -65,7 +65,7 @@ export default {
       if (link) {
         if (link.file && link.file[0].url) {
           return link.file[0].url;
-        } else  if (link.url) {
+        } else if (link.url) {
           return link.url;
         }
       }
