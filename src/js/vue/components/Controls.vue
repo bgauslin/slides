@@ -119,12 +119,11 @@ export default {
      * @return {string}
      */
     svgArrowPath(direction) {
-      const className = 'icon__path';
-      if (direction === 'left') {
-        return `<path class="${className}" d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"/>`;
-      } else {
-        return `<path class="${className}" d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"/>`;
-      }
+      const svgPath = new Map([
+        ['left', 'm21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822'],
+        ['right', 'm10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822'],
+      ]);
+      return `<path class="icon__path" d="${svgPath.get(direction)}"/>`;
     },
   }
 }
