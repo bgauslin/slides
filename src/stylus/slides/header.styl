@@ -9,13 +9,15 @@
   width 100vw
   z-index '%s' % Stacking.App.HEADER
 
-  @media Breakpoint.LARGE
-    background 0
-
+// No background on 'cover' view header since the full-screen image has
+// an overlay.
 .header--cover
   background 0
 
 @media Breakpoint.LARGE
+  .header
+    background 0
+
   .header--thumbs
     background var(--overlay-background)
 
@@ -46,9 +48,9 @@
 .header__link--home.current
   cursor default
 
-.header__link--home.current
-.header__link--home.current:hover
-  color var(--text)
+  &
+  &:hover
+    color var(--text)
 
 .header__link__label
   font-size 1em
