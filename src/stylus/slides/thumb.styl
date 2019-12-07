@@ -4,12 +4,12 @@
   position relative
 
 .thumb__image
-  opacity 1
+  opacity 0
   position absolute
   transition opacity var(--transition)
 
-.thumb__image[loading]
-  opacity 0
+.thumb__image[ready]
+  opacity 1
 
 .thumb__link
   elevation(0)

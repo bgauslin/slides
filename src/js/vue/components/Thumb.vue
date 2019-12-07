@@ -9,7 +9,6 @@
         img.thumb__image(
           :alt="thumb.alt",
           :src="thumb.src",
-          loading,
         )
 </template>
 
@@ -39,7 +38,7 @@ export default {
      */
     loadImage() {
       const img = this.$el.querySelector('.thumb__image');
-      img.onload = () => img.removeAttribute('loading');
+      img.onload = () => img.setAttribute('ready', '');
     },
   },
 }
