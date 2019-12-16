@@ -6,7 +6,7 @@ export default class {
    * @public
    */
   static init() {
-    this.noTouch_();
+    this.isTouchEnabled_();
     this.viewportHeight_();
     this.resize_();
     this.googleAnalytics_();
@@ -27,14 +27,13 @@ export default class {
   }
 
   /**
-   * Adds 'no-touch' attribute if not a touch-enabled device.
+   * Removes 'no-touch' attribute and adds fastclick if device is touch-enabled.
    * @private
    */
-  static noTouch_() {
-    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+  static isTouchEnabled_() {
+    if ('ontouchstart' in window || window.DocumentTouch) {
       fastclick.attach(document.body);
-    } else {
-      document.body.setAttribute('no-touch', '');
+      document.body.removeAttribute('no-touch');
     }
   }
 
