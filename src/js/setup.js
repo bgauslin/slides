@@ -39,7 +39,6 @@ export default class {
 
   /**
    * Updates viewport units when window is resized.
-   * @listens resize
    * @private
    */
   static resize_() {
