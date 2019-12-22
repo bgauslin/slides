@@ -312,7 +312,7 @@ export default {
         return content;
 
       } catch (e) {
-        alert('Currently unable to fetch data. :(');
+        console.warn('Currently unable to fetch data. :(');
       }
     },
 
