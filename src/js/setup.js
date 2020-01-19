@@ -6,7 +6,7 @@ export default class {
    * @public
    */
   static init() {
-    this.isTouchEnabled_();
+    this.touchEnabled_();
     this.viewportHeight_();
     this.resize_();
     this.googleAnalytics_();
@@ -27,22 +27,22 @@ export default class {
   }
 
   /**
-   * Removes 'no-touch' attribute and adds fastclick if device is touch-enabled.
-   * @private
-   */
-  static isTouchEnabled_() {
-    if ('ontouchstart' in window || window.DocumentTouch) {
-      fastclick.attach(document.body);
-      document.body.removeAttribute('no-touch');
-    }
-  }
-
-  /**
    * Updates viewport units when window is resized.
    * @private
    */
   static resize_() {
     window.addEventListener('resize', () => this.viewportHeight_());
+  }
+
+  /**
+   * Removes 'no-touch' attribute and adds fastclick if device is touch-enabled.
+   * @private
+   */
+  static touchEnabled_() {
+    if ('ontouchstart' in window || window.DocumentTouch) {
+      fastclick.attach(document.body);
+      document.body.removeAttribute('no-touch');
+    }
   }
 
   /**
