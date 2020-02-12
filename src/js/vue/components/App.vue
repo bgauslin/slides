@@ -1,6 +1,6 @@
 <template lang="pug">
   div.app
-    progress-bar(
+    div.progress-bar(
       v-if="isLoading",
     )
     app-header(
@@ -38,7 +38,6 @@ import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import Copyright from './Copyright.vue';
 import NotFound from'./NotFound.vue';
-import ProgressBar from './ProgressBar.vue';
 
 export default {
   components: {
@@ -46,7 +45,6 @@ export default {
     Controls,
     Copyright,
     NotFound,
-    ProgressBar,
   },
 
   data() {

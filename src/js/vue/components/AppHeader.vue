@@ -16,19 +16,15 @@
             d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822",
           )
         h1.header__link__label {{ headerLinkLabel }}
-      theme
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import Theme from './Theme.vue';
 
 export default {
   props: {
     view: String,
   },
-
-  components: { Theme },
 
   computed: {
     ...mapGetters({

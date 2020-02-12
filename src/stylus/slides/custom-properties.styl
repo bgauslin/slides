@@ -1,62 +1,55 @@
 :root
+  // Colors.
+  --background DARK_GREY
+  --button-background rgba(white, .1)
+  --cover-background rgba(DARK_GREY, .8)
+  --image-background rgba(black, .2)
+  --link white
+  --link-active rgba(white, .7)
+  --overlay-background rgba(DARK_GREY, .9)
+  --overlay-border rgba(white, .2)
+  --progress-bar white
+  --text white
+  --text-alpha rgba(white, .7)
+
+  // Typography.
   --caption px_to_em(13)
   --fineprint px_to_em(12)
-  --site-header px_to_em(16)
   --heading-1 px_to_em(24)
   --heading-2 px_to_em(18)
   --heading-3 px_to_em(14)
+  --site-header px_to_em(16)
 
+  // Layout.
   --header-height px_to_rem(48)
   --slideshow-gap px_to_rem(16)
-  --thumb-gap px_to_rem(4)
   --thumb-columns 4
+  --thumb-gap px_to_rem(4)
 
+  // Transitions.
   --transition .3s
   --transition-view .2s
 
   @media Breakpoint.SMALL
-    --thumb-gap px_to_rem(6)
+    // Layout.
     --thumb-columns 5
+    --thumb-gap px_to_rem(6)
 
   @media Breakpoint.MEDIUM
+    // Typography.
     --caption px_to_em(15)
     --fineprint px_to_em(14)
-    --site-header px_to_em(20)
     --heading-1 px_to_em(36)
     --heading-2 px_to_em(24)
     --heading-3 px_to_em(18)
+    --site-header px_to_em(20)
 
+    // Layout.
     --header-height px_to_rem(60)
     --slideshow-gap px_to_rem(32)
-    --thumb-gap THUMB_GAP_MEDIUM
     --thumb-columns 6
-
+    --thumb-gap THUMB_GAP_MEDIUM
+    
   @media Breakpoint.LARGE
     --thumb-columns 7
     --transition-view .3s
-
-  [theme=dark]
-    --background DARK_GREY
-    --text white
-    --text-alpha rgba(white, .7)
-    --link white
-    --link-active rgba(white, .7)
-    --button-background rgba(white, .1)
-    --cover-background rgba(DARK_GREY, .8)
-    --overlay-background rgba(DARK_GREY, .9)
-    --overlay-border rgba(white, .2)
-    --image-background rgba(black, .2)
-    --progress-bar white
-
-  [theme=light]
-    --background OFF_WHITE
-    --text DARK_GREY
-    --text-alpha rgba(DARK_GREY, .7)
-    --link DARK_GREY
-    --link-active rgba(DARK_GREY, .7)
-    --button-background rgba(DARK_GREY, .1)
-    --cover-background rgba(white, .8)
-    --overlay-background rgba(OFF_WHITE, .85)
-    --overlay-border rgba(DARK_GREY, .3)
-    --image-background rgba(white, .8)
-    --progress-bar black
