@@ -1,12 +1,12 @@
-import { THUMB_SIZE } from './imageSizing';
+import {THUMB_SIZE} from './imageSizing';
 
 /** @const {string} */
 const thumbs = `
 query SlideshowThumbs ($slideshow: [String!]) {
   slideshow: entries(site: ["slideshows"], type: ["slide", "slideDeck"], slug: $slideshow) {
-    ...SlideDeck
+    ... SlideDeck
     slides: children {
-      ...Slide
+      ... Slide
     }
   }
 }
@@ -22,10 +22,10 @@ fragment Slide on slides_slide_Entry {
   id
   slug
   media: slideshowMedia {
-    ...SlideThumbs
-    ...on slideshowMedia_publication_BlockType {
+    ... SlideThumbs
+    ... on slideshowMedia_publication_BlockType {
       publication {
-        ...PublicationThumbs
+        ... PublicationThumbs
       }
     }
   }
@@ -33,7 +33,7 @@ fragment Slide on slides_slide_Entry {
 
 fragment SlideThumbs on slideshowMedia_images_BlockType {
   images {
-    ...SlideImage
+    ... SlideImage
   }
 }
 
@@ -44,7 +44,7 @@ fragment SlideImage on slides_Asset {
 
 fragment PublicationThumbs on publications_publication_Entry {
   images: publicationPhoto {
-    ...PublicationImage
+    ... PublicationImage
   }
 }
 

@@ -1,12 +1,12 @@
-import { ImageHeight, ImageWidth } from './imageSizing';
+import {ImageHeight, ImageWidth} from './imageSizing';
 
 /** @const {string} */
 const slideshow = `
 query Slideshow ($slideshow: [String!]) {
   slideshow: entries(site: ["slideshows"], type: ["slide", "slideDeck"], slug: $slideshow) {
-    ...SlideDeck
+    ... SlideDeck
     slides: children {
-      ...Slide
+      ... Slide
     }
   }
 }
@@ -16,7 +16,7 @@ fragment SlideDeck on slides_slideDeck_Entry {
   summary
   slug
   image: slideshowCover {
-    ...SlideshowCover
+    ... SlideshowCover
   }
 }
 

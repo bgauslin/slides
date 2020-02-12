@@ -1,10 +1,10 @@
-import { ImageWidth, PublicationWidth } from './imageSizing';
+import {ImageWidth, PublicationWidth} from './imageSizing';
 
 /** @const {string} */
 const slide = `
-query Slide ($id: [QueryParameter!]) {
+query Slide ($id: [QueryArgument!]) {
   slide: entries(site: ["slideshows"], type: "slide", id: $id) {
-    ...Slide
+    ... Slide
   }
 }
 
@@ -14,10 +14,10 @@ fragment Slide on slides_slide_Entry {
   caption: copy @markdown
   slug
   media: slideshowMedia {
-    ...Images
-    ...on slideshowMedia_publication_BlockType {
+    ... Images
+    ... on slideshowMedia_publication_BlockType {
       publication {
-        ...Publication
+        ... Publication
       }
     }
   }
@@ -25,7 +25,7 @@ fragment Slide on slides_slide_Entry {
 
 fragment Images on slideshowMedia_images_BlockType {
   images {
-    ...on slides_Asset {
+    ... on slides_Asset {
       alt: title
       src_small: url @transform(width: ${ImageWidth.SMALL}, interlace: "partition", immediately: true)
       src_medium: url @transform(width: ${ImageWidth.MEDIUM}, interlace: "partition", immediately: true)
@@ -42,11 +42,11 @@ fragment Publication on publications_publication_Entry {
   publisher
   date: publicationDate
   images: publicationPhoto {
-    ...MagazineCover
+    ... MagazineCover
   }
   link: publicationLink {
-    ...Download
-    ...ExternalLink
+    ... Download
+    ... ExternalLink
   }
 }
 
@@ -62,7 +62,7 @@ fragment MagazineCover on publications_Asset {
 
 fragment Download on publicationLink_download_BlockType {
   file {
-    ...on pdf_Asset {
+    ... on pdf_Asset {
       url
     }
   }
