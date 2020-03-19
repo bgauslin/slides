@@ -7,7 +7,7 @@ export default class {
    */
   static init() {
     this.touchEnabled_();
-    this.viewportHeight_();
+    this.setViewportHeight_();
     this.resize_();
     this.googleAnalytics_();
   }
@@ -31,7 +31,7 @@ export default class {
    * @private
    */
   static resize_() {
-    window.addEventListener('resize', () => this.viewportHeight_());
+    window.addEventListener('resize', () => this.setViewportHeight_());
   }
 
   /**
@@ -51,8 +51,7 @@ export default class {
    * scrolling.
    * @private
    */
-  static viewportHeight_() {
-    const viewportUnit = window.innerHeight / 100;
-    document.documentElement.style.setProperty('--viewport-unit', `${viewportUnit}px`);
+  static setViewportHeight_() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight / 100}px`);
   }
 }
