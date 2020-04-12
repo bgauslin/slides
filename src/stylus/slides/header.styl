@@ -33,7 +33,7 @@
   display inline-flex
   font-size var(--site-header)
   height var(--header-height)
-  padding 0 px_to_rem(16)
+  padding 0 rem(16)
   transition transform var(--transition)
   transform-origin 0 50%
 
@@ -67,11 +67,11 @@
   transform none
 
 .icon--back
-  height px_to_rem(32)
-  margin 0 px_to_rem(-4) 0 px_to_rem(-12)
+  height rem(32)
+  margin 0 rem(-4) 0 rem(-12)
   transform scale(.6)
-  width px_to_rem(32)
+  width rem(32)
 
   @media Breakpoint.MEDIUM
     margin-right 0
-    transform 'scale(.7) translateY(%s)' % px_to_rem(2)
+    transform 'scale(.7) translateY(%s)' % rem(2)
