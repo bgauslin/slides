@@ -17,17 +17,17 @@
       div.slide__copy__caption(
         v-html="content.caption",
       )
-      copyright
+      app-footer(modifier="slide")
 </template>
 
 <script>
-import Copyright from './Copyright.vue';
+import AppFooter from './AppFooter.vue';
 import MediaImages from './MediaImages.vue';
 import MediaPublication from './MediaPublication.vue';
 
 export default {
   components: {
-    Copyright,
+    AppFooter,
     MediaImages,
     MediaPublication,
   },

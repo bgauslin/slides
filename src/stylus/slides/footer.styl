@@ -1,12 +1,34 @@
 .footer
-  webfont('heading', 500)
   align-items center
+  color var(--text-alpha)
   display flex
+  font-size var(--fineprint)
+
+.footer--app
+  webfont('heading', 500)
   grid-column 1
   grid-row 3
   height CONTROLS_HEIGHT
   justify-content center
   padding 0 0 env(safe-area-inset-bottom)
   position relative
-  text-align center
   width 100vw
+
+.footer__years
+  margin-right em(8)
+
+.footer__link
+  link(var(--text-alpha), var(--text-alpha), var(--text), var(--text))
+
+.footer__link:focus
+[no-touch] .footer__link:hover
+  transition color var(--transition)
+
+.footer__blurb
+  margin 0
+
+.footer__blurb--repo::before
+  content '·'
+  display inline-block
+  text-align center
+  width 1rem
