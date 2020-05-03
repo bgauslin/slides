@@ -4,7 +4,7 @@ import {ImageHeight, ImageWidth} from './imageSizing';
 const allSlideshows = `
 query AllSlideshows {
   slideshows: entries(site: ["slideshows"], type: "slideDeck") {
-    ... SlideDeck
+    ...SlideDeck
   }
 }
 
@@ -13,7 +13,7 @@ fragment SlideDeck on slides_slideDeck_Entry {
   summary
   slug
   image: slideshowCover {
-    ... SlideshowCover
+    ...SlideshowCover
   }
 }
 

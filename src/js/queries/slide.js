@@ -4,7 +4,7 @@ import {ImageWidth, PublicationWidth} from './imageSizing';
 const slide = `
 query Slide ($id: [QueryArgument!]) {
   slide: entries(site: ["slideshows"], type: "slide", id: $id) {
-    ... Slide
+    ...Slide
   }
 }
 
@@ -14,10 +14,10 @@ fragment Slide on slides_slide_Entry {
   caption: copy @markdown
   slug
   media: slideshowMedia {
-    ... Images
+    ...Images
     ... on slideshowMedia_publication_BlockType {
       publication {
-        ... Publication
+        ...Publication
       }
     }
   }
@@ -42,11 +42,11 @@ fragment Publication on publications_publication_Entry {
   publisher
   date: publicationDate
   images: publicationPhoto {
-    ... MagazineCover
+    ...MagazineCover
   }
   link: publicationLink {
-    ... Download
-    ... ExternalLink
+    ...Download
+    ...ExternalLink
   }
 }
 
