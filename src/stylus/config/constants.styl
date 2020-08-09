@@ -1,74 +1,56 @@
 @import 'functions'
 
-// @const String
-ANIMATION_TIMING = cubic-bezier(.1, .1, .25, .9)
+// -----------------------------------------------------------------------------
+// Colors.
 
-// @type String
-DARK_GREY = #222
+grey-dark = #222
+grey-light = #ddd
 
-// @type String
-LIGHT_GREY = #ddd
+// -----------------------------------------------------------------------------
+// Dimensions.
 
-// @type String
-CAPTION_MAX_WIDTH = rem(400)
+caption-max-width = rem(400)
+controls-height = rem(60)
+column-gap = rem(32)
+image-gap-base = rem(16)
+image-gap-medium = rem(24)
+link-height-cover = rem(40)
+link-height-publication = rem(32)
+sidebar-width = rem(256)
+slide-max-width = rem(960)
+thumb-gap-medium = rem(8)
 
-// @type String
-CONTROLS_HEIGHT = rem(60)
+// -----------------------------------------------------------------------------
+// Transitions and animations.
 
-// @type String
-COLUMN_GAP = rem(32)
+animation-timing = cubic-bezier(.1, .1, .25, .9)
 
-// @type String
-IMAGE_GAP_BASE = rem(16)
+// -----------------------------------------------------------------------------
+// Z-stacking.
 
-// @type String
-IMAGE_GAP_MEDIUM = rem(24)
+// App.
+z-index-controls = 2
+z-index-header = 3
+z-index-progress-bar = 4
 
-// @type String
-LINK_HEIGHT_COVER = rem(40)
+// Image.
+z-index-image-placeholder = 1
+z-index-image-hi-res = 2
+z-index-spinner = 3
 
-// @type String
-LINK_HEIGHT_PUBLICATION = rem(32)
-
-// @type String
-SIDEBAR_WIDTH = rem(256)
-
-// @type String
-SLIDE_MAX_WIDTH = rem(960)
-
-// @type String
-THUMB_GAP_MEDIUM = rem(8)
-
-// @type Hash
-Stacking = {
-  App: {
-    CONTROLS: 2
-    HEADER: 3
-    PROGRESS_BAR: 4
-  }
-  Image: {
-    PLACEHOLDER: 1
-    HI_RES: 2
-    SPINNER: 3
-  }
-  Cover: {
-    IMAGE: -1
-    OVERLAY: 2
-  }
-}
+// Cover.
+z-index-cover-image = -1
+z-index-cover-overlay = 2
 
 // -----------------------------------------------------------------------------
 // Calculated constants.
-
-// @type String
-CONTENT_MAX_WIDTH = SIDEBAR_WIDTH + COLUMN_GAP + SLIDE_MAX_WIDTH
+content-max-width = sidebar-width + column-gap + slide-max-width
 
 // -----------------------------------------------------------------------------
 // Breakpoints.
 
-// @type Hash
-Breakpoint = {
-  SMALL: 'screen and (min-width: %s)' % rem(480)
-  MEDIUM: 'screen and (min-width: %s)' % rem(720)
-  LARGE: 'screen and (min-width: %s)' % rem(960)
+breakpoint = {
+  small: 'screen and (min-width: %s)' % rem(480)
+  medium: 'screen and (min-width: %s)' % rem(720)
+  large: 'screen and (min-width: %s)' % rem(960)
 }

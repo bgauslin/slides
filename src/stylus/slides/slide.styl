@@ -5,20 +5,20 @@
   height 100%
   margin 0 auto
   max-height 100vh
-  max-width CONTENT_MAX_WIDTH
+  max-width content-max-width
   padding-bottom env(safe-area-inset-bottom)
   width 100vw
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     display grid
-    grid-column-gap COLUMN_GAP
+    grid-column-gap column-gap
     grid-row 1 / span 3
-    grid-template-columns '0 %s 1fr 0' % SIDEBAR_WIDTH
-    grid-template-rows var(--header-height) 1fr CONTROLS_HEIGHT
+    grid-template-columns '0 %s 1fr 0' % sidebar-width
+    grid-template-rows var(--header-height) 1fr controls-height
     width 100%
 
 .slide__media
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     align-self center
     grid-column 3
     grid-row 1 / span 3
@@ -26,10 +26,10 @@
     overflow hidden
 
 .slide__media--multiple
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin 0 rem(24)
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     margin 0
 
 .slide__copy
@@ -40,14 +40,14 @@
   font-size var(--caption)
   grid-template-rows 1fr auto
   margin 0 auto
-  max-width CAPTION_MAX_WIDTH
+  max-width caption-max-width
   padding rem(16)
   width 100%
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     padding rem(48) 0 rem(16)
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     grid-column 2
     grid-row 2
     margin 0
@@ -59,6 +59,6 @@
   flex 1
   padding-bottom rem(16)
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     flex 0
     margin auto 0

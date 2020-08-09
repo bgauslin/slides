@@ -1,30 +1,30 @@
 .publication
   padding 0 rem(16)
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     align-items center
     display flex
     margin 0 rem(32)
     padding 0
   
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     margin 0
 
 .publication__image
   margin 0
   width 50%
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     flex 0 0 33.33%
     width auto
   
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin 0
 
 .publication__details
   padding 1rem 0 0
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     padding 2rem
 
 .publication__title
@@ -42,13 +42,13 @@
 
 .publication__link
   link(var(--link), var(--link), var(--background), var(--background))
-  link_background(var(--button-background), var(--button-background), var(--text), var(--text))
+  link-background(var(--button-background), var(--button-background), var(--text), var(--text))
   webfont('heading', 600)
   align-items center
-  border-radius (LINK_HEIGHT_PUBLICATION / 2)
+  border-radius (link-height-publication / 2)
   display inline-flex
   font-size em(14)
-  height LINK_HEIGHT_PUBLICATION
+  height link-height-publication
   margin rem(16) 0 0
   padding 0 rem(16)
 

@@ -10,9 +10,9 @@
   margin 0 auto
 
 .image--multiple:not(:first-child)
-  margin IMAGE_GAP_BASE 0 0
+  margin image-gap-base 0 0
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin 0
 
 // TODO(#34): Resolve .image__frame canvas dimensions being taller/wider than
@@ -44,7 +44,7 @@
 .img--placeholder
   filter blur(5px)
   opacity 1
-  z-index '%s' % Stacking.Image.PLACEHOLDER
+  z-index z-index-image-placeholder
 
 // TODO(#34): Remove 'placeholder ready' rule.
 .img--placeholder[ready]
@@ -52,7 +52,7 @@
 
 .img--hi-res
   opacity 0
-  z-index '%s' % Stacking.Image.HI_RES
+  z-index z-index-image-hi-res
 
 .img--hi-res[ready]
   opacity 1

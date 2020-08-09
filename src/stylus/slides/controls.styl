@@ -7,25 +7,25 @@
   padding 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
   position fixed
   width 100vw
-  z-index '%s' % Stacking.App.CONTROLS
+  z-index z-index-controls
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     background 0
     border 0
 
 .controls__frame
   margin 0 auto
-  max-width CONTENT_MAX_WIDTH
+  max-width content-max-width
 
 .controls__content
   align-items stretch
   display flex
   justify-content space-between
-  height CONTROLS_HEIGHT
+  height controls-height
 
-  @media Breakpoint.LARGE
-    margin 0 0 0 COLUMN_GAP
-    width SIDEBAR_WIDTH
+  @media breakpoint.large
+    margin 0 0 0 column-gap
+    width sidebar-width
 
 .prev-next__link
   align-items center
@@ -35,13 +35,13 @@
   overflow hidden
   padding 0 rem(8)
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     padding 0 rem(12)
 
-  @media Breakpoint.LARGE
+  @media breakpoint.large
     padding 0
 
-@media Breakpoint.LARGE
+@media breakpoint.large
   .prev-next__link--prev
     margin-left rem(-8)
 

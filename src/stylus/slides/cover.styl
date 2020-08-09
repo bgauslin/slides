@@ -20,13 +20,13 @@
   top 0
 
 .image--cover
-  z-index '%s' % Stacking.Cover.IMAGE
+  z-index z-index-cover-image
 
 .image--cover::after
   background var(--cover-background)
   content ''
   display block
-  z-index '%s' % Stacking.Cover.OVERLAY
+  z-index z-index-cover-overlay
 
 .image__frame--cover
   height 100%
@@ -53,17 +53,17 @@
 
 .cover__link
   link(var(--background), var(--background), var(--text), var(--text))
-  link_background(var(--text), var(--text), transparent, transparent)
+  link-background(var(--text), var(--text), transparent, transparent)
   webfont('heading', 600)
   align-items center
   border 2px solid var(--text)
-  border-radius (LINK_HEIGHT_COVER / 2)
+  border-radius (link-height-cover / 2)
   display inline-flex
-  height LINK_HEIGHT_COVER
+  height link-height-cover
   margin rem(16) 0 0
   padding 0 rem(24)
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin rem(24) 0 0
 
 [no-touch] .cover__link

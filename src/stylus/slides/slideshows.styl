@@ -3,14 +3,14 @@
   padding 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)
   width 100%
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin 0 auto
-    max-width CONTENT_MAX_WIDTH
+    max-width content-max-width
 
 .slideshows__group
   margin 0 var(--slideshow-gap)
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     display grid
     grid-gap var(--slideshow-gap)
     grid-template-columns repeat(2, 1fr)
@@ -18,7 +18,7 @@
 .slideshow:not(:last-child)
   margin 0 0 var(--slideshow-gap)
 
-  @media Breakpoint.MEDIUM
+  @media breakpoint.medium
     margin 0
 
 .slideshow__link
