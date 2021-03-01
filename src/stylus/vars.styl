@@ -17,18 +17,20 @@
   --transition .3s
   --transition-view .2s
 
-  // Default light mode colors.
+  // Default light mode.
   --background-0 background-0
   --background-1 background-1
   --text-1-color text-1-color
   --text-2-color text-2-color
+  --cover-opacity .65
 
-  // Dark mode colors.
+  // Dark mode.
   @media (prefers-color-scheme dark)
     --background-0 background-0-dark
     --background-1 background-1-dark
     --text-1-color text-1-color-dark
     --text-2-color text-2-color-dark
+    --cover-opacity .75
 
   @media breakpoint.small
     --thumb-columns 5
