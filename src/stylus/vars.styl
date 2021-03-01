@@ -1,4 +1,22 @@
 :root
+  // Layout.
+  --header-height rem(48)
+  --slideshow-gap rem(16)
+  --thumb-columns 4
+  --thumb-gap rem(4)
+
+  // Typography.
+  --caption-font-size em(13)
+  --footer-font-size em(12)
+  --h1-font-size em(24)
+  --h2-font-size em(18)
+  --h3-font-size em(14)
+  --header-font-size em(16)
+
+  // Transitions.
+  --transition .3s
+  --transition-view .2s
+
   // Colors.
   --background grey-dark
   --button-background rgba(white, .1)
@@ -11,37 +29,18 @@
   --text white
   --text-alpha rgba(white, .7)
 
-  // Typography.
-  --caption em(13)
-  --fineprint em(12)
-  --heading-1 em(24)
-  --heading-2 em(18)
-  --heading-3 em(14)
-  --site-header em(16)
-
-  // Layout.
-  --header-height rem(48)
-  --slideshow-gap rem(16)
-  --thumb-columns 4
-  --thumb-gap rem(4)
-
-  // Transitions.
-  --transition .3s
-  --transition-view .2s
-
   @media breakpoint.small
-    // Layout.
     --thumb-columns 5
     --thumb-gap rem(6)
 
   @media breakpoint.medium
     // Typography.
-    --caption em(15)
-    --fineprint em(14)
-    --heading-1 em(36)
-    --heading-2 em(24)
-    --heading-3 em(18)
-    --site-header em(20)
+    --caption-font-size em(15)
+    --footer-font-size em(14)
+    --h1-font-size em(36)
+    --h2-font-size em(24)
+    --h3-font-size em(18)
+    --header-font-size em(20)
 
     // Layout.
     --header-height rem(60)
