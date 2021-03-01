@@ -1,12 +1,35 @@
-// -----------------------------------------------------------------------------
-// Colors.
+// Grays palette.
+// https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color
+gray-1 = rgb(142, 142, 147)
+gray-2 = rgb(174, 174, 178)
+gray-3 = rgb(199, 199, 204)
+gray-4 = rgb(209, 209, 214)
+gray-5 = rgb(229, 229, 234)
+gray-6 = rgb(242, 242, 247)
 
-grey-dark = #222
-grey-light = #ddd
+gray-1-dark = rgb(142, 142, 147)
+gray-2-dark = rgb(99, 99, 102)
+gray-3-dark = rgb(72, 72, 74)
+gray-4-dark = rgb(58, 58, 60)
+gray-5-dark = rgb(44, 44, 46)
+gray-6-dark = rgb(28, 28, 30)
 
-// -----------------------------------------------------------------------------
+// Default light mode colors.
+background-0 = gray-6
+background-1 = white
+text-1-color = black
+text-2-color = gray-1
+
+// Dark mode colors.
+background-0-dark = black
+background-1-dark = gray-6-dark
+text-1-color-dark = gray-5
+text-2-color-dark = gray-1
+
+// Blurry backgrounds.
+backdrop-effect = blur(10px)
+
 // Dimensions.
-
 caption-max-width = rem(400)
 controls-height = rem(60)
 column-gap = rem(32)
@@ -18,37 +41,27 @@ sidebar-width = rem(256)
 slide-max-width = rem(960)
 thumb-gap-medium = rem(8)
 
-// -----------------------------------------------------------------------------
-// Transitions and animations.
-
-animation-timing = cubic-bezier(.1, .1, .25, .9)
-
-// -----------------------------------------------------------------------------
-// Z-stacking.
-
-// App.
-z-index-controls = 2
-z-index-header = 3
-z-index-progress-bar = 4
-
-// Image.
-z-index-image-placeholder = 1
-z-index-image-hi-res = 2
-z-index-spinner = 3
-
-// Cover.
-z-index-cover-image = -1
-z-index-cover-overlay = 2
-
-// -----------------------------------------------------------------------------
 // Calculated constants.
 content-max-width = sidebar-width + column-gap + slide-max-width
 
-// -----------------------------------------------------------------------------
 // Breakpoints.
-
 breakpoint = {
   small: 'screen and (min-width: %s)' % rem(480)
   medium: 'screen and (min-width: %s)' % rem(720)
   large: 'screen and (min-width: %s)' % rem(960)
 }
+
+// Animations.
+animation-timing = cubic-bezier(.1, .1, .25, .9)
+
+// Z-stacking.
+z-index-controls = 2
+z-index-header = 3
+z-index-progress-bar = 4
+
+z-index-image-placeholder = 1
+z-index-image-hi-res = 2
+z-index-spinner = 3
+
+z-index-cover-image = -1
+z-index-cover-overlay = 2

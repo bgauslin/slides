@@ -1,6 +1,6 @@
 .header
   align-items center
-  backdrop-filter blur(10px)
+  backdrop-filter backdrop-effect
   background var(--overlay-background)
   display flex
   grid-row 1
@@ -13,13 +13,16 @@
 // No background on 'cover' view header since the full-screen image has
 // an overlay.
 .header--cover
+  backdrop-filter none
   background 0
 
 @media breakpoint.large
   .header
+    backdrop-filter none
     background 0
 
   .header--thumbs
+    // backdrop-filter TODO...
     background var(--overlay-background)
 
 .header__content
@@ -51,7 +54,7 @@
 
   &
   &:hover
-    color var(--text-color)
+    color var(--text-1-color)
 
 .header__link__label
   font-size 1em

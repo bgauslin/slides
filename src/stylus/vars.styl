@@ -17,17 +17,30 @@
   --transition .3s
   --transition-view .2s
 
-  // Colors.
-  --background grey-dark
-  --button-background rgba(white, .1)
-  --cover-background rgba(grey-dark, .8)
-  --image-background rgba(black, .2)
-  --overlay-background rgba(grey-dark, .5)
+  // Default light mode colors.
+  --background-0 background-0
+  --background-1 background-1
+  --text-1-color text-1-color
+  --text-2-color text-2-color
 
-  --link-color white
-  --link-color-active rgba(white, .7)
-  --text-alpha rgba(white, .7)
-  --text-color white
+  // TODO: Refactor --foo-background vars for light/dark mode.
+  // --button-background rgba(white, .1) 
+  // --cover-background rgba(#222, .8) 
+  // --image-background rgba(black, .2)
+  // --overlay-background rgba(#222, .5)
+
+  // Dark mode colors.
+  @media (prefers-color-scheme dark)
+    --background-0 background-0-dark
+    --background-1 background-1-dark
+    --text-1-color text-1-color-dark
+    --text-2-color text-2-color-dark
+
+    // TODO: Refactor --foo-background vars for light/dark mode.
+    --button-background rgba(white, .1) 
+    --cover-background rgba(#222, .8) 
+    --image-background rgba(black, .2)
+    --overlay-background rgba(#222, .5)
 
   @media breakpoint.small
     --thumb-columns 5
