@@ -1,15 +1,13 @@
 .cover
+  align-items center
+  display flex
   grid-column 1
   grid-row 1 / span 3
+  justify-content center
 
 // Hide the spinner since it collides with the overlay text.
 .cover .preload-spinner
   display none
-
-.cover
-  align-items center
-  display flex
-  justify-content center
 
 .image--cover
 .image--cover::after
@@ -23,9 +21,10 @@
   z-index z-index-cover-image
 
 .image--cover::after
-  background var(--cover-background)
+  background var(--background-1)
   content ''
   display block
+  opacity .85
   z-index z-index-cover-overlay
 
 .image__frame--cover

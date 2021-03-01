@@ -1,7 +1,6 @@
 .header
   align-items center
   backdrop-filter backdrop-effect
-  background var(--overlay-background)
   display flex
   grid-row 1
   left 0
@@ -19,11 +18,9 @@
 @media breakpoint.large
   .header
     backdrop-filter none
-    background 0
 
   .header--thumbs
-    // backdrop-filter TODO...
-    background var(--overlay-background)
+    backdrop-filter backdrop-effect
 
 .header__content
   display flex

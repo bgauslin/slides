@@ -1,6 +1,5 @@
 .controls
   backdrop-filter backdrop-effect
-  background var(--overlay-background)
   bottom 0
   grid-row 3
   left 0
@@ -10,8 +9,7 @@
   z-index z-index-controls
 
   @media breakpoint.large
-    background 0
-    border 0
+    backdrop-filter none
 
 .controls__frame
   margin 0 auto
