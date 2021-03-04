@@ -2,7 +2,7 @@
   header(
     :class="headerClass",
   )
-    div.header__content
+    .header__content
       router-link(
         :class="headerLinkClass",
         :to="headerLinkRoute",

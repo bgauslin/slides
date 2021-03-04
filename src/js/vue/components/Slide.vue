@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.slide(
+  .slide(
     v-if="content && content.media",
   )
     div(
@@ -13,8 +13,8 @@
         v-if="content.media[0].publication",
         :publication="content.media[0].publication[0]",
       )
-    div.slide__copy
-      div.slide__copy__caption(
+    .slide__copy
+      .slide__copy__caption(
         v-html="content.caption",
       )
       app-footer(modifier="slide")

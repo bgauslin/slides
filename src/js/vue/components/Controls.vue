@@ -1,9 +1,9 @@
 <template lang="pug">
-  div.controls(
+  .controls(
     v-if="slidePrev || slideNext",
   )
-    div.controls__frame
-      div.controls__content
+    .controls__frame
+      .controls__content
         router-link(
           v-if="prevRoute",
           class="prev-next__link prev-next__link--prev",

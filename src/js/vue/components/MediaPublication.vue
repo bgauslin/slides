@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.publication
+  .publication
     template(
       v-if="publication.images",
       v-for="image in publication.images",
@@ -10,7 +10,7 @@
         :srcset="srcset",
         type="publication",
       )
-    div.publication__details
+    .publication__details
       h2.publication__title(
         v-html="publication.title",
       )

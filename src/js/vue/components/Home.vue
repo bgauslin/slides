@@ -1,9 +1,9 @@
 <template lang="pug">
-  div.slideshows(
+  .slideshows(
     v-if="content",
   )
-    div.slideshows__group
-      div.slideshow(
+    .slideshows__group
+      .slideshow(
         v-for="slideshow in content.slideshows",
       )
         router-link(

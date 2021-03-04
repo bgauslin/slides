@@ -1,8 +1,8 @@
 <template lang="pug">
-  div.thumbs(
+  .thumbs(
     v-if="content",
   )
-    div.thumbs__group
+    .thumbs__group
       thumb(
         v-for="slide in content.slides",
         :key="slide.id",

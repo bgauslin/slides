@@ -1,6 +1,6 @@
 <template lang="pug">
-  div.app
-    div.progress-bar(
+  .app
+    .progress-bar(
       v-if="isLoading",
     )
     app-header(

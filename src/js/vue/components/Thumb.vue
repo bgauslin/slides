@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.thumb
+  .thumb
     router-link(
       class="thumb__link",
       :title="thumb.alt",

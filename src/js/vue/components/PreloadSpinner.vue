@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.preload-spinner
+  .preload-spinner
 </template>
 
 <script>

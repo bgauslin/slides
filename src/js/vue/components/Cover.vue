@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.cover(
+  .cover(
     v-if="content && content.image",
   )
     single-image(
