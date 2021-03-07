@@ -36,7 +36,7 @@ export default {
      * @return {boolean}
      */
     hasIcon() {
-      return this.route === 'thumbs';
+      return this.route !== 'home';
     },
 
     /**
