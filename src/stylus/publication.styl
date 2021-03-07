@@ -41,10 +41,11 @@
   margin 0
 
 .publication__link
-  link(var(--text-1-color), var(--text-1-color), var(--background-0), var(--background-0))
-  link-background(var(--background-1), var(--background-1), var(--text-1-color), var(--text-1-color))
+  link(var(--background-0), var(--background-0), var(--link-color), var(--link-color))
+  link-background(var(--link-color), var(--link-color), var(--background-1), var(--background-1))
   webfont('heading', 600)
   align-items center
+  border 2px solid var(--link-color)
   border-radius (link-height-publication / 2)
   display inline-flex
   font-size em(14)
