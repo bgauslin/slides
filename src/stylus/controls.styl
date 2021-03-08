@@ -1,5 +1,4 @@
 .controls
-  backdrop-filter backdrop-effect
   bottom 0
   grid-row 3
   left 0
@@ -8,17 +7,13 @@
   width 100vw
   z-index z-index-controls
 
-  @media breakpoint.large
-    backdrop-filter none
-
 .controls__frame
   margin 0 auto
   max-width content-max-width
 
 .controls__content
-  align-items stretch
+  align-items center
   display flex
-  justify-content space-between
   height controls-height
 
   @media breakpoint.large

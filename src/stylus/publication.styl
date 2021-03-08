@@ -41,17 +41,10 @@
   margin 0
 
 .publication__link
-  link(var(--background-0), var(--background-0), var(--link-color), var(--link-color))
-  link-background(var(--link-color), var(--link-color), var(--background-1), var(--background-1))
-  webfont('heading', 600)
-  align-items center
-  border 2px solid var(--link-color)
-  border-radius (link-height-publication / 2)
-  display inline-flex
-  font-size em(14)
-  height link-height-publication
+  capsule-button()
+  link(var(--text-1-color), var(--text-1-color), var(--background-0), var(--background-0))
+  link-background(var(--background-1), var(--background-1), var(--text-1-color), var(--text-1-color))
   margin rem(16) 0 0
-  padding 0 rem(16)
 
 [no-touch] .publication__link
   transition background var(--transition), color var(--transition)
