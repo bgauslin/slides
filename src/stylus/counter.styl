@@ -1,7 +1,12 @@
 .counter__link
   capsule-button()
-  background var(--background-1)
+  link(var(--text-1-color), var(--text-1-color), var(--background-0), var(--background-0))
+  link-background(var(--background-1), var(--background-1), var(--text-1-color), var(--text-1-color))
+  font-size em(14)
   transition transform var(--transition)
 
 .counter__link:active
   transform scale(.8)
+
+[no-touch] .counter__link
+  transition background var(--transition), color var(--transition), transform var(--transition)
