@@ -1,9 +1,9 @@
 .app
   display grid
   grid-template-columns 1fr
-  grid-template-rows var(--header-height) 1fr controls-height
-  min-height 100vh // fallback
+  grid-template-rows var(--header-height) 1fr
   min-height calc(var(--vh, 1vh) * 100)
+  padding 0 0 env(safe-area-inset-bottom)
 
 .first-run
   animation-name fadeIn

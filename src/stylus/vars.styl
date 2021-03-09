@@ -1,5 +1,6 @@
 :root
   // Layout.
+  --copy-padding rem(16)
   --header-height rem(48)
   --slideshow-gap rem(16)
   --thumb-columns 4
@@ -48,11 +49,13 @@
     --header-font-size em(20)
 
     // Layout.
+    --copy-padding rem(48) 0 rem(32)
     --header-height rem(60)
     --slideshow-gap rem(32)
     --thumb-columns 6
     --thumb-gap thumb-gap-medium
     
   @media breakpoint.large
+    --copy-padding 0
     --thumb-columns 7
     --transition-view .3s
