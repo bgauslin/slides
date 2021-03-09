@@ -17,17 +17,14 @@
       .slide__copy__caption(
         v-html="content.caption",
       )
-      app-footer(modifier="slide")
 </template>
 
 <script>
-import AppFooter from './AppFooter.vue';
 import MediaImages from './MediaImages.vue';
 import MediaPublication from './MediaPublication.vue';
 
 export default {
   components: {
-    AppFooter,
     MediaImages,
     MediaPublication,
   },

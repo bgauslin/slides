@@ -25,23 +25,17 @@
     controls(
       v-if="hasControls",
     )
-    app-footer(
-      v-if="hasFooter",
-      modifier="app",
-    )
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { Query } from '../../queries/index';
-import AppFooter from './AppFooter.vue';
 import AppHeader from './AppHeader.vue';
 import Controls from './Controls.vue';
 import NotFound from'./NotFound.vue';
 
 export default {
   components: {
-    AppFooter,
     AppHeader,
     Controls,
     NotFound,
@@ -68,11 +62,6 @@ export default {
     /** @return {boolean} */
     hasControls() {
       return this.view === 'slide' && !this.is404;
-    },
-
-    /** @return {boolean} */
-    hasFooter() {
-      return this.view !== 'slide' && !this.is404;
     },
 
     /** @return {string} */
