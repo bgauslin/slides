@@ -51,7 +51,8 @@
 .cover__link
   capsule-button()
   link(var(--background-0), var(--background-0), var(--text-1-color), var(--text-1-color))
-  link-background(var(--text-1-color), var(--text-1-color), var(--background-1), var(--background-1))
+  link-background(var(--text-1-color), var(--text-1-color), transparent, transparent)
+  border 2px solid var(--text-1-color)
   margin rem(16) 0 0
 
   @media breakpoint.medium
@@ -62,3 +63,11 @@
 
 [no-touch] .cover__link:active
   transform scale(.9)
+
+.icon--go
+  height rem(18)
+  margin 0 rem(-10) 0 rem(6)
+  width rem(18)
+
+.icon--go .icon__path
+  transition inherit

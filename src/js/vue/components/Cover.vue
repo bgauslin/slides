@@ -1,20 +1,27 @@
 <template lang="pug">
   .cover(
-    v-if="content && content.image",
+    v-if="content && content.image"
   )
     single-image(
-      :image="content.image[0]",
-      :srcset="srcset",
-      type="cover",
+      :image="content.image[0]"
+      :srcset="srcset"
+      type="cover"
     )    
     header.cover__header
       h2.cover__heading {{ content.title }}
       p.cover__summary {{ content.summary }}
       router-link(
-        class="cover__link",
-        :title="content.title",
-        :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }",
+        class="cover__link"
+        :title="content.title"
+        :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }"
       ) Start slideshow
+        svg.icon.icon--go(
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+        )
+          path.icon__path(
+            d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"
+          )
 </template>
 
 <script>
