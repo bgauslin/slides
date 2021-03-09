@@ -1,14 +1,14 @@
 <template lang="pug">
   .thumbs(
-    v-if="content",
+    v-if="content"
   )
     .thumbs__group
       thumb(
-        v-for="slide in content.slides",
-        :key="slide.id",
-        :slideshow="content.slug",
-        :slug="slide.slug",
-        :media="slide.media",
+        v-for="slide in content.slides"
+        :key="slide.id"
+        :slideshow="content.slug"
+        :slug="slide.slug"
+        :media="slide.media"
       )
 </template>
 

@@ -1,19 +1,19 @@
 <template lang="pug">
   header(
-    :class="headerClass",
+    :class="headerClass"
   )
     .header__content
       router-link(
-        :class="headerLinkClass",
-        :to="headerLinkRoute",
-        :title="headerLinkLabel",
+        :class="headerLinkClass"
+        :to="headerLinkRoute"
+        :title="headerLinkLabel"
       ) 
         svg.icon.icon--back(
-          v-if="hasIcon",
-          viewbox="0 0 32 32",
+          v-if="hasIcon"
+          viewbox="0 0 32 32"
         )
           path.icon__path(
-            d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822",
+            d="m21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822"
           )
         h1.header__link__label {{ headerLinkLabel }}
 </template>

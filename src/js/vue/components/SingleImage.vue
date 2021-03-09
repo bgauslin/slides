@@ -1,27 +1,27 @@
 <template lang="pug">
   div(
-    :class="classNames",
+    :class="classNames"
   )
     figure(
-      :class="['image__frame', 'image__frame--' + view]",
-      :ready="!loading",
-      :style="aspectRatio",
+      :class="['image__frame', 'image__frame--' + view]"
+      :ready="!loading"
+      :style="aspectRatio"
     )
       preload-spinner(
-        v-if="loading",
+        v-if="loading"
       )
       img(
-        :class="['img', 'img--hi-res', 'img--' + view]",
-        :alt="image.alt",
-        :src="image.src_medium",
-        :srcset="srcsetValues",
-        :sizes="sizes",
-        :ready="!loading",
+        :class="['img', 'img--hi-res', 'img--' + view]"
+        :alt="image.alt"
+        :src="image.src_medium"
+        :srcset="srcsetValues"
+        :sizes="sizes"
+        :ready="!loading"
       )
       img(
-        :class="['img', 'img--placeholder', 'img--' + view]",
-        :src="image.placeholder",
-        alt="",
+        :class="['img', 'img--placeholder', 'img--' + view]"
+        :src="image.placeholder"
+        alt=""
       )
 </template>
 

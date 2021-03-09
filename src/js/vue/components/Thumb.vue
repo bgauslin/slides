@@ -1,14 +1,13 @@
 <template lang="pug">
   .thumb
-    router-link(
-      class="thumb__link",
-      :title="thumb.alt",
-      :to="{ name: 'slide', params: { slideshow: slideshow, slug: slug } }",
+    router-link.thumb__link(
+      :title="thumb.alt"
+      :to="{ name: 'slide', params: { slideshow: slideshow, slug: slug } }"
     )
       figure.thumb__frame
         img.thumb__image(
-          :alt="thumb.alt",
-          :src="thumb.src",
+          :alt="thumb.alt"
+          :src="thumb.src"
         )
 </template>
 

@@ -1,15 +1,15 @@
 <template lang="pug">
   div(
-    v-if="images",
-    :class="className",
+    v-if="images"
+    :class="className"
   )
     template(
-      v-for="image in images",
+      v-for="image in images"
     )
       single-image(
-        :type="type",
-        :image="image",
-        :srcset="srcset",
+        :type="type"
+        :image="image"
+        :srcset="srcset"
       )
 </template>
 

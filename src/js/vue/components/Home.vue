@@ -1,23 +1,22 @@
 <template lang="pug">
   .slideshows(
-    v-if="content",
+    v-if="content"
   )
     .slideshows__group
       .slideshow(
-        v-for="slideshow in content.slideshows",
+        v-for="slideshow in content.slideshows"
       )
-        router-link(
-          class="slideshow__link",
-          :title="linkTitle(slideshow)",
-          :to="{ name: 'cover', params: { slideshow: slideshow.slug } }",
+        router-link.slideshow__link(
+          :title="linkTitle(slideshow)"
+          :to="{ name: 'cover', params: { slideshow: slideshow.slug } }"
         )
           template(v-for="image in slideshow.image")
             single-image(
-              :image="image",
-              :srcset="srcset",
-              type="preview",
-              width="900",
-              height="600",
+              :image="image"
+              :srcset="srcset"
+              type="preview"
+              width="900"
+              height="600"
             )
           h2.slideshow__heading {{ slideshow.title }}
 </template>

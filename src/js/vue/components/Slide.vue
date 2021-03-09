@@ -1,21 +1,21 @@
 <template lang="pug">
   .slide(
-    v-if="content && content.media",
+    v-if="content && content.media"
   )
     div(
       :class="className"
     )
       media-images(
-        v-if="content.media[0].images",
-        :images="content.media[0].images",
+        v-if="content.media[0].images"
+        :images="content.media[0].images"
       )
       media-publication(
-        v-if="content.media[0].publication",
-        :publication="content.media[0].publication[0]",
+        v-if="content.media[0].publication"
+        :publication="content.media[0].publication[0]"
       )
     .slide__copy
       .slide__copy__caption(
-        v-html="content.caption",
+        v-html="content.caption"
       )
 </template>
 

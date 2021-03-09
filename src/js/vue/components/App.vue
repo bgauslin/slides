@@ -1,29 +1,29 @@
 <template lang="pug">
   .app
     .progress-bar(
-      v-if="isLoading",
+      v-if="isLoading"
     )
     app-header(
-      v-if="!is404",
-      :view="view",
+      v-if="!is404"
+      :view="view"
     )
     transition(
-      mode="out-in",
-      @before-enter="beforeEnter",
-      @after-enter="afterEnter",
-      @before-leave="beforeLeave",
-      @after-leave="afterLeave",
+      mode="out-in"
+      @before-enter="beforeEnter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @after-leave="afterLeave"
     )
       router-view(
-        v-if="!is404",
-        :content="content",
-        :key="key",
+        v-if="!is404"
+        :content="content"
+        :key="key"
       )
     not-found(
       v-if="is404"
     )
     controls(
-      v-if="hasControls",
+      v-if="hasControls"
     )
 </template>
 

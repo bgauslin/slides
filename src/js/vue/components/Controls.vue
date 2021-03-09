@@ -1,29 +1,30 @@
 <template lang="pug">
   .controls(
-    v-if="slidePrev || slideNext",
+    v-if="slidePrev || slideNext"
   )
     .controls__frame
       .controls__content
         router-link(
-          v-if="prevRoute",
-          class="prev-next__link prev-next__link--prev",
-          :to="prevRoute",
-          :title="prevLabel",
+          v-if="prevRoute"
+          :class="['prev-next__link', 'prev-next__link--prev']"
+          :to="prevRoute"
+          :title="prevLabel"
         )
           svg.icon.icon--prev-next(
-            viewBox="0 0 32 32",
-            v-html="svgArrowPath('left')",
+            viewBox="0 0 32 32"
+            v-html="svgArrowPath('left')"
           )
         counter
         router-link(
-          v-if="nextRoute",
-          class="prev-next__link prev-next__link--next",
-          :to="nextRoute",
-          :title="nextLabel",
+          v-if="nextRoute"
+          :class="['prev-next__link', 'prev-next__link--next']"
+          :to="nextRoute"
+          :title="nextLabel"
         )
           svg.icon.icon--prev-next(
-            viewBox="0 0 32 32",
-            v-html="svgArrowPath('right')",
+            viewBox="0 0 32 32"
+            v-html="svgArrowPath('right')"
+            aria-hidden="true"
           )
 </template>
 

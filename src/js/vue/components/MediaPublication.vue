@@ -1,30 +1,29 @@
 <template lang="pug">
   .publication
     template(
-      v-if="publication.images",
-      v-for="image in publication.images",
+      v-if="publication.images"
+      v-for="image in publication.images"
     )
-      single-image(
-        class="publication__image",
-        :image="image",
-        :srcset="srcset",
-        type="publication",
+      single-image.publication__image(
+        :image="image"
+        :srcset="srcset"
+        type="publication"
       )
     .publication__details
       h2.publication__title(
-        v-html="publication.title",
+        v-html="publication.title"
       )
       h3.publication__publisher(
-        v-html="publication.publisher",
+        v-html="publication.publisher"
       )
       p.publication__date {{ publication.date }}
       a.publication__link(
-        v-if="publicationUrl",
-        :href="publicationUrl",
-        :title="'Read the ' + publication.publisher + ' article'",
-        :url-type="publicationUrlType",
-        rel="noopener",
-        target="_blank",
+        v-if="publicationUrl"
+        :href="publicationUrl"
+        :title="'Read the ' + publication.publisher + ' article'"
+        :url-type="publicationUrlType"
+        rel="noopener"
+        target="_blank"
       ) Read the article
 </template>
 
