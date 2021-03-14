@@ -119,6 +119,7 @@ export default {
      * @param {!string} direction - 'right' or 'left'
      * @return {string}
      */
+    // TODO(svg): Update paths to polylines.
     svgArrowPath(direction) {
       const svgPath = new Map([
         ['left', 'm21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822'],
