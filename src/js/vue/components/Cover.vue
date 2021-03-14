@@ -14,14 +14,13 @@
         class="cover__link"
         :title="content.title"
         :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }"
-      ) Start slideshow
-        svg.icon.icon--go(
-          viewBox="0 0 32 32"
-          aria-hidden="true"
-        )
-          path.icon__path(
-            d="m10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822"
+      )
+        span.cover__link__label Start slideshow
+          svg.cover__link__icon(
+            viewBox="0 0 24 24"
+            aria-hidden="true"
           )
+            polyline(points="10,6 16,12 10,18")
 </template>
 
 <script>
