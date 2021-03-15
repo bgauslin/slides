@@ -11,9 +11,10 @@
           :title="prevLabel"
         )
           svg.icon.icon--prev-next(
-            viewBox="0 0 32 32"
-            v-html="svgArrowPath('left')"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
           )
+            path(:d="svgArrowPath('left')")
         counter
         router-link(
           v-if="nextRoute"
@@ -22,10 +23,10 @@
           :title="nextLabel"
         )
           svg.icon.icon--prev-next(
-            viewBox="0 0 32 32"
-            v-html="svgArrowPath('right')"
+            viewBox="0 0 24 24"
             aria-hidden="true"
           )
+            path(:d="svgArrowPath('right')")
 </template>
 
 <script>
@@ -119,13 +120,8 @@ export default {
      * @param {!string} direction - 'right' or 'left'
      * @return {string}
      */
-    // TODO(svg): Update paths to polylines.
     svgArrowPath(direction) {
-      const svgPath = new Map([
-        ['left', 'm21.08768,26.09236l-10.17537,-10.1165l10.12708,-10.06822'],
-        ['right', 'm10.91231,5.90764l10.17537,10.1165l-10.12708,10.06822'],
-      ]);
-      return `<path class="icon__path" d="${svgPath.get(direction)}"/>`;
+      return direction === 'left' ? 'M16,4 L8,12 L16,20' : 'M8,4 L16,12 L8,20';
     },
   }
 }

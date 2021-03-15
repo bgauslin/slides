@@ -34,12 +34,11 @@ link(link, visited, hover, active)
     color visited
 
   &:active
-  &:focus
     color active
 
-  [no-touch] &
-    &:hover
-      color hover
+  &:focus
+  [no-touch] &:hover
+    color hover
 
 // @mixin
 // @param Color link
@@ -54,12 +53,11 @@ link-background(link, visited, hover, active)
     background visited
 
   &:active
-  &:focus
     background active
 
-  [no-touch] &
-    &:hover
-      background hover
+  &:focus
+  [no-touch] &:hover
+    background hover
 
 // @mixin
 // @param String type ['body']

@@ -13,7 +13,7 @@
           viewbox="0 0 24 24"
           aria-hidden="true"
         )
-          polyline(points="14,6 8,12 14,18")
+          path(d="M14,6 L8,12 L14,18")
         h1.header__link__label {{ headerLinkLabel }}
 </template>
 
