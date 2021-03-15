@@ -16,11 +16,11 @@
         :to="{ name: 'slide', params: { slideshow: content.slug, slug: slideFirst.slug } }"
       )
         span.cover__link__label Start slideshow
-          svg.cover__link__icon(
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          )
-            polyline(points="10,6 16,12 10,18")
+        svg.cover__link__icon(
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        )
+          polyline(points="10,6 16,12 10,18")
 </template>
 
 <script>
