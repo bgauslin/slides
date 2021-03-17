@@ -41,8 +41,8 @@
 
 .cover__link
   capsule-button()
-  link(var(--background-0), var(--background-0), var(--text-1-color), var(--text-1-color))
-  link-background(var(--text-1-color), var(--text-1-color), transparent, transparent)
+  link(var(--background-0), var(--background-0), var(--text-1-color), var(--background-0),)
+  link-background(var(--text-1-color), var(--text-1-color), transparent, var(--text-1-color))
   border 2px solid var(--text-1-color)
   margin rem(16) 0 0
   padding-right rem(12)
@@ -50,11 +50,11 @@
   @media breakpoint.medium
     margin rem(24) 0 0
 
+.cover__link:active
+  transform scale(.9)
+
 [no-touch] .cover__link
   transition background var(--transition), color var(--transition), transform var(--transition)
-
-[no-touch] .cover__link:active
-  transform scale(.9)
 
 .header__link__label
   transition color var(--transition)
