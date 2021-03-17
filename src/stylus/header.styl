@@ -1,6 +1,6 @@
 .header
   align-items center
-  backdrop-filter backdrop-effect
+  background var(--header-background)
   display flex
   grid-row 1
   left 0
@@ -8,6 +8,10 @@
   position fixed
   width 100vw
   z-index z-index-header
+
+  @supports (backdrop-filter backdrop-effect)
+    backdrop-filter backdrop-effect
+    background var(--header-backdrop-background)
 
 // No background on 'cover' view header since the full-screen image has
 // an overlay.
