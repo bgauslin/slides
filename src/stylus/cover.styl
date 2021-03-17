@@ -8,22 +8,13 @@
   display none
 
 .image--cover
-.image--cover::after
   bottom 0
+  filter var(--cover-filter)
   left 0
   position absolute
   right 0
   top 0
-
-.image--cover
   z-index z-index-cover-image
-
-.image--cover::after
-  background var(--background-1)
-  content ''
-  display block
-  opacity var(--cover-opacity)
-  z-index z-index-cover-overlay
 
 .image__frame--cover
   height 100%
