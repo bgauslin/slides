@@ -46,13 +46,13 @@
   link-background(var(--background-1), var(--background-1), var(--text-1-color), var(--background-1))
   font-size em(14)
   margin rem(16) 0 0
-  transition transform var(--transition)
+  transition transform transition
 
 .publication__link:active
   transform scale(.9)
 
 [no-touch] .publication__link
-  transition background var(--transition), color var(--transition), transform var(--transition)
+  transition background transition, color transition, transform transition
 
 [href$=pdf]::after
   bottom -.1em

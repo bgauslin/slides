@@ -40,7 +40,7 @@
   height var(--header-height)
   padding 0 rem(16)
   transform-origin 0 50%
-  transition transform var(--transition)
+  transition transform transition
 
   @media breakpoint.small
     width auto
@@ -60,14 +60,14 @@
   margin 0
   overflow hidden
   text-overflow ellipsis
-  transition color var(--transition)
+  transition color transition
   white-space nowrap
 
 .header__link__icon
   height rem(24)
   margin 0 0 -1px
   width rem(24)
-  transition all var(--transition)
+  transition all transition
 
 .header__link__icon > path
   fill none

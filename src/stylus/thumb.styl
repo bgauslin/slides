@@ -6,7 +6,7 @@
 .thumb__image
   opacity 0
   position absolute
-  transition opacity var(--transition)
+  transition opacity transition
 
 .thumb__image[ready]
   opacity 1
@@ -14,7 +14,7 @@
 .thumb__link
   elevation(0)
   display block
-  transition box-shadow var(--transition), transform var(--transition)
+  transition box-shadow transition, transform transition
 
 [no-touch] .thumb__link:hover
   elevation(2)
